@@ -1,5 +1,6 @@
+import { projectStatusMarkdown } from './project.mjs';
 export const pages=[];
-const add=(route,title,description,body,options={})=>pages.push({route,title,description,body,options});
+const add=(route,title,description,body,options={})=>pages.push({route,title,description,body: (['comece/visao-geral','versoes/estado-da-versao'].includes(route) ? projectStatusMarkdown+'\n\n' : '')+body,options});
 const api=(name)=>`[${name}]($BASE/api/astra-${name.toLowerCase()}/)`;
 const guide=(route,title,description,sections)=>add(route,title,description,sections.map(([h,p])=>`## ${h}\n\n${p}`).join('\n\n'));
 

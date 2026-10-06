@@ -1,4 +1,5 @@
 ---
+import ProjectStatus from './ProjectStatus.astro';
 const base = '/pt-br/snapshot-2026-10-06';
 const trails = [
   { title:'ESTOU\nCOMEÇANDO.', text:'Conheça o editor e dê forma à sua primeira cena.', image:'success', style:'paper', href:'/comece/visao-geral/', link:'Entrar na trilha' },
@@ -7,6 +8,7 @@ const trails = [
 ];
 ---
 <div class="astra-home">
+  <ProjectStatus />
   <section class="astra-hero" aria-labelledby="hero-title">
     <div class="astra-hero-copy"><p class="astra-eyebrow">O seu lado criador começa aqui</p><h1 id="hero-title">VOCÊ JOGA.<br/>AGORA,<br/><span>VOCÊ CRIA.</span></h1><p>Do primeiro objeto ao seu próximo universo. Conheça a Astra, explore os componentes e coloque suas ideias em código.</p><div class="astra-actions"><a class="astra-button" href="/download/">Baixar Astra <span aria-hidden="true">↗︎</span></a><a href={base+'/comece/primeiro-projeto/'}>Criar meu primeiro projeto <span aria-hidden="true">→</span></a></div></div>
     <div class="astra-hero-art"><img src="/assets/mascot/orbit-welcome-512.webp" srcset="/assets/mascot/orbit-welcome-256.webp 246w, /assets/mascot/orbit-welcome-512.webp 493w, /assets/mascot/orbit-welcome-768.webp 739w" sizes="(max-width: 760px) 80vw, 440px" width="493" height="512" alt="" fetchpriority="high" decoding="async"/><span class="astra-art-tag">HELLO, CREATOR!</span></div>

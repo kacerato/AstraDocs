@@ -1,0 +1,31 @@
+---
+import { project } from '../../data/project.mjs';
+---
+<aside class="project-status" aria-label="Estágio do projeto Astra">
+  <div class="project-status-copy"><strong>{project.summary}</strong><p>Estamos no começo: ainda há muito a construir, completar e refinar.</p></div>
+  <div class="project-status-meter">
+    <label for="astra-project-progress"><strong>~{project.progressPercent}%</strong><span>da meta final</span></label>
+    <progress id="astra-project-progress" max="100" value={project.progressPercent} aria-describedby="astra-progress-basis">{project.progressPercent}%</progress>
+    <small id="astra-progress-basis">{project.progressBasis}</small>
+  </div>
+  <div class="project-community"><p><strong>Aceitamos sugestões.</strong> Traga suas ideias, tire dúvidas e conte o que precisa melhorar.</p><a href={project.communityUrl}>Participar do Discord oficial</a></div>
+</aside>
+<style>
+/* Existing Astra tokens; this status is an estimate, never an animated loading indicator. */
+.project-status { border-block:2px solid var(--sl-color-accent); background:var(--sl-color-gray-6); display:grid; grid-template-columns:1.25fr 1fr; gap:1rem 2rem; padding:1.3rem 1.5rem; margin:1.5rem 0 0; }
+.project-status .project-status-copy strong { font-size:1.15rem; line-height:1.35; display:block; }
+.project-status p { font-size:.9rem; line-height:1.55; margin:.35rem 0 0!important; color:var(--sl-color-gray-2); }
+.project-status-meter label { display:flex; align-items:baseline; gap:.65rem; line-height:1; }
+.project-status-meter label strong { font-size:1.7rem; color:var(--sl-color-accent-high); }
+.project-status-meter label span { font-size:.86rem; }
+.project-status progress { display:block; appearance:none; border:0; border-radius:0; width:100%; height:.65rem; margin:.6rem 0; background:var(--sl-color-gray-5); color:var(--sl-color-accent); }
+.project-status progress::-webkit-progress-bar { background:var(--sl-color-gray-5); }
+.project-status progress::-webkit-progress-value { background:var(--sl-color-accent); }
+.project-status progress::-moz-progress-bar { background:var(--sl-color-accent); }
+.project-status-meter small { display:block; font-size:.72rem; line-height:1.4; color:var(--sl-color-gray-2); }
+.project-community { grid-column:1/-1; border-top:1px solid var(--sl-color-gray-4); padding-top:.8rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.project-community p { margin:0!important; }
+.project-community a { display:inline-flex; gap:.65rem; align-items:center; min-height:44px; font-size:.9rem; font-weight:700; text-underline-offset:4px; flex-shrink:0; }
+.project-community a:focus-visible { outline:3px solid var(--sl-color-accent); outline-offset:4px; }
+@media(max-width:650px) { .project-status { grid-template-columns:1fr; padding:1rem; gap:.85rem; }.project-community { display:block; }.project-community a { margin-top:.3rem; }.project-status .project-status-copy strong { font-size:1.05rem; } }
+</style>

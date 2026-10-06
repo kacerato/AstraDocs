@@ -98,6 +98,12 @@ assets em repositório público não concede uma licença da engine Astra.
 
 ## Distribuição Android
 
+O estágio geral do projeto e o Discord oficial são mantidos em `data/project.mjs`.
+O percentual é uma estimativa fornecida pelo criador sobre a meta final, não
+uma contagem automática de capacidades, estabilidade ou cobertura de testes.
+O componente compartilhado `ProjectStatus.astro` aparece na home e no download;
+o mesmo texto é exportado nos guias de visão geral, estado da versão e Markdown.
+
 `/download/` apresenta a versão descrita em `data/release.json`. A página,
 o Markdown exportado e `/releases/latest.json` derivam desse mesmo manifesto.
 Os APKs ficam nos assets de Releases deste repositório público, fora do Git e

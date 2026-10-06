@@ -2,6 +2,12 @@
 
 ## Direção
 
+O estágio de desenvolvimento aparece antes do hero na home e no download,
+em uma faixa compartilhada com aviso de limitações, progresso nativo acessível
+e link para o Discord oficial. Os 20% são uma estimativa do criador sobre a meta
+final, nunca cobertura de testes ou estabilidade. A faixa usa os mesmos tokens
+do site e passa de duas colunas a uma no celular, sem animação de carregamento.
+
 **Build your next universe.** A marca convida quem joga a criar. Títulos fortes, composição modular, ilustrações de contorno preto e contraste alto. A primeira referência orienta energia e atitude; a segunda orienta a repetição consistente de símbolo, cor e padrões. Os personagens e marcas dessas referências não são reutilizados.
 
 A logo original Astra foi preservada nos quatro PNGs em `assets/brand`. Não é substituída pelo mascote. O símbolo de estrela e órbita inspira a personalidade e os elementos decorativos do novo kit.

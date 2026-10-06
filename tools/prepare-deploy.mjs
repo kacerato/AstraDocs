@@ -5,7 +5,7 @@ import zlib from 'node:zlib';
 const files=['package.json','package-lock.json','astro.config.mjs','tsconfig.json','vercel.json','src/content.config.ts','src/content/docs/404.md','data/editorial.mjs','data/example-evidence.json','tools/generate-content.mjs','tools/export-docs.mjs'];
 for(const dir of ['src/components','src/styles'])for(const name of fs.readdirSync(dir))files.push(`${dir}/${name}`);
 const assets=['brand/astra-lockup-1024.webp','brand/favicon-32.png','brand/favicon-180.png','brand/favicon-192.png','social/home-1200x630.png',...['welcome-256','welcome-512','welcome-768','code-256','build-256','success-256','search-256'].map(n=>`mascot/orbit-${n}.webp`)];
-files.push('data/release.json','tools/check-release.mjs','public/assets/mascot/orbit-build-512.webp');
+files.push('data/project.mjs','data/release.json','tools/check-release.mjs','public/assets/mascot/orbit-build-512.webp');
 files.push(...assets.map(a=>'public/assets/'+a));
 fs.mkdirSync('evidence/deploy',{recursive:true});
 const manifest=files.map(file=>({file,local:path.resolve(file)}));
