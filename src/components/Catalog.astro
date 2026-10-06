@@ -1,0 +1,38 @@
+---
+import components from '../../data/components.json';
+import api from '../../data/api.json';
+const { kind = 'component' } = Astro.props;
+const base = '/pt-br/snapshot-2026-10-06';
+const slug = (s:string) => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-$/,'');
+const items = kind === 'api' ? api.types.map(t => ({name:t.name, code:t.fullName, family:t.ns, description:t.docs.summary || `${t.kind} · ${t.members.length} membros declarados.`, url:`${base}/api/${slug(t.fullName)}/`, search:t.members.map(m=>m.name).join(' ')})) : components.map(t=>({name:t.name, code:t.typeId, family:t.family, description:t.description, url:`${base}/componentes/${slug(t.typeId)}/`, search:t.aliases}));
+const families = [...new Set(items.map(t => t.family))].sort();
+---
+<astra-catalog>
+  <form class="astra-filters" role="search" onsubmit="return false"><div><label for="catalog-query">{kind === 'api' ? 'Tipo ou membro' : 'Nome ou propriedade'}</label><input id="catalog-query" type="search" placeholder={kind === 'api' ? 'Ex.: GameObject, Rotate, Time…' : 'Ex.: câmera, física, luz…'} autocomplete="off"/></div><div><label for="catalog-family">{kind==='api'?'Namespace':'Família'}</label><select id="catalog-family"><option value="">Todas</option>{families.map(f=><option value={f}>{f}</option>)}</select></div><button type="reset">Limpar</button></form>
+  <p class="astra-results-count" role="status" aria-live="polite">{items.length} {kind==='api'?'tipos':'componentes'} · contratos extraídos da fonte</p>
+  <ul class="astra-catalog-list">{items.map(t=><li data-family={t.family} data-search={`${t.name} ${t.code} ${t.description} ${t.search}`}><a href={t.url}><div><span class="astra-family">{t.family}</span><h2>{t.name}</h2><p>{t.description}</p><code>{t.code}</code></div><span class="astra-row-arrow" aria-hidden="true">↗</span></a></li>)}</ul>
+  <div class="astra-empty" hidden><img src="/assets/mascot/orbit-search-256.webp" width="190" height="190" alt=""/><h2>Nenhum resultado por aqui.</h2><p>Tente outro termo ou remova o filtro de família.</p><button type="button" data-clear>Limpar filtros</button></div>
+  <noscript><p>Todos os registros estão abaixo. Use a busca do navegador para localizar um nome.</p></noscript>
+</astra-catalog>
+<script>
+class AstraCatalog extends HTMLElement {
+  connectedCallback() {
+    const input = this.querySelector('input')!;
+    const select = this.querySelector('select')!;
+    const rows = [...this.querySelectorAll<HTMLLIElement>('li[data-search]')];
+    const normalize=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+    const url=new URL(location.href);input.value=url.searchParams.get('q')||'';select.value=url.searchParams.get('familia')||'';
+    const update=()=>{
+      const terms=normalize(input.value).trim().split(/\s+/).filter(Boolean);let count=0;
+      for(const row of rows){row.hidden=!!(select.value && row.dataset.family!==select.value)||!terms.every(t=>normalize(row.dataset.search||'').includes(t));if(!row.hidden)count++;}
+      this.querySelector('[role=status]')!.textContent=`${count} de ${rows.length} resultados · contratos extraídos da fonte`;
+      (this.querySelector('.astra-empty') as HTMLElement).hidden=count>0;
+      const url=new URL(location.href);input.value?url.searchParams.set('q',input.value):url.searchParams.delete('q');select.value?url.searchParams.set('familia',select.value):url.searchParams.delete('familia');history.replaceState(null,'',url);
+    };
+    input.addEventListener('input',update);select.addEventListener('change',update);
+    const reset=()=>{input.value='';select.value='';update();input.focus();};
+    this.querySelector('form')!.addEventListener('reset',e=>{e.preventDefault();reset();});this.querySelector('[data-clear]')!.addEventListener('click',reset);update();
+  }
+}
+customElements.define('astra-catalog',AstraCatalog);
+</script>

@@ -1,0 +1,13 @@
+---
+const { entry, id } = Astro.locals.starlightRoute;
+const home = entry.data.template === 'splash';
+const labels = { 'source-reviewed': 'Conferido em fonte', 'semantic-reference': 'Referência de assinaturas', editorial: 'Guia de documentação', partial: 'Escopo parcial' };
+const sections: Record<string,string> = { comece:'Comece aqui', editor:'Manual do editor', conceitos:'Conceitos', componentes:'Componentes', api:'API C#', sistemas:'Sistemas', receitas:'Receitas', exemplos:'Exemplos', desempenho:'Desempenho', diagnostico:'Diagnóstico', versoes:'Versões', ia:'Para IA' };
+const area = id.split('/')[2];
+---
+{!home && <>
+  <nav class="astra-breadcrumb" aria-label="Caminho da página"><a href="/">Docs</a><span aria-hidden="true">/</span><span>{sections[area] || 'Documentação'}</span></nav>
+  <h1 id="_top">{entry.data.title}</h1>
+  <div class="astra-page-meta"><a href="/pt-br/snapshot-2026-10-06/versoes/estado-da-versao/">Astra atual · C# · 06 out. 2026</a><span>{labels[entry.data.status]}</span></div>
+  {entry.data.description && <p class="astra-description">{entry.data.description}</p>}
+</>}

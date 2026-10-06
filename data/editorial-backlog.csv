@@ -1,0 +1,173 @@
+﻿area,title,route,priority,status,acceptance
+comece,Visão geral,/pt-br/{version}/comece/visao-geral/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+comece,Requisitos e compatibilidade,/pt-br/{version}/comece/requisitos-e-compatibilidade/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+comece,Instalação,/pt-br/{version}/comece/instalacao/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+comece,Primeiro projeto,/pt-br/{version}/comece/primeiro-projeto/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+comece,Conheça o editor,/pt-br/{version}/comece/conheca-o-editor/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+comece,Primeira cena,/pt-br/{version}/comece/primeira-cena/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+comece,Primeiro componente,/pt-br/{version}/comece/primeiro-componente/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+comece,Primeiro script C#,/pt-br/{version}/comece/primeiro-script-c/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+comece,Play e Stop,/pt-br/{version}/comece/play-e-stop/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+comece,Salvar e reabrir,/pt-br/{version}/comece/salvar-e-reabrir/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+comece,Próximos passos,/pt-br/{version}/comece/proximos-passos/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Projetos e modelos,/pt-br/{version}/editor/projetos-e-modelos/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Viewport e navegação,/pt-br/{version}/editor/viewport-e-navegacao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Seleção e multisseleção,/pt-br/{version}/editor/selecao-e-multisselecao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Hierarquia e parenting,/pt-br/{version}/editor/hierarquia-e-parenting/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Gizmos e coordenadas,/pt-br/{version}/editor/gizmos-e-coordenadas/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Inspector,/pt-br/{version}/editor/inspector/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Adicionar componentes,/pt-br/{version}/editor/adicionar-componentes/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Dependências e conflitos,/pt-br/{version}/editor/dependencias-e-conflitos/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Assets e importação,/pt-br/{version}/editor/assets-e-importacao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Materiais e texturas,/pt-br/{version}/editor/materiais-e-texturas/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Código e compilação,/pt-br/{version}/editor/codigo-e-compilacao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Console e diagnóstico,/pt-br/{version}/editor/console-e-diagnostico/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Undo e Redo,/pt-br/{version}/editor/undo-e-redo/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Busca global,/pt-br/{version}/editor/busca-global/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Atalhos e gestos,/pt-br/{version}/editor/atalhos-e-gestos/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+editor,Preferências,/pt-br/{version}/editor/preferencias/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Objetos e identidade,/pt-br/{version}/conceitos/objetos-e-identidade/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Composição de componentes,/pt-br/{version}/conceitos/composicao-de-componentes/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Handles e lifetime,/pt-br/{version}/conceitos/handles-e-lifetime/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Cenas e recursos,/pt-br/{version}/conceitos/cenas-e-recursos/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Espaço local e mundo,/pt-br/{version}/conceitos/espaco-local-e-mundo/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Unidades e convenções,/pt-br/{version}/conceitos/unidades-e-convencoes/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Lifecycle de Behavior,/pt-br/{version}/conceitos/lifecycle-de-behavior/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Play e cena autoral,/pt-br/{version}/conceitos/play-e-cena-autoral/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Tempo e atualização,/pt-br/{version}/conceitos/tempo-e-atualizacao/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Thread e ponto seguro,/pt-br/{version}/conceitos/thread-e-ponto-seguro/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Autoridade de transformação,/pt-br/{version}/conceitos/autoridade-de-transformacao/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Serialização e migração,/pt-br/{version}/conceitos/serializacao-e-migracao/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+conceitos,Limites e capacidades,/pt-br/{version}/conceitos/limites-e-capacidades/,P0,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Input e ações,/pt-br/{version}/sistemas/input-e-acoes/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Câmeras,/pt-br/{version}/sistemas/cameras/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Renderização,/pt-br/{version}/sistemas/renderizacao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Iluminação,/pt-br/{version}/sistemas/iluminacao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Materiais,/pt-br/{version}/sistemas/materiais/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Importação GLB,/pt-br/{version}/sistemas/importacao-glb/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Física 3D,/pt-br/{version}/sistemas/fisica-3d/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Física 2D,/pt-br/{version}/sistemas/fisica-2d/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Personagem,/pt-br/{version}/sistemas/personagem/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Juntas,/pt-br/{version}/sistemas/juntas/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Campos físicos,/pt-br/{version}/sistemas/campos-fisicos/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Animação,/pt-br/{version}/sistemas/animacao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Áudio,/pt-br/{version}/sistemas/audio/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,UI de jogo,/pt-br/{version}/sistemas/ui-de-jogo/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Curvas e caminhos,/pt-br/{version}/sistemas/curvas-e-caminhos/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Timers,/pt-br/{version}/sistemas/timers/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Tweens,/pt-br/{version}/sistemas/tweens/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Corrotinas,/pt-br/{version}/sistemas/corrotinas/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Troca de cena,/pt-br/{version}/sistemas/troca-de-cena/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Persistência,/pt-br/{version}/sistemas/persistencia/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+sistemas,Aleatoriedade,/pt-br/{version}/sistemas/aleatoriedade/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Girar um objeto,/pt-br/{version}/receitas/girar-um-objeto/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Mover em espaço local,/pt-br/{version}/receitas/mover-em-espaco-local/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Criar e remover objetos,/pt-br/{version}/receitas/criar-e-remover-objetos/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Encontrar componentes,/pt-br/{version}/receitas/encontrar-componentes/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Câmera acompanhando alvo,/pt-br/{version}/receitas/camera-acompanhando-alvo/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Ler uma ação,/pt-br/{version}/receitas/ler-uma-acao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Interagir com raycast,/pt-br/{version}/receitas/interagir-com-raycast/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Reagir a colisão,/pt-br/{version}/receitas/reagir-a-colisao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Porta cinemática,/pt-br/{version}/receitas/porta-cinematica/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Aplicar impulso,/pt-br/{version}/receitas/aplicar-impulso/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Contagem regressiva,/pt-br/{version}/receitas/contagem-regressiva/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Transição com tween,/pt-br/{version}/receitas/transicao-com-tween/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Salvar progresso,/pt-br/{version}/receitas/salvar-progresso/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Trocar de cena,/pt-br/{version}/receitas/trocar-de-cena/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Botão de UI,/pt-br/{version}/receitas/botao-de-ui/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Controle de volume,/pt-br/{version}/receitas/controle-de-volume/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Percorrer caminho,/pt-br/{version}/receitas/percorrer-caminho/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+receitas,Instanciar prefab,/pt-br/{version}/receitas/instanciar-prefab/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+exemplos,Como executar exemplos,/pt-br/{version}/exemplos/como-executar-exemplos/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+exemplos,Cena mínima de lifecycle,/pt-br/{version}/exemplos/cena-minima-de-lifecycle/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+exemplos,Cristais do Templo,/pt-br/{version}/exemplos/cristais-do-templo/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+exemplos,Circuito Neon,/pt-br/{version}/exemplos/circuito-neon/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+exemplos,Arena de Drones,/pt-br/{version}/exemplos/arena-de-drones/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+exemplos,Quarentena,/pt-br/{version}/exemplos/quarentena/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+exemplos,Resgate na Mina,/pt-br/{version}/exemplos/resgate-na-mina/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+exemplos,Perímetro Delta,/pt-br/{version}/exemplos/perimetro-delta/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+exemplos,Linha Fantasma,/pt-br/{version}/exemplos/linha-fantasma/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+exemplos,Curadoria de outros projetos,/pt-br/{version}/exemplos/curadoria-de-outros-projetos/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+desempenho,Como medir,/pt-br/{version}/desempenho/como-medir/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+desempenho,CPU e atualização,/pt-br/{version}/desempenho/cpu-e-atualizacao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+desempenho,GPU e draw calls,/pt-br/{version}/desempenho/gpu-e-draw-calls/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+desempenho,Texturas e memória,/pt-br/{version}/desempenho/texturas-e-memoria/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+desempenho,Alocações C#,/pt-br/{version}/desempenho/alocacoes-c/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+desempenho,Física e queries,/pt-br/{version}/desempenho/fisica-e-queries/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+desempenho,Carga de cenas,/pt-br/{version}/desempenho/carga-de-cenas/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+desempenho,Térmica e bateria,/pt-br/{version}/desempenho/termica-e-bateria/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+desempenho,Qualidade e resolução,/pt-br/{version}/desempenho/qualidade-e-resolucao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+desempenho,Orçamentos por aparelho,/pt-br/{version}/desempenho/orcamentos-por-aparelho/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Erros de compilação,/pt-br/{version}/diagnostico/erros-de-compilacao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Componente indisponível,/pt-br/{version}/diagnostico/componente-indisponivel/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Handle inválido,/pt-br/{version}/diagnostico/handle-invalido/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Objeto não se move,/pt-br/{version}/diagnostico/objeto-nao-se-move/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Câmera sem imagem,/pt-br/{version}/diagnostico/camera-sem-imagem/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Colisão ausente,/pt-br/{version}/diagnostico/colisao-ausente/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Input sem resposta,/pt-br/{version}/diagnostico/input-sem-resposta/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Asset não encontrado,/pt-br/{version}/diagnostico/asset-nao-encontrado/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Cena não reabre,/pt-br/{version}/diagnostico/cena-nao-reabre/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Play não inicia,/pt-br/{version}/diagnostico/play-nao-inicia/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,UI sem evento,/pt-br/{version}/diagnostico/ui-sem-evento/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+diagnostico,Áudio sem reprodução,/pt-br/{version}/diagnostico/audio-sem-reproducao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+versoes,Estado da versão,/pt-br/{version}/versoes/estado-da-versao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+versoes,Changelog,/pt-br/{version}/versoes/changelog/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+versoes,Compatibilidade,/pt-br/{version}/versoes/compatibilidade/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+versoes,Breaking changes,/pt-br/{version}/versoes/breaking-changes/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+versoes,Migração de cenas,/pt-br/{version}/versoes/migracao-de-cenas/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+versoes,Migração de scripts,/pt-br/{version}/versoes/migracao-de-scripts/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+ia,Como consultar por versão,/pt-br/{version}/ia/como-consultar-por-versao/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+ia,Índice Markdown,/pt-br/{version}/ia/indice-markdown/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+ia,Índice de API JSON,/pt-br/{version}/ia/indice-de-api-json/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+ia,Índice de componentes,/pt-br/{version}/ia/indice-de-componentes/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+ia,Manifesto de exemplos,/pt-br/{version}/ia/manifesto-de-exemplos/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+ia,Limitações conhecidas,/pt-br/{version}/ia/limitacoes-conhecidas/,P1,Planejada; elegibilidade depende da auditoria,Contrato conferido; exemplo ou fluxo reproduzido; revisão editorial
+componentes,Mola de posição,/pt-br/{version}/componentes/springpositionconstraint/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Mola de rotação,/pt-br/{version}/componentes/springrotationconstraint/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Mola de escala,/pt-br/{version}/componentes/springscaleconstraint/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Position Constraint,/pt-br/{version}/componentes/positionconstraint/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Rotation Constraint,/pt-br/{version}/componentes/rotationconstraint/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Scale Constraint,/pt-br/{version}/componentes/scaleconstraint/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Aim Constraint,/pt-br/{version}/componentes/aimconstraint/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Parent Constraint,/pt-br/{version}/componentes/parentconstraint/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Look At Constraint,/pt-br/{version}/componentes/lookatconstraint/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Transform Tween,/pt-br/{version}/componentes/transformtween/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Timer,/pt-br/{version}/componentes/timer/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Conexão de evento,/pt-br/{version}/componentes/eventconnection/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Comportamento,/pt-br/{version}/componentes/scriptbehavior/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Canvas UI,/pt-br/{version}/componentes/uicanvas/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Malha,/pt-br/{version}/componentes/meshrenderer/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Malha deformável,/pt-br/{version}/componentes/skinnedmesh/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,LOD Group,/pt-br/{version}/componentes/lodgroup/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Ambiente,/pt-br/{version}/componentes/environment/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Luz,/pt-br/{version}/componentes/light/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Câmera,/pt-br/{version}/componentes/camera/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Olhar,/pt-br/{version}/componentes/cameralook/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Acompanhar alvo,/pt-br/{version}/componentes/camerafollow/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Receita de colisão,/pt-br/{version}/componentes/collisionrecipe/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Campo de gravidade,/pt-br/{version}/componentes/gravityfield/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Campo de vento,/pt-br/{version}/componentes/windfield/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Campo de arrasto,/pt-br/{version}/componentes/dragfield/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Campo radial,/pt-br/{version}/componentes/radialfield/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Conexão física 3D,/pt-br/{version}/componentes/physicseventconnection3d/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Força constante,/pt-br/{version}/componentes/constantforce/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Corpo físico,/pt-br/{version}/componentes/physicsbody/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Personagem,/pt-br/{version}/componentes/character/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Colisor 3D,/pt-br/{version}/componentes/collider/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Junta,/pt-br/{version}/componentes/joint/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Motor dinâmico,/pt-br/{version}/componentes/dynamicbodymotor/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Animação,/pt-br/{version}/componentes/animation/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Campo de gravidade 2D,/pt-br/{version}/componentes/gravityfield2d/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Campo de vento 2D,/pt-br/{version}/componentes/windfield2d/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Campo de arrasto 2D,/pt-br/{version}/componentes/dragfield2d/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Campo radial 2D,/pt-br/{version}/componentes/radialfield2d/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Conexão física 2D,/pt-br/{version}/componentes/physicseventconnection2d/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Força constante 2D,/pt-br/{version}/componentes/constantforce2d/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Junta 2D,/pt-br/{version}/componentes/joint2d/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Corpo 2D,/pt-br/{version}/componentes/body2d/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Colisor 2D,/pt-br/{version}/componentes/collider2d/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Audio Source,/pt-br/{version}/componentes/audiosource/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Audio Listener,/pt-br/{version}/componentes/audiolistener/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Audio Bus,/pt-br/{version}/componentes/audiobus/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Path,/pt-br/{version}/componentes/path/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"
+componentes,Path Follow,/pt-br/{version}/componentes/pathfollow/,P1,Verificado em fonte; validação funcional pendente,"Dependências, propriedades, Play, persistência, exemplo e limitações auditados"

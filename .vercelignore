@@ -1,0 +1,7 @@
+node_modules
+.astro
+.vercel
+evidence
+tools/export-api
+README.md
+DESIGN.md

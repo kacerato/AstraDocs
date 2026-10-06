@@ -1,0 +1,9 @@
+---
+import Pagination from '@astrojs/starlight/components/Pagination.astro';
+const { id, entry } = Astro.locals.starlightRoute;
+const home = entry.data.template === 'splash';
+---
+<footer class="astra-footer">
+  {!home && <><div class="astra-doc-tools"><a href={`/markdown/${id}.md`} download>Ler em Markdown</a><span>Revisão: 06/10/2026</span></div><Pagination /></>}
+  <div class="astra-footer-line"><span><strong>ASTRA DOCS.</strong> Feito para quem cria.</span><a href="/pt-br/snapshot-2026-10-06/versoes/estado-da-versao/">Versão e cobertura</a><a href="/llms.txt">Para IA</a><a href="/pt-br/snapshot-2026-10-06/versoes/privacidade/">Privacidade e uso</a></div>
+</footer>

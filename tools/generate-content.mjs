@@ -1,0 +1,96 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import zlib from 'node:zlib';
+import { pages } from '../data/editorial.mjs';
+const root = path.resolve('src/content/docs');
+const version = 'snapshot-2026-10-06';
+const base = `pt-br/${version}`;
+const readJson = p => JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''));
+// Deployment uploads compressed public contracts, never engine source.
+for(const name of ['api','components'])if(!fs.existsSync(`data/${name}.json`)&&fs.existsSync(`data/${name}.json.gz`))fs.writeFileSync(`data/${name}.json`,zlib.gunzipSync(fs.readFileSync(`data/${name}.json.gz`)));
+const api = readJson('data/api.json');
+const components = readJson('data/components.json');
+const slug = s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-$/,'');
+const cell = s=>String(s??'').replaceAll('|','\\|').replaceAll('\n',' ').replaceAll('<','&lt;').replaceAll('>','&gt;');
+const text = s=>String(s??'').replace(/<(?!\/?(?:br|code)\b)/g,'&lt;');
+const quote = JSON.stringify;
+const apiPath = t=>`/${base}/api/${slug(t.fullName)}/`;
+const componentPath = t=>`/${base}/componentes/${slug(t.typeId)}/`;
+const manifest=[];
+const generated=[];
+function write(route,title,description,body,options={}) {
+  const file=path.join(root,`${route}.${options.mdx?'mdx':'md'}`);
+  const front={title,description,version,kind:options.kind||'guide',status:options.status||'source-reviewed',reviewedAt:'2026-10-06',runtimeVerified:false,editUrl:false,...options.front};
+  const source=`---\n${Object.entries(front).map(([k,v])=>`${k}: ${quote(v)}`).join('\n')}\n---\n\n${body}\n`;
+  fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,source);
+  generated.push(path.relative(root,file).replaceAll('\\','/'));
+  const id=route.replace(/\/index$/,'');
+  manifest.push({id,title,description,version,kind:front.kind,status:front.status,runtimeVerified:false,platformEvidence:[],url:route==='index'?'/':`/${id}/`,markdown:`/markdown/${id}.md`,body:options.markdown||body});
+}
+// Delete only files recorded by the previous generation, never authored content.
+const previous=fs.existsSync('data/generated-files.json')?readJson('data/generated-files.json'):[];
+for(const file of previous) { const full=path.resolve(root,file);if(!full.startsWith(root+path.sep))throw Error('Invalid generated path'); if(fs.existsSync(full))fs.unlinkSync(full); }
+write('index','Você joga. Agora, você cria.','Documentação da Astra. Comece a criar, explore os componentes e consulte a API C#.',`import Home from '../../components/Home.astro';\n\n<Home />`,{mdx:true,kind:'index',status:'editorial',front:{template:'splash',title:'Astra Docs',tableOfContents:false},markdown:`# Astra Docs\n\nVocê joga. Agora, você cria.\n\n- [Comece aqui](/${base}/comece/visao-geral/)\n- [Componentes](/${base}/componentes/)\n- [API C#](/${base}/api/)\n- [Exemplos](/${base}/exemplos/como-executar-exemplos/)`});
+for(const [order,page] of pages.entries())write(`${base}/${page.route}`,page.title,page.description,page.body.replaceAll('$BASE',`/${base}`),{...page.options,front:{sidebar:{order},...page.options?.front}});
+
+const apiIndex=[];
+for(const type of api.types) {
+  const lines=[`**Namespace:** \`${type.ns}\` · **Assembly:** \`Astra.Scripting\` · **Tipo:** ${type.kind}`,
+    `:::note[Sobre esta referência]\nAssinaturas extraídas semanticamente com Roslyn/MSBuild. Isso confirma a superfície do código deste snapshot; não comprova execução no Android. As descrições vêm dos comentários da API. Membros sem explicação ainda exigem revisão editorial.\n:::`,
+    '## Declaração',`\`\`\`csharp\n${type.signature}\n\`\`\``];
+  if(type.docs.summary)lines.push(text(type.docs.summary));
+  if(type.docs.remarks)lines.push(text(type.docs.remarks));
+  if(type.baseType && !['object','System.Object','System.ValueType','System.Enum'].includes(type.baseType))lines.push(`**Herda de:** \`${type.baseType}\`.`);
+  if(type.interfaces.length)lines.push(`**Interfaces:** ${type.interfaces.map(i=>`\`${i}\``).join(', ')}.`);
+  const comp=components.find(c=>type.ns==='Astra.Components'&&c.api===type.name);
+  if(comp)lines.push(`Consulte também [${comp.name}](${componentPath(comp)}) para propriedades, valores iniciais, requisitos e edição em Play.`);
+  lines.push('## Membros');
+  if(type.members.length)lines.push('| Membro | Categoria |\n|---|---|\n'+type.members.map(m=>`| [${cell(m.name)}](#${anchor(m.uid)}) | ${m.kind} |`).join('\n'));
+  else lines.push('Este tipo não declara membros públicos adicionais neste recorte.');
+  for(const m of type.members) {
+    const id=anchor(m.uid);
+    lines.push(`<h3 id="${id}" class="astra-member">${cell(m.name)}</h3>`,`\`\`\`csharp\n${m.signature}${m.constant!==null?` = ${m.constant}`:''}\n\`\`\``);
+    if(m.docs.summary)lines.push(text(m.docs.summary));
+    if(m.docs.remarks)lines.push(text(m.docs.remarks));
+    if(m.parameters?.length)lines.push('| Parâmetro | Tipo | Contrato |\n|---|---|---|\n'+m.parameters.map(p=>`| \`${cell(p.name)}\` | \`${cell(p.type)}\` | ${cell(m.docs.parameters.find(d=>d.name===p.name)?.description||'')}${p.optional?` · Opcional: \`${cell(p.defaultValue??'null')}\``:''}${p.modifier!=='None'?` · ${p.modifier}`:''} |`).join('\n'));
+    if(m.docs.returns)lines.push(`**Retorno:** ${text(m.docs.returns)}`);
+    if(m.docs.exceptions?.length)lines.push('**Exceções documentadas:**\n\n'+m.docs.exceptions.map(e=>`- \`${e.type}\`: ${text(e.description)}`).join('\n'));
+    apiIndex.push({uid:m.uid,signature:m.signature,kind:m.kind,version,engineGeneration:'astra-current',language:'C#',url:apiPath(type)+`#${id}`,summary:m.docs.summary,documentationStatus:m.docs.summary?'source-comments':'signature-only',runtimeVerified:false,platformEvidence:[]});
+  }
+  write(`${base}/api/${slug(type.fullName)}`,type.fullName,type.docs.summary||`${type.kind} da API C# da Astra. ${type.members.length} membros declarados neste snapshot.`,lines.join('\n\n'),{kind:'api',status:'semantic-reference',front:{pagination:false,tableOfContents:{maxHeadingLevel:2}}});
+  apiIndex.push({uid:type.uid,signature:type.signature,kind:type.kind,version,engineGeneration:'astra-current',language:'C#',url:apiPath(type),summary:type.docs.summary,runtimeVerified:false,platformEvidence:[]});
+}
+function anchor(uid){if(!uid)throw Error('Missing semantic UID');return 'member-'+crypto.createHash('sha256').update(uid).digest('hex').slice(0,16);}
+for(const c of components) {
+  const type=api.types.find(t=>t.ns==='Astra.Components'&&t.name===c.api);
+  const ruleList=rules=>rules.length?rules.map(r=>{const ref=components.find(c=>c.typeId===r.typeId);return `- ${ref?`[${ref.name}](${componentPath(ref)})`:`\`${r.typeId}\``}: ${r.message}`;}).join('\n'):'Nenhuma regra adicional declarada no schema deste componente.';
+  const lines=[`**Família:** ${c.family} · **Grupo:** ${c.subfamily||c.family} · **Identificador:** \`${c.typeId}\` · **Payload:** ${c.schemaVersion}`,
+    `:::note[Escopo da evidência]\nEste contrato foi extraído dos descritores compilados da engine, incluindo padrões resolvidos. A presença do contrato não substitui a validação do comportamento em um aparelho.\n:::`,
+    '## Criar e configurar',c.listedInAdd?`Selecione o objeto na Hierarquia, abra **Adicionar componente** e procure **${c.name}**, na família **${c.family}**. Confira os requisitos antes de confirmar a composição.`:`Este tipo não aparece no menu genérico de componentes. ${c.typeId.includes('script')?'Crie ou selecione um script Behavior na área de código e anexe-o ao objeto.':'Use a ferramenta de autoria correspondente; não tente criá-lo apenas pelo nome no catálogo.'}`,
+    `${c.allowMultiple?'O schema permite múltiplas instâncias no mesmo objeto; identifique a instância antes de editar ou remover.':'O schema permite uma única instância desse tipo por objeto.'} ${type?`A fachada C# correspondente é [${type.fullName}](${apiPath(type)}).`:'Não há fachada C# gerada para este tipo; não invente um nome de classe equivalente.'}`,
+    '## Dependências',ruleList(c.requirements),'## Conflitos',ruleList(c.conflicts),
+    '## Edição e ciclo de vida',`| Operação | Contrato |\n|---|---|\n| Adicionar/remover em Play | ${c.structuralInPlay} |\n| Alterar propriedades em Play | ${c.propertiesInPlay} |\n| Múltiplas instâncias | ${c.allowMultiple?'Sim':'Não'} |\n| Versão do payload | ${c.schemaVersion} |`,
+    'Alterações em ponto seguro são aplicadas entre passos da simulação. Um componente exigido por outro não pode ser removido enquanto a dependência existir. Salvar a cena autoral e modificar o mundo de Play são operações distintas; veja [Play e cena autoral](/'+base+'/conceitos/play-e-cena-autoral/).',
+    '## Propriedades',
+    c.properties.length?'Valores abaixo são resolvidos pelo descritor de um componente recém-criado. Campos por slot dependem dos recursos atribuídos. Um campo sem padrão significa que o descritor não fornece um valor independente de contexto.':'O componente não expõe propriedades numéricas, booleanas, enumerações ou referências de objeto neste extrator. Recursos e operações especializadas devem ser consultados na API.'];
+  const groups=[...new Set(c.properties.map(p=>p.group||'Geral'))];
+  for(const group of groups){lines.push(`### ${group}`,'| Propriedade | Tipo / unidade | Padrão | Domínio |\n|---|---|---|\n'+c.properties.filter(p=>(p.group||'Geral')===group).map(p=>`| **${cell(p.name)}**<br/>\`${p.id}\` | ${cell(p.kind)}${p.unit?` · ${cell(p.unit)}`:''}${p.perSlot?'<br/>Por slot':''} | ${cell(p.default)||'Depende do contexto'} | ${cell(p.domain)} |`).join('\n'));
+    for(const p of c.properties.filter(p=>(p.group||'Geral')===group))if(p.help||p.limitation||p.conditional||p.restrictedWrite||p.tweenable)lines.push(`**\`${p.id}\`:** ${text(p.help)} ${p.conditional?'A exibição depende do estado do componente. ':''}${p.restrictedWrite?'A escrita é restrita ou condicionada pelo descritor. ':''}${p.tweenable?'Aceita tween numérico. ':''}${text(p.limitation)}`.trim());
+  }
+  lines.push('## Conferir na sua cena',`1. Crie **${c.name}** pelo fluxo indicado e resolva as dependências.\n2. Altere uma propriedade por vez e observe o efeito esperado na cena.\n3. Salve, reabra e confira os valores autorais.\n4. Entre em Play e verifique o comportamento com os recursos reais do projeto.\n5. Pare o Play e confira a cena autoral.\n\nEste é um roteiro de conferência; não representa um teste executado nesta publicação.`,
+    '## Limitações da referência','A tabela cobre os tipos de propriedade disponíveis no descritor de reflexão. Não presume persistência de campos transitórios, equivalência com outras engines ou suporte em todos os aparelhos. Recursos, coleções e operações podem exigir APIs específicas.',
+    c.reference?`**Referência de arquitetura registrada pela engine:** [documentação oficial](${c.reference}). Essa referência não representa paridade funcional.`:'');
+  write(`${base}/componentes/${slug(c.typeId)}`,c.name,c.description,lines.join('\n\n'),{kind:'component',front:{pagination:false}});
+}
+for(const kind of ['component','api']) {
+  const isApi=kind==='api';const title=isApi?'Referência C#':'Componentes';const route=`${base}/${isApi?'api':'componentes'}/index`;
+  const records=isApi?api.types:components;
+  write(route,title,isApi?'Encontre tipos, propriedades e métodos da API C# deste snapshot.':'Encontre o componente, entenda suas propriedades e componha sua cena.',`import Catalog from '../../../../../components/Catalog.astro';\n\n${isApi?`${api.types.length} tipos e ${api.types.reduce((n,t)=>n+t.members.length,0)} membros extraídos com Roslyn/MSBuild.`:`${components.length} registros e ${components.reduce((n,c)=>n+c.properties.length,0)} propriedades extraídos dos descritores da engine.`}\n\nOs registros abaixo são contratos de fonte. A validação funcional por plataforma permanece separada.\n\n<Catalog kind="${kind}" />`,{kind:'index',mdx:true,front:{tableOfContents:false,pagination:false},markdown:`# ${title}\n\nContratos de fonte; execução por plataforma não validada nesta publicação.\n\n`+records.map(t=>`- [${isApi?t.fullName:t.name}](${isApi?apiPath(t):componentPath(t)})`).join('\n')});
+}
+fs.writeFileSync('data/generated-files.json',JSON.stringify(generated,null,2));
+fs.writeFileSync('data/pages.json',JSON.stringify(manifest,null,2));
+fs.writeFileSync('data/api-index.json',JSON.stringify(apiIndex,null,2));
+const coverage={version,engineGeneration:'astra-current',language:'C#',pages:manifest.length,editorialPages:pages.length,componentTypes:components.length,componentProperties:components.reduce((n,c)=>n+c.properties.length,0),apiTypes:api.types.length,apiMembers:api.types.reduce((n,t)=>n+t.members.length,0),runtimeVerified:false,platformEvidence:[],editorialBacklog:172};
+fs.writeFileSync('data/coverage.json',JSON.stringify(coverage,null,2));
+console.log(JSON.stringify(coverage));

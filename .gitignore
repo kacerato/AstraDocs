@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+evidence/
+tools/export-api/bin/
+tools/export-api/obj/
+.env*
+src/content/docs/pt-br/
+src/content/docs/index.mdx
+data/pages.json
+data/api-index.json
+data/coverage.json
+data/generated-files.json

@@ -1,0 +1,19 @@
+{
+  "name": "astra-docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "node tools/generate-content.mjs && astro build && node tools/export-docs.mjs",
+    "preview": "astro preview --host 127.0.0.1",
+    "check:links": "node tools/check-output.mjs",
+    "sync:api": "node tools/sync-api.mjs"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.42.5",
+    "astro": "7.3.6",
+    "@astrojs/markdown-remark": "7.3.0"
+  }
+}

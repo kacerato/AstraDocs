@@ -1,0 +1,30 @@
+[
+  {
+    "file": "MoveLocal.cs",
+    "sha256": "5e4f3770f37c9c36928ff3e838cd915dcd1d9f8a21d4cbd746afaf9aafef9229",
+    "compilationVerified": true,
+    "method": "Roslyn semantic compilation against the loaded project",
+    "runtimeVerified": false
+  },
+  {
+    "file": "RotateObject.cs",
+    "sha256": "077b8b123045ff3a7fef19605fae21d3cae9a63616a5b5cf92c237ceafb07f19",
+    "compilationVerified": true,
+    "method": "Roslyn semantic compilation against the loaded project",
+    "runtimeVerified": false
+  },
+  {
+    "file": "SpawnTemporary.cs",
+    "sha256": "579d81a155eff933b4b3c3db1c8c8a08a84b9c5ba4cd6c0dfc25d41d4f4a33a3",
+    "compilationVerified": true,
+    "method": "Roslyn semantic compilation against the loaded project",
+    "runtimeVerified": false
+  },
+  {
+    "file": "VisitCounter.cs",
+    "sha256": "b48f526bdf0139e0f5ccadbb25b49bf128c80acfc0abd641e1bded7ab4420081",
+    "compilationVerified": true,
+    "method": "Roslyn semantic compilation against the loaded project",
+    "runtimeVerified": false
+  }
+]
