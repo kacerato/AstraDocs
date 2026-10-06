@@ -8,6 +8,7 @@ tools/export-api/obj/
 .env*
 src/content/docs/pt-br/
 src/content/docs/index.mdx
+src/content/docs/download.mdx
 data/pages.json
 data/api-index.json
 data/coverage.json

@@ -29,6 +29,7 @@ export default defineConfig({
     ],
     sidebar: [
       { label: 'Início', link: '/' },
+      { label: 'Baixar Astra', link: '/download/' },
       section('Comece aqui', 'comece'),
       section('Manual do editor', 'editor'),
       section('Conceitos', 'conceitos'),

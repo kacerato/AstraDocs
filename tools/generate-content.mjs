@@ -11,6 +11,7 @@ const readJson = p => JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,'')
 for(const name of ['api','components'])if(!fs.existsSync(`data/${name}.json`)&&fs.existsSync(`data/${name}.json.gz`))fs.writeFileSync(`data/${name}.json`,zlib.gunzipSync(fs.readFileSync(`data/${name}.json.gz`)));
 const api = readJson('data/api.json');
 const components = readJson('data/components.json');
+const release = readJson('data/release.json');
 const slug = s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-$/,'');
 const cell = s=>String(s??'').replaceAll('|','\\|').replaceAll('\n',' ').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const text = s=>String(s??'').replace(/<(?!\/?(?:br|code)\b)/g,'&lt;');
@@ -31,7 +32,8 @@ function write(route,title,description,body,options={}) {
 // Delete only files recorded by the previous generation, never authored content.
 const previous=fs.existsSync('data/generated-files.json')?readJson('data/generated-files.json'):[];
 for(const file of previous) { const full=path.resolve(root,file);if(!full.startsWith(root+path.sep))throw Error('Invalid generated path'); if(fs.existsSync(full))fs.unlinkSync(full); }
-write('index','Você joga. Agora, você cria.','Documentação da Astra. Comece a criar, explore os componentes e consulte a API C#.',`import Home from '../../components/Home.astro';\n\n<Home />`,{mdx:true,kind:'index',status:'editorial',front:{template:'splash',title:'Astra Docs',tableOfContents:false},markdown:`# Astra Docs\n\nVocê joga. Agora, você cria.\n\n- [Comece aqui](/${base}/comece/visao-geral/)\n- [Componentes](/${base}/componentes/)\n- [API C#](/${base}/api/)\n- [Exemplos](/${base}/exemplos/como-executar-exemplos/)`});
+write('index','Você joga. Agora, você cria.','Documentação da Astra. Comece a criar, explore os componentes e consulte a API C#.',`import Home from '../../components/Home.astro';\n\n<Home />`,{mdx:true,kind:'index',status:'editorial',front:{template:'splash',title:'Astra Docs',tableOfContents:false},markdown:`# Astra Docs\n\nVocê joga. Agora, você cria.\n\n- [Baixar Astra](/download/)\n- [Comece aqui](/${base}/comece/visao-geral/)\n- [Componentes](/${base}/componentes/)\n- [API C#](/${base}/api/)\n- [Exemplos](/${base}/exemplos/como-executar-exemplos/)`});
+write('download','Baixar Astra para Android','Baixe a prévia pública da Astra para Android. APK assinado, requisitos, instruções de instalação e verificação de integridade.',`import Download from '../../components/Download.astro';\n\n<Download />`,{mdx:true,kind:'release',status:'editorial',front:{template:'splash',tableOfContents:false},markdown:`## Astra ${release.version}\n\nPrévia pública de ${release.dateLabel}. Android 8.0+, ARM64, GPU com Vulkan 1.1. APK de ${release.sizeLabel}.\n\n[Baixar APK](${release.downloadUrl}) · [Notas da versão](${release.releaseUrl})\n\nSHA-256: \`${release.sha256}\`\n\nBaixe e abra o APK, autorize a instalação pelo navegador quando solicitado e abra a Astra. Preserve projetos antes de atualizar: instalações com outra assinatura exigem reinstalação. A compilação e a assinatura foram verificadas; esta publicação não inclui nova validação em aparelho físico. Dispositivos com páginas de memória de 16 KB não são suportados nesta distribuição.\n\n[Primeiro projeto](/${base}/comece/primeiro-projeto/)\n\n[Manifesto](/releases/latest.json)`});
 for(const [order,page] of pages.entries())write(`${base}/${page.route}`,page.title,page.description,page.body.replaceAll('$BASE',`/${base}`),{...page.options,front:{sidebar:{order},...page.options?.front}});
 
 const apiIndex=[];

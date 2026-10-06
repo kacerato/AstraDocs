@@ -95,3 +95,21 @@ Planos de Astra 2/Luau não são apresentados como suporte da geração atual.
 
 `DESIGN.md` registra a identidade do kit fornecido. A inclusão deste código e
 assets em repositório público não concede uma licença da engine Astra.
+
+## Distribuição Android
+
+`/download/` apresenta a versão descrita em `data/release.json`. A página,
+o Markdown exportado e `/releases/latest.json` derivam desse mesmo manifesto.
+Os APKs ficam nos assets de Releases deste repositório público, fora do Git e
+do pacote da Vercel. Os arquivos de código-fonte que o GitHub gera nessas
+Releases são deste portal, não dos fontes privados da engine.
+
+Para atualizar: gere o APK Release assinado no ambiente privado da engine,
+verifique assinatura, manifesto Android e hash, publique uma Release com tag
+única e assets completos, atualize `data/release.json` e publique o site.
+Não sobrescreva um APK publicado: uma nova versão exige nova tag e versionCode.
+Preserve a chave de distribuição para manter compatibilidade de atualização;
+não inclua keystore, senha ou logs privados neste repositório.
+
+A versão pública inicial é uma prévia. Build, integridade e assinatura são
+evidências distintas de validação de execução no dispositivo.

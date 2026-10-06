@@ -23,7 +23,7 @@ for(const page of pages){
       if(!dest.includes(`id="${id}"`))errors.push(`Missing anchor ${url}`);
     }
   }
-  if(/C:\\Users\\|github\.com\/kacerato|<script[^>]+src="https:\/\/(?!vercel)/i.test(html))errors.push(`Private path or external script: ${page.url}`);
+  if(/C:\\Users\\|github\.com\/kacerato\/(?!AstraDocs(?:[\/"#?]|$))|<script[^>]+src="https:\/\/(?!vercel)/i.test(html))errors.push(`Private path or external script: ${page.url}`);
 }
 const report={pages:pages.length,links,errors:[...new Set(errors)]};fs.mkdirSync('evidence',{recursive:true});fs.writeFileSync('evidence/links.json',JSON.stringify(report,null,2));
 console.log(JSON.stringify({pages:pages.length,links,errors:report.errors.slice(0,35),totalErrors:report.errors.length},null,2));

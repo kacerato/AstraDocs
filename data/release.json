@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0-preview.20261006",
+  "versionCode": 5,
+  "date": "2026-10-06",
+  "dateLabel": "6 de outubro de 2026",
+  "channel": "preview",
+  "filename": "Astra-0.2.0-preview.20261006-android-arm64.apk",
+  "sizeLabel": "211,5 MiB",
+  "bytes": 221822990,
+  "sha256": "ca9ca3ee0cdf842986de496f892e7cfeb3f6e2e2562a7abe811df278f7f0d290",
+  "certificateSha256": "cfbd4391d3d9f63f91901dbc22886ec6544de503d7e599543c39a68facd4ef6b",
+  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.06/Astra-0.2.0-preview.20261006-android-arm64.apk",
+  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.06",
+  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.06/SHA256SUMS.txt",
+  "requirements": {
+    "minSdk": 26,
+    "android": "8.0+",
+    "abi": "arm64-v8a",
+    "graphics": "Vulkan 1.1",
+    "memoryPageBytes": 4096
+  },
+  "buildVerified": true,
+  "signatureVerified": true,
+  "deviceRuntimeVerified": false,
+  "source": {
+    "baselineCommit": "6349ee60d799ea191d42b3d5c97934e454001d38",
+    "localChangesIncluded": true,
+    "inputFiles": 6082,
+    "inputManifestSha256": "e2fc783d7373d6cc86066ed8351993948553fa0be05d41349a65379c837e0717",
+    "snapshotDate": "2026-10-06",
+    "versionOverrides": {
+      "versionCode": 5,
+      "versionName": "0.2.0-preview.20261006"
+    }
+  }
+}

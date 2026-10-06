@@ -58,3 +58,35 @@ nem aceitação física no dispositivo nesta entrega.
 Pedidos futuros de atualização das docs devem atualizar `portal/` e publicar
 no mesmo projeto Vercel, conforme `AGENTS.md` e `README.md`. O portal está salvo
 no workspace; nenhum commit ou push dos trabalhos paralelos da engine foi feito.
+# Download Android — 06/10/2026
+
+Página `/download/`, ligada ao menu principal, à navegação mobile, à sidebar
+e à ação principal da home. Apresentação na identidade Astra, com ficha de
+versão, requisitos, instalação, migração de assinatura, integridade e notas.
+O manifesto em `data/release.json` alimenta a página, o Markdown e o JSON público.
+
+- Release pública: `astra-android-2026.10.06`, prévia `0.2.0-preview.20261006`,
+  versionCode 5, package `dev.aether.editor`.
+- APK: 221.822.990 bytes (211,5 MiB), ARM64, minSdk 26, targetSdk 35,
+  sem flag debuggable e sem a camada Vulkan de validação.
+- SHA-256: `ca9ca3ee0cdf842986de496f892e7cfeb3f6e2e2562a7abe811df278f7f0d290`.
+- Build Release completo: sucesso em 13m39s; empacotamento final dos avisos de
+  fornecedores: sucesso em 26s. Assinatura APK v2 RSA 4096 e zipalign verificados.
+- 176 assemblies e 21 arquivos de licenças/avisos nativos incorporados.
+- Fontes isolados da base `6349ee60d799ea191d42b3d5c97934e454001d38`, com
+  alterações locais; inventário privado de 6.082 inputs identificado no manifesto.
+  Ajustes de distribuição: versionamento, paralelismo e avisos dos fornecedores.
+- Limite confirmado: `libhostfxr.so` tem alinhamento abaixo de 16 KB. O portal
+  declara ausência de suporte a aparelhos com páginas de 16 KB nesta distribuição.
+- Não houve nova instalação ou validação de runtime deste APK em aparelho físico.
+
+Verificação do site: build de 477 HTML (476 páginas de conteúdo e 404), 77.004
+links internos, zero erros. Revisão visual em 320, 390, 768, 1100 e 1266 pixels;
+temas claro/escuro, menu compacto e expansão dos detalhes. Corrigida a faixa
+intermediária em que a navegação sumia antes da entrada do menu compacto.
+Scanner visual sem P0; foco global e identidade lime/editorial preservados.
+
+Os assets binários pertencem à Release pública, sem inclusão do APK no Git ou
+no build da Vercel. A chave de distribuição e os fontes privados permanecem
+fora deste repositório. As notas esclarecem que os arquivos “Source code” do
+GitHub são do portal, não da engine.

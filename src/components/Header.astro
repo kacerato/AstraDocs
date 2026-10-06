@@ -2,13 +2,13 @@
 import Search from '@astrojs/starlight/components/Search.astro';
 import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
 const base = '/pt-br/snapshot-2026-10-06';
-const links = [['Aprender', '/comece/visao-geral/'], ['Componentes', '/componentes/'], ['API C#', '/api/'], ['Exemplos', '/exemplos/como-executar-exemplos/']];
+const links = [['Aprender', base+'/comece/visao-geral/'], ['Componentes', base+'/componentes/'], ['API C#', base+'/api/'], ['Exemplos', base+'/exemplos/como-executar-exemplos/'], ['Download', '/download/']];
 const home = !Astro.locals.starlightRoute.hasSidebar;
 ---
 <div class="astra-header">
   <a class="astra-brand" href="/" aria-label="Astra Docs — início"><img src="/assets/brand/astra-lockup-1024.webp" width="170" height="44" alt="Astra" /><span>DOCS</span></a>
-  <nav class="astra-topnav" aria-label="Navegação principal">{links.map(([label, path]) => <a href={base + path} aria-current={Astro.url.pathname.startsWith(base+path) ? 'page' : undefined}>{label}</a>)}</nav>
+  <nav class="astra-topnav" aria-label="Navegação principal">{links.map(([label, path]) => <a href={path} aria-current={Astro.url.pathname.startsWith(path) ? 'page' : undefined}>{label}</a>)}</nav>
   <div class="astra-search"><Search /></div>
   <div class="astra-theme"><ThemeSelect /></div>
-  {home && <details class="astra-home-menu"><summary aria-label="Abrir navegação">Menu</summary><nav aria-label="Navegação mobile">{links.map(([label,path])=><a href={base+path}>{label}</a>)}<ThemeSelect /></nav></details>}
+  {home && <details class="astra-home-menu"><summary aria-label="Abrir navegação">Menu</summary><nav aria-label="Navegação mobile">{links.map(([label,path])=><a href={path}>{label}</a>)}<ThemeSelect /></nav></details>}
 </div>

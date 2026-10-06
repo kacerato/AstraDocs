@@ -1,0 +1,84 @@
+---
+import release from '../../data/release.json';
+const guide = '/pt-br/snapshot-2026-10-06/comece/primeiro-projeto/';
+---
+<div class="astra-download">
+  <section class="download-intro" aria-labelledby="_top">
+    <div class="download-copy">
+      <p class="astra-eyebrow">Astra para Android · Prévia pública</p>
+      <h1 id="_top">SEU PRÓXIMO<br/>MUNDO COMEÇA<br/><span>NO SEU CELULAR.</span></h1>
+      <p class="download-lead">Crie cenas, combine componentes e escreva comportamentos em C#. Leve o editor Astra para o seu Android.</p>
+      <a class="astra-button download-button" href={release.downloadUrl}>Baixar Astra para Android <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg></a>
+      <p class="download-caption">APK · ARM64 · {release.sizeLabel} · Sem conta para baixar</p>
+      <a class="download-text-link" href="#instalar">Como instalar no meu aparelho</a>
+    </div>
+    <div class="download-art" aria-hidden="true"><span class="download-art-label">DO PLAY À CRIAÇÃO.</span><img src="/assets/mascot/orbit-build-512.webp" srcset="/assets/mascot/orbit-build-256.webp 246w, /assets/mascot/orbit-build-512.webp 493w" sizes="(max-width:650px) 130px, 290px" width="493" height="512" alt="" fetchpriority="high"/><span class="download-art-footer">ASTRA / ANDROID</span></div>
+  </section>
+
+  <section class="download-release" aria-labelledby="release-title">
+    <div class="download-release-heading"><p class="astra-eyebrow">Disponível agora</p><h2 id="release-title">Astra {release.version}</h2><p>Publicada em {release.dateLabel}. Uma prévia para explorar o editor e acompanhar sua evolução.</p><p class="download-compatibility">Dispositivos com páginas de memória de 16 KB não são suportados nesta distribuição.</p><a href={release.releaseUrl}>Notas e arquivos desta versão <span aria-hidden="true">↗</span></a></div>
+    <dl class="download-facts"><div><dt>Sistema</dt><dd>Android 8.0 ou superior</dd></div><div><dt>Processador</dt><dd>ARM64 (arm64-v8a)</dd></div><div><dt>Gráficos</dt><dd>GPU com Vulkan 1.1</dd></div><div><dt>Pacote</dt><dd>APK assinado · {release.sizeLabel}</dd></div></dl>
+  </section>
+
+  <section class="download-install" id="instalar" aria-labelledby="install-title">
+    <div><p class="astra-eyebrow">Do download à primeira cena</p><h2 id="install-title">TRÊS PASSOS.<br/>UM NOVO COMEÇO.</h2><p>O arquivo é instalado diretamente no Android. Você não precisa de uma loja para baixar esta versão.</p></div>
+    <ol><li><h3>Baixe o APK</h3><p>Toque em <strong>Baixar Astra para Android</strong> no seu aparelho e aguarde o download terminar.</p></li><li><h3>Autorize a instalação</h3><p>Abra o arquivo. Se o Android solicitar, permita que o navegador ou gerenciador de arquivos instale este aplicativo. Depois, confirme a instalação.</p></li><li><h3>Abra e crie</h3><p>Inicie a Astra e crie um projeto vazio. O editor de cenas usa a tela na horizontal. Siga o guia para <a href={guide}>criar seu primeiro projeto</a>.</p></li></ol>
+  </section>
+
+  <aside class="download-update"><strong>Já tem uma Astra instalada?</strong><p>Faça uma cópia dos seus projetos fora dos dados do aplicativo antes de atualizar. Esta distribuição usa uma assinatura própria. Se a versão antiga usa outra assinatura, o Android não permite atualizar por cima: preserve seus projetos antes de remover a instalação anterior. Desinstalar pode apagar os dados locais.</p></aside>
+
+  <section class="download-details" aria-label="Detalhes da versão">
+    <details><summary>O que esperar desta prévia</summary><div><p>Esta versão reúne o editor de cenas, ferramentas de autoria e a API C# da Astra atual. O APK foi gerado a partir de uma cópia dos fontes de 06/10/2026, incluindo alterações locais registradas no manifesto de build.</p><p>A compilação e a assinatura do pacote foram verificadas. Esta publicação não inclui uma nova validação de execução em aparelho físico. A compatibilidade efetiva depende do aparelho, do driver Vulkan e da cena; o runtime incluído contém uma biblioteca com alinhamento de 4 KB. Dispositivos com páginas de memória de 16 KB não são suportados nesta distribuição.</p><p>Comece com uma cena pequena, salve e reabra o projeto antes de importar conteúdo grande. <a href="/pt-br/snapshot-2026-10-06/versoes/estado-da-versao/">Consulte o escopo da documentação</a>.</p></div></details>
+    <details><summary>Conferir integridade e assinatura</summary><div><p>Compare o SHA-256 do arquivo baixado com o valor abaixo. Ele identifica exatamente o APK desta publicação.</p><dl><dt>Arquivo</dt><dd><code>{release.filename}</code></dd><dt>SHA-256 do APK</dt><dd><code>{release.sha256}</code></dd><dt>SHA-256 do certificado de assinatura</dt><dd><code>{release.certificateSha256}</code></dd></dl><p><a href={release.checksumUrl}>Baixar arquivo de verificação SHA-256</a> · <a href="/releases/latest.json">Manifesto da versão em JSON</a></p></div></details>
+    <details><summary>O download ou a instalação não funcionou?</summary><div><p>Confira se o download terminou, se há espaço livre para o APK e os arquivos extraídos, e se seu Android usa ARM64. Um aviso de conflito pode indicar uma assinatura diferente da instalação anterior. Não apague seus projetos para tentar resolver o problema.</p><p>Se o aplicativo fechar ao abrir, registre o modelo do aparelho, a versão do Android e a versão da Astra. Esta prévia não oferece um pacote para Android de 32 bits, iOS ou desktop.</p><a href={release.releaseUrl}>Abrir a página alternativa de download no GitHub</a></div></details>
+  </section>
+  <div class="download-next"><p>O editor é o começo.<br/><strong>As ideias são suas.</strong></p><a class="astra-button" href={guide}>Criar meu primeiro projeto <span aria-hidden="true">→</span></a></div>
+</div>
+
+<style>
+/* avoid-ai-design-ignore: SD1 SD4 K4 — user-supplied Astra lime, ink and editorial typography. */
+.astra-download { margin-top:-1rem; }
+.astra-download :is(p,h1,h2,h3,ol,dl,dd,div,a,img) { margin-top:0; }
+.download-intro { display:grid; grid-template-columns:1.6fr 1fr; align-items:center; gap:3rem; padding:3rem 0 4rem; }
+.download-copy h1#_top { font-size:clamp(2.3rem,4.7vw,4.6rem); line-height:1.01; letter-spacing:-.045em; font-weight:900; margin-bottom:1.5rem; }
+.download-copy h1 span { color:var(--sl-color-accent-high); }
+.download-lead { max-width:34rem; font-size:1.13rem; color:var(--sl-color-gray-2); margin-bottom:1.8rem; }
+.download-button { display:inline-flex; gap:1.5rem; font-size:1rem; background:var(--astra-lime)!important; color:var(--astra-ink)!important; font-weight:700; }
+.download-caption { font-size:.8rem; color:var(--sl-color-gray-2); margin:.8rem 0 1rem!important; }
+.download-text-link { font-size:.9rem; text-underline-offset:4px; }
+.download-art { background:var(--astra-lime); color:var(--astra-ink); min-height:360px; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:1.6rem; transform:rotate(2deg); }
+.download-art img { width:min(100%,290px); height:auto; image-rendering:auto; }
+.download-art-label,.download-art-footer { font:700 .78rem var(--sl-font-mono); letter-spacing:.12em; }
+.download-art-label { align-self:flex-start; border-bottom:2px solid currentColor; padding-bottom:.5rem; }
+.download-art-footer { align-self:flex-end; }
+.download-release { border-top:2px solid var(--sl-color-gray-4); border-bottom:1px solid var(--sl-color-gray-4); padding:2.2rem 0; display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
+.download-release h2 { font-size:1.5rem; letter-spacing:-.02em; overflow-wrap:anywhere; margin-bottom:.6rem; }
+.download-release-heading p:not(.astra-eyebrow) { max-width:29rem; color:var(--sl-color-gray-2); }
+.download-release-heading a { font-size:.9rem; }
+.download-facts { margin-bottom:0; }
+.download-facts div { display:grid; grid-template-columns:6.6rem 1fr; gap:1rem; padding:.8rem 0; border-bottom:1px solid var(--sl-color-gray-5); }
+.download-facts div:last-child { border:0; }
+.download-facts dt { color:var(--sl-color-gray-3); font-size:.85rem; }
+.download-facts dd { margin:0; font-weight:600; font-size:.95rem; }
+.download-install { display:grid; grid-template-columns:1fr 1.15fr; gap:5rem; padding:4.5rem 0 2rem; scroll-margin-top:6rem; }
+.download-install h2 { font-size:clamp(2rem,3.3vw,3rem); line-height:1.1; letter-spacing:-.04em; margin-bottom:1rem; }
+.download-install > div > p:last-child { max-width:27rem; color:var(--sl-color-gray-2); }
+.download-install ol { list-style:none; counter-reset:steps; padding:0; }
+.download-install li { counter-increment:steps; position:relative; padding:0 0 1.6rem 3.5rem; margin:0; }
+.download-install li::before { content:'0' counter(steps); position:absolute; left:0; top:0; color:var(--sl-color-accent-high); font:700 1.4rem var(--sl-font-mono); }
+.download-install h3 { font-size:1.13rem; margin-bottom:.45rem; }
+.download-install li p { color:var(--sl-color-gray-2); }
+.download-update { border-left:4px solid var(--sl-color-accent); background:var(--sl-color-gray-6); padding:1.3rem 1.5rem; margin-bottom:2.5rem; }
+.download-update p { font-size:.92rem; margin:.4rem 0 0!important; }
+.download-details details { border-top:1px solid var(--sl-color-gray-4); }
+.download-details details:last-child { border-bottom:1px solid var(--sl-color-gray-4); }
+.download-details summary { cursor:pointer; padding:1.25rem 0; font-weight:700; }
+.download-details details > div { padding:0 0 1.5rem; max-width:54rem; font-size:.94rem; }
+.download-details dd { margin:.3rem 0 1rem; }
+.download-details code { overflow-wrap:anywhere; white-space:normal; font-size:.8rem; }
+.download-next { display:flex; align-items:center; justify-content:space-between; gap:2rem; padding:3rem 0 1rem; }
+.download-next p { font-size:1.4rem; line-height:1.3; margin:0; }
+@media(max-width:900px) { .download-intro { gap:2rem; grid-template-columns:1.7fr 1fr; }.download-art { min-height:290px; padding:1rem; }.download-art-label { font-size:.65rem; }.download-release,.download-install { gap:2rem; } }
+@media(max-width:650px) { .download-intro { grid-template-columns:1fr; padding:1.7rem 0 2.5rem; gap:2.2rem; }.download-copy h1#_top { font-size:clamp(2rem,7.8vw,3.1rem); }.download-lead { font-size:1rem; }.download-button { width:100%; justify-content:space-between; padding:1rem!important; }.download-art { min-height:0; height:155px; display:grid; grid-template-columns:1fr 130px; transform:none; overflow:hidden; }.download-art img { grid-row:1/3; grid-column:2; width:130px; }.download-art-label { font-size:.7rem; align-self:start; }.download-art-footer { font-size:.65rem; align-self:end; }.download-release,.download-install { grid-template-columns:1fr; gap:1.5rem; }.download-install { padding-top:3rem; }.download-next { flex-direction:column; align-items:flex-start; }.download-next .astra-button { width:100%; }.download-facts div { grid-template-columns:5.6rem 1fr; } }
+@media(prefers-reduced-motion:reduce) { .astra-download { scroll-behavior:auto; } }
+</style>

@@ -18,6 +18,13 @@ Pedidos para atualizar docs incluem atualizar este repositório e sua publicaç�
 Confirme o commit remoto, o estado READY da Vercel e o domínio antes de afirmar
 que uma atualização está publicada. Não faça force push ou substitua histórico.
 
+A página `/download/` usa `data/release.json`, também exportado em
+`/releases/latest.json`. Publique o APK assinado, checksum e manifesto nos
+assets de uma Release pública antes de apontar a página para uma nova versão.
+Nunca coloque APK, fontes privados, keystore ou senhas no Git deste portal.
+Mantenha tags de release e versionCodes únicos, preserve a assinatura de
+distribuição e declare separadamente build, assinatura e execução em aparelho.
+
 Mantenha separados: contrato de código, explicação editorial, exemplo compilado
 e comportamento validado na engine/dispositivo. Não apresente planos de Astra 2
 ou referências de outras engines como recursos comprovados da Astra atual.

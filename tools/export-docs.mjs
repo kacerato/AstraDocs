@@ -8,6 +8,7 @@ const read=p=>JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''));
 const pages=read('data/pages.json');
 const write=(p,data)=>{const file=path.join('dist',p);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,data);};
 const json=(p,data)=>write(p,JSON.stringify(data,null,2));
+json('releases/latest.json',read('data/release.json'));
 const full=[];
 for(const page of pages){
   const text=`---\ntitle: ${JSON.stringify(page.title)}\nversion: ${version}\nengineGeneration: astra-current\nlanguage: C#\nstatus: ${page.status}\nruntimeVerified: false\nplatformEvidence: []\nurl: ${site}${page.url}\n---\n\n# ${page.title}\n\n${page.description}\n\n${page.body}\n`;
@@ -25,7 +26,7 @@ const exampleManifest=examples.map(e=>{
 });
 json(`${version}/examples.json`,exampleManifest);
 write('llms-full.txt',full.join('\n\n---\n\n'));
-write('llms.txt',`# Astra Docs\n\n> Documentação da Astra atual, C#, ${version}.\n\nAssinaturas conferidas em fonte não comprovam execução no Android. Não misture com planos de Astra 2/Luau.\n\n- [Versão e limites](${site}/pt-br/${version}/versoes/estado-da-versao/)\n- [Índice Markdown](${site}/${version}/markdown-index.json)\n- [API JSON](${site}/${version}/api-index.json)\n- [Componentes JSON](${site}/${version}/component-index.json)\n- [Exemplos](${site}/${version}/examples.json)\n- [Texto completo](${site}/llms-full.txt)\n`);
+write('llms.txt',`# Astra Docs\n\n> Documentação da Astra atual, C#, ${version}.\n\nAssinaturas conferidas em fonte não comprovam execução no Android. Não misture com planos de Astra 2/Luau.\n\n- [Download Android](${site}/download/)\n- [Manifesto do APK](${site}/releases/latest.json)\n- [Versão e limites](${site}/pt-br/${version}/versoes/estado-da-versao/)\n- [Índice Markdown](${site}/${version}/markdown-index.json)\n- [API JSON](${site}/${version}/api-index.json)\n- [Componentes JSON](${site}/${version}/component-index.json)\n- [Exemplos](${site}/${version}/examples.json)\n- [Texto completo](${site}/llms-full.txt)\n`);
 write('robots.txt',`User-agent: *\nAllow: /\nSitemap: ${site}/sitemap.xml\n`);
 write('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(p=>`<url><loc>${site}${p.url}</loc><lastmod>2026-10-06</lastmod></url>`).join('')}</urlset>`);
 console.log(`Exported ${pages.length} Markdown pages, JSON indexes and ${examples.length} examples.`);
