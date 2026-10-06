@@ -1,5 +1,20 @@
 # Entrega — 06/10/2026
 
+## Migração para Git e domínio próprio
+
+O portal passou a ser mantido em https://github.com/kacerato/AstraDocs, checkout
+independente da engine. O commit inicial `8197903` foi enviado à `main` e gerou
+automaticamente o deployment de produção `dpl_2pDt8vYnYAjReeUwxmm8CvrjQCfU`,
+confirmado como `READY` e com status GitHub/Vercel `success`.
+
+O domínio `astraengine.com.br` foi associado ao mesmo projeto. O apontamento
+`A @ 216.198.79.1` foi salvo no Registro.br e confirmado no DNS autoritativo e
+no resolvedor público 1.1.1.1. Canonical, sitemap e exports usam o novo domínio.
+O build no checkout separado gerou 476 HTML; os 76.022 links passaram sem erros.
+As instruções de manutenção atuais estão em `README.md` e `AGENTS.md` deste repo.
+
+## Registro da primeira publicação por upload
+
 Produção: https://astra-docs-opal.vercel.app
 
 Deployment final: `dpl_2AxdQ2zN7u7vceGMph5L5sn9rGij`, Vercel `READY`.
