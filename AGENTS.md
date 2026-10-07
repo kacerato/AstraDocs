@@ -22,6 +22,17 @@ Pedidos para atualizar docs incluem atualizar este repositório e sua publicaç�
 Confirme o commit remoto, o estado READY da Vercel e o domínio antes de afirmar
 que uma atualização está publicada. Não faça force push ou substitua histórico.
 
+Toda novidade, correção, mudança de comportamento, migração e ampliação editorial
+do app ou das docs precisa de uma nota nova em `data/updates.json`, publicada em
+`/atualizacoes/`. Informe origem App/Docs, data, versão, disponibilidade, uso,
+validação, migração e links. Preserve notas publicadas; corrija com outra nota.
+Após todas as edições, registre a cobertura com
+`npm run updates:record -- --entry <id-novo>`. O build bloqueia mudanças nos guias,
+componentes do portal, exemplos, assets e configuração sem cobertura atualizada.
+Um APK exige também uma nota App/Publicação/APK publicado com `releaseVersion`,
+`versionCode` e data iguais ao manifesto. Uma revisão local da engine deve ser
+marcada como App em desenvolvimento até a distribuição efetiva. A aba é do site.
+
 A página `/download/` usa `data/release.json`, também exportado em
 `/releases/latest.json`. Publique o APK assinado, checksum e manifesto nos
 assets de uma Release pública antes de apontar a página para uma nova versão.

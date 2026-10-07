@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "generation": "astra-current-csharp",
+  "updatedAt": "2026-10-07",
+  "entries": [
+    {
+      "id": "2026-10-07-central-atualizacoes",
+      "date": "2026-10-07",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Atualizações do app e das docs no mesmo histórico",
+      "summary": "Uma área própria reúne novidades, melhorias e correções, com filtros, busca, disponibilidade e links para o uso de cada mudança.",
+      "version": "Docs · revisão 07/10/2026",
+      "availability": "documentation",
+      "details": [
+        "No site, Atualizações fica na navegação principal e lateral, com busca e filtros Tudo/App/Docs. O histórico também está disponível em Markdown e JSON.",
+        "Mudanças do aplicativo e das docs passam pelo mesmo registro público, com versão, disponibilidade, validação, migração e links de uso. A aba existe apenas no site.",
+        "O build do portal recusa mudanças no conteúdo coberto sem uma nota nova. O processo de entrega exige registrar também as novidades do aplicativo antes de anunciá-las."
+      ],
+      "validation": "Build, links e fluxo responsivo da página conferidos. Publicar uma nota não distribui uma nova versão do APK; consulte Download para o pacote efetivamente disponível.",
+      "migration": "Nenhuma mudança no aplicativo ou nos projetos. Esta entrega adiciona o histórico ao site.",
+      "links": [
+        {
+          "label": "Histórico completo",
+          "url": "/atualizacoes/"
+        },
+        {
+          "label": "APK disponível",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-guias-praticos",
+      "date": "2026-10-07",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Manual, conceitos e sistemas pelo fluxo de trabalho",
+      "summary": "Capítulos foram aprofundados com caminhos do editor, montagens, exemplos numéricos, campos e diagnóstico.",
+      "version": "Snapshot C# · revisão 07/10/2026",
+      "availability": "documentation",
+      "details": [
+        "50 capítulos de Manual, Conceitos e Sistemas foram reescritos com caminhos reais, montagem, campos, resultado esperado e diagnóstico. Os três índices permitem escolher pelo que você quer fazer.",
+        "Três exemplos novos mostram movimento por ação, contador persistente e desativação com atraso. Os dez scripts do portal possuem evidência de compilação; isso não comprova os cenários em aparelho.",
+        "Os guias ligam componentes, API e roadmap e preservam a distinção entre contrato, exemplo compilado e comportamento executado."
+      ],
+      "validation": "Revisão editorial e build do portal. A publicação das explicações não executa os cenários da engine.",
+      "migration": "Rotas anteriores preservadas.",
+      "links": [
+        {
+          "label": "Manual do editor",
+          "url": "/pt-br/snapshot-2026-10-06/editor/indice/"
+        },
+        {
+          "label": "Conceitos na prática",
+          "url": "/pt-br/snapshot-2026-10-06/conceitos/indice/"
+        },
+        {
+          "label": "Montagem de sistemas",
+          "url": "/pt-br/snapshot-2026-10-06/sistemas/indice/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-06-autoria-fisica",
+      "date": "2026-10-06",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Colisão com fontes, pose e regeneração preservável",
+      "summary": "A autoria física recebeu captura de skin, blend shapes e clipe, ajustes de geração e preservação de personalizações na regeneração.",
+      "version": "Revisão de desenvolvimento · ainda não distribuída",
+      "availability": "development",
+      "details": [
+        "Acesso: Ações do objeto → Configurar locomoção → Decompor → Fontes/Ajustes → Gerar → Revisar → Aplicar. A revisão é de desenvolvimento; este caminho não é garantido pelo APK público anterior.",
+        "Fontes por objeto e slot podem ser escolhidas pela lista ou pela superfície. A forma física permanece independente da aparência.",
+        "Receita versionada, cache, prefab, reimportação opt-in e Undo/Redo fazem parte do fluxo. A colisão de pose é uma captura estática, sem recooking por frame.",
+        "Limites: 100 mil triângulos, 128 fontes, 32 partes, 64 vértices por casco e 400 mil voxels. O prazo é cooperativo; erro de volume não garante todas as cavidades."
+      ],
+      "validation": "Revisão de desenvolvimento: 109/109 cenários de regressão e 9/9 aceites direcionados no host; autoria, cancelamento, histórico e reabertura no POCO F7. Isso não valida todo o gameplay ou a engine. O APK desse aceite é distinto do pacote público em Download.",
+      "migration": "Receitas antigas são lidas como pose base; preserve uma cópia dos projetos antes de mudar de versão.",
+      "links": [
+        {
+          "label": "Colisor 3D",
+          "url": "/pt-br/snapshot-2026-10-06/componentes/astra-physics-collider/"
+        },
+        {
+          "label": "Versão distribuída",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-06-uiimg-guias",
+      "date": "2026-10-06",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "UIIMG, elementos de UI e HUD de corações",
+      "summary": "Image também pode ser encontrada como UiImage/UIIMG; os guias explicam campos e incluem um exemplo de HUD para baixar.",
+      "version": "Snapshot C# · 06/10/2026",
+      "availability": "documentation",
+      "details": [
+        "UI de jogo e roadmap ganharam seções próprias. O tutorial de corações inclui árvore, campos, PNGs, documento AEUI e scripts de dano e cura.",
+        "Componentes possuem uso e acesso dos campos. A API relaciona membros ao fluxo e ao roadmap, com lacunas editoriais explícitas. Pacotes UI nativos preservam seus bytes no download."
+      ],
+      "validation": "Contratos e revisão editorial; exemplo compilado e execução em dispositivo permanecem evidências distintas.",
+      "migration": "Sem mudança de rota ou formato do documento UI nesta publicação editorial.",
+      "links": [
+        {
+          "label": "Image / UIIMG",
+          "url": "/pt-br/snapshot-2026-10-06/ui/image/"
+        },
+        {
+          "label": "HUD de corações",
+          "url": "/pt-br/snapshot-2026-10-06/ui/hud-coracoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-06-apk-preview",
+      "date": "2026-10-06",
+      "scopes": [
+        "app"
+      ],
+      "kind": "release",
+      "title": "Primeira prévia pública para Android",
+      "summary": "APK assinado disponível para explorar o editor e a geração atual C# da Astra.",
+      "version": "0.2.0-preview.20261006 · código 5",
+      "availability": "distributed",
+      "details": [
+        "Android 8.0+, ARM64 e GPU com Vulkan 1.1. Esta distribuição não suporta dispositivos com páginas de memória de 16 KB.",
+        "Download oferece checksum, assinatura, requisitos e instruções. A Astra continua em desenvolvimento; o pacote não declara uma engine completa."
+      ],
+      "validation": "Compilação e assinatura verificadas. O manifesto desta distribuição não declara nova validação em aparelho físico.",
+      "migration": "Faça uma cópia externa dos projetos. Uma instalação com outra assinatura pode impedir atualização por cima.",
+      "links": [
+        {
+          "label": "Download e requisitos",
+          "url": "/download/"
+        },
+        {
+          "label": "Notas da distribuição",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.06"
+        }
+      ],
+      "releaseVersion": "0.2.0-preview.20261006",
+      "versionCode": 5
+    },
+    {
+      "id": "2026-10-06-fundacao-docs",
+      "date": "2026-10-06",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "release",
+      "title": "Astra Docs: referência, guias e formatos abertos",
+      "summary": "Portal com busca, temas, navegação responsiva, componentes e API C# do snapshot datado.",
+      "version": "Snapshot C# · 06/10/2026",
+      "availability": "documentation",
+      "details": [
+        "Identidade Astra e Orbit, catálogo filtrável, receitas e diagnóstico. Assinaturas extraídas semanticamente e propriedades dos descritores têm sua origem indicada.",
+        "HTML, Markdown e índices JSON são gerados juntos. A geração atual C# fica separada dos planos futuros de Astra 2/Luau."
+      ],
+      "validation": "Contratos de fonte e publicação editorial não equivalem a validação de todas as capacidades em runtime.",
+      "migration": "O changelog anterior continua acessível pelo snapshot e aponta para o histórico unificado.",
+      "links": [
+        {
+          "label": "Comece aqui",
+          "url": "/pt-br/snapshot-2026-10-06/comece/visao-geral/"
+        },
+        {
+          "label": "Referência C#",
+          "url": "/pt-br/snapshot-2026-10-06/api/"
+        }
+      ]
+    }
+  ]
+}

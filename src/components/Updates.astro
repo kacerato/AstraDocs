@@ -1,0 +1,53 @@
+---
+import { updates, scopeLabels, kindLabels, availabilityLabel } from '../../tools/updates.mjs';
+---
+<section class="astra-updates" aria-label="Histórico de atualizações">
+  <p>Confira a disponibilidade: uma mudança em desenvolvimento pode ainda não estar no APK público.</p>
+  <div class="updates-tools">
+    <fieldset><legend>Mostrar atualizações de</legend><label><input type="radio" name="updates-scope" value="all" checked /> Tudo</label><label><input type="radio" name="updates-scope" value="app" /> App</label><label><input type="radio" name="updates-scope" value="docs" /> Docs</label></fieldset>
+    <label class="updates-search">Buscar no histórico<input id="updates-query" type="search" placeholder="Recurso, versão ou correção" autocomplete="off" /></label>
+  </div>
+  <p id="updates-count" role="status" aria-live="polite">{updates.entries.length} atualizações</p>
+  <p class="updates-empty" hidden>Nenhuma atualização corresponde à busca. <button type="button" data-updates-reset>Limpar filtros</button></p>
+  <div class="updates-history">{updates.entries.map(e => <article id={e.id} data-scopes={e.scopes.join(' ')} data-update-search={[e.title,e.summary,e.version,...e.details].join(' ').toLocaleLowerCase('pt-BR')}>
+    <div class="updates-meta"><time datetime={e.date}>{e.date.split('-').reverse().join('/')}</time><span>{e.scopes.map(s => scopeLabels[s]).join(' + ')}</span><span>{kindLabels[e.kind]}</span></div>
+    <h2><a href={`#${e.id}`}>{e.title}</a></h2><p class="updates-version">{e.version} · <strong>{availabilityLabel(e)}</strong></p>
+    <p>{e.summary}</p><details><summary>Detalhes, validação e migração</summary><ul>{e.details.map(d => <li>{d}</li>)}</ul><p><strong>Validação:</strong> {e.validation}</p><p><strong>Migração:</strong> {e.migration}</p></details>
+    <nav aria-label={`Saiba mais: ${e.title}`}>{e.links.map(l => <a href={l.url}>{l.label}</a>)}</nav>
+  </article>)}</div>
+  <p class="updates-formats"><a href="/download/">Download da versão pública</a> · <a href="/updates/feed.json">Feed JSON</a> · <a href="/markdown/atualizacoes.md">Histórico em Markdown</a></p>
+</section>
+<script>
+  const root = document.querySelector('.astra-updates');
+  if (root) {
+    const query = root.querySelector<HTMLInputElement>('#updates-query')!;
+    const articles = [...root.querySelectorAll<HTMLElement>('article[data-scopes]')];
+    const filter = () => {
+      const scope = root.querySelector<HTMLInputElement>('input[name="updates-scope"]:checked')!.value;
+      const normalize = (s: string) => s.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLocaleLowerCase('pt-BR');
+      const term = normalize(query.value.trim());
+      let count = 0;
+      for (const row of articles) { row.hidden = !(scope === 'all' || row.dataset.scopes!.split(' ').includes(scope)) || !normalize(row.dataset.updateSearch!).includes(term); if (!row.hidden) ++count; }
+      root.querySelector('#updates-count')!.textContent = `${count} ${count === 1 ? 'atualização' : 'atualizações'}`;
+      (root.querySelector('.updates-empty') as HTMLElement).hidden = count !== 0;
+    };
+    query.addEventListener('input', filter);
+    root.querySelectorAll('input[name="updates-scope"]').forEach(el => el.addEventListener('change', filter));
+    root.querySelector('[data-updates-reset]')!.addEventListener('click', () => { query.value = ''; root.querySelector<HTMLInputElement>('input[value="all"]')!.checked = true; filter(); query.focus(); });
+  }
+</script>
+<style>
+  .updates-tools { display:flex; gap:2rem; flex-wrap:wrap; align-items:end; margin:1rem 0; }
+  fieldset { border:0; padding:0; margin:0; } legend,.updates-search { font-weight:600; font-size:.88rem; }
+  fieldset label { display:inline-flex; align-items:center; gap:.4rem; min-height:44px; margin-right:1.1rem; cursor:pointer; }
+  input { font:inherit; accent-color:var(--sl-color-accent-high); } input[type=search] { display:block; width:100%; margin-top:.5rem; padding:.65rem; border:1px solid var(--sl-color-gray-4); background:var(--sl-color-bg); color:var(--sl-color-white); border-radius:0; }
+  .updates-search { flex:1; min-width:200px; } #updates-count { color:var(--sl-color-gray-2); font-size:.88rem; }
+  article { border-top:1px solid var(--sl-color-gray-4); padding:1.8rem 0 2.1rem; scroll-margin-top:6rem; }
+  .updates-meta { display:flex; flex-wrap:wrap; gap:.5rem 1.2rem; font-size:.83rem; color:var(--sl-color-gray-2); }
+  article h2 { margin:.7rem 0 .5rem; font-size:1.4rem; line-height:1.3; } article h2 a { color:inherit; text-decoration:none; } article h2 a:hover { text-decoration:underline; } .updates-version { font-size:.83rem; color:var(--sl-color-gray-2); }
+  article nav { display:flex; flex-wrap:wrap; gap:.65rem 1.4rem; margin-top:1rem; } article details { margin-top:1rem; } summary { cursor:pointer; padding:.5rem 0; font-weight:600; } li { margin-top:.5rem; }
+  .updates-formats { border-top:1px solid var(--sl-color-gray-4); padding-top:1.5rem; font-size:.9rem; }
+  button { font:inherit; color:inherit; background:none; border:0; text-decoration:underline; padding:.6rem; cursor:pointer; }
+  :is(input,summary,a,button):focus-visible { outline:3px solid var(--sl-color-accent-high); outline-offset:4px; }
+  @media(max-width:500px) { .updates-tools { gap:1rem; }.updates-search { width:100%; }.updates-meta { gap:.35rem .9rem; } }
+</style>

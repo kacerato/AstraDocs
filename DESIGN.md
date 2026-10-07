@@ -69,6 +69,12 @@ uma grade de cartões ou outro sistema visual ao portal.
 
 ## Estados e interação
 
+Atualizações é um histórico editorial, sem grade de cards: data/origem precedem
+título, versão/disponibilidade e resumo; detalhes, validação e migração aparecem
+sob demanda. Tudo/App/Docs e busca filtram a mesma lista. Conteúdo permanece legível
+sem JavaScript. A aba usa os tokens existentes e links na navegação principal e
+lateral; o JSON público e o Markdown representam o mesmo registro.
+
 Foco visível de alto contraste com offset; hover discreto e equivalente por foco; links sublinhados no texto; controles disabled explicam motivo. Menu mobile usa botão semântico com `aria-expanded`. O resultado de copiar código é anunciado em região `aria-live`. Estado de carregamento da busca não bloqueia o artigo. Interações do portal final terão testes de teclado, toque e leitor de tela.
 
 O protótipo entregue permite trocar tema, abrir menu mobile, filtrar o catálogo, abrir busca, copiar código e navegar entre páginas de demonstração. O conteúdo do catálogo é um inventário de fonte, com esse limite visível.

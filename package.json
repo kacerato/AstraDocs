@@ -9,7 +9,9 @@
     "build": "node tools/check-release.mjs && node tools/generate-content.mjs && astro build && node tools/export-docs.mjs",
     "preview": "astro preview --host 127.0.0.1",
     "check:links": "node tools/check-output.mjs",
-    "sync:api": "node tools/sync-api.mjs"
+    "sync:api": "node tools/sync-api.mjs",
+    "updates:check": "node tools/updates.mjs",
+    "updates:record": "node tools/updates.mjs --record"
   },
   "dependencies": {
     "@astrojs/starlight": "0.42.5",

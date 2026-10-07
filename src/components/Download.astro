@@ -1,6 +1,8 @@
 ---
 import release from '../../data/release.json';
+import { updates } from '../../tools/updates.mjs';
 import ProjectStatus from './ProjectStatus.astro';
+const releaseNote = updates.entries.find(e => e.availability === 'distributed' && e.releaseVersion === release.version && e.versionCode === release.versionCode)!;
 const guide = '/pt-br/snapshot-2026-10-06/comece/primeiro-projeto/';
 ---
 <div class="astra-download">
@@ -18,7 +20,7 @@ const guide = '/pt-br/snapshot-2026-10-06/comece/primeiro-projeto/';
   </section>
 
   <section class="download-release" aria-labelledby="release-title">
-    <div class="download-release-heading"><p class="astra-eyebrow">Disponível agora</p><h2 id="release-title">Astra {release.version}</h2><p>Publicada em {release.dateLabel}. Uma prévia para explorar o editor e acompanhar sua evolução.</p><p class="download-compatibility">Dispositivos com páginas de memória de 16 KB não são suportados nesta distribuição.</p><a href={release.releaseUrl}>Notas e arquivos desta versão <span aria-hidden="true">↗</span></a></div>
+    <div class="download-release-heading"><p class="astra-eyebrow">Disponível agora</p><h2 id="release-title">Astra {release.version}</h2><p>Publicada em {release.dateLabel}. Uma prévia para explorar o editor e acompanhar sua evolução.</p><p class="download-compatibility">Dispositivos com páginas de memória de 16 KB não são suportados nesta distribuição.</p><a href={`/atualizacoes/#${releaseNote.id}`}>O que mudou nesta versão <span aria-hidden="true">→</span></a></div>
     <dl class="download-facts"><div><dt>Sistema</dt><dd>Android 8.0 ou superior</dd></div><div><dt>Processador</dt><dd>ARM64 (arm64-v8a)</dd></div><div><dt>Gráficos</dt><dd>GPU com Vulkan 1.1</dd></div><div><dt>Pacote</dt><dd>APK assinado · {release.sizeLabel}</dd></div></dl>
   </section>
 

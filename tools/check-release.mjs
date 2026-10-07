@@ -1,5 +1,8 @@
 import fs from 'node:fs';
+import { validateUpdates, validateReleaseNote } from './updates.mjs';
 const r = JSON.parse(fs.readFileSync('data/release.json', 'utf8'));
+validateUpdates();
+validateReleaseNote(r);
 const fail = message => { throw new Error(`Release: ${message}`); };
 if (!r.buildVerified || !r.signatureVerified) fail('build and signature evidence are required before publishing');
 if (!Number.isSafeInteger(r.bytes) || r.bytes <= 0) fail('invalid APK size');
