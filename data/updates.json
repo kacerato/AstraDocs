@@ -4,6 +4,49 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-apk-preview",
+      "date": "2026-10-07",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "Nova prévia Android: tweens, consultas e autoria física",
+      "summary": "APK da main em 09bd7349, com sequência de tweens, consultas 3D e autoria de colisões. Um guia explica onde encontrar e como começar a usar as mudanças.",
+      "version": "0.2.1-preview.20261007 · código 6",
+      "availability": "distributed",
+      "details": [
+        "Sequências persistentes de tweens permitem passos sequenciais e paralelos; PropertyTween interpola campos numéricos compatíveis. O guia explica alvos, duração, espera e conflitos de escrita.",
+        "Raio, varredura de forma e braço de mola entram no fluxo de consultas físicas 3D. Há caminhos no editor, exercícios iniciais e limites dos resultados.",
+        "Materiais físicos compartilhados em .physmat, combinação por par e ajustes por colisor; sensores distinguem monitorar de ser detectável. Juntas possuem limites de ruptura e personagens expõem colisões.",
+        "Autoria física inclui decomposição limitada, revisão antes de aplicar, receitas e preservação de momento na reconstrução. Centro de massa, inércia e interpolação recebem explicação de uso.",
+        "Download foi atualizado com tamanho, SHA-256, manifesto e a mesma assinatura da primeira prévia pública. Android 8.0+, ARM64 e Vulkan 1.1; dispositivos com páginas de memória de 16 KB continuam sem suporte.",
+        "O suplemento de 07/10 descreve as mudanças desta distribuição. O catálogo de API continua identificado como snapshot de 06/10; mudanças locais posteriores não são declaradas presentes neste APK."
+      ],
+      "validation": "Build Release, assinatura, versão, conteúdo do pacote, alinhamento e integridade das fontes conferidos. Esta publicação não executa uma nova campanha de instalação ou Play em aparelho físico.",
+      "migration": "Faça uma cópia externa dos projetos. A assinatura é a mesma da prévia pública anterior, com versionCode 6. Projetos com novos componentes podem não reabrir em versões antigas; instalações de desenvolvimento com outra chave podem exigir reinstalação.",
+      "links": [
+        {
+          "label": "Baixar e atualizar",
+          "url": "/download/"
+        },
+        {
+          "label": "Mudanças e primeiros usos",
+          "url": "/pt-br/snapshot-2026-10-06/versoes/preview-2026-10-07/"
+        },
+        {
+          "label": "Trilha para iniciantes",
+          "url": "/pt-br/snapshot-2026-10-06/comece/indice/"
+        },
+        {
+          "label": "Arquivos da distribuição",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.07"
+        }
+      ],
+      "releaseVersion": "0.2.1-preview.20261007",
+      "versionCode": 6
+    },
+    {
       "id": "2026-10-07-trilha-iniciantes",
       "date": "2026-10-07",
       "scopes": [

@@ -1,17 +1,17 @@
 {
-  "version": "0.2.0-preview.20261006",
-  "versionCode": 5,
-  "date": "2026-10-06",
-  "dateLabel": "6 de outubro de 2026",
+  "version": "0.2.1-preview.20261007",
+  "versionCode": 6,
+  "date": "2026-10-07",
+  "dateLabel": "7 de outubro de 2026",
   "channel": "preview",
-  "filename": "Astra-0.2.0-preview.20261006-android-arm64.apk",
-  "sizeLabel": "211,5 MiB",
-  "bytes": 221822990,
-  "sha256": "ca9ca3ee0cdf842986de496f892e7cfeb3f6e2e2562a7abe811df278f7f0d290",
+  "filename": "Astra-0.2.1-preview.20261007-android-arm64.apk",
+  "sizeLabel": "212,0 MiB",
+  "bytes": 222302478,
+  "sha256": "bdea393e750a618ed3ea02462fce91a980ec45ce565d3e05c87fd81bc04b0db1",
   "certificateSha256": "cfbd4391d3d9f63f91901dbc22886ec6544de503d7e599543c39a68facd4ef6b",
-  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.06/Astra-0.2.0-preview.20261006-android-arm64.apk",
-  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.06",
-  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.06/SHA256SUMS.txt",
+  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07/Astra-0.2.1-preview.20261007-android-arm64.apk",
+  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.07",
+  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07/SHA256SUMS.txt",
   "requirements": {
     "minSdk": 26,
     "android": "8.0+",
@@ -23,14 +23,16 @@
   "signatureVerified": true,
   "deviceRuntimeVerified": false,
   "source": {
-    "baselineCommit": "6349ee60d799ea191d42b3d5c97934e454001d38",
-    "localChangesIncluded": true,
-    "inputFiles": 6082,
-    "inputManifestSha256": "e2fc783d7373d6cc86066ed8351993948553fa0be05d41349a65379c837e0717",
-    "snapshotDate": "2026-10-06",
+    "baselineCommit": "09bd73493e3326f30348d12970ee112789693f0c",
+    "localChangesIncluded": false,
+    "inputFiles": 6297,
+    "inputManifestSha256": "c3d668b20630311751bf2f5446f3f818304d3f026f4520d73cfe7ba194292cc3",
+    "snapshotDate": "2026-10-07",
     "versionOverrides": {
-      "versionCode": 5,
-      "versionName": "0.2.0-preview.20261006"
-    }
+      "versionCode": 6,
+      "versionName": "0.2.1-preview.20261007"
+    },
+    "generatedNotices": "Native dependency license notices copied into Android packaging",
+    "generatedRestoreMetadata": "dotnet restore added an empty net8.0/linux-bionic-arm64 lock target; dependency versions and hashes unchanged"
   }
 }
