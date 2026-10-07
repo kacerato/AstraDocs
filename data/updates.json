@@ -4,6 +4,53 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-camera-virtual-cerebro",
+      "date": "2026-10-07",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Câmera virtual e Cérebro de câmera",
+      "summary": "Câmeras virtuais disputam por prioridade e um Cérebro na câmera do jogo troca entre elas com transição, órbita controlada pelo toque, mira, desvio de paredes e tremor.",
+      "version": "Bloco G · revisão de desenvolvimento 07/10/2026 (commit 4081cad9 da engine)",
+      "availability": "development",
+      "details": [
+        "Câmera virtual: posição fixa, Seguir (eixos do mundo ou guinada do alvo) ou Órbita com ângulos, limites e controle pela ação Olhar; rotação fixa, olhar para o alvo ou rotação do alvo; amortecimentos; lente própria (campo vertical, meia altura, próximo, distante, inclinação).",
+        "Desoclusão aproxima a câmera quando um colisor bloqueia a linha até o alvo e volta à distância livre com amortecimento; tremor Perlin de rotação e posição; nenhuma correção altera a pose salva do objeto.",
+        "Cérebro de câmera (no objeto com Câmera): mostra a câmera virtual ativa de maior prioridade; transições Corte, Suave, Linear, Entrada/Saída suave e brusca; transição interrompida parte do quadro mostrado; horizonte sem rolagem no meio da mistura; opção de ignorar a escala de tempo.",
+        "Scripts C#: VirtualCamera.Prioritize/Snap/IsLive e CameraBrain.LiveCamera/Blending, eventos OnCameraActivated, OnCameraCut, OnBlendFinished, OnActivated e OnDeactivated; Conexões de evento recebem os mesmos eventos e os métodos Priorizar e Encaixar.",
+        "Editor: Criar → Básicos → Câmera virtual (órbita no objeto selecionado e Cérebro na câmera da cena no mesmo passo de desfazer), cartão de estado no Inspector e anel da órbita na viewport.",
+        "Referência estudada: Cinemachine 3.1 (Unity 6000.0). Adaptações e pendências, como órbita Three Ring, Blend Hint e canais, ficam declaradas na documentação interna do bloco."
+      ],
+      "validation": "Engine: 10 testes nativos novos e suíte nativa 1441/1445 (4 falhas anteriores conhecidas, sem relação); suíte C# 521/0; build Android arm64. Aparelho: cena de aceite com órbita parada por parede real, troca por prioridade com eventos e lente de 45° e retorno, aprovada num pacote de validação instalado ao lado do app. Não está no APK público 0.2.1-preview.20261007.",
+      "migration": "Tipos novos (astra.camera.virtual v1 e astra.camera.brain v1); cenas existentes não mudam. Cenas que usam esses tipos exigem uma engine com o bloco G.",
+      "links": [
+        {
+          "label": "APK público e disponibilidade",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-retomada-movimento-limite",
+      "date": "2026-10-07",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Corpo recriado respeita o novo limite de velocidade",
+      "summary": "Ao reconstruir um corpo em Play, a velocidade restaurada passa pelo limite máximo do corpo novo em vez de abortar a física.",
+      "version": "Revisão de desenvolvimento 07/10/2026 (commit 09bd7349 da engine)",
+      "availability": "development",
+      "details": [
+        "Editar ao vivo a velocidade linear ou angular máxima de um corpo que se move não interrompe mais o Play: o movimento retomado é limitado ao novo valor.",
+        "Junto desta revisão, o app em desenvolvimento deixou de trazer uma aba interna de atualizações; as notas continuam somente nesta página do site."
+      ],
+      "validation": "Teste nativo de 50 corpos que antes abortava passa; suíte nativa sem regressões. Não está no APK público 0.2.1-preview.20261007.",
+      "migration": "Nenhuma.",
+      "links": []
+    },
+    {
       "id": "2026-10-07-orbit-aviso-atualizacoes",
       "date": "2026-10-07",
       "scopes": [
