@@ -33,7 +33,7 @@ function write(route,title,description,body,options={}) {
   fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,source);
   generated.push(path.relative(root,file).replaceAll('\\','/'));
   const id=route.replace(/\/index$/,'');
-  manifest.push({id,title,description,version,kind:front.kind,status:front.status,runtimeVerified:false,platformEvidence:[],url:route==='index'?'/':`/${id}/`,markdown:`/markdown/${id}.md`,body:options.markdown||body});
+  manifest.push({id,title,description,version,kind:front.kind,status:front.status,reviewedAt:front.reviewedAt,runtimeVerified:false,platformEvidence:[],url:route==='index'?'/':`/${id}/`,markdown:`/markdown/${id}.md`,body:options.markdown||body});
 }
 // Delete only files recorded by the previous generation, never authored content.
 const previous=fs.existsSync('data/generated-files.json')?readJson('data/generated-files.json'):[];

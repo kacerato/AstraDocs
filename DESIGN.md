@@ -53,6 +53,17 @@ Não alterar proporções, recolorir, espelhar poses com símbolos assimétricos
 4. Componente: função + badge de versão; propriedades em tabela; dependências/conflitos; exemplo de composição; ligação à API.
 5. Catálogo: busca por nome; filtros combináveis de categoria/estado/plataforma; resultado em lista legível, sem efeito visual pesado.
 6. Receita: resultado final, dependências, arquivos, instruções, verificação e variações.
+
+## Leitura operacional — revisão de 07/10/2026
+
+Manual, Conceitos e Sistemas começam por um índice de tarefas: intenção, acesso e
+guia correspondente em uma tabela legível. Cada capítulo usa a estrutura que seu
+problema exige: sequência de interação, exemplo numérico, composição ou código.
+Campos e sintomas ficam junto da montagem, com links ao componente, API e roadmap.
+Essa navegação evita obrigar o leitor a conhecer previamente o nome de uma classe.
+Preservar rotas existentes, tipografia, largura de leitura e comportamento de
+tabelas/código em telas pequenas. Índices são conteúdo editorial, sem acrescentar
+uma grade de cartões ou outro sistema visual ao portal.
 7. Busca/404: mensagem útil e ações de recuperação com Orbit Search.
 8. Release: alterações por impacto, migração e compatibilidade; Orbit Success somente na abertura.
 

@@ -7,7 +7,11 @@ Este repositório é a fonte de verdade do portal de documentação Astra.
 - Vercel: projeto `astra-docs`, ID `prj_I4UU3minA10YutRfDzpIcz4aWcWa`, equipe `lucas-df5f8b19`.
 - Branch de produção: `main`. Push nessa branch publica pela integração Git da Vercel.
 
-Edite guias em `data/editorial.mjs`. Contratos extraídos ficam em `data/api.json`
+Edite guias em `data/editorial.mjs`; Manual, Conceitos e Sistemas ficam em
+`data/editor-guides.mjs`, `data/concept-guides.mjs` e `data/system-guides.mjs`.
+Exemplos associados ficam em `data/workflow-examples.mjs`. Preserve caminhos
+verificados no editor, casos concretos, campos com efeito e diagnóstico nas revisões.
+Contratos extraídos ficam em `data/api.json`
 e `data/components.json`; os extratores usam um checkout separado da engine.
 Não copie fontes privadas da engine, credenciais, caches ou evidências internas.
 Não edite páginas geradas: `npm run build` regenera HTML, Markdown, busca e JSON.

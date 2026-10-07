@@ -1,5 +1,12 @@
 [
   {
+    "file": "DelayedDeactivate.cs",
+    "sha256": "1dc2339f91e88b9385c1d90287dcc34a30b3430c1042a18fc4b8e1b42dfbd7ab",
+    "compilationVerified": true,
+    "method": "Roslyn semantic compilation of the example assembly against the loaded project",
+    "runtimeVerified": false
+  },
+  {
     "file": "HeartDamageTrigger.cs",
     "sha256": "5cb31b11a2ccc0dca18f55545d3a902f95c91669e4062b484d8a21d71cbae755",
     "compilationVerified": true,
@@ -14,8 +21,8 @@
     "runtimeVerified": false
   },
   {
-    "file": "PlayerHealth.cs",
-    "sha256": "b9031f47b2e3804988d20718436e440911dd7ea9783270b5fdfa19ba0f2f60d4",
+    "file": "InputMove.cs",
+    "sha256": "c14cc86473b08b24c43d58f0017ac8a4c3bbcc4bb87e76b83fb7edf6c07f3286",
     "compilationVerified": true,
     "method": "Roslyn semantic compilation of the example assembly against the loaded project",
     "runtimeVerified": false
@@ -28,8 +35,22 @@
     "runtimeVerified": false
   },
   {
+    "file": "PlayerHealth.cs",
+    "sha256": "b9031f47b2e3804988d20718436e440911dd7ea9783270b5fdfa19ba0f2f60d4",
+    "compilationVerified": true,
+    "method": "Roslyn semantic compilation of the example assembly against the loaded project",
+    "runtimeVerified": false
+  },
+  {
     "file": "RotateObject.cs",
     "sha256": "077b8b123045ff3a7fef19605fae21d3cae9a63616a5b5cf92c237ceafb07f19",
+    "compilationVerified": true,
+    "method": "Roslyn semantic compilation of the example assembly against the loaded project",
+    "runtimeVerified": false
+  },
+  {
+    "file": "SaveActionCounter.cs",
+    "sha256": "9e5b88749acbb33ed5fa285bfefb3240ebb08596c6b5cc3ca789c08c13f4ab2a",
     "compilationVerified": true,
     "method": "Roslyn semantic compilation of the example assembly against the loaded project",
     "runtimeVerified": false

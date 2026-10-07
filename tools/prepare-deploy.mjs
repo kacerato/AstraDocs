@@ -7,6 +7,7 @@ for(const dir of ['src/components','src/styles'])for(const name of fs.readdirSyn
 const assets=['brand/astra-lockup-1024.webp','brand/favicon-32.png','brand/favicon-180.png','brand/favicon-192.png','social/home-1200x630.png',...['welcome-256','welcome-512','welcome-768','code-256','build-256','success-256','search-256'].map(n=>`mascot/orbit-${n}.webp`)];
 files.push('data/project.mjs','data/release.json','tools/check-release.mjs','public/assets/mascot/orbit-build-512.webp');
 files.push('data/ui-guides.mjs','data/component-guides.mjs','data/api-guides.mjs','data/roadmap-guides.mjs','data/roadmap.json','data/component-member-map.json','tools/pack-heart-example.mjs');
+files.push('data/editor-guides.mjs','data/concept-guides.mjs','data/system-guides.mjs','data/workflow-guide-tools.mjs','data/workflow-examples.mjs');
 for(const file of ['README.txt','UI/hud.aeui','Images/heart-full.png','Images/heart-empty.png'])files.push(`public/examples/heart-hud/${file}`);
 files.push(...assets.map(a=>'public/assets/'+a));
 fs.mkdirSync('evidence/deploy',{recursive:true});
