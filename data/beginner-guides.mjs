@@ -136,7 +136,9 @@ Terminar esta etapa com a Astra aberta na tela de projetos. Você precisa de um 
 3. Abra o arquivo pelo download do navegador ou pelo gerenciador de arquivos.
 4. Se o Android pedir permissão para instalar por esse aplicativo, abra a configuração indicada pelo sistema e autorize a origem usada. A redação e o caminho variam entre fabricantes; isso é uma tela do Android.
 5. Volte ao arquivo, conclua a instalação e abra a Astra.
-6. Identifique a versão pelo pacote e pelas [notas da distribuição](/atualizacoes/#2026-10-06-apk-preview). Você deve chegar à lista de projetos, antes de criar sua cena.
+6. Identifique a versão pelo pacote e pelas [notas da distribuição](/atualizacoes/#2026-10-07-apk-preview-u07). Você deve chegar à lista de projetos, antes de criar sua cena.
+
+A instalação pública é **Astra**, pacote **dev.aether.editor**. **Astra Dev** é separada, para desenvolvimento; não precisa ser instalada para este curso. Nesta prévia, **U07 Laboratório de Controle** é o único exemplo embutido e editável. Seus projetos próprios continuam na lista. O laboratório não substitui o projeto **CaixaGira** do exercício.
 
 O SHA-256 no Download permite comparar a integridade do arquivo com o manifesto. Ele não é uma senha nem um código que você deve digitar na Astra.
 

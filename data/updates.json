@@ -4,6 +4,47 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-apk-preview-u07",
+      "date": "2026-10-07",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "availability": "distributed",
+      "releaseVersion": "0.2.2-preview.20261007",
+      "versionCode": 7,
+      "version": "Astra 0.2.2-preview.20261007 · versionCode 7",
+      "title": "Astra 0.2.2: APK público U07 e documentação da mesma revisão",
+      "summary": "O Download entrega o APK já conferido no aparelho, com um único laboratório, animação por movimento físico, controle aéreo e retração de câmera. Público e desenvolvimento passam a ter papéis explícitos.",
+      "details": [
+        "O APK público mantém dev.aether.editor e a chave de distribuição anterior; versionCode 7. Contém um laboratório editável. Os dez defaults históricos são aposentados quando reconhecidos pelo descriptor/layout, preservando projetos autorados.",
+        "Repouso, Walk/Run e cinco estados de salto/queda/aterrissagem usam clipes reais e velocidade/apoio físicos. Controle aéreo e câmera virtual/Cérebro funcionam no laboratório. Câmera requer colliders e pode recortar o ator no pitch extremo.",
+        "Astra é a instalação pública; Astra Dev é a instalação separada de desenvolvimento. Cópias antigas de validação não são novos canais de distribuição. Não se cria um pacote novo para cada bloco.",
+        "Download, guia U07, primeiro contato e metadados HTML/Markdown/JSON foram atualizados. Snapshots anteriores e notas já publicadas permanecem históricos; a engine inteira e o restante U08 não são anunciados completos."
+      ],
+      "validation": "Build/assinatura/hash conferidos. POCO F7/Android 16: atualização do principal, projetos preservados, salvar/reabrir/Play. 527 quadros examinados em validação com lib nativa idêntica. 12/12 direcionados, 121/121 no reteste, ProjectStore 7/7 e compilador real 1/1; sem medição thermal ou gamepad físico.",
+      "migration": "Atualiza o pacote público com a mesma assinatura, sem desinstalar. Faça cópia de projetos antes de remover uma validação antiga. Dev tem pacote/dados separados. APK ARM64/Vulkan 1.1/Android 8.0+; páginas de memória 16 KB não suportadas.",
+      "links": [
+        {
+          "label": "Baixar Astra 0.2.2",
+          "url": "/download/"
+        },
+        {
+          "label": "Notas e assets da distribuição",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.07-u07"
+        },
+        {
+          "label": "Guia U07 e próximos blocos",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/posse-de-controle/"
+        },
+        {
+          "label": "Manifesto do APK",
+          "url": "/releases/latest.json"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-u07-movimento-animacao-camera",
       "date": "2026-10-07",
       "scopes": [

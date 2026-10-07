@@ -2,8 +2,8 @@ export const motorControlGuide = {
   route: 'pt-br/snapshot-2026-10-07/sistemas/posse-de-controle',
   title: 'Posse de controle: UI, teclado, gamepad, script e IA',
   description: 'Configure quem dirige um motor, troque a fonte em Play e inspecione a intenção realmente consumida.',
-  body: `:::caution[Revisão de desenvolvimento]
-Esta capacidade pertence à revisão U07 de 07/10/2026. O APK público da página Download está na prévia 0.2.1 de 07/10/2026, baseada em 09bd7349 e não contém esta ampliação. O catálogo completo de 06/10 mantém seu próprio snapshot; esta página documenta posse, movimento medido, animação e a câmera do laboratório. A revisão 0.2.2 de desenvolvimento foi instalada no aparelho de aceite, mas ainda não substitui o arquivo público de Download.
+  body: `:::note[Disponível no APK público 0.2.2]
+Esta capacidade está na prévia pública **0.2.2-preview.20261007**, versionCode 7, disponível em [Download](/download/). É o mesmo APK atualizado e conferido no aparelho de aceite. O catálogo completo de 06/10 conserva seu snapshot histórico; este guia de 07/10 documenta posse, movimento medido, animação e câmera do laboratório. Publicar esta correção não declara todo U08 nem a engine completa.
 :::
 
 ## O que a posse controla
@@ -122,9 +122,24 @@ Play aguarda publicação Current dos scripts, inclusive na primeira abertura. C
 
 O APK principal 0.2.2-preview.20261007 foi atualizado no aparelho sem desinstalação, usando a chave de distribuição existente. Contém somente U07Laboratorio, com 21 arquivos exatos, incluindo metadata restaurada como .astra. A migração aposentou os dez defaults reconhecidos por nome/descriptor/layout histórico; manteve os dois projetos do usuário, com hashes iguais antes/depois. Salvar, encerrar, reabrir e executar Play foram conferidos no principal; o arquivo retirado foi lido pelo serializer nativo. ProjectStore passou 7/7 casos de migração/preservação/reabertura.
 
-A validação separada tem SHA-256 1ab86324c41ed7cb1a632f4bfa52ebba5d2d961b91eab317754cd4ba063236a0; o principal local instalado tem 61f7d8d85581dc090ad906e865b2e96c4ff974bf14cab4b5202806c0a2075936. Os hashes instalados coincidem e a biblioteca nativa é idêntica. O Download público permanece na prévia 0.2.1; esta documentação não anuncia uma nova release pública do APK.
+A validação separada tem SHA-256 1ab86324c41ed7cb1a632f4bfa52ebba5d2d961b91eab317754cd4ba063236a0; o APK público instalado tem 61f7d8d85581dc090ad906e865b2e96c4ff974bf14cab4b5202806c0a2075936. Os hashes instalados coincidem e a biblioteca nativa é idêntica. O Download público agora entrega exatamente esse APK 0.2.2, com a mesma chave de distribuição das prévias anteriores.
 
 Uma regressão integrada inicialmente recusou uma publicação de dependências de prefab (120/121); o caso isolado passou 1/1 e a repetição integrada 121/121. A causa ambiental da recusa transitória não foi estabelecida. Não se apresenta esse primeiro resultado como aprovação.
+
+## Público e desenvolvimento
+
+**Astra** é o aplicativo público, pacote **dev.aether.editor**, instalado pelo [Download](/download/). **Astra Dev** usa pacote/dados separados: **dev.aether.editor.u07**, mantido para não perder seus projetos de desenvolvimento. Não é necessário instalar Dev para usar a Astra pública. As cópias chamadas validacao/u07 surgiram para testar sem alterar a instalação principal; a validação antiga não é um terceiro canal público.
+
+A distribuição pública conserva assinatura e aumenta versionCode. Desenvolvimento reutiliza seu pacote em revisões futuras, identificado como Astra Dev; não cria outro ícone a cada bloco. Não mova um APK Dev sobre o pacote público com assinatura diferente. Desinstalar apaga dados: copie os projetos antes. A instalação principal foi atualizada sem desinstalação nesta revisão.
+
+## Próximos blocos
+
+1. **Locomoção e aparência — U03/U06/restante U08:** apoio adaptativo para formas/compostos, degraus/agachar e plataformas; modos físicos específicos de água/voo/veículos; troca de aparência sem alterar física, retargeting, root motion com autoridade explícita, IK e autoria visual das transições. A integração atual de oito clipes não encerra esse pacote.
+2. **UI componível — U10/R0–R12:** ampliar estilos e fundo removível, interação/eventos, layout/texto/IME, bindings, coleções, formulários/inventário, composição espacial, acessibilidade e exportação. Cada item mantém o contrato do roadmap original.
+3. **Modelagem visual completa:** topologia de vértices/arestas/faces, operações de malha no viewport, UVs, materiais, normais/tangentes, instâncias/prefab/reimportação e colisão. A edição física aceita de U11 não substitui este editor visual no nível ProBuilder.
+4. **SDK/reprodução/rede/custo — U12/U13/U14:** operações tipadas equivalentes à autoria, handles/staleness, snapshots/posse/correção e orçamentos medidos de CPU/GPU/memória/thermal. Sem prometer determinismo ou desempenho universal antes de medir.
+
+Autoria física U01/U02/U04/U05/U09 e o contrato físico de U11 já têm aceites dentro dos limites publicados; não serão anunciados novamente como inteiramente pendentes. Prioridade seguinte: locomoção/animação, porque define o comportamento do personagem e os consumidores que os demais blocos usam.
 
 ## Referências de capacidade
 

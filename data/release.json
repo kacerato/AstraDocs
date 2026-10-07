@@ -1,17 +1,18 @@
 {
-  "version": "0.2.1-preview.20261007",
-  "versionCode": 6,
+  "version": "0.2.2-preview.20261007",
+  "versionCode": 7,
+  "package": "dev.aether.editor",
   "date": "2026-10-07",
   "dateLabel": "7 de outubro de 2026",
   "channel": "preview",
-  "filename": "Astra-0.2.1-preview.20261007-android-arm64.apk",
-  "sizeLabel": "212,0 MiB",
-  "bytes": 222302478,
-  "sha256": "bdea393e750a618ed3ea02462fce91a980ec45ce565d3e05c87fd81bc04b0db1",
+  "filename": "Astra-0.2.2-preview.20261007-android-arm64.apk",
+  "sizeLabel": "98,1 MiB",
+  "bytes": 102909341,
+  "sha256": "61f7d8d85581dc090ad906e865b2e96c4ff974bf14cab4b5202806c0a2075936",
   "certificateSha256": "cfbd4391d3d9f63f91901dbc22886ec6544de503d7e599543c39a68facd4ef6b",
-  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07/Astra-0.2.1-preview.20261007-android-arm64.apk",
-  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.07",
-  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07/SHA256SUMS.txt",
+  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07-u07/Astra-0.2.2-preview.20261007-android-arm64.apk",
+  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.07-u07",
+  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07-u07/SHA256SUMS.txt",
   "requirements": {
     "minSdk": 26,
     "android": "8.0+",
@@ -21,18 +22,49 @@
   },
   "buildVerified": true,
   "signatureVerified": true,
-  "deviceRuntimeVerified": false,
+  "deviceRuntimeVerified": true,
   "source": {
-    "baselineCommit": "09bd73493e3326f30348d12970ee112789693f0c",
+    "baselineCommit": "2e6ea4084f10c3be95d1a1b702f883f3e5bc25fd",
     "localChangesIncluded": false,
-    "inputFiles": 6297,
-    "inputManifestSha256": "c3d668b20630311751bf2f5446f3f818304d3f026f4520d73cfe7ba194292cc3",
     "snapshotDate": "2026-10-07",
+    "nativeLibrarySha256": "ca59be419bd18110bd478e3f00c5eefbbb1233168dccf2bd728d51f32b8a7175",
     "versionOverrides": {
-      "versionCode": 6,
-      "versionName": "0.2.1-preview.20261007"
+      "versionCode": 7,
+      "versionName": "0.2.2-preview.20261007"
+    }
+  },
+  "bundledProjects": {
+    "count": 1,
+    "name": "U07 Laboratório de Controle",
+    "files": 21
+  },
+  "deviceValidation": {
+    "device": "POCO F7 / 25053PC47G",
+    "os": "Android 16",
+    "publicPackage": [
+      "update with existing certificate",
+      "sole bundled lab",
+      "user project files preserved",
+      "save / process restart / reopen / Play"
+    ],
+    "motionAndCamera": {
+      "reviewedFrames": 527,
+      "contactPages": 67,
+      "sampling": "none",
+      "recordingPackage": "dev.aether.editor.u07",
+      "sameNativeLibraryAsPublicPackage": true
     },
-    "generatedNotices": "Native dependency license notices copied into Android packaging",
-    "generatedRestoreMetadata": "dotnet restore added an empty net8.0/linux-bionic-arm64 lock target; dependency versions and hashes unchanged"
+    "host": {
+      "targeted": 12,
+      "editorRegressionFinalRetry": 121,
+      "projectStore": 7,
+      "projectCompiler": 1
+    },
+    "limits": [
+      "not a universal device compatibility guarantee",
+      "no sustained FPS/thermal measurement",
+      "camera may crop actor at constrained extreme pitch",
+      "no foot IK/runtime root motion/rig retargeting"
+    ]
   }
 }
