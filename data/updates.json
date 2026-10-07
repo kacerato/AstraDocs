@@ -4,6 +4,50 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-trilha-iniciantes",
+      "date": "2026-10-07",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Aprenda do zero com o projeto CaixaGira",
+      "summary": "Dez etapas acompanhadas, caminhos reais, campos explicados, recuperação por sintoma e exemplos para quem nunca usou a engine.",
+      "version": "Docs · snapshot C# · revisão 07/10/2026",
+      "availability": "documentation",
+      "details": [
+        "Comece aqui reúne 17 guias: 11 capítulos aprofundados e seis novos apoios, com percurso de dez etapas no mesmo projeto, anterior/próxima e conferências de entendimento.",
+        "A primeira cena detalha Cubo, transformação, luz direcional e câmera de Play; a animação sem código explica 15 configurações do Transform Tween, seus padrões e valores do exercício.",
+        "O script RotateObject tem criação, compilação, publicação, anexação, roteiro de execução, explicação linha a linha, unidades e variação de velocidade. O arquivo de exemplo compilado permanece o mesmo.",
+        "Novos capítulos ensinam a ler o Inspector, consultar um glossário com exemplos, investigar por sintoma, responder dúvidas frequentes e escolher capacidades pela composição necessária.",
+        "Aprender e a home levam ao percurso acompanhado; links ao HUD de corações, manual, sistemas, campos, roadmap e Discord conectam a aprendizagem às referências existentes.",
+        "A regra editorial exige objetivo, preparação, caminhos, valores, resultado, recuperação e variação nos guias de iniciante, além de histórico de atualizações."
+      ],
+      "validation": "Caminhos e campos confrontados com o código do snapshot; build e links do portal conferidos sem erros. Revisão em 360, 768 e 1280 px, busca, navegação entre aulas, respostas expansíveis e foco de teclado conferidos. O roteiro de Play não representa nova execução do aplicativo em aparelho físico.",
+      "migration": "As rotas dos capítulos anteriores permanecem válidas. Nenhuma alteração no APK, na cena ou nos arquivos do usuário; esta revisão amplia a documentação.",
+      "links": [
+        {
+          "label": "Comece do zero",
+          "url": "/pt-br/snapshot-2026-10-06/comece/indice/"
+        },
+        {
+          "label": "Leia os campos do Inspector",
+          "url": "/pt-br/snapshot-2026-10-06/comece/ler-o-inspector/"
+        },
+        {
+          "label": "Ajuda por sintoma",
+          "url": "/pt-br/snapshot-2026-10-06/comece/ajuda-por-sintoma/"
+        },
+        {
+          "label": "Glossário com exemplos",
+          "url": "/pt-br/snapshot-2026-10-06/comece/glossario/"
+        },
+        {
+          "label": "Primeiro script explicado",
+          "url": "/pt-br/snapshot-2026-10-06/comece/primeiro-script-c/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-configuracao-publicacao",
       "date": "2026-10-07",
       "scopes": [

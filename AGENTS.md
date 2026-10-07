@@ -15,6 +15,16 @@ Contratos extraídos ficam em `data/api.json`
 e `data/components.json`; os extratores usam um checkout separado da engine.
 Não copie fontes privadas da engine, credenciais, caches ou evidências internas.
 Não edite páginas geradas: `npm run build` regenera HTML, Markdown, busca e JSON.
+
+A trilha de iniciantes fica em `data/beginner-guides.mjs`. Preserve o mesmo projeto
+de treino, as rotas e a sequência de dez etapas. Cada aula deve explicar objetivo,
+preparação, caminho real de acesso, valores/unidades, resultado esperado, recuperação,
+uma variação e o próximo passo. Diferencie padrão do componente, valor de receita
+e valor do exercício. Termos novos devem ter exemplo ou link ao glossário.
+Nunca descreva um roteiro como execução validada; mantenha a versão do APK e as
+evidências de fonte, compilação e aparelho separadas. Novas funcionalidades/docs
+devem atualizar também o diagnóstico, as perguntas e a trilha quando afetarem
+iniciantes, além da nota obrigatória em Atualizações.
 Verifique o build e os links após alterar conteúdo/rotas. Para ajustes visuais,
 revise os tamanhos afetados e preserve a identidade fornecida em `DESIGN.md`.
 

@@ -3,6 +3,7 @@ import { uiPages, heartExamples } from './ui-guides.mjs';
 import { editorPages } from './editor-guides.mjs';
 import { conceptPages } from './concept-guides.mjs';
 import { systemPages } from './system-guides.mjs';
+import { beginnerPages } from './beginner-guides.mjs';
 import { workflowExamples } from './workflow-examples.mjs';
 import { api as typeLink } from './workflow-guide-tools.mjs';
 export const pages=[];
@@ -10,39 +11,6 @@ const add=(route,title,description,body,options={})=>pages.push({route,title,des
 const api=(name)=>`[${name}]($BASE/api/astra-${name.toLowerCase()}/)`;
 const guide=(route,title,description,sections)=>add(route,title,description,sections.map(([h,p])=>`## ${h}\n\n${p}`).join('\n\n'));
 
-guide('comece/visao-geral','O seu primeiro universo','Entenda a Astra e escolha um caminho para começar.',[
-['O que você vai encontrar','Astra combina autoria de cenas, componentes e comportamentos C#. Você organiza objetos, configura suas propriedades e executa o resultado em Play. Este portal documenta a geração atual em um snapshot de 06/10/2026.'],
-['Escolha sua trilha','- **Primeiro contato:** siga [primeiro projeto]($BASE/comece/primeiro-projeto/), [primeira cena]($BASE/comece/primeira-cena/) e [primeiro script]($BASE/comece/primeiro-script-c/).\n- **Criação visual:** consulte o [mapa de acesso]($BASE/editor/mapa-de-acesso/) e o [catálogo de componentes e campos]($BASE/componentes/).\n- **HUD e interface:** siga [onde fica a UI]($BASE/ui/comece-aqui/) e [corações com dano/cura]($BASE/ui/hud-coracoes/).\n- **Programação:** abra a [API C#]($BASE/api/), com acesso, uso e roadmap em cada membro. As assinaturas são extraídas semanticamente do código.'],
-['Como ler os estados','“Conferido em fonte” identifica um contrato observado no código. “Referência de assinaturas” não afirma que cada método foi testado em um aparelho. Os exemplos novos declaram separadamente sua compilação e execução. Consulte a [cobertura da versão]($BASE/versoes/estado-da-versao/).'],
-['Antes de começar','Baixe a prévia pública na [página de download](/download/), confira os requisitos e preserve seus projetos antes de instalar. Não misture estes exemplos C# com o planejamento de Astra 2/Luau.']]);
-guide('comece/requisitos-e-compatibilidade','Requisitos e compatibilidade','Separe os requisitos da instalação dos requisitos de uma cena.',[
-['Instalação e geração','Esta documentação corresponde à Astra atual, com API C# e renderer Vulkan no Android. A compatibilidade deve ser conferida para o APK efetivamente distribuído; um modelo de aparelho ou a presença de Vulkan, isoladamente, não confirma todos os recursos.'],
-['Antes de importar uma cena','Verifique espaço livre para arquivos originais e derivados, memória disponível, texturas, quantidade de geometria e recursos referenciados. Importar um arquivo não garante que todo recurso da ferramenta que o exportou terá equivalente na Astra.'],
-['Como registrar um problema','Anote a versão da engine, aparelho/GPU, versão do Android, cena, resolução e qualidade. Informe se o erro ocorre ao abrir o projeto, iniciar Play ou retomar o aplicativo. Veja [limites e capacidades]($BASE/conceitos/limites-e-capacidades/).']]);
-guide('comece/instalacao','Instalação','Prepare uma instalação compatível antes de seguir os tutoriais.',[
-['Distribuição deste snapshot','A prévia pública para Android está na [página de download](/download/), com versão, requisitos, tamanho e SHA-256. Baixe o APK no aparelho, abra o arquivo e autorize a instalação pelo navegador quando o Android solicitar. O pacote exige Android 8.0+, ARM64 e Vulkan 1.1.'],
-['Preserve seus projetos','Antes de substituir uma instalação existente, mantenha uma cópia dos projetos fora dos dados do aplicativo. A prévia pública usa uma assinatura de distribuição própria: se a instalação anterior tiver outra assinatura, o Android exigirá reinstalação. Desinstalar pode apagar projetos locais. Não limpe os dados do aplicativo para resolver uma falha de migração sem preservar os arquivos.'],
-['Depois de instalar','Abra a lista de projetos e crie um projeto vazio. Entre no editor, salve uma cena simples e reabra o projeto antes de importar conteúdo grande. Continue em [primeiro projeto]($BASE/comece/primeiro-projeto/).']]);
-guide('comece/primeiro-projeto','Seu primeiro projeto','Comece com uma cena pequena e um resultado fácil de conferir.',[
-['Crie a base','Na tela de projetos, use a ação de criar projeto, escolha um nome identificável e abra a cena vazia. A disponibilidade de modelos depende da versão instalada; não trate projetos demonstrativos históricos como modelos obrigatórios.'],
-['Organize antes de crescer','Use nomes que descrevam a função dos objetos. Separe o objeto que receberá o comportamento, a câmera e os elementos do ambiente. O editor de cena trabalha em landscape; a área de código pode usar outra orientação.'],
-['Faça uma primeira gravação','Salve o projeto, volte à lista e reabra. Confira nome, objetos e transformações. Essa pequena conferência separa problemas de persistência de problemas que poderiam aparecer depois da importação.'],
-['Próximo resultado','Crie uma [primeira cena]($BASE/comece/primeira-cena/) e adicione um comportamento de rotação. O objetivo inicial é observar uma mudança simples em Play e recuperar a cena autoral ao parar.']]);
-guide('comece/conheca-o-editor','Conheça o editor','Viewport, Hierarquia, Inspector e código têm papéis diferentes.',[
-['Viewport e seleção','O viewport mostra a cena. A Hierarquia permite localizar um objeto mesmo quando ele está fora da câmera ou encoberto. Selecione um objeto antes de procurar suas propriedades.'],
-['Inspector e componentes','O Inspector apresenta os dados do objeto selecionado. Transformação posiciona o objeto; componentes acrescentam comportamento e dados especializados. Campos podem aparecer somente quando uma configuração os torna relevantes.'],
-['Código, console e execução','A área de código edita comportamentos C#. Compile antes de entrar em Play. Consulte as mensagens de diagnóstico quando um script não carregar; uma edição de texto não significa que a nova versão já está executando.'],
-['Continue','Leia [Viewport e navegação]($BASE/editor/viewport-e-navegacao/), [Inspector]($BASE/editor/inspector/) e [Play e Stop]($BASE/comece/play-e-stop/).']]);
-guide('comece/primeira-cena','Sua primeira cena','Monte um cenário mínimo para observar um objeto em Play.',[
-['Composição','Crie uma primitiva visível, uma câmera com enquadramento útil e iluminação adequada ao material. Prefira uma forma assimétrica para testar rotação; uma esfera lisa pode girar sem produzir uma mudança visual perceptível.'],
-['Posição e enquadramento','Selecione a geometria na Hierarquia e confira sua escala. Posicione a câmera de modo que o objeto fique entre os planos próximo e distante. A câmera de edição e a câmera de gameplay não precisam compartilhar a mesma pose.'],
-['Salve e observe','Salve a cena antes de Play. Confirme se o objeto aparece na câmera do jogo. Se a imagem estiver vazia, consulte [câmera sem imagem]($BASE/diagnostico/camera-sem-imagem/).'],
-['Adicione comportamento','Continue com [primeiro componente]($BASE/comece/primeiro-componente/) ou [primeiro script C#]($BASE/comece/primeiro-script-c/).']]);
-guide('comece/primeiro-componente','Seu primeiro componente','Adicione uma capacidade pelo seu contrato de composição.',[
-['Escolha pela função','Selecione um objeto e abra a ação de adicionar componente. Use o [catálogo]($BASE/componentes/) para localizar o nome no editor, requisitos e conflitos. Um tipo listado em uma referência de outra engine não está automaticamente disponível na Astra.'],
-['Resolva a composição','O schema pode exigir outros componentes no mesmo objeto. Também pode recusar uma combinação por conflito de autoridade, como dois sistemas que tentam publicar a mesma transformação. Leia o motivo apresentado em vez de remover dependências ao acaso.'],
-['Confira uma propriedade','Altere um campo com efeito observável e mantenha os demais valores estáveis. Observe o resultado, desfaça e refaça. Salve e reabra para verificar o estado autoral.'],
-['Durante Play','Consulte na página do tipo se a mudança estrutural é permitida. Operações em ponto seguro não devem ser tratadas como execução imediata dentro de um callback.']]);
 const rotate=`using Astra;
 using System.Numerics;
 
@@ -55,39 +23,7 @@ public sealed class RotateObject : Behavior
                       TransformSpace.Local);
     }
 }`;
-add('comece/primeiro-script-c','Seu primeiro script C#','Faça um objeto girar a 0,5 rad/s com um Behavior.',`## Prepare a cena
-
-Use um objeto visível, sem corpo físico nem controlador de personagem comandando sua pose. Prefira geometria assimétrica. Abra Arquivos → ícone de código → Novo componente C#. Depois de salvar e recompilar, volte ao objeto → Inspector → Componentes → Add e selecione o Behavior publicado. Veja [código e compilação]($BASE/editor/codigo-e-compilacao/) para a sequência completa.
-
-## Código completo
-
-\`\`\`csharp title="RotateObject.cs"
-${rotate}
-\`\`\`
-
-O identificador de componente é estável e deve ser único no projeto. A taxa de 0,5 rad/s é multiplicada uma vez pelo intervalo de atualização. A Astra usa **radianos** nesta operação.
-
-## Compile e observe
-
-Compile no editor e resolva os erros antes de iniciar Play. O resultado esperado é a rotação em torno do eixo Y local. Pare a execução e confira a cena autoral. Este exemplo foi preparado para esta API; a execução no aparelho não foi realizada nesta publicação.
-
-## Se o objeto não girar
-
-Confira se o comportamento está anexado e habilitado, se o objeto recebe atualização e se outro sistema escreve a orientação depois dele. Consulte ${api('GameObject')} e [autoridade de transformação]($BASE/conceitos/autoridade-de-transformacao/).
-
-[Baixar RotateObject.cs](/examples/rotate-object/RotateObject.cs)`);
-guide('comece/play-e-stop','Play e Stop','Entenda o que está executando e o que pertence à cena autoral.',[
-['Antes de Play','Salve a cena e compile os scripts. O mundo de execução é criado a partir dos dados autorais; callbacks e recursos pertencem àquela sessão.'],
-['Enquanto executa','Objetos podem ser criados, removidos ou alterados por scripts. Certas operações são enfileiradas para um ponto seguro. A interface do editor pode capturar entrada e suspender a resposta do gameplay.'],
-['Ao parar','Referências da sessão encerrada deixam de ser válidas. Não armazene handles entre sessões e não suponha que uma transformação aplicada por script foi gravada na cena autoral. Para progresso do jogador, use [persistência]($BASE/sistemas/persistencia/).']]);
-guide('comece/salvar-e-reabrir','Salvar e reabrir','Confira persistência com mudanças identificáveis e recuperáveis.',[
-['O que salvar','A cena autoral descreve objetos, composição e propriedades persistentes. O progresso de gameplay possui outro contrato. Salvar uma cena não equivale a executar SaveStore.Flush.'],
-['Conferência prática','1. Selecione um objeto e altere nome ou posição.\n2. Salve e encerre a edição normalmente.\n3. Reabra o projeto.\n4. Confira a mesma propriedade e as referências a recursos.\n5. Entre em Play somente depois dessa conferência.'],
-['Se a leitura falhar','Preserve o arquivo e seus backups. Uma versão desconhecida, recurso ausente ou arquivo truncado exige diagnóstico; não sobrescreva imediatamente a única cópia. Veja [cena não reabre]($BASE/diagnostico/cena-nao-reabre/).']]);
-guide('comece/proximos-passos','Próximos passos','Transforme a primeira cena em um sistema pequeno e observável.',[
-['Expanda uma variável por vez','Depois da rotação, experimente [movimento local]($BASE/receitas/mover-em-espaco-local/). Em seguida, escolha input, câmera ou física. Alterar tudo ao mesmo tempo dificulta identificar a origem de um erro.'],
-['Escolha a referência certa','Use o manual para descobrir o fluxo do editor, o catálogo para compor objetos, a API para conferir assinaturas e as receitas para combinar sistemas.'],
-['Conserve um caso mínimo','Mantenha uma cópia pequena que reproduz o comportamento. Registre versão e resultado esperado antes de adicionar assets, efeitos e cenas maiores.']]);
+pages.push(...beginnerPages);
 
 for (const page of [...editorPages, ...conceptPages, ...systemPages]) add(page.route, page.title, page.description, page.body, page.options);
 

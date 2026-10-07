@@ -67,6 +67,17 @@ uma grade de cartões ou outro sistema visual ao portal.
 7. Busca/404: mensagem útil e ações de recuperação com Orbit Search.
 8. Release: alterações por impacto, migração e compatibilidade; Orbit Success somente na abertura.
 
+## Aprendizado acompanhado — revisão de 07/10/2026
+
+A entrada Aprender e a home levam a um percurso de dez etapas no mesmo projeto.
+Cada aula identifica sua etapa, abre o índice e tem anterior/próxima explícitos,
+independentes da ordem dos catálogos. Apoios por sintoma, glossário e leitura do
+Inspector ajudam sem exigir que o usuário saiba nomes de classes. Conferências
+em details usam HTML nativo e continuam disponíveis sem JavaScript. A contagem
+de etapas não mede a maturidade da engine nem acompanha o progresso do leitor.
+
+Referências de organização: Godot 4.5, [Nodes and Scenes](https://docs.godotengine.org/en/4.5/getting_started/step_by_step/nodes_and_scenes.html), para ensinar uma ação e observar o resultado; Unity 6000.0, [GameObject](https://docs.unity.com/en-us/engine/6000.0/manual/working-with-gameobjects/gameobject-fundamentals/class-game-object), para separar objeto, componentes e propriedades. Os caminhos e exemplos publicados são Astra, conferidos no snapshot da distribuição.
+
 ## Estados e interação
 
 Atualizações é um histórico editorial, sem grade de cards: data/origem precedem
