@@ -4,6 +4,33 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-u07-movimento-animacao-camera",
+      "date": "2026-10-07",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "fix",
+      "title": "U07: animação por movimento físico, controle aéreo e câmera contra piso",
+      "summary": "Repouso e oito clipes reais substituem o Walk congelado; o laboratório usa controle aéreo e câmera virtual com retração física. APK de desenvolvimento contém somente esse exemplo.",
+      "version": "U07 · desenvolvimento · 07/10/2026",
+      "availability": "development",
+      "details": [
+        "MotorMotionState mede velocidade/apoio reais; MotorAnimationDriver mistura passadas calibradas e usa Jump/Rise/Apex/Fall/Land. Idle continua animando e ajustes de fase preservam CrossFade.",
+        "Controle aéreo .85 atua no solver e facing acompanha intenção relativa à câmera. Canvas chega à câmera virtual/Cérebro; varredura de esfera retrai contra o piso. Ângulo extremo pode recortar o ator.",
+        "APK de desenvolvimento foi atualizado no aparelho com a chave existente. Um único laboratório embutido; dez defaults históricos retirados, projetos do usuário preservados. Download público permanece 0.2.1.",
+        "Primeira abertura aguarda scripts publicados. Guia preserva snapshots, câmera virtual/Cérebro e avisos Orbit já publicados; Markdown/JSON carregam a revisão própria da página."
+      ],
+      "validation": "12/12 cenários nativos, 121/121 regressões no reteste, ProjectCompiler 1/1, ProjectStore 7/7. POCO F7/Android 16: 527 quadros inspecionados, salvar/reabrir e identidade do APK conferidos. Build/links e guia/histórico em 390, 768 e 1440 px conferidos.",
+      "migration": "Migração remove somente defaults reconhecidos pelo nome e descriptor/layout histórico. Projetos autorados/cópias renomeadas são preservados. Esta revisão não atualiza automaticamente o Download público nem conclui todo U08.",
+      "links": [
+        {
+          "label": "Guia de posse de controle",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/posse-de-controle/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-u07-posse-controle",
       "date": "2026-10-07",
       "scopes": [

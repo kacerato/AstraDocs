@@ -12,6 +12,6 @@ const development = entry.data.version === 'snapshot-2026-10-07';
 {!home && <>
   <nav class="astra-breadcrumb" aria-label="Caminho da página"><a href="/">Docs</a><span aria-hidden="true">/</span>{taskIndex ? <a href={taskIndex}>{sections[area]}</a> : <span>{sections[area] || 'Documentação'}</span>}</nav>
   <h1 id="_top">{entry.data.title}</h1>
-  {!history && <div class="astra-page-meta"><a href={appRelease ? '/download/' : '/pt-br/snapshot-2026-10-06/versoes/estado-da-versao/'}>{appRelease ? `Astra ${appRelease}` : development ? 'Astra atual · C# · revisão U07' : 'Astra atual · C# · 06 out. 2026'}</a><span>{labels[entry.data.status]}</span>{entry.data.reviewedAt === '2026-10-07' && <span>Guia revisado · 07 out. 2026</span>}</div>
+  {!history && <div class="astra-page-meta"><a href={appRelease ? '/download/' : '/pt-br/snapshot-2026-10-06/versoes/estado-da-versao/'}>{appRelease ? `Astra ${appRelease}` : development ? 'Astra atual · C# · revisão U07' : 'Astra atual · C# · 06 out. 2026'}</a><span>{labels[entry.data.status]}</span>{entry.data.reviewedAt === '2026-10-07' && <span>Guia revisado · 07 out. 2026</span>}</div>}
   {entry.data.description && <p class="astra-description">{entry.data.description}</p>}
 </>}

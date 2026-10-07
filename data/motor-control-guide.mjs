@@ -3,7 +3,7 @@ export const motorControlGuide = {
   title: 'Posse de controle: UI, teclado, gamepad, script e IA',
   description: 'Configure quem dirige um motor, troque a fonte em Play e inspecione a intenção realmente consumida.',
   body: `:::caution[Revisão de desenvolvimento]
-Esta capacidade pertence à revisão U07 de 07/10/2026. O APK público da página Download está na prévia 0.2.1 de 07/10/2026, baseada em 09bd7349 e não contém esta ampliação. O catálogo completo de 06/10 mantém seu próprio snapshot; esta página documenta somente o novo contrato de controle.
+Esta capacidade pertence à revisão U07 de 07/10/2026. O APK público da página Download está na prévia 0.2.1 de 07/10/2026, baseada em 09bd7349 e não contém esta ampliação. O catálogo completo de 06/10 mantém seu próprio snapshot; esta página documenta posse, movimento medido, animação e a câmera do laboratório. A revisão 0.2.2 de desenvolvimento foi instalada no aparelho de aceite, mas ainda não substitui o arquivo público de Download.
 :::
 
 ## O que a posse controla
@@ -20,7 +20,7 @@ IA aqui é uma origem para comandos emitidos pelo seu Behavior. Esta entrega nã
 4. Configure as ações de movimento e salto no mapa Input do projeto. Teclado e gamepad precisam de vínculos reais nessas ações; selecionar uma fonte não cria vínculos automaticamente.
 5. Para um joystick autorado, atribua **Jogador / receptor** no Canvas ao objeto com motor. A aparência do objeto e a aparência do joystick são independentes da posse.
 
-O destino padrão de teclado/gamepad segue o motor ancestral da câmera ativa, depois o motor do alvo de Camera Follow. Sem esses vínculos, usa o motor da seleção ou de seu ancestral. Trocar o alvo libera os canais de hardware do destinatário anterior. Cada Canvas com receptor explícito continua controlando seu próprio motor pela origem UI.
+O destino padrão de teclado/gamepad segue o motor ancestral do alvo da câmera virtual efetivamente ao vivo no Cérebro. Sem esse vínculo, segue o motor ancestral da câmera ativa, depois o alvo de Camera Follow e a seleção. Trocar o alvo libera os canais do destinatário anterior. Cada Canvas com receptor explícito continua controlando seu próprio motor pela origem UI.
 
 | Propriedade | Identificador | Padrão | Efeito |
 |---|---|---|---|
@@ -70,6 +70,7 @@ Scene.Log(ObjectId, $"Origem {state.Source}, intenção {state.Move}");
 | Submit(source, input, yawRadians, jump) | Script/IA somente; eixos finitos em [-1,1], yaw finito em radianos; jump é uma tentativa |
 | Release(source) | Libera Script/IA e seu salto pendente |
 | State | Source, Candidates, Focused, HasMeasuredStep, JumpAttempt, Move, YawRadians e Priority |
+| MotionState | HasMeasuredStep, Grounded, Velocity, GroundVelocity, GroundNormal, GroundPoint e SupportObjectId, medidos pelo solver |
 
 Candidates é uma máscara: UI = 2, teclado = 4, gamepad = 8, Script = 16, IA = 32. Source = None no estado observado significa ausência de intenção ativa em Automático. HasMeasuredStep distingue observação de um passo consumido de um motor ainda sem passo. JumpAttempt não promete que houve salto. Focused informa a disponibilidade de entrada, inclusive suspensão pelo lifecycle.
 
@@ -81,21 +82,27 @@ Argumentos inválidos são recusados. Comandos para objeto inativo ou motor desa
 
 O diagnóstico físico contextual mostra a fonte selecionada, prioridade, candidatos, foco e vetor consumido pelo mesmo motor que altera a pose. Fora de Play, ele não inventa uma fonte medida.
 
-O cenário de autoria U07 alterna fontes, concorrência Script/IA e prioridades em runtime. Ele usa o corpo humano de teste CesiumMan, com 19 juntas e seu clipe importado, além do rig Fox. A colisão do humano é medida na malha e vinculada ao Body controlador; a velocidade medida pelo Body ajusta a reprodução do clipe na amostra. O piso usa textura PBR de concreto e o Ambiente usa atmosfera física e névoa. A leitura de posição/posse vem da API real, sem simular movimento na UI.
+O laboratório inicia em UI exclusiva: soltar o joystick para o jogador sem a IA retomar a marcha. Os botões permitem alternar fontes, concorrência Script/IA e prioridades. O humanoide de teste do Godot TPS Demo tem 145 juntas e oito clipes importados; Fox permanece um segundo rig. Piso PBR e atmosfera física são recursos editáveis.
 
-Esses recursos reutilizam importação, skin, animação, materiais e Ambiente existentes. A amostra não encerra o bloco U08: root motion, retargeting e integração universal de estados de locomoção/aparência permanecem trabalho separado. A forma de colisão é medida na pose autoral; não acompanha cada osso a cada quadro.
+MotorAnimationDriver usa MotionState do motor: repouso com clipe próprio, mistura Walk/Run com fase sincronizada, impulso, subida, ápice, queda e aterrissagem. Apoio físico decide chão/ar; velocidade relativa ao suporte decide cadência. Histerese evita alternar repouso/marcha por ruído. A amostra calibra ciclos Walk = 1,75 m e Run = 2,666667 m na fonte original; nomes de clipes, passadas, velocidades e fade são parâmetros tipados do controlador.
+
+A derivação remove o track dedicado de root motion, pois o Body move o ator por forças. Não congela Walk para produzir repouso nem anima caminhada no ar. Alterar Time/Speed/WrapMode de AnimationState preserva uma transição em andamento. O Motor mantém aceleração/frenagem reais e seu controle aéreo é .85 no laboratório, editável no Inspector.
+
+Esses recursos usam importação, skin, misturador, física e Ambiente existentes. Não encerram todo U08: IK de pés, root motion em runtime, retargeting e editor visual universal de blend trees continuam separados. A forma de colisão é medida na malha autoral e vinculada ao Body; não acompanha cada osso por quadro. Cadência calibrada reduz deslizamento, mas não promete contato perfeito dos pés em terreno irregular.
 
 ## Terceira pessoa no laboratório
 
 O Canvas usa Espaço de movimento = Câmera e referencia a câmera de Play. Avançar no joystick segue a orientação horizontal da câmera; girar a vista muda esse referencial.
 
-Em Acompanhar alvo / CameraFollow, **Orbitar alvo** gira o deslocamento pela orientação em mundo da câmera, e **Altura do pivô** define o ponto observado no eixo Y do alvo. CameraLook controla yaw/pitch; CameraFollow posiciona a câmera depois da física. A amostra usa deslocamento (0, 0, -5), pivô 1,1 m e amortecimento zero para manter o personagem enquadrado ao arrastar. Esses valores são propriedades reais, editáveis, persistidas e acessíveis pela fachada C# CameraFollow.
+O laboratório usa **Câmera virtual orbital + Cérebro**. CameraTarget é um filho do Body a 1,3 m de altura; órbita de 5 m, pitch entre -65° e 70° e raio de câmera .25 m. Evitar obstáculos consulta a física por varredura de esfera, ignora o Body do alvo, contrai imediatamente diante do chão/parede e libera com amortecimento .2 s. Distância mínima .1 m e plano próximo .05 m são propriedades editáveis e persistidas.
+
+O gesto escopado do Canvas soma-se ao olhar global e chega à câmera real com Cérebro, sem CameraLook escrever uma segunda pose. A órbita é independente da rotação do corpo. No pitch extremo contra o piso, retrair pode recortar o ator. Colisão requer colliders e filtros adequados; não protege contra geometria sem forma física, sensores ou toda configuração de spawn penetrado.
 
 O Body do humano bloqueia rotação X/Z e libera Y. O Behavior calcula a direção em mundo da intenção vencedora e controla somente a velocidade angular Y do solver, com ganho 12 e limite de 8 rad/s. Ele preserva a velocidade linear e a autoridade física: o corpo, sua colisão e o esqueleto giram juntos. No repouso, cancela o giro comandado.
 
 CameraFollow altera somente a posição e preserva os ângulos locais da câmera, inclusive em uma volta completa. Isso evita inverter pitch/roll ao cruzar os polos da representação Euler.
 
-O componente Braço de mola existe separadamente na engine. Este laboratório usa CameraFollow e não configura esse componente: sua órbita, sozinha, não garante impedir atravessamento da câmera em ambientes fechados.
+CameraFollow continua disponível para outras cenas. Sua órbita não consulta colisão; use a câmera virtual com Evitar obstáculos ou o Braço de mola quando precisar de retração física. O laboratório agora usa a câmera virtual/Cérebro.
 
 ## Arquivos e compatibilidade
 
@@ -103,13 +110,21 @@ O payload de Personagem passa a 5; o de Motor dinâmico passa a 3; CameraFollow 
 
 ## Validação desta revisão
 
-O contrato passou por oito cenários nativos direcionados, 117 cenários de regressão do editor e compilação do Behavior pelo ProjectCompiler real. Os geradores conferiram 56 tipos em dez famílias, 423 declarações de propriedades e 846 acessores; esses números são contratos gerados, não uma declaração de paridade da engine.
+O contrato passou por doze cenários nativos direcionados, 121 cenários de regressão do editor e compilação do Behavior pelo ProjectCompiler real. Os geradores conferiram 56 tipos em dez famílias, 423 declarações de propriedades e 846 acessores; esses números são contratos gerados, não uma declaração de paridade da engine.
 
 No POCO F7 com Android 16, uma aplicação de validação separada executou o laboratório: UI exclusiva, IA com prioridade 5, Script com 20, IA com 50, liberação do Script, pausa/retomada e retorno à IA após soltar o joystick. Alterar Fonte no Inspector, salvar, desfazer, refazer e reabrir após encerrar o processo preservou a política; os arquivos retirados do aparelho foram lidos pelo serializer nativo.
 
-A gravação final de órbita e caminhada teve todos os seus 200 quadros decodificados e inspecionados, sem amostragem. A câmera cruzou 90° sem inverter; o corpo girou até aproximadamente -108° e caminhou na direção da câmera. Isso comprova esse gesto nesta revisão, não desempenho sustentado, comportamento em toda cena ou toda combinação de dispositivos. Gamepad foi validado no host, incluindo desconexão; não houve gamepad físico conectado ao Android.
+A correção de movimento teve **527 quadros** inspecionados sem amostragem: 300 de locomoção em 38 páginas e 227 de colisão/orbita em 29 páginas. Foram observados acelerar, saltar andando, mudar direção no ar, soltar, aterrissar, voltar a repouso e saltar parado. Estados Jump/Rise/Apex/Fall substituíram a caminhada aérea; Idle retomou sem congelar Walk. Na órbita desejada contra o piso, a câmera retraiu, mantendo-se fora do chão. O ângulo extremo recorta o personagem; composição automática e fade de oclusores não estão implementados.
 
-O APK de validação tem SHA-256 d689f2095633082223b3a5341ab38c49d8c824c78b180f465654bbd39a368e0d. A instalação e o pacote no aparelho têm o mesmo hash. Esse pacote não substitui a prévia pública 0.2.1 de 07/10/2026.
+A checagem de piso no host percorreu 72 ângulos; o quadro a quadro comprova os gestos dessas capturas, não toda cena/dispositivo ou desempenho sustentado. Gamepad foi validado no host, incluindo desconexão; sem gamepad físico no Android.
+
+Play aguarda publicação Current dos scripts, inclusive na primeira abertura. Catálogo Empty não é assembly pronto. O caso de partida prematura foi reproduzido e corrigido; os gestos de aceite só começaram depois de READY da abertura atual.
+
+O APK principal 0.2.2-preview.20261007 foi atualizado no aparelho sem desinstalação, usando a chave de distribuição existente. Contém somente U07Laboratorio, com 21 arquivos exatos, incluindo metadata restaurada como .astra. A migração aposentou os dez defaults reconhecidos por nome/descriptor/layout histórico; manteve os dois projetos do usuário, com hashes iguais antes/depois. Salvar, encerrar, reabrir e executar Play foram conferidos no principal; o arquivo retirado foi lido pelo serializer nativo. ProjectStore passou 7/7 casos de migração/preservação/reabertura.
+
+A validação separada tem SHA-256 1ab86324c41ed7cb1a632f4bfa52ebba5d2d961b91eab317754cd4ba063236a0; o principal local instalado tem 61f7d8d85581dc090ad906e865b2e96c4ff974bf14cab4b5202806c0a2075936. Os hashes instalados coincidem e a biblioteca nativa é idêntica. O Download público permanece na prévia 0.2.1; esta documentação não anuncia uma nova release pública do APK.
+
+Uma regressão integrada inicialmente recusou uma publicação de dependências de prefab (120/121); o caso isolado passou 1/1 e a repetição integrada 121/121. A causa ambiental da recusa transitória não foi estabelecida. Não se apresenta esse primeiro resultado como aprovação.
 
 ## Referências de capacidade
 
