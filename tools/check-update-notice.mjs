@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import { NOTICE_KEY, openNoticeMemory, noticeEntries, nextNotice } from '../src/components/update-notice-memory.mjs';
+
+const store = () => {
+  const values = new Map();
+  return {getItem:key => values.get(key) ?? null,setItem:(key,value) => values.set(key,value)};
+};
+const entry = id => ({id,title:'Nova atualização',summary:'O que mudou',scopes:['docs'],availability:'documentation'});
+const old = [entry('update-old-2'),entry('update-old-1')];
+const local = store();
+const memory = openNoticeMemory([() => local]);
+assert.equal(nextNotice(old,memory.read()).count,1,'First visit groups the existing history');
+assert.equal(memory.remember(old),true);
+assert.equal(nextNotice(old,openNoticeMemory([() => local]).read()),null,'Reload/navigation must not repeat');
+const fresh = [entry('update-new-2'),entry('update-new-1'),...old];
+assert.deepEqual(nextNotice(fresh,memory.read()),{entry:fresh[0],count:2},'New IDs, even on the same date/version, must notify');
+assert.equal(memory.remember(fresh),true);
+assert.equal(nextNotice(old,memory.read()),null,'Rollback must not repeat an older update');
+const otherTab = openNoticeMemory([() => local]);
+assert.equal(nextNotice(fresh,otherTab.read()),null,'Tabs share the acknowledgement');
+const session = store();
+const blocked = () => {throw Error('Storage blocked');};
+const fallback = openNoticeMemory([blocked,() => session]);
+assert.equal(fallback.remember(fresh),true);
+assert.equal(nextNotice(fresh,openNoticeMemory([blocked,() => session]).read()),null);
+assert.equal(openNoticeMemory([blocked,blocked]),null,'No persistence means no repeating popup');
+local.setItem(NOTICE_KEY,'broken JSON');
+assert.deepEqual(openNoticeMemory([() => local]).read(),[],'Corrupt browser state recovers');
+assert.deepEqual(noticeEntries([{...entry('../invalid'),id:'../invalid'},entry('update-valid-1')]),[entry('update-valid-1')]);
+console.log('Update notice: first visit, reload, new batch, rollback, shared tabs, blocked storage and corrupt state verified.');

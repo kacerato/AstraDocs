@@ -50,6 +50,7 @@ export function contentFiles() {
   const files = [];
   function walk(dir) { for (const item of fs.readdirSync(dir, { withFileTypes: true })) { const f = `${dir}/${item.name}`; if (item.isDirectory()) walk(f); else if (!f.endsWith('.gz') && !/(updates|update-coverage|generated-files|pages|api-index|coverage)\.json$/.test(f)) files.push(f); } }
   walk('data'); walk('src/components'); walk('src/styles'); walk('public');
+  files.push('tools/check-update-notice.mjs');
   files.push('astro.config.mjs', 'package.json', 'package-lock.json', 'tsconfig.json', 'vercel.json', 'src/content.config.ts', 'src/content/docs/404.md', 'tools/generate-content.mjs', 'tools/export-docs.mjs', 'tools/updates.mjs', 'tools/check-release.mjs', 'tools/pack-heart-example.mjs', 'tools/prepare-deploy.mjs');
   return files.sort();
 }

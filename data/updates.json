@@ -4,6 +4,32 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-orbit-aviso-atualizacoes",
+      "date": "2026-10-07",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Orbit avisa quando chegam novidades",
+      "summary": "Um aviso animado apresenta a nota mais recente e abre o histórico. Cada lote aparece uma vez por navegador; novas publicações permitem um novo aviso.",
+      "version": "Docs · revisão 07/10/2026",
+      "availability": "documentation",
+      "details": [
+        "Orbit Success acompanha um aviso discreto com título, disponibilidade, Ver novidades e fechar. App e docs usam o mesmo histórico; não há contador manual nem aviso por simples recompilação.",
+        "A primeira visita mostra a novidade mais recente. Recarregar, navegar e retornar não repetem os IDs já apresentados; abrir Atualizações registra o lote sem exibir um aviso.",
+        "Abas compartilham a lembrança local. Se o armazenamento persistente estiver bloqueado, usa-se a sessão; se não houver armazenamento disponível, o aviso fica oculto para evitar repetição contínua. Limpar dados do site ou trocar de navegador reinicia a lembrança.",
+        "O aviso não captura o foco nem solicita permissão. Movimento reduzido desativa a animação. Novas notas podem ser encontradas ao retornar à aba ou na consulta a cada cinco minutos com a página visível."
+      ],
+      "validation": "Regra de primeira visita, recarga, lote novo, rollback, abas e armazenamento bloqueado verificada; build, links, controles e apresentação responsiva revisados no navegador.",
+      "migration": "Não altera o APK nem os projetos. Uma chave de armazenamento local guarda somente IDs públicos de atualizações, sem login, dados pessoais ou envio ao servidor.",
+      "links": [
+        {
+          "label": "Histórico de novidades",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-apk-preview",
       "date": "2026-10-07",
       "scopes": [
