@@ -4,6 +4,38 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-u07-posse-controle",
+      "date": "2026-10-07",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Posse de controle entre UI, teclado, gamepad, script e IA",
+      "summary": "Os dois motores permitem escolher uma fonte exclusiva ou arbitrar prioridades por origem, com estado observado e cancelamento por foco e lifecycle.",
+      "version": "U07 · revisão de desenvolvimento 07/10/2026",
+      "availability": "development",
+      "details": [
+        "Personagem e Motor dinâmico compartilham cinco canais reais de intenção; fonte e prioridades são autoráveis, persistidas e consumidas no próximo passo físico.",
+        "A API C# MotorControl permite comandos Script/IA, liberação de canal, troca de política e consulta da origem medida, preservando malha, colisão e autoridade física.",
+        "Cancelamento evita intenções antigas após perda de foco, pausa, desconexão, retarget de Canvas ou remoção/substituição de motor.",
+        "O laboratório editável usa humano com esqueleto e clipe real, rig Fox, piso PBR e atmosfera física. CameraFollow recebe órbita autorável; o Body gira pelo solver na direção da intenção selecionada, com movimento UI relativo à câmera.",
+        "O guia possui snapshot próprio de 07/10/2026. O catálogo de 06/10 e o APK público continuam com seus contratos e disponibilidade anteriores."
+      ],
+      "validation": "8/8 cenários direcionados, 117/117 regressões do editor e compilação pelo ProjectCompiler real. No POCO F7/Android 16: arbitragem Script/IA/UI, prioridades, pausa/retomada, salvar/desfazer/refazer/reabertura fria e órbita/caminhada com análise dos 200 quadros. Gamepad e desconexão conferidos no host; gamepad físico e desempenho sustentado não medidos. APK de validação separado, sem substituir a prévia pública anterior.",
+      "migration": "Personagem passa ao payload 5 e Motor dinâmico ao 3. Formatos anteriores recebem Automático e prioridades padrão. Cenas novas exigem uma engine compatível com U07. CameraFollow passa ao payload 2; versão 1 mantém deslocamento em mundo sem órbita.",
+      "links": [
+        {
+          "label": "Configurar e usar posse de controle",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/posse-de-controle/"
+        },
+        {
+          "label": "APK público e disponibilidade",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-trilha-iniciantes",
       "date": "2026-10-07",
       "scopes": [

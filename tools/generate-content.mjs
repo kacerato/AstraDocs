@@ -8,6 +8,7 @@ import { componentGuide, propertyUsage, componentFamilies } from '../data/compon
 import { apiContext, memberGuide } from '../data/api-guides.mjs';
 import { roadmapPages } from '../data/roadmap-guides.mjs';
 import { updates, requireCoverage, markdown as updatesMarkdown } from './updates.mjs';
+import { motorControlGuide } from '../data/motor-control-guide.mjs';
 const root = path.resolve('src/content/docs');
 const version = 'snapshot-2026-10-06';
 const base = `pt-br/${version}`;
@@ -35,7 +36,7 @@ function write(route,title,description,body,options={}) {
   fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,source);
   generated.push(path.relative(root,file).replaceAll('\\','/'));
   const id=route.replace(/\/index$/,'');
-  manifest.push({id,title,description,version,kind:front.kind,status:front.status,reviewedAt:front.reviewedAt,runtimeVerified:false,platformEvidence:[],url:route==='index'?'/':`/${id}/`,markdown:`/markdown/${id}.md`,body:options.markdown||body});
+  manifest.push({id,title,description,version:front.version,kind:front.kind,status:front.status,reviewedAt:front.reviewedAt,runtimeVerified:front.runtimeVerified,platformEvidence:options.platformEvidence||[],url:route==='index'?'/':`/${id}/`,markdown:`/markdown/${id}.md`,body:options.markdown||body});
 }
 // Delete only files recorded by the previous generation, never authored content.
 const previous=fs.existsSync('data/generated-files.json')?readJson('data/generated-files.json'):[];
@@ -107,6 +108,7 @@ for(const kind of ['component','api']) {
   const records=isApi?api.types:components;
   write(route,title,isApi?'Encontre tipos, propriedades e métodos da API C# deste snapshot.':'Encontre o componente, entenda suas propriedades e componha sua cena.',`import Catalog from '../../../../../components/Catalog.astro';\n\n${isApi?`${api.types.length} tipos e ${api.types.reduce((n,t)=>n+t.members.length,0)} membros extraídos com Roslyn/MSBuild.`:`${components.length} registros e ${components.reduce((n,c)=>n+c.properties.length,0)} campos de componentes, com uso e caminho; mais 13 elementos de UI documentados separadamente.`}\n\n[Mapa de acesso](/${base}/editor/mapa-de-acesso/) · [Image / UiImage](/${base}/ui/image/) · [HUD de corações funcional](/${base}/ui/hud-coracoes/)\n\nOs registros abaixo são contratos de fonte. A validação funcional por plataforma permanece separada.\n\n<Catalog kind="${kind}" />`,{kind:'index',mdx:true,front:{tableOfContents:false,pagination:false},markdown:`# ${title}\n\nContratos de fonte; execução por plataforma não validada nesta publicação.\n\n[UI de jogo](/${base}/ui/elementos/) · [Image](/${base}/ui/image/) · [HUD de corações](/${base}/ui/hud-coracoes/)\n\n`+records.map(t=>`- [${isApi?t.fullName:t.name}](${isApi?apiPath(t):componentPath(t)})`).join('\n')});
 }
+write(motorControlGuide.route,motorControlGuide.title,motorControlGuide.description,motorControlGuide.body,{front:{version:'snapshot-2026-10-07',reviewedAt:'2026-10-07',runtimeVerified:true},platformEvidence:['host: 8 targeted scenarios, 117 editor regressions, real ProjectCompiler','Android 16 / POCO F7: source arbitration, authoring/save/undo/redo/cold reopen, all 200 recorded orbit/walk frames inspected','Physical Android gamepad and sustained performance not measured; public APK remains 2026-10-06']});
 fs.writeFileSync('data/generated-files.json',JSON.stringify(generated,null,2));
 fs.writeFileSync('data/pages.json',JSON.stringify(manifest,null,2));
 fs.writeFileSync('data/api-index.json',JSON.stringify(apiIndex,null,2));

@@ -31,6 +31,7 @@ export default defineConfig({
       { label: 'Início', link: '/' },
       { label: 'Baixar Astra', link: '/download/' },
       { label: 'Atualizações', link: '/atualizacoes/' },
+      { label: 'Posse de controle · U07', link: '/pt-br/snapshot-2026-10-07/sistemas/posse-de-controle/' },
       section('Comece aqui', 'comece'),
       section('Manual do editor', 'editor'),
       section('Conceitos', 'conceitos'),

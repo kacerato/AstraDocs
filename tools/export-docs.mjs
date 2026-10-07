@@ -13,14 +13,15 @@ json('releases/latest.json',read('data/release.json'));
 json('updates/feed.json',read('data/updates.json'));
 const full=[];
 for(const page of pages){
-  const text=`---\ntitle: ${JSON.stringify(page.title)}\nversion: ${version}\nengineGeneration: astra-current\nlanguage: C#\nstatus: ${page.status}\nreviewedAt: ${page.reviewedAt || '2026-10-06'}\nruntimeVerified: false\nplatformEvidence: []\nurl: ${site}${page.url}\n---\n\n# ${page.title}\n\n${page.description}\n\n${page.body}\n`;
+  const text=`---\ntitle: ${JSON.stringify(page.title)}\nversion: ${page.version || version}\nengineGeneration: astra-current\nlanguage: C#\nstatus: ${page.status}\nreviewedAt: ${page.reviewedAt || '2026-10-06'}\nruntimeVerified: ${page.runtimeVerified === true}\nplatformEvidence: ${JSON.stringify(page.platformEvidence || [])}\nurl: ${site}${page.url}\n---\n\n# ${page.title}\n\n${page.description}\n\n${page.body}\n`;
   write(page.markdown.slice(1),text);full.push(text);
 }
 json(`${version}/api-index.json`,read('data/api-index.json'));
 json(`${version}/component-index.json`,{version,engineGeneration:'astra-current',runtimeVerified:false,platformEvidence:[],coverage:'numeric-boolean-enum-object-reference descriptors with editorial access and usage',components:read('data/components.json').map(c=>({...c,guide:componentGuide(c),properties:c.properties.map(p=>({...p,usage:propertyUsage(c,p),url:`/pt-br/${version}/componentes/${c.typeId.replace(/[^a-z0-9]+/g,'-')}/#field-${p.id.replace(/[^a-z0-9]+/g,'-')}`}))}))});
 json(`${version}/roadmap.json`,read('data/roadmap.json'));
 json(`${version}/coverage.json`,read('data/coverage.json'));
-json(`${version}/markdown-index.json`,pages.map(({body,...p})=>p));
+for(const snapshot of new Set(pages.map(p=>p.version||version)))
+  json(`${snapshot}/markdown-index.json`,pages.filter(p=>(p.version||version)===snapshot).map(({body,...p})=>p));
 const exampleManifest=examples.map(e=>{
   const content=e.code+'\n';const url=`/examples/${e.id}/${e.filename}`;write(url.slice(1),content);
   const sha256=crypto.createHash('sha256').update(content).digest('hex');
