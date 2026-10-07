@@ -36,6 +36,122 @@
       ]
     },
     {
+      "id": "2026-10-07-camera-virtual-cerebro",
+      "date": "2026-10-07",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Câmera virtual e Cérebro de câmera",
+      "summary": "Câmeras virtuais disputam por prioridade e um Cérebro na câmera do jogo troca entre elas com transição, órbita controlada pelo toque, mira, desvio de paredes e tremor.",
+      "version": "Bloco G · revisão de desenvolvimento 07/10/2026 (commit 4081cad9 da engine)",
+      "availability": "development",
+      "details": [
+        "Câmera virtual: posição fixa, Seguir (eixos do mundo ou guinada do alvo) ou Órbita com ângulos, limites e controle pela ação Olhar; rotação fixa, olhar para o alvo ou rotação do alvo; amortecimentos; lente própria (campo vertical, meia altura, próximo, distante, inclinação).",
+        "Desoclusão aproxima a câmera quando um colisor bloqueia a linha até o alvo e volta à distância livre com amortecimento; tremor Perlin de rotação e posição; nenhuma correção altera a pose salva do objeto.",
+        "Cérebro de câmera (no objeto com Câmera): mostra a câmera virtual ativa de maior prioridade; transições Corte, Suave, Linear, Entrada/Saída suave e brusca; transição interrompida parte do quadro mostrado; horizonte sem rolagem no meio da mistura; opção de ignorar a escala de tempo.",
+        "Scripts C#: VirtualCamera.Prioritize/Snap/IsLive e CameraBrain.LiveCamera/Blending, eventos OnCameraActivated, OnCameraCut, OnBlendFinished, OnActivated e OnDeactivated; Conexões de evento recebem os mesmos eventos e os métodos Priorizar e Encaixar.",
+        "Editor: Criar → Básicos → Câmera virtual (órbita no objeto selecionado e Cérebro na câmera da cena no mesmo passo de desfazer), cartão de estado no Inspector e anel da órbita na viewport.",
+        "Referência estudada: Cinemachine 3.1 (Unity 6000.0). Adaptações e pendências, como órbita Three Ring, Blend Hint e canais, ficam declaradas na documentação interna do bloco."
+      ],
+      "validation": "Engine: 10 testes nativos novos e suíte nativa 1441/1445 (4 falhas anteriores conhecidas, sem relação); suíte C# 521/0; build Android arm64. Aparelho: cena de aceite com órbita parada por parede real, troca por prioridade com eventos e lente de 45° e retorno, aprovada num pacote de validação instalado ao lado do app. Não está no APK público 0.2.1-preview.20261007.",
+      "migration": "Tipos novos (astra.camera.virtual v1 e astra.camera.brain v1); cenas existentes não mudam. Cenas que usam esses tipos exigem uma engine com o bloco G.",
+      "links": [
+        {
+          "label": "APK público e disponibilidade",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-retomada-movimento-limite",
+      "date": "2026-10-07",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Corpo recriado respeita o novo limite de velocidade",
+      "summary": "Ao reconstruir um corpo em Play, a velocidade restaurada passa pelo limite máximo do corpo novo em vez de abortar a física.",
+      "version": "Revisão de desenvolvimento 07/10/2026 (commit 09bd7349 da engine)",
+      "availability": "development",
+      "details": [
+        "Editar ao vivo a velocidade linear ou angular máxima de um corpo que se move não interrompe mais o Play: o movimento retomado é limitado ao novo valor.",
+        "Junto desta revisão, o app em desenvolvimento deixou de trazer uma aba interna de atualizações; as notas continuam somente nesta página do site."
+      ],
+      "validation": "Teste nativo de 50 corpos que antes abortava passa; suíte nativa sem regressões. Não está no APK público 0.2.1-preview.20261007.",
+      "migration": "Nenhuma.",
+      "links": []
+    },
+    {
+      "id": "2026-10-07-orbit-aviso-atualizacoes",
+      "date": "2026-10-07",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Orbit avisa quando chegam novidades",
+      "summary": "Um aviso animado apresenta a nota mais recente e abre o histórico. Cada lote aparece uma vez por navegador; novas publicações permitem um novo aviso.",
+      "version": "Docs · revisão 07/10/2026",
+      "availability": "documentation",
+      "details": [
+        "Orbit Success acompanha um aviso discreto com título, disponibilidade, Ver novidades e fechar. App e docs usam o mesmo histórico; não há contador manual nem aviso por simples recompilação.",
+        "A primeira visita mostra a novidade mais recente. Recarregar, navegar e retornar não repetem os IDs já apresentados; abrir Atualizações registra o lote sem exibir um aviso.",
+        "Abas compartilham a lembrança local. Se o armazenamento persistente estiver bloqueado, usa-se a sessão; se não houver armazenamento disponível, o aviso fica oculto para evitar repetição contínua. Limpar dados do site ou trocar de navegador reinicia a lembrança.",
+        "O aviso não captura o foco nem solicita permissão. Movimento reduzido desativa a animação. Novas notas podem ser encontradas ao retornar à aba ou na consulta a cada cinco minutos com a página visível."
+      ],
+      "validation": "Regra de primeira visita, recarga, lote novo, rollback, abas e armazenamento bloqueado verificada; build, links, controles e apresentação responsiva revisados no navegador.",
+      "migration": "Não altera o APK nem os projetos. Uma chave de armazenamento local guarda somente IDs públicos de atualizações, sem login, dados pessoais ou envio ao servidor.",
+      "links": [
+        {
+          "label": "Histórico de novidades",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-apk-preview",
+      "date": "2026-10-07",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "Nova prévia Android: tweens, consultas e autoria física",
+      "summary": "APK da main em 09bd7349, com sequência de tweens, consultas 3D e autoria de colisões. Um guia explica onde encontrar e como começar a usar as mudanças.",
+      "version": "0.2.1-preview.20261007 · código 6",
+      "availability": "distributed",
+      "details": [
+        "Sequências persistentes de tweens permitem passos sequenciais e paralelos; PropertyTween interpola campos numéricos compatíveis. O guia explica alvos, duração, espera e conflitos de escrita.",
+        "Raio, varredura de forma e braço de mola entram no fluxo de consultas físicas 3D. Há caminhos no editor, exercícios iniciais e limites dos resultados.",
+        "Materiais físicos compartilhados em .physmat, combinação por par e ajustes por colisor; sensores distinguem monitorar de ser detectável. Juntas possuem limites de ruptura e personagens expõem colisões.",
+        "Autoria física inclui decomposição limitada, revisão antes de aplicar, receitas e preservação de momento na reconstrução. Centro de massa, inércia e interpolação recebem explicação de uso.",
+        "Download foi atualizado com tamanho, SHA-256, manifesto e a mesma assinatura da primeira prévia pública. Android 8.0+, ARM64 e Vulkan 1.1; dispositivos com páginas de memória de 16 KB continuam sem suporte.",
+        "O suplemento de 07/10 descreve as mudanças desta distribuição. O catálogo de API continua identificado como snapshot de 06/10; mudanças locais posteriores não são declaradas presentes neste APK."
+      ],
+      "validation": "Build Release, assinatura, versão, conteúdo do pacote, alinhamento e integridade das fontes conferidos. Esta publicação não executa uma nova campanha de instalação ou Play em aparelho físico.",
+      "migration": "Faça uma cópia externa dos projetos. A assinatura é a mesma da prévia pública anterior, com versionCode 6. Projetos com novos componentes podem não reabrir em versões antigas; instalações de desenvolvimento com outra chave podem exigir reinstalação.",
+      "links": [
+        {
+          "label": "Baixar e atualizar",
+          "url": "/download/"
+        },
+        {
+          "label": "Mudanças e primeiros usos",
+          "url": "/pt-br/snapshot-2026-10-06/versoes/preview-2026-10-07/"
+        },
+        {
+          "label": "Trilha para iniciantes",
+          "url": "/pt-br/snapshot-2026-10-06/comece/indice/"
+        },
+        {
+          "label": "Arquivos da distribuição",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.07"
+        }
+      ],
+      "releaseVersion": "0.2.1-preview.20261007",
+      "versionCode": 6
+    },
+    {
       "id": "2026-10-07-trilha-iniciantes",
       "date": "2026-10-07",
       "scopes": [

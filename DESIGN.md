@@ -90,6 +90,33 @@ Foco visível de alto contraste com offset; hover discreto e equivalente por foc
 
 O protótipo entregue permite trocar tema, abrir menu mobile, filtrar o catálogo, abrir busca, copiar código e navegar entre páginas de demonstração. O conteúdo do catálogo é um inventário de fonte, com esse limite visível.
 
+## Aviso de novidades — revisão de 07/10/2026
+
+Orbit Success chega com um salto curto (1,1 s), ao lado de um balão de papel com
+contorno de tinta, título da nota, disponibilidade e acesso ao histórico. O campo
+claro atrás do personagem preserva seus contornos no tema escuro, sem alterar a
+imagem original. A composição ocupa o canto inferior direito; no celular fica
+dentro das margens e da área segura. Fechar e abrir novidades têm alvos de 44 px.
+O aviso não captura foco, não toca som, não pede permissões e não desaparece por
+tempo enquanto a pessoa tenta ler. Movimento reduzido conserva a mesma informação
+sem animação. Orbit não representa suporte humano nem uma conversa automatizada.
+
+IDs do histórico definem novidade, incluindo app e docs; uma recompilação sem nota
+nova não dispara o aviso. A primeira visita mostra apenas a nota mais recente.
+Ao exibir um lote, seus IDs ficam lembrados no navegador; fechar, recarregar,
+navegar ou voltar no histórico não repetem esse lote. Na página Atualizações,
+o próprio acesso registra o lote sem sobrepor um aviso. Abas compartilham a
+lembrança local; se esse armazenamento falhar, usa-se a sessão e, se ambos forem
+bloqueados, mantém-se apenas a navegação normal. Limpar os dados do site ou trocar
+de navegador reinicia a lembrança. Em uma aba aberta, foco/retorno e uma consulta
+a cada cinco minutos visíveis permitem descobrir notas novas sem recarregar.
+
+Referências: [W3C C39](https://www.w3.org/WAI/WCAG22/Techniques/css/C39.html), para
+respeitar movimento reduzido; [MDN storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event),
+para compartilhar a lembrança entre abas. A informação principal permanece no
+histórico, acessível mesmo sem JavaScript. A integração é um componente no rodapé
+compartilhado e pode ser removida sem mudar rotas ou conteúdo dos guias.
+
 ## Assets e desempenho
 
 Logo no cabeçalho usa imagem original otimizada em WebP, com PNG de origem preservado. Ícones vetoriais simples com stroke consistente; versões PNG transparentes de 48 e 96 px para integrações que exigem raster. Padrões são SVG leves, com PNG de exportação. Nenhum texto de interface é achatado em PNG. Imagens sociais são exceção, pois são artefatos de compartilhamento.

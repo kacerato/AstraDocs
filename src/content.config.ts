@@ -9,5 +9,6 @@ export const collections = {
     status: z.enum(['source-reviewed','semantic-reference','editorial','partial']).default('source-reviewed'),
     reviewedAt: z.string().default('2026-10-06'),
     runtimeVerified: z.boolean().default(false),
+    appRelease: z.string().optional(),
   }) }) }),
 };

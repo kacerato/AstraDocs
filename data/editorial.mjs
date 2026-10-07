@@ -4,6 +4,7 @@ import { editorPages } from './editor-guides.mjs';
 import { conceptPages } from './concept-guides.mjs';
 import { systemPages } from './system-guides.mjs';
 import { beginnerPages } from './beginner-guides.mjs';
+import { releasePages } from './release-guides.mjs';
 import { workflowExamples } from './workflow-examples.mjs';
 import { api as typeLink } from './workflow-guide-tools.mjs';
 export const pages=[];
@@ -24,6 +25,7 @@ public sealed class RotateObject : Behavior
     }
 }`;
 pages.push(...beginnerPages);
+pages.push(...releasePages);
 
 for (const page of [...editorPages, ...conceptPages, ...systemPages]) add(page.route, page.title, page.description, page.body, page.options);
 

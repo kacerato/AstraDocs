@@ -3,7 +3,7 @@ export const motorControlGuide = {
   title: 'Posse de controle: UI, teclado, gamepad, script e IA',
   description: 'Configure quem dirige um motor, troque a fonte em Play e inspecione a intenção realmente consumida.',
   body: `:::caution[Revisão de desenvolvimento]
-Esta capacidade pertence à revisão U07 de 07/10/2026. O APK público da página Download continua na prévia de 06/10/2026 e não contém esta ampliação. O catálogo completo de 06/10 mantém seu próprio snapshot; esta página documenta somente o novo contrato de controle.
+Esta capacidade pertence à revisão U07 de 07/10/2026. O APK público da página Download está na prévia 0.2.1 de 07/10/2026, baseada em 09bd7349 e não contém esta ampliação. O catálogo completo de 06/10 mantém seu próprio snapshot; esta página documenta somente o novo contrato de controle.
 :::
 
 ## O que a posse controla
@@ -109,7 +109,7 @@ No POCO F7 com Android 16, uma aplicação de validação separada executou o la
 
 A gravação final de órbita e caminhada teve todos os seus 200 quadros decodificados e inspecionados, sem amostragem. A câmera cruzou 90° sem inverter; o corpo girou até aproximadamente -108° e caminhou na direção da câmera. Isso comprova esse gesto nesta revisão, não desempenho sustentado, comportamento em toda cena ou toda combinação de dispositivos. Gamepad foi validado no host, incluindo desconexão; não houve gamepad físico conectado ao Android.
 
-O APK de validação tem SHA-256 d689f2095633082223b3a5341ab38c49d8c824c78b180f465654bbd39a368e0d. A instalação e o pacote no aparelho têm o mesmo hash. Esse pacote não substitui o APK público de 06/10/2026.
+O APK de validação tem SHA-256 d689f2095633082223b3a5341ab38c49d8c824c78b180f465654bbd39a368e0d. A instalação e o pacote no aparelho têm o mesmo hash. Esse pacote não substitui a prévia pública 0.2.1 de 07/10/2026.
 
 ## Referências de capacidade
 

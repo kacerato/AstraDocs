@@ -43,6 +43,13 @@ Um APK exige também uma nota App/Publicação/APK publicado com `releaseVersion
 `versionCode` e data iguais ao manifesto. Uma revisão local da engine deve ser
 marcada como App em desenvolvimento até a distribuição efetiva. A aba é do site.
 
+O aviso do Orbit em `src/components/UpdateNotice.astro` usa os IDs desse mesmo
+histórico, sem contador manual de versão. Preserve IDs já publicados: recompilar
+não deve notificar novamente. Lotes exibidos são lembrados por navegador; acesso
+ao histórico também registra os IDs. Verifique a primeira visita, recarga,
+navegação, nota nova, armazenamento indisponível e movimento reduzido ao revisar
+o aviso. `npm run check:notice` protege a regra de lembrança e roda no build.
+
 A página `/download/` usa `data/release.json`, também exportado em
 `/releases/latest.json`. Publique o APK assinado, checksum e manifesto nos
 assets de uma Release pública antes de apontar a página para uma nova versão.

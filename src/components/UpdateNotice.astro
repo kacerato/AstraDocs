@@ -1,0 +1,147 @@
+---
+import { updates } from '../../tools/updates.mjs';
+const entries = updates.entries.map(({id,title,summary,scopes,availability}) => ({id,title,summary,scopes,availability}));
+---
+<span class="notice-announcement" id="astra-update-announcement" role="status" aria-live="polite" aria-atomic="true"></span>
+<astra-update-notice hidden data-entries={JSON.stringify(entries)}>
+  <aside class="orbit-notice" aria-label="Novidades da Astra">
+    <div class="orbit-arrival" aria-hidden="true"><img data-orbit-image width="112" height="118" alt="" decoding="async" /></div>
+    <div class="orbit-message">
+      <button type="button" class="notice-close" aria-label="Fechar aviso de atualização"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+      <p class="notice-intro">Orbit trouxe novidades <span data-notice-scope></span></p>
+      <h2 data-notice-title></h2>
+      <p class="notice-summary" data-notice-summary></p>
+      <a class="notice-link" href="/atualizacoes/">Ver novidades <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg></a>
+    </div>
+  </aside>
+</astra-update-notice>
+<script>
+  import { NOTICE_KEY, openNoticeMemory, noticeEntries, nextNotice } from './update-notice-memory.mjs';
+
+  class UpdateNotice extends HTMLElement {
+    dispose?: () => void;
+    connectedCallback() {
+      if (this.dispose) return;
+      const memory = openNoticeMemory([() => window.localStorage, () => window.sessionStorage]);
+      if (!memory) return;
+      let entries = noticeEntries(JSON.parse(this.dataset.entries || '[]'));
+      let shownId: string | undefined;
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      let request: AbortController | undefined;
+      let lastCheck = 0;
+      const title = this.querySelector<HTMLElement>('[data-notice-title]')!;
+      const summary = this.querySelector<HTMLElement>('[data-notice-summary]')!;
+      const scope = this.querySelector<HTMLElement>('[data-notice-scope]')!;
+      const link = this.querySelector<HTMLAnchorElement>('.notice-link')!;
+      const image = this.querySelector<HTMLImageElement>('[data-orbit-image]')!;
+      const live = document.getElementById('astra-update-announcement')!;
+      const inHistory = () => /^\/atualizacoes\/?$/.test(location.pathname);
+      const busy = () => !!document.querySelector('dialog[open], .astra-home-menu[open]') || document.documentElement.hasAttribute('data-mobile-menu-expanded');
+      const close = () => {
+        if (this.contains(document.activeElement)) document.querySelector<HTMLAnchorElement>('.astra-brand')?.focus({preventScroll:true});
+        this.hidden = true;
+        live.textContent = '';
+      };
+      const show = () => {
+        if (document.visibilityState !== 'visible') return;
+        // Reading the history itself acknowledges the current batch.
+        if (inHistory()) { memory.remember(entries); close(); return; }
+        if (busy()) { timer = setTimeout(show, 2000); return; }
+        // Re-read immediately before display: another tab may have seen it.
+        const pending = nextNotice(entries, memory.read());
+        if (!pending || !memory.remember(entries)) return;
+        const {entry, count} = pending;
+        shownId = entry.id;
+        title.textContent = entry.title;
+        summary.textContent = entry.summary;
+        const label = entry.availability === 'distributed' ? 'APK publicado' : entry.availability === 'development' ? 'Em desenvolvimento' : 'Docs';
+        scope.textContent = label;
+        link.href = `/atualizacoes/#${entry.id}`;
+        link.firstChild!.textContent = count > 1 ? `Ver ${count} novidades ` : 'Ver novidades ';
+        image.src = '/assets/mascot/orbit-success-256.webp';
+        this.hidden = false;
+        if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+          this.querySelector('.orbit-message')!.animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'ease-out'});
+          this.querySelector('.orbit-arrival')!.animate([
+            {opacity:0,transform:'translateY(22px) rotate(-8deg)',offset:0},
+            {opacity:1,transform:'translateY(-8px) rotate(5deg)',offset:.35},
+            {opacity:1,transform:'translateY(0) rotate(-3deg)',offset:.65},
+            {opacity:1,transform:'translateY(0) rotate(0)',offset:1},
+          ],{duration:1100,easing:'ease-out'});
+        }
+        // Live region exists before the notice, with no automatic focus change.
+        live.textContent = `Orbit trouxe novidades. ${entry.title}. ${label}.`;
+      };
+      const schedule = () => {
+        clearTimeout(timer);
+        timer = setTimeout(show, 1600);
+      };
+      const refresh = async () => {
+        if (document.visibilityState !== 'visible' || request || Date.now() - lastCheck < 30_000) return;
+        lastCheck = Date.now();
+        request = new AbortController();
+        const timeout = setTimeout(() => request?.abort(), 10_000);
+        try {
+          const response = await fetch('/updates/feed.json', {cache:'no-store', signal:request.signal});
+          if (!response.ok) return;
+          const fresh = noticeEntries((await response.json()).entries);
+          if (fresh.length && this.isConnected) { entries = fresh; schedule(); }
+        } catch { /* Offline: keep the feed embedded in the page. */ }
+        finally { clearTimeout(timeout); request = undefined; }
+      };
+      const visible = () => { if (document.visibilityState === 'visible') { schedule(); void refresh(); } };
+      const leave = () => { this.hidden = true; live.textContent = ''; clearTimeout(timer); request?.abort(); };
+      const resume = (event: PageTransitionEvent) => { if (event.persisted) { leave(); schedule(); void refresh(); } };
+      const storage = (event: StorageEvent) => {
+        if (event.key === NOTICE_KEY && shownId && memory.read()?.includes(shownId)) close();
+      };
+      const key = (event: KeyboardEvent) => { if (event.key === 'Escape' && !this.hidden) { close(); event.stopPropagation(); } };
+      this.querySelector('.notice-close')!.addEventListener('click', close);
+      this.addEventListener('keydown', key);
+      window.addEventListener('storage', storage);
+      window.addEventListener('focus', refresh);
+      window.addEventListener('pagehide', leave);
+      window.addEventListener('pageshow', resume);
+      document.addEventListener('visibilitychange', visible);
+      const interval = setInterval(refresh, 300_000);
+      schedule();
+      this.dispose = () => {
+        clearTimeout(timer); clearInterval(interval); request?.abort();
+        window.removeEventListener('storage', storage); window.removeEventListener('focus', refresh);
+        window.removeEventListener('pagehide', leave); window.removeEventListener('pageshow', resume);
+        document.removeEventListener('visibilitychange', visible);
+        this.removeEventListener('keydown', key);
+        this.querySelector('.notice-close')!.removeEventListener('click', close);
+        live.textContent = '';
+      };
+    }
+    disconnectedCallback() { this.dispose?.(); this.dispose = undefined; }
+  }
+  if (!customElements.get('astra-update-notice')) customElements.define('astra-update-notice', UpdateNotice);
+</script>
+<style>
+  /* avoid-ai-design-ignore: SD1 — existing Astra paper, ink and lime identity. */
+  astra-update-notice { position:fixed; z-index:30; bottom:max(24px,env(safe-area-inset-bottom)); right:max(24px,env(safe-area-inset-right)); width:440px; max-width:calc(100% - 32px); font-family:var(--sl-font); }
+  .orbit-notice { display:flex; align-items:flex-end; gap:10px; }
+  .orbit-arrival { width:100px; flex:none; margin-bottom:10px; background:var(--astra-paper); border-radius:50%; transform-origin:50% 100%; }
+  .orbit-arrival img { width:100%; height:auto; display:block; }
+  .orbit-message { position:relative; flex:1; min-width:0; background:var(--astra-paper); color:var(--astra-ink); border:2px solid var(--astra-ink); border-radius:12px 12px 12px 2px; padding:18px 20px 14px; box-shadow:4px 4px 0 var(--astra-ink); }
+  .orbit-message::before { content:''; position:absolute; left:-10px; bottom:34px; width:16px; height:16px; background:var(--astra-paper); border-left:2px solid var(--astra-ink); border-bottom:2px solid var(--astra-ink); transform:rotate(45deg); }
+  .notice-intro { margin:0 30px 8px 0; font-size:.76rem; font-weight:600; line-height:1.4; }
+  [data-notice-scope] { display:block; margin-top:3px; font-size:.68rem; font-weight:400; color:#46503a; }
+  [data-notice-title] { margin:0 12px 8px 0; font-size:1.04rem; line-height:1.3; letter-spacing:-.2px; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; overflow:hidden; }
+  .notice-summary { margin:0 0 8px; font-size:.8rem; line-height:1.5; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; }
+  .notice-link { display:inline-flex; align-items:center; gap:12px; min-height:44px; color:var(--astra-ink); font-size:.84rem; font-weight:700; text-decoration:underline; text-underline-offset:4px; }
+  .notice-link:hover { text-decoration-thickness:2px; }
+  .notice-link svg { color:var(--astra-ink); }
+  .notice-close { position:absolute; right:4px; top:4px; display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; border-radius:8px; background:transparent; color:var(--astra-ink); cursor:pointer; }
+  .notice-close:hover { background:#e4e7d8; }
+  :is(.notice-link,.notice-close):focus-visible { outline:3px solid #465900; outline-offset:2px; }
+  .notice-announcement { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+  @media(max-width:500px) {
+    astra-update-notice { right:16px; bottom:max(16px,env(safe-area-inset-bottom)); }
+    .orbit-notice { gap:6px; }.orbit-arrival { width:72px; margin-bottom:14px; }
+    .orbit-message { padding:14px 14px 8px; }[data-notice-title] { font-size:.92rem; }.notice-summary { font-size:.75rem; }.notice-intro { font-size:.7rem; }
+  }
+  @media print { astra-update-notice { display:none; } }
+</style>
