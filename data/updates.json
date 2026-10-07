@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-mixer-de-audio",
+      "date": "2026-10-07",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Mixer de áudio com efeitos, ducking, snapshots e streaming",
+      "summary": "Buses de áudio processam o som de verdade: filtro, eco, reverberação e compressor em cadeia, envios entre buses, ducking por sidechain e snapshots com transição. Fontes ganham mistura espacial contínua, prioridade com vozes virtuais, pontos de loop e streaming de WAV longo.",
+      "version": "Bloco H · revisão de desenvolvimento 07/10/2026 (commit 67f6ae19 da engine; Astra Dev 0.2.3-dev.20261007)",
+      "availability": "development",
+      "details": [
+        "Novos componentes no objeto do Bus de áudio, na ordem da cadeia: Filtro (passa-baixa, passa-alta, passa-banda, rejeita-banda, pico e prateleiras), Eco, Reverberação, Compressor (com sidechain para abaixar a música quando outro bus soa) e Envio para outro bus.",
+        "Snapshot de mixer: até 8 valores (ganho do bus, corte e ressonância do filtro, mistura de eco e reverberação, tamanho da sala, nível do envio, limiar do compressor) levados com transição em tempo real ou aplicados ao iniciar o Play.",
+        "Fonte de áudio: mistura espacial de 0 (2D) a 1 (3D), prioridade de 0 a 256 com vozes virtuais acima do limite (o cursor continua andando), início e fim do loop e carregamento Memória ou Streaming.",
+        "WAV maior que o limite de memória (32 MiB ou cerca de 43 s) é registrado para streaming, até 1 GiB, sem regravar o arquivo; salve a cena para gravar o registro.",
+        "Scripts C#: AudioSource.IsVirtual, AudioBus.PeakDb, AudioCompressor.ReductionDb, AudioSnapshot.TransitionTo e Apply; Conexões de evento ganham Snapshot: transicionar e Snapshot: aplicar.",
+        "Editor: Inspector com medidor do bus ao vivo, redução do compressor e estado da voz (tocando, virtual, pausada, streaming); Criar → Áudio ganha Bus de reverberação, Bus com ducking e Snapshot de mixer; os tipos de áudio passam a se chamar Fonte de áudio, Ouvinte de áudio e Bus de áudio.",
+        "Referências estudadas: Unity 6000.0 AudioSource, AudioMixer e Snapshots; Godot 4.5 Audio buses e efeitos AudioEffect*. Pendentes: efeitos extras (chorus, distorção, EQ de bandas), MP3/OGG, curvas de atenuação personalizadas e limite de vozes nas configurações do projeto."
+      ],
+      "validation": "Engine: 17 testes de áudio no host (DSP, migração, prioridade, loop, streaming, grafo, solo, ciclos, sidechain, snapshot); suíte nativa 1447/1455 com as 8 falhas anteriores ao bloco; suíte C# 522/0; build Android arm64. Aparelho: cena de aceite no canal Astra Dev com música a −10,6 dB, ambiente de 50 s em streaming, ducking de até 23,7 dB e snapshot chegando a ganho 0,30 e corte 800 Hz. Não está no APK público 0.2.2-preview.20261007.",
+      "migration": "Fonte de áudio passa ao payload 2; cenas antigas recebem mistura espacial 1 (mesmo 3D de antes), prioridade 128, loop inteiro e Memória. Tipos novos exigem uma engine com o bloco H.",
+      "links": [
+        {
+          "label": "APK público e disponibilidade",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-apk-preview-u07",
       "date": "2026-10-07",
       "scopes": [
