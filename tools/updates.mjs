@@ -55,9 +55,13 @@ export function contentFiles() {
 }
 export function contentHash() {
   const hash = crypto.createHash('sha256');
+  const canonical = value => Array.isArray(value) ? value.map(canonical) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(k => [k, canonical(value[k])])) : value;
   for (const f of contentFiles()) {
     const bytes = fs.readFileSync(f);
-    hash.update(f + '\0').update(/\.(json|mjs|astro|css|ts|md|txt|csv|svg|webmanifest)$/.test(f) ? bytes.toString('utf8').replace(/\r\n/g, '\n') : bytes).update('\0');
+    // Vercel rewrites its config formatting before executing the build.
+    // Compare every configuration value, preserving order in routing arrays.
+    const content = f === 'vercel.json' ? JSON.stringify(canonical(JSON.parse(bytes.toString('utf8')))) : /\.(json|mjs|astro|css|ts|md|txt|csv|svg|webmanifest)$/.test(f) ? bytes.toString('utf8').replace(/\r\n/g, '\n') : bytes;
+    hash.update(f + '\0').update(content).update('\0');
   }
   return hash.digest('hex');
 }

@@ -4,6 +4,30 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-configuracao-publicacao",
+      "date": "2026-10-07",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "fix",
+      "title": "Verificação da configuração durante a publicação",
+      "summary": "A publicação aceita a reformatação automática da configuração do site e continua recusando mudanças sem registro.",
+      "version": "Docs · revisão 07/10/2026",
+      "availability": "documentation",
+      "details": [
+        "A configuração é comparada pelos valores, preservando a ordem das rotas. Reformatar o arquivo não cria uma mudança falsa; alterar uma rota, cabeçalho ou comando continua exigindo uma nota.",
+        "O histórico, os guias, os exemplos e os downloads permanecem no mesmo fluxo de publicação."
+      ],
+      "validation": "Build, links, diagnóstico da configuração no ambiente da Vercel e publicação conferidos; esta correção não altera o aplicativo.",
+      "migration": "Nenhuma mudança no APK, projetos ou endereços das páginas.",
+      "links": [
+        {
+          "label": "Central de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-publicacao-historico",
       "date": "2026-10-07",
       "scopes": [
