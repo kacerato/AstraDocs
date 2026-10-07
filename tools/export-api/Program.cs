@@ -1,3 +1,7 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Collections.Generic;
 using Microsoft.Build.Locator;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.MSBuild;
@@ -79,13 +83,15 @@ await File.WriteAllTextAsync(args[1], JsonSerializer.Serialize(output, new JsonS
 Console.WriteLine($"Exported {types.Length} types and {types.Sum(t => t.members.Length)} members. Semantic compilation: no errors. Runtime was not executed.");
 if(args.Length == 3) {
     var evidence = new List<object>();
-    foreach(var file in Directory.GetFiles(args[2], "*.cs", SearchOption.AllDirectories)) {
+    var files=Directory.GetFiles(args[2], "*.cs", SearchOption.AllDirectories).OrderBy(p=>p).ToArray();
+    var trees=new List<SyntaxTree>();
+    foreach(var file in files) {
         var bytes=await File.ReadAllBytesAsync(file);
-        var tree=CSharpSyntaxTree.ParseText(System.Text.Encoding.UTF8.GetString(bytes), (CSharpParseOptions)project.ParseOptions!);
-        var diagnostics=compilation.AddSyntaxTrees(tree).GetDiagnostics().Where(d=>d.Severity==DiagnosticSeverity.Error).ToArray();
-        if(diagnostics.Length>0)throw new Exception(Path.GetFileName(file)+": "+string.Join("\n", diagnostics.Select(d=>d.ToString())));
-        evidence.Add(new { file=Path.GetFileName(file), sha256=Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant(), compilationVerified=true, method="Roslyn semantic compilation against the loaded project", runtimeVerified=false });
+        trees.Add(CSharpSyntaxTree.ParseText(System.Text.Encoding.UTF8.GetString(bytes), (CSharpParseOptions)project.ParseOptions!,path:file));
+        evidence.Add(new { file=Path.GetFileName(file), sha256=Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant(), compilationVerified=true, method="Roslyn semantic compilation of the example assembly against the loaded project", runtimeVerified=false });
     }
+    var diagnostics=compilation.AddSyntaxTrees(trees).GetDiagnostics().Where(d=>d.Severity==DiagnosticSeverity.Error).ToArray();
+    if(diagnostics.Length>0)throw new Exception(string.Join("\n",diagnostics.Select(d=>d.ToString())));
     await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(args[1])!,"example-evidence.json"),JsonSerializer.Serialize(evidence,new JsonSerializerOptions{WriteIndented=true}));
     Console.WriteLine($"Semantically compiled {evidence.Count} documentation examples; none were executed.");
 }

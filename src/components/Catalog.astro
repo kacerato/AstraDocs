@@ -1,16 +1,18 @@
 ---
 import components from '../../data/components.json';
 import api from '../../data/api.json';
+import { uiNodes } from '../../data/ui-guides.mjs';
+import { componentGuide } from '../../data/component-guides.mjs';
 const { kind = 'component' } = Astro.props;
 const base = '/pt-br/snapshot-2026-10-06';
 const slug = (s:string) => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-$/,'');
-const items = kind === 'api' ? api.types.map(t => ({name:t.name, code:t.fullName, family:t.ns, description:t.docs.summary || `${t.kind} · ${t.members.length} membros declarados.`, url:`${base}/api/${slug(t.fullName)}/`, search:t.members.map(m=>m.name).join(' ')})) : components.map(t=>({name:t.name, code:t.typeId, family:t.family, description:t.description, url:`${base}/componentes/${slug(t.typeId)}/`, search:t.aliases}));
+const items = kind === 'api' ? api.types.map(t => ({name:t.name, code:t.fullName, family:t.ns, description:t.docs.summary || `${t.kind} · ${t.members.length} membros declarados.`, url:`${base}/api/${slug(t.fullName)}/`, search:t.members.map(m=>m.name).join(' '),access:'Área de código · acesso e roadmap na referência'})) : [...components.map(t=>({name:t.name, code:t.typeId, family:t.family, description:t.description, url:`${base}/componentes/${slug(t.typeId)}/`, search:`${t.aliases} ${t.properties.map(p=>`${p.name} ${p.id} ${p.help}`).join(' ')}`,access:componentGuide(t).location.replaceAll('**','')})),...uiNodes.map(t=>({name:t.name==='Image'?'Image (UiImage)':t.name,code:`GuiKind.${t.name}`,family:'UI de jogo · elementos',description:t.purpose,url:`${base}/${t.route}/`,search:`${t.fields} ${t.example} ${t.name==='Image'?'uiimg uiimage imagem coração coracao hud':''}`,access:`Interface → documento .aeui → + Elemento → ${t.name}`}))];
 const families = [...new Set(items.map(t => t.family))].sort();
 ---
 <astra-catalog>
   <form class="astra-filters" role="search" onsubmit="return false"><div><label for="catalog-query">{kind === 'api' ? 'Tipo ou membro' : 'Nome ou propriedade'}</label><input id="catalog-query" type="search" placeholder={kind === 'api' ? 'Ex.: GameObject, Rotate, Time…' : 'Ex.: câmera, física, luz…'} autocomplete="off"/></div><div><label for="catalog-family">{kind==='api'?'Namespace':'Família'}</label><select id="catalog-family"><option value="">Todas</option>{families.map(f=><option value={f}>{f}</option>)}</select></div><button type="reset">Limpar</button></form>
-  <p class="astra-results-count" role="status" aria-live="polite">{items.length} {kind==='api'?'tipos':'componentes'} · contratos extraídos da fonte</p>
-  <ul class="astra-catalog-list">{items.map(t=><li data-family={t.family} data-search={`${t.name} ${t.code} ${t.description} ${t.search}`}><a href={t.url}><div><span class="astra-family">{t.family}</span><h2>{t.name}</h2><p>{t.description}</p><code>{t.code}</code></div><span class="astra-row-arrow" aria-hidden="true">↗</span></a></li>)}</ul>
+  <p class="astra-results-count" role="status" aria-live="polite">{kind==='api'?`${items.length} tipos`:`${components.length} componentes + ${uiNodes.length} elementos de UI`} · contratos e guias</p>
+  <ul class="astra-catalog-list">{items.map(t=><li data-family={t.family} data-search={`${t.name} ${t.code} ${t.description} ${t.search} ${t.access}`}><a href={t.url}><div><span class="astra-family">{t.family}</span><h2>{t.name}</h2><p>{t.description}</p><p class="astra-catalog-access">{t.access}</p><code>{t.code}</code></div></a></li>)}</ul>
   <div class="astra-empty" hidden><img src="/assets/mascot/orbit-search-256.webp" width="190" height="190" alt=""/><h2>Nenhum resultado por aqui.</h2><p>Tente outro termo ou remova o filtro de família.</p><button type="button" data-clear>Limpar filtros</button></div>
   <noscript><p>Todos os registros estão abaixo. Use a busca do navegador para localizar um nome.</p></noscript>
 </astra-catalog>

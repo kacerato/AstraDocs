@@ -31,6 +31,22 @@ versionados, os guias e os assets deste repositório. Não exige token ou segred
 
 ## Atualizar a documentação
 
+O aprofundamento de componentes usa `data/component-guides.mjs` para efeitos e
+caminhos dos campos; `data/api-guides.mjs` liga acesso/uso/roadmap aos membros.
+`data/ui-guides.mjs` contém o manual UI, os 13 tipos de elemento e o HUD de
+corações. Não apresente um campo sem interpretação como revisado: o manifesto
+de cobertura conta separadamente o backlog editorial individual da API.
+
+`node tools/sync-roadmap.mjs <engineRoot>` exporta apenas requisitos/estados
+selecionados do registro de famílias e capacidades, sem corpos de código.
+`node tools/sync-member-map.mjs <engineRoot>` extrai vínculos de propriedades
+das fachadas geradas para IDs dos campos. Revise ambos ao mudar o snapshot.
+
+O pacote de corações inclui `.aeui` produzido pelo serializer nativo, PNGs
+autorados e scripts públicos. `tools/pack-heart-example.mjs` monta um ZIP
+determinístico durante o export, com hashes de todos os arquivos. Ele integra
+um projeto existente; não promete uma cena completa de importação automática.
+
 1. Edite os guias em `data/editorial.mjs` e os componentes visuais em `src/`.
 2. Atualize os contratos JSON quando a API ou os schemas da engine mudarem.
 3. Gere o site e confira conteúdo, links e as telas afetadas.

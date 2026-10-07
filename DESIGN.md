@@ -2,6 +2,12 @@
 
 ## Direção
 
+O catálogo distingue componentes da cena e elementos do documento UI. A busca
+inclui campos, aliases como UiImage/UIIMG e caminhos de autoria. Cada resultado
+mostra o caminho real abaixo do propósito. UI de jogo e roadmap são destinos
+próprios na navegação; o tutorial de corações usa árvore, tabelas de valores e
+uma ilustração pequena dos recursos, sem simular execução da engine no browser.
+
 O estágio de desenvolvimento aparece antes do hero na home e no download,
 em uma faixa compartilhada com aviso de limitações, progresso nativo acessível
 e link para o Discord oficial. Os 20% são uma estimativa do criador sobre a meta

@@ -117,6 +117,11 @@ astra-catalog { display:block; }
 .astra-catalog-list li>a:hover { background:var(--sl-color-gray-6); }
 .astra-catalog-list h2 { font-size:1.2rem; margin:4px 0 6px; letter-spacing:0; }
 .astra-catalog-list p { font-size:.9rem; color:var(--sl-color-gray-2); margin:0 0 8px; }
+.astra-catalog-list .astra-catalog-access { font-size:.78rem; line-height:1.55; color:var(--sl-color-gray-2); }
+.astra-hud-figure { border-block:1px solid var(--sl-color-gray-4); padding:1.2rem 0; margin:1.5rem 0; }
+.astra-hud-figure>div { display:flex; gap:8px; align-items:center; }
+.astra-hud-figure img { margin:0; width:48px; height:48px; }
+.astra-hud-figure figcaption { font-size:.8rem; line-height:1.5; color:var(--sl-color-gray-2); margin-top:12px; }
 .astra-catalog-list code { font-size:.72rem; background:none; padding:0; color:var(--sl-color-gray-3); }
 .astra-family { font-size:.73rem; color:var(--sl-color-gray-3); }
 .astra-row-arrow { align-self:center; flex-shrink:0; }

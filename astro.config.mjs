@@ -34,6 +34,7 @@ export default defineConfig({
       section('Manual do editor', 'editor'),
       section('Conceitos', 'conceitos'),
       { label: 'Componentes', link: `/${base}/componentes/` },
+      section('UI de jogo e HUD', 'ui'),
       { label: 'Referência C#', items: [
         { label: 'Todos os tipos', link: `/${base}/api/` },
         ...['Behavior','GameObject','Component','WorldStatus','TimeAccess','InputAccess','SaveStore','ScenesAccess'].map(name => ({label:name,link:`/${base}/api/astra-${name.toLowerCase()}/`}))
@@ -44,6 +45,7 @@ export default defineConfig({
       section('Desempenho', 'desempenho'),
       section('Diagnóstico', 'diagnostico'),
       section('Versões', 'versoes'),
+      section('Roadmap por função', 'roadmap'),
       section('Para IA', 'ia'),
     ],
     expressiveCode: { themes: ['github-dark', 'github-light'], styleOverrides: { borderRadius: '0.65rem', codeFontFamily: '"Cascadia Code", Consolas, monospace', codeFontSize: '0.875rem' } },

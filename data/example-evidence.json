@@ -1,30 +1,51 @@
 [
   {
+    "file": "HeartDamageTrigger.cs",
+    "sha256": "5cb31b11a2ccc0dca18f55545d3a902f95c91669e4062b484d8a21d71cbae755",
+    "compilationVerified": true,
+    "method": "Roslyn semantic compilation of the example assembly against the loaded project",
+    "runtimeVerified": false
+  },
+  {
+    "file": "HeartHud.cs",
+    "sha256": "d3b28cb2de6bf6bb0b05801ad69a194ca13fcae41d295752f2ced6ec7921a652",
+    "compilationVerified": true,
+    "method": "Roslyn semantic compilation of the example assembly against the loaded project",
+    "runtimeVerified": false
+  },
+  {
+    "file": "PlayerHealth.cs",
+    "sha256": "b9031f47b2e3804988d20718436e440911dd7ea9783270b5fdfa19ba0f2f60d4",
+    "compilationVerified": true,
+    "method": "Roslyn semantic compilation of the example assembly against the loaded project",
+    "runtimeVerified": false
+  },
+  {
     "file": "MoveLocal.cs",
     "sha256": "5e4f3770f37c9c36928ff3e838cd915dcd1d9f8a21d4cbd746afaf9aafef9229",
     "compilationVerified": true,
-    "method": "Roslyn semantic compilation against the loaded project",
+    "method": "Roslyn semantic compilation of the example assembly against the loaded project",
     "runtimeVerified": false
   },
   {
     "file": "RotateObject.cs",
     "sha256": "077b8b123045ff3a7fef19605fae21d3cae9a63616a5b5cf92c237ceafb07f19",
     "compilationVerified": true,
-    "method": "Roslyn semantic compilation against the loaded project",
+    "method": "Roslyn semantic compilation of the example assembly against the loaded project",
     "runtimeVerified": false
   },
   {
     "file": "SpawnTemporary.cs",
     "sha256": "579d81a155eff933b4b3c3db1c8c8a08a84b9c5ba4cd6c0dfc25d41d4f4a33a3",
     "compilationVerified": true,
-    "method": "Roslyn semantic compilation against the loaded project",
+    "method": "Roslyn semantic compilation of the example assembly against the loaded project",
     "runtimeVerified": false
   },
   {
     "file": "VisitCounter.cs",
     "sha256": "b48f526bdf0139e0f5ccadbb25b49bf128c80acfc0abd641e1bded7ab4420081",
     "compilationVerified": true,
-    "method": "Roslyn semantic compilation against the loaded project",
+    "method": "Roslyn semantic compilation of the example assembly against the loaded project",
     "runtimeVerified": false
   }
 ]

@@ -1,0 +1,1844 @@
+{
+  "Astra.Components.SpringPositionConstraint.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.SpringPositionConstraint.Weight": [
+    "weight"
+  ],
+  "Astra.Components.SpringPositionConstraint.Frequency": [
+    "frequency"
+  ],
+  "Astra.Components.SpringPositionConstraint.DampingRatio": [
+    "damping_ratio"
+  ],
+  "Astra.Components.SpringPositionConstraint.MaxSpeed": [
+    "max_speed"
+  ],
+  "Astra.Components.SpringPositionConstraint.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.SpringPositionConstraint.Target": [
+    "target"
+  ],
+  "Astra.Components.SpringRotationConstraint.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.SpringRotationConstraint.Weight": [
+    "weight"
+  ],
+  "Astra.Components.SpringRotationConstraint.Frequency": [
+    "frequency"
+  ],
+  "Astra.Components.SpringRotationConstraint.DampingRatio": [
+    "damping_ratio"
+  ],
+  "Astra.Components.SpringRotationConstraint.MaxSpeed": [
+    "max_speed"
+  ],
+  "Astra.Components.SpringRotationConstraint.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.SpringRotationConstraint.Target": [
+    "target"
+  ],
+  "Astra.Components.SpringScaleConstraint.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.SpringScaleConstraint.Weight": [
+    "weight"
+  ],
+  "Astra.Components.SpringScaleConstraint.Frequency": [
+    "frequency"
+  ],
+  "Astra.Components.SpringScaleConstraint.DampingRatio": [
+    "damping_ratio"
+  ],
+  "Astra.Components.SpringScaleConstraint.MaxSpeed": [
+    "max_speed"
+  ],
+  "Astra.Components.SpringScaleConstraint.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.SpringScaleConstraint.Target": [
+    "target"
+  ],
+  "Astra.Components.PositionConstraint.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.PositionConstraint.Weight": [
+    "weight"
+  ],
+  "Astra.Components.PositionConstraint.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.PositionConstraint.AxisX": [
+    "axis_x"
+  ],
+  "Astra.Components.PositionConstraint.AxisY": [
+    "axis_y"
+  ],
+  "Astra.Components.PositionConstraint.AxisZ": [
+    "axis_z"
+  ],
+  "Astra.Components.PositionConstraint.Target": [
+    "target"
+  ],
+  "Astra.Components.RotationConstraint.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.RotationConstraint.Weight": [
+    "weight"
+  ],
+  "Astra.Components.RotationConstraint.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.RotationConstraint.AxisX": [
+    "axis_x"
+  ],
+  "Astra.Components.RotationConstraint.AxisY": [
+    "axis_y"
+  ],
+  "Astra.Components.RotationConstraint.AxisZ": [
+    "axis_z"
+  ],
+  "Astra.Components.RotationConstraint.Target": [
+    "target"
+  ],
+  "Astra.Components.ScaleConstraint.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.ScaleConstraint.Weight": [
+    "weight"
+  ],
+  "Astra.Components.ScaleConstraint.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.ScaleConstraint.AxisX": [
+    "axis_x"
+  ],
+  "Astra.Components.ScaleConstraint.AxisY": [
+    "axis_y"
+  ],
+  "Astra.Components.ScaleConstraint.AxisZ": [
+    "axis_z"
+  ],
+  "Astra.Components.ScaleConstraint.Target": [
+    "target"
+  ],
+  "Astra.Components.AimConstraint.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.AimConstraint.Weight": [
+    "weight"
+  ],
+  "Astra.Components.AimConstraint.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.AimConstraint.AxisX": [
+    "axis_x"
+  ],
+  "Astra.Components.AimConstraint.AxisY": [
+    "axis_y"
+  ],
+  "Astra.Components.AimConstraint.AxisZ": [
+    "axis_z"
+  ],
+  "Astra.Components.AimConstraint.AimAxis": [
+    "aim_axis"
+  ],
+  "Astra.Components.AimConstraint.UpAxis": [
+    "up_axis"
+  ],
+  "Astra.Components.AimConstraint.Target": [
+    "target"
+  ],
+  "Astra.Components.ParentConstraint.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.ParentConstraint.RotationOffset": [
+    "rotation_offset_x",
+    "rotation_offset_y",
+    "rotation_offset_z"
+  ],
+  "Astra.Components.ParentConstraint.Weight": [
+    "weight"
+  ],
+  "Astra.Components.ParentConstraint.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.ParentConstraint.AxisX": [
+    "axis_x"
+  ],
+  "Astra.Components.ParentConstraint.AxisY": [
+    "axis_y"
+  ],
+  "Astra.Components.ParentConstraint.AxisZ": [
+    "axis_z"
+  ],
+  "Astra.Components.ParentConstraint.RotationX": [
+    "rotation_x"
+  ],
+  "Astra.Components.ParentConstraint.RotationY": [
+    "rotation_y"
+  ],
+  "Astra.Components.ParentConstraint.RotationZ": [
+    "rotation_z"
+  ],
+  "Astra.Components.ParentConstraint.Target": [
+    "target"
+  ],
+  "Astra.Components.LookAtConstraint.Weight": [
+    "weight"
+  ],
+  "Astra.Components.LookAtConstraint.Roll": [
+    "roll"
+  ],
+  "Astra.Components.LookAtConstraint.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.LookAtConstraint.AxisX": [
+    "axis_x"
+  ],
+  "Astra.Components.LookAtConstraint.AxisY": [
+    "axis_y"
+  ],
+  "Astra.Components.LookAtConstraint.AxisZ": [
+    "axis_z"
+  ],
+  "Astra.Components.LookAtConstraint.UpAxis": [
+    "up_axis"
+  ],
+  "Astra.Components.LookAtConstraint.Target": [
+    "target"
+  ],
+  "Astra.Components.TransformTween.PositionDestination": [
+    "position_x",
+    "position_y",
+    "position_z"
+  ],
+  "Astra.Components.TransformTween.RotationDestination": [
+    "rotation_x",
+    "rotation_y",
+    "rotation_z"
+  ],
+  "Astra.Components.TransformTween.ScaleDestination": [
+    "scale_x",
+    "scale_y",
+    "scale_z"
+  ],
+  "Astra.Components.TransformTween.Duration": [
+    "duration"
+  ],
+  "Astra.Components.TransformTween.Delay": [
+    "delay"
+  ],
+  "Astra.Components.TransformTween.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.TransformTween.Autoplay": [
+    "autoplay"
+  ],
+  "Astra.Components.TransformTween.Pingpong": [
+    "pingpong"
+  ],
+  "Astra.Components.TransformTween.Relative": [
+    "relative"
+  ],
+  "Astra.Components.TransformTween.Position": [
+    "position"
+  ],
+  "Astra.Components.TransformTween.Rotation": [
+    "rotation"
+  ],
+  "Astra.Components.TransformTween.Scale": [
+    "scale"
+  ],
+  "Astra.Components.TransformTween.IgnoreTimeScale": [
+    "ignore_time_scale"
+  ],
+  "Astra.Components.TransformTween.Easing": [
+    "easing"
+  ],
+  "Astra.Components.TransformTween.Loops": [
+    "loops"
+  ],
+  "Astra.Components.TransformTween.FinishedAction": [
+    "finished_action"
+  ],
+  "Astra.Components.TransformTween.FinishedTarget": [
+    "finished_target"
+  ],
+  "Astra.Components.GameTimer.IntervalSeconds": [
+    "interval_seconds"
+  ],
+  "Astra.Components.GameTimer.AutoStart": [
+    "auto_start"
+  ],
+  "Astra.Components.GameTimer.Repeat": [
+    "repeat"
+  ],
+  "Astra.Components.GameTimer.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.GameTimer.IgnoreTimeScale": [
+    "ignore_time_scale"
+  ],
+  "Astra.Components.GameTimer.ElapsedAction": [
+    "elapsed_action"
+  ],
+  "Astra.Components.GameTimer.ElapsedTarget": [
+    "elapsed_target"
+  ],
+  "Astra.Components.EventConnection.Argument": [
+    "argument"
+  ],
+  "Astra.Components.EventConnection.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.EventConnection.Once": [
+    "once"
+  ],
+  "Astra.Components.EventConnection.Event": [
+    "event"
+  ],
+  "Astra.Components.EventConnection.Action": [
+    "action"
+  ],
+  "Astra.Components.EventConnection.Method": [
+    "method"
+  ],
+  "Astra.Components.EventConnection.Receiver": [
+    "receiver"
+  ],
+  "Astra.Components.EventConnection.OtherFilter": [
+    "other_filter"
+  ],
+  "Astra.Components.UiCanvas.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.UiCanvas.Rotation": [
+    "rotation_x",
+    "rotation_y",
+    "rotation_z"
+  ],
+  "Astra.Components.UiCanvas.Resolution": [
+    "width",
+    "height"
+  ],
+  "Astra.Components.UiCanvas.UnitsPerPixel": [
+    "units_per_pixel"
+  ],
+  "Astra.Components.UiCanvas.Order": [
+    "order"
+  ],
+  "Astra.Components.UiCanvas.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.UiCanvas.Occlusion": [
+    "occlusion"
+  ],
+  "Astra.Components.UiCanvas.Mode": [
+    "mode"
+  ],
+  "Astra.Components.UiCanvas.MovementSpace": [
+    "movement_space"
+  ],
+  "Astra.Components.UiCanvas.InputReceiver": [
+    "input_receiver"
+  ],
+  "Astra.Components.UiCanvas.InputCamera": [
+    "input_camera"
+  ],
+  "Astra.Components.MeshRenderer.BaseColorR": [
+    "base_color.r"
+  ],
+  "Astra.Components.MeshRenderer.BaseColorG": [
+    "base_color.g"
+  ],
+  "Astra.Components.MeshRenderer.BaseColorB": [
+    "base_color.b"
+  ],
+  "Astra.Components.MeshRenderer.Roughness": [
+    "roughness"
+  ],
+  "Astra.Components.MeshRenderer.Metallic": [
+    "metallic"
+  ],
+  "Astra.Components.MeshRenderer.NormalScale": [
+    "normal_scale"
+  ],
+  "Astra.Components.MeshRenderer.Specular": [
+    "specular"
+  ],
+  "Astra.Components.MeshRenderer.EmissionR": [
+    "emission.r"
+  ],
+  "Astra.Components.MeshRenderer.EmissionG": [
+    "emission.g"
+  ],
+  "Astra.Components.MeshRenderer.EmissionB": [
+    "emission.b"
+  ],
+  "Astra.Components.MeshRenderer.EmissionStrength": [
+    "emission_strength"
+  ],
+  "Astra.Components.MeshRenderer.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.SkinnedMesh.SkinnedMotionVectors": [
+    "skinned_motion_vectors"
+  ],
+  "Astra.Components.SkinnedMesh.Quality": [
+    "quality"
+  ],
+  "Astra.Components.LodGroup.Transition0": [
+    "transition_0"
+  ],
+  "Astra.Components.LodGroup.Transition1": [
+    "transition_1"
+  ],
+  "Astra.Components.LodGroup.Transition2": [
+    "transition_2"
+  ],
+  "Astra.Components.LodGroup.Transition3": [
+    "transition_3"
+  ],
+  "Astra.Components.LodGroup.Size": [
+    "size"
+  ],
+  "Astra.Components.LodGroup.FadeWidth0": [
+    "fade_width_0"
+  ],
+  "Astra.Components.LodGroup.FadeWidth1": [
+    "fade_width_1"
+  ],
+  "Astra.Components.LodGroup.FadeWidth2": [
+    "fade_width_2"
+  ],
+  "Astra.Components.LodGroup.FadeWidth3": [
+    "fade_width_3"
+  ],
+  "Astra.Components.LodGroup.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.LodGroup.AnimateCrossFading": [
+    "animate_cross_fading"
+  ],
+  "Astra.Components.LodGroup.LevelCount": [
+    "level_count"
+  ],
+  "Astra.Components.LodGroup.FadeMode": [
+    "fade_mode"
+  ],
+  "Astra.Components.LodGroup.ForceLevel": [
+    "force_level"
+  ],
+  "Astra.Components.LodGroup.Level0": [
+    "level_0"
+  ],
+  "Astra.Components.LodGroup.Level1": [
+    "level_1"
+  ],
+  "Astra.Components.LodGroup.Level2": [
+    "level_2"
+  ],
+  "Astra.Components.LodGroup.Level3": [
+    "level_3"
+  ],
+  "Astra.Components.EnvironmentVolume.SkyZenith": [
+    "sky_zenith.r",
+    "sky_zenith.g",
+    "sky_zenith.b"
+  ],
+  "Astra.Components.EnvironmentVolume.SkyHorizon": [
+    "sky_horizon.r",
+    "sky_horizon.g",
+    "sky_horizon.b"
+  ],
+  "Astra.Components.EnvironmentVolume.Ground": [
+    "ground.r",
+    "ground.g",
+    "ground.b"
+  ],
+  "Astra.Components.EnvironmentVolume.FogColor": [
+    "fog_color.r",
+    "fog_color.g",
+    "fog_color.b"
+  ],
+  "Astra.Components.EnvironmentVolume.BoxSize": [
+    "box_size.x",
+    "box_size.y",
+    "box_size.z"
+  ],
+  "Astra.Components.EnvironmentVolume.Priority": [
+    "priority"
+  ],
+  "Astra.Components.EnvironmentVolume.Atmosphere": [
+    "atmosphere"
+  ],
+  "Astra.Components.EnvironmentVolume.SunDiskDegrees": [
+    "sun_disk_degrees"
+  ],
+  "Astra.Components.EnvironmentVolume.SunDiskIntensity": [
+    "sun_disk_intensity"
+  ],
+  "Astra.Components.EnvironmentVolume.FogLightEnergy": [
+    "fog_light_energy"
+  ],
+  "Astra.Components.EnvironmentVolume.FogDensity": [
+    "fog_density"
+  ],
+  "Astra.Components.EnvironmentVolume.FogStart": [
+    "fog_start"
+  ],
+  "Astra.Components.EnvironmentVolume.FogBaseHeight": [
+    "fog_base_height"
+  ],
+  "Astra.Components.EnvironmentVolume.FogHeightFalloff": [
+    "fog_height_falloff"
+  ],
+  "Astra.Components.EnvironmentVolume.ExposureEv": [
+    "exposure_ev"
+  ],
+  "Astra.Components.EnvironmentVolume.BloomThreshold": [
+    "bloom_threshold"
+  ],
+  "Astra.Components.EnvironmentVolume.BloomIntensity": [
+    "bloom_intensity"
+  ],
+  "Astra.Components.EnvironmentVolume.Contrast": [
+    "contrast"
+  ],
+  "Astra.Components.EnvironmentVolume.Saturation": [
+    "saturation"
+  ],
+  "Astra.Components.EnvironmentVolume.VignetteIntensity": [
+    "vignette_intensity"
+  ],
+  "Astra.Components.EnvironmentVolume.FilmGrainIntensity": [
+    "film_grain_intensity"
+  ],
+  "Astra.Components.EnvironmentVolume.AmbientOcclusionRadius": [
+    "ambient_occlusion_radius"
+  ],
+  "Astra.Components.EnvironmentVolume.AmbientOcclusionIntensity": [
+    "ambient_occlusion_intensity"
+  ],
+  "Astra.Components.EnvironmentVolume.AmbientOcclusionPower": [
+    "ambient_occlusion_power"
+  ],
+  "Astra.Components.EnvironmentVolume.AmbientOcclusionBias": [
+    "ambient_occlusion_bias"
+  ],
+  "Astra.Components.EnvironmentVolume.Weight": [
+    "weight"
+  ],
+  "Astra.Components.EnvironmentVolume.BlendDistance": [
+    "blend_distance"
+  ],
+  "Astra.Components.EnvironmentVolume.SphereRadius": [
+    "sphere_radius"
+  ],
+  "Astra.Components.EnvironmentVolume.IndirectDiffuse": [
+    "indirect_diffuse"
+  ],
+  "Astra.Components.EnvironmentVolume.IndirectSpecular": [
+    "indirect_specular"
+  ],
+  "Astra.Components.EnvironmentVolume.PhysicalSkyIntensity": [
+    "physical_sky_intensity"
+  ],
+  "Astra.Components.EnvironmentVolume.AirDensity": [
+    "air_density"
+  ],
+  "Astra.Components.EnvironmentVolume.AerosolDensity": [
+    "aerosol_density"
+  ],
+  "Astra.Components.EnvironmentVolume.AerosolAnisotropy": [
+    "aerosol_anisotropy"
+  ],
+  "Astra.Components.EnvironmentVolume.PlanetRadiusKm": [
+    "planet_radius_km"
+  ],
+  "Astra.Components.EnvironmentVolume.ObserverHeightKm": [
+    "observer_height_km"
+  ],
+  "Astra.Components.EnvironmentVolume.RayleighScaleHeightKm": [
+    "rayleigh_scale_height_km"
+  ],
+  "Astra.Components.EnvironmentVolume.AerosolScaleHeightKm": [
+    "aerosol_scale_height_km"
+  ],
+  "Astra.Components.EnvironmentVolume.AtmosphereHeightKm": [
+    "atmosphere_height_km"
+  ],
+  "Astra.Components.EnvironmentVolume.GroundAlbedo": [
+    "ground_albedo"
+  ],
+  "Astra.Components.EnvironmentVolume.AutoExposureMinEv": [
+    "auto_exposure_min_ev"
+  ],
+  "Astra.Components.EnvironmentVolume.AutoExposureMaxEv": [
+    "auto_exposure_max_ev"
+  ],
+  "Astra.Components.EnvironmentVolume.AutoExposureLowPercent": [
+    "auto_exposure_low_percent"
+  ],
+  "Astra.Components.EnvironmentVolume.AutoExposureHighPercent": [
+    "auto_exposure_high_percent"
+  ],
+  "Astra.Components.EnvironmentVolume.AutoExposureTargetGrey": [
+    "auto_exposure_target_grey"
+  ],
+  "Astra.Components.EnvironmentVolume.AutoExposureSpeedUp": [
+    "auto_exposure_speed_up"
+  ],
+  "Astra.Components.EnvironmentVolume.AutoExposureSpeedDown": [
+    "auto_exposure_speed_down"
+  ],
+  "Astra.Components.EnvironmentVolume.HdriRotationDegrees": [
+    "hdri_rotation_degrees"
+  ],
+  "Astra.Components.EnvironmentVolume.HdriExposureEv": [
+    "hdri_exposure_ev"
+  ],
+  "Astra.Components.EnvironmentVolume.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.EnvironmentVolume.Fog": [
+    "fog"
+  ],
+  "Astra.Components.EnvironmentVolume.Post": [
+    "post"
+  ],
+  "Astra.Components.EnvironmentVolume.AutoExposure": [
+    "auto_exposure"
+  ],
+  "Astra.Components.EnvironmentVolume.AutoExposureCenterWeighted": [
+    "auto_exposure_center_weighted"
+  ],
+  "Astra.Components.EnvironmentVolume.Bloom": [
+    "bloom"
+  ],
+  "Astra.Components.EnvironmentVolume.Vignette": [
+    "vignette"
+  ],
+  "Astra.Components.EnvironmentVolume.FilmGrain": [
+    "film_grain"
+  ],
+  "Astra.Components.EnvironmentVolume.AmbientOcclusion": [
+    "ambient_occlusion"
+  ],
+  "Astra.Components.EnvironmentVolume.OverrideSky": [
+    "override_sky"
+  ],
+  "Astra.Components.EnvironmentVolume.OverrideFog": [
+    "override_fog"
+  ],
+  "Astra.Components.EnvironmentVolume.OverridePost": [
+    "override_post"
+  ],
+  "Astra.Components.EnvironmentVolume.OverrideIndirect": [
+    "override_indirect"
+  ],
+  "Astra.Components.EnvironmentVolume.PhysicalAtmosphereHighQuality": [
+    "physical_atmosphere_high_quality"
+  ],
+  "Astra.Components.EnvironmentVolume.Sky": [
+    "sky"
+  ],
+  "Astra.Components.EnvironmentVolume.ToneMapper": [
+    "tone_mapper"
+  ],
+  "Astra.Components.EnvironmentVolume.VolumeShape": [
+    "volume_shape"
+  ],
+  "Astra.Components.EnvironmentVolume.VolumeLayer": [
+    "volume_layer"
+  ],
+  "Astra.Components.Light.Color": [
+    "color.r",
+    "color.g",
+    "color.b"
+  ],
+  "Astra.Components.Light.ColorTemperature": [
+    "color_temperature"
+  ],
+  "Astra.Components.Light.Intensity": [
+    "intensity"
+  ],
+  "Astra.Components.Light.Range": [
+    "range"
+  ],
+  "Astra.Components.Light.InnerAngle": [
+    "inner_angle"
+  ],
+  "Astra.Components.Light.OuterAngle": [
+    "outer_angle"
+  ],
+  "Astra.Components.Light.ShadowStrength": [
+    "shadow_strength"
+  ],
+  "Astra.Components.Light.ShadowBias": [
+    "shadow_bias"
+  ],
+  "Astra.Components.Light.ShadowNormalBias": [
+    "shadow_normal_bias"
+  ],
+  "Astra.Components.Light.ShadowNearPlane": [
+    "shadow_near_plane"
+  ],
+  "Astra.Components.Light.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.Light.UseColorTemperature": [
+    "use_color_temperature"
+  ],
+  "Astra.Components.Light.Kind": [
+    "kind"
+  ],
+  "Astra.Components.Light.Unit": [
+    "unit"
+  ],
+  "Astra.Components.Light.ShadowMode": [
+    "shadow_mode"
+  ],
+  "Astra.Components.Light.ShadowResolution": [
+    "shadow_resolution"
+  ],
+  "Astra.Components.Camera.VerticalFov": [
+    "vertical_fov"
+  ],
+  "Astra.Components.Camera.NearPlane": [
+    "near_plane"
+  ],
+  "Astra.Components.Camera.FarPlane": [
+    "far_plane"
+  ],
+  "Astra.Components.Camera.Priority": [
+    "priority"
+  ],
+  "Astra.Components.Camera.OrthographicHalfHeight": [
+    "orthographic_half_height"
+  ],
+  "Astra.Components.Camera.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.Camera.Projection": [
+    "projection"
+  ],
+  "Astra.Components.Camera.EnvironmentMask": [
+    "environment_mask"
+  ],
+  "Astra.Components.CameraLook.YawSensitivity": [
+    "yaw_sensitivity"
+  ],
+  "Astra.Components.CameraLook.PitchSensitivity": [
+    "pitch_sensitivity"
+  ],
+  "Astra.Components.CameraLook.PitchLimit": [
+    "pitch_limit"
+  ],
+  "Astra.Components.CameraLook.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.CameraFollow.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.CameraFollow.DampingSeconds": [
+    "damping_seconds"
+  ],
+  "Astra.Components.CameraFollow.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.CameraFollow.Target": [
+    "target"
+  ],
+  "Astra.Components.GravityField.HalfExtents": [
+    "half_x",
+    "half_y",
+    "half_z"
+  ],
+  "Astra.Components.GravityField.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.GravityField.Vector": [
+    "vector_x",
+    "vector_y",
+    "vector_z"
+  ],
+  "Astra.Components.GravityField.Radius": [
+    "radius"
+  ],
+  "Astra.Components.GravityField.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.GravityField.WakeBodies": [
+    "wake_bodies"
+  ],
+  "Astra.Components.GravityField.ReplaceWorldGravity": [
+    "replace_world_gravity"
+  ],
+  "Astra.Components.GravityField.Shape": [
+    "shape"
+  ],
+  "Astra.Components.GravityField.Falloff": [
+    "falloff"
+  ],
+  "Astra.Components.GravityField.AffectedLayer": [
+    "affected_layer"
+  ],
+  "Astra.Components.WindField.HalfExtents": [
+    "half_x",
+    "half_y",
+    "half_z"
+  ],
+  "Astra.Components.WindField.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.WindField.Vector": [
+    "vector_x",
+    "vector_y",
+    "vector_z"
+  ],
+  "Astra.Components.WindField.Radius": [
+    "radius"
+  ],
+  "Astra.Components.WindField.Coefficient": [
+    "coefficient"
+  ],
+  "Astra.Components.WindField.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.WindField.WakeBodies": [
+    "wake_bodies"
+  ],
+  "Astra.Components.WindField.Shape": [
+    "shape"
+  ],
+  "Astra.Components.WindField.Falloff": [
+    "falloff"
+  ],
+  "Astra.Components.WindField.AffectedLayer": [
+    "affected_layer"
+  ],
+  "Astra.Components.DragField.HalfExtents": [
+    "half_x",
+    "half_y",
+    "half_z"
+  ],
+  "Astra.Components.DragField.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.DragField.Radius": [
+    "radius"
+  ],
+  "Astra.Components.DragField.LinearDrag": [
+    "linear_drag"
+  ],
+  "Astra.Components.DragField.AngularDrag": [
+    "angular_drag"
+  ],
+  "Astra.Components.DragField.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.DragField.WakeBodies": [
+    "wake_bodies"
+  ],
+  "Astra.Components.DragField.Shape": [
+    "shape"
+  ],
+  "Astra.Components.DragField.Falloff": [
+    "falloff"
+  ],
+  "Astra.Components.DragField.AffectedLayer": [
+    "affected_layer"
+  ],
+  "Astra.Components.RadialField.HalfExtents": [
+    "half_x",
+    "half_y",
+    "half_z"
+  ],
+  "Astra.Components.RadialField.Offset": [
+    "offset_x",
+    "offset_y",
+    "offset_z"
+  ],
+  "Astra.Components.RadialField.Radius": [
+    "radius"
+  ],
+  "Astra.Components.RadialField.Acceleration": [
+    "acceleration"
+  ],
+  "Astra.Components.RadialField.TangentialAcceleration": [
+    "tangential_acceleration"
+  ],
+  "Astra.Components.RadialField.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.RadialField.WakeBodies": [
+    "wake_bodies"
+  ],
+  "Astra.Components.RadialField.Shape": [
+    "shape"
+  ],
+  "Astra.Components.RadialField.Falloff": [
+    "falloff"
+  ],
+  "Astra.Components.RadialField.AffectedLayer": [
+    "affected_layer"
+  ],
+  "Astra.Components.PhysicsEventConnection3D.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.PhysicsEventConnection3D.Event": [
+    "event"
+  ],
+  "Astra.Components.PhysicsEventConnection3D.Action": [
+    "action"
+  ],
+  "Astra.Components.PhysicsEventConnection3D.Receiver": [
+    "receiver"
+  ],
+  "Astra.Components.PhysicsEventConnection3D.OtherFilter": [
+    "other_filter"
+  ],
+  "Astra.Components.ConstantForce.Force": [
+    "force_x",
+    "force_y",
+    "force_z"
+  ],
+  "Astra.Components.ConstantForce.RelativeForce": [
+    "relative_force_x",
+    "relative_force_y",
+    "relative_force_z"
+  ],
+  "Astra.Components.ConstantForce.Torque": [
+    "torque_x",
+    "torque_y",
+    "torque_z"
+  ],
+  "Astra.Components.ConstantForce.RelativeTorque": [
+    "relative_torque_x",
+    "relative_torque_y",
+    "relative_torque_z"
+  ],
+  "Astra.Components.ConstantForce.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.PhysicsBody.Velocity": [
+    "velocity_x",
+    "velocity_y",
+    "velocity_z"
+  ],
+  "Astra.Components.PhysicsBody.AngularVelocity": [
+    "angular_x",
+    "angular_y",
+    "angular_z"
+  ],
+  "Astra.Components.PhysicsBody.Mass": [
+    "mass"
+  ],
+  "Astra.Components.PhysicsBody.Friction": [
+    "friction"
+  ],
+  "Astra.Components.PhysicsBody.Restitution": [
+    "restitution"
+  ],
+  "Astra.Components.PhysicsBody.LinearDamping": [
+    "linear_damping"
+  ],
+  "Astra.Components.PhysicsBody.AngularDamping": [
+    "angular_damping"
+  ],
+  "Astra.Components.PhysicsBody.GravityFactor": [
+    "gravity_factor"
+  ],
+  "Astra.Components.PhysicsBody.MaxLinearVelocity": [
+    "max_linear_velocity"
+  ],
+  "Astra.Components.PhysicsBody.MaxAngularVelocity": [
+    "max_angular_velocity"
+  ],
+  "Astra.Components.PhysicsBody.SolverVelocitySteps": [
+    "solver_velocity_steps"
+  ],
+  "Astra.Components.PhysicsBody.Sensor": [
+    "sensor"
+  ],
+  "Astra.Components.PhysicsBody.AllowSleep": [
+    "allow_sleep"
+  ],
+  "Astra.Components.PhysicsBody.FreezePositionX": [
+    "freeze_position_x"
+  ],
+  "Astra.Components.PhysicsBody.FreezePositionY": [
+    "freeze_position_y"
+  ],
+  "Astra.Components.PhysicsBody.FreezePositionZ": [
+    "freeze_position_z"
+  ],
+  "Astra.Components.PhysicsBody.FreezeRotationX": [
+    "freeze_rotation_x"
+  ],
+  "Astra.Components.PhysicsBody.FreezeRotationY": [
+    "freeze_rotation_y"
+  ],
+  "Astra.Components.PhysicsBody.FreezeRotationZ": [
+    "freeze_rotation_z"
+  ],
+  "Astra.Components.PhysicsBody.ContinuousCollision": [
+    "continuous_collision"
+  ],
+  "Astra.Components.PhysicsBody.Motion": [
+    "motion"
+  ],
+  "Astra.Components.Character.Radius": [
+    "radius"
+  ],
+  "Astra.Components.Character.HalfHeight": [
+    "half_height"
+  ],
+  "Astra.Components.Character.EyeHeight": [
+    "eye_height"
+  ],
+  "Astra.Components.Character.Speed": [
+    "speed"
+  ],
+  "Astra.Components.Character.SlopeDegrees": [
+    "slope_degrees"
+  ],
+  "Astra.Components.Character.JumpSpeed": [
+    "jump_speed"
+  ],
+  "Astra.Components.Character.StepHeight": [
+    "step_height"
+  ],
+  "Astra.Components.Character.FloorSnapLength": [
+    "floor_snap_length"
+  ],
+  "Astra.Components.Character.Gravity": [
+    "gravity"
+  ],
+  "Astra.Components.Character.InheritPlatformHorizontal": [
+    "inherit_platform_horizontal"
+  ],
+  "Astra.Components.Collider.HalfExtents": [
+    "half_x",
+    "half_y",
+    "half_z"
+  ],
+  "Astra.Components.Collider.Center": [
+    "center_x",
+    "center_y",
+    "center_z"
+  ],
+  "Astra.Components.Collider.Rotation": [
+    "rotation_x",
+    "rotation_y",
+    "rotation_z"
+  ],
+  "Astra.Components.Collider.Radius": [
+    "radius"
+  ],
+  "Astra.Components.Collider.HalfHeight": [
+    "half_height"
+  ],
+  "Astra.Components.Collider.HullTolerance": [
+    "hull_tolerance"
+  ],
+  "Astra.Components.Collider.ActiveEdgeAngle": [
+    "active_edge_angle"
+  ],
+  "Astra.Components.Collider.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.Collider.Convex": [
+    "convex"
+  ],
+  "Astra.Components.Collider.WeldVertices": [
+    "weld_vertices"
+  ],
+  "Astra.Components.Collider.OptimizeCooking": [
+    "optimize_cooking"
+  ],
+  "Astra.Components.Collider.MeshLocalPose": [
+    "mesh_local_pose"
+  ],
+  "Astra.Components.Collider.Shape": [
+    "shape"
+  ],
+  "Astra.Components.Collider.Owner": [
+    "owner"
+  ],
+  "Astra.Components.Joint.AnchorA": [
+    "anchor_a_x",
+    "anchor_a_y",
+    "anchor_a_z"
+  ],
+  "Astra.Components.Joint.AnchorB": [
+    "anchor_b_x",
+    "anchor_b_y",
+    "anchor_b_z"
+  ],
+  "Astra.Components.Joint.AxisA": [
+    "axis_a_x",
+    "axis_a_y",
+    "axis_a_z"
+  ],
+  "Astra.Components.Joint.AxisB": [
+    "axis_b_x",
+    "axis_b_y",
+    "axis_b_z"
+  ],
+  "Astra.Components.Joint.NormalA": [
+    "normal_a_x",
+    "normal_a_y",
+    "normal_a_z"
+  ],
+  "Astra.Components.Joint.NormalB": [
+    "normal_b_x",
+    "normal_b_y",
+    "normal_b_z"
+  ],
+  "Astra.Components.Joint.LimitMin": [
+    "limit_min"
+  ],
+  "Astra.Components.Joint.LimitMax": [
+    "limit_max"
+  ],
+  "Astra.Components.Joint.MotorVelocity": [
+    "motor_velocity"
+  ],
+  "Astra.Components.Joint.MotorPosition": [
+    "motor_position"
+  ],
+  "Astra.Components.Joint.MotorForce": [
+    "motor_force"
+  ],
+  "Astra.Components.Joint.SpringFrequency": [
+    "spring_frequency"
+  ],
+  "Astra.Components.Joint.SpringDamping": [
+    "spring_damping"
+  ],
+  "Astra.Components.Joint.SwingY": [
+    "swing_y"
+  ],
+  "Astra.Components.Joint.SwingZ": [
+    "swing_z"
+  ],
+  "Astra.Components.Joint.TwistMin": [
+    "twist_min"
+  ],
+  "Astra.Components.Joint.TwistMax": [
+    "twist_max"
+  ],
+  "Astra.Components.Joint.LinearXMinimum": [
+    "linear_x_minimum"
+  ],
+  "Astra.Components.Joint.LinearXMaximum": [
+    "linear_x_maximum"
+  ],
+  "Astra.Components.Joint.LinearXFriction": [
+    "linear_x_friction"
+  ],
+  "Astra.Components.Joint.LinearXVelocity": [
+    "linear_x_velocity"
+  ],
+  "Astra.Components.Joint.LinearXPosition": [
+    "linear_x_position"
+  ],
+  "Astra.Components.Joint.LinearXForce": [
+    "linear_x_force"
+  ],
+  "Astra.Components.Joint.LinearXFrequency": [
+    "linear_x_frequency"
+  ],
+  "Astra.Components.Joint.LinearXDamping": [
+    "linear_x_damping"
+  ],
+  "Astra.Components.Joint.LinearYMinimum": [
+    "linear_y_minimum"
+  ],
+  "Astra.Components.Joint.LinearYMaximum": [
+    "linear_y_maximum"
+  ],
+  "Astra.Components.Joint.LinearYFriction": [
+    "linear_y_friction"
+  ],
+  "Astra.Components.Joint.LinearYVelocity": [
+    "linear_y_velocity"
+  ],
+  "Astra.Components.Joint.LinearYPosition": [
+    "linear_y_position"
+  ],
+  "Astra.Components.Joint.LinearYForce": [
+    "linear_y_force"
+  ],
+  "Astra.Components.Joint.LinearYFrequency": [
+    "linear_y_frequency"
+  ],
+  "Astra.Components.Joint.LinearYDamping": [
+    "linear_y_damping"
+  ],
+  "Astra.Components.Joint.LinearZMinimum": [
+    "linear_z_minimum"
+  ],
+  "Astra.Components.Joint.LinearZMaximum": [
+    "linear_z_maximum"
+  ],
+  "Astra.Components.Joint.LinearZFriction": [
+    "linear_z_friction"
+  ],
+  "Astra.Components.Joint.LinearZVelocity": [
+    "linear_z_velocity"
+  ],
+  "Astra.Components.Joint.LinearZPosition": [
+    "linear_z_position"
+  ],
+  "Astra.Components.Joint.LinearZForce": [
+    "linear_z_force"
+  ],
+  "Astra.Components.Joint.LinearZFrequency": [
+    "linear_z_frequency"
+  ],
+  "Astra.Components.Joint.LinearZDamping": [
+    "linear_z_damping"
+  ],
+  "Astra.Components.Joint.AngularXMinimum": [
+    "angular_x_minimum"
+  ],
+  "Astra.Components.Joint.AngularXMaximum": [
+    "angular_x_maximum"
+  ],
+  "Astra.Components.Joint.AngularXFriction": [
+    "angular_x_friction"
+  ],
+  "Astra.Components.Joint.AngularXVelocity": [
+    "angular_x_velocity"
+  ],
+  "Astra.Components.Joint.AngularXPosition": [
+    "angular_x_position"
+  ],
+  "Astra.Components.Joint.AngularXForce": [
+    "angular_x_force"
+  ],
+  "Astra.Components.Joint.AngularXFrequency": [
+    "angular_x_frequency"
+  ],
+  "Astra.Components.Joint.AngularXDamping": [
+    "angular_x_damping"
+  ],
+  "Astra.Components.Joint.AngularYMinimum": [
+    "angular_y_minimum"
+  ],
+  "Astra.Components.Joint.AngularYMaximum": [
+    "angular_y_maximum"
+  ],
+  "Astra.Components.Joint.AngularYFriction": [
+    "angular_y_friction"
+  ],
+  "Astra.Components.Joint.AngularYVelocity": [
+    "angular_y_velocity"
+  ],
+  "Astra.Components.Joint.AngularYPosition": [
+    "angular_y_position"
+  ],
+  "Astra.Components.Joint.AngularYForce": [
+    "angular_y_force"
+  ],
+  "Astra.Components.Joint.AngularYFrequency": [
+    "angular_y_frequency"
+  ],
+  "Astra.Components.Joint.AngularYDamping": [
+    "angular_y_damping"
+  ],
+  "Astra.Components.Joint.AngularZMinimum": [
+    "angular_z_minimum"
+  ],
+  "Astra.Components.Joint.AngularZMaximum": [
+    "angular_z_maximum"
+  ],
+  "Astra.Components.Joint.AngularZFriction": [
+    "angular_z_friction"
+  ],
+  "Astra.Components.Joint.AngularZVelocity": [
+    "angular_z_velocity"
+  ],
+  "Astra.Components.Joint.AngularZPosition": [
+    "angular_z_position"
+  ],
+  "Astra.Components.Joint.AngularZForce": [
+    "angular_z_force"
+  ],
+  "Astra.Components.Joint.AngularZFrequency": [
+    "angular_z_frequency"
+  ],
+  "Astra.Components.Joint.AngularZDamping": [
+    "angular_z_damping"
+  ],
+  "Astra.Components.Joint.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.Joint.Kind": [
+    "kind"
+  ],
+  "Astra.Components.Joint.Motor": [
+    "motor"
+  ],
+  "Astra.Components.Joint.LinearXMotion": [
+    "linear_x_motion"
+  ],
+  "Astra.Components.Joint.LinearXMotor": [
+    "linear_x_motor"
+  ],
+  "Astra.Components.Joint.LinearYMotion": [
+    "linear_y_motion"
+  ],
+  "Astra.Components.Joint.LinearYMotor": [
+    "linear_y_motor"
+  ],
+  "Astra.Components.Joint.LinearZMotion": [
+    "linear_z_motion"
+  ],
+  "Astra.Components.Joint.LinearZMotor": [
+    "linear_z_motor"
+  ],
+  "Astra.Components.Joint.AngularXMotion": [
+    "angular_x_motion"
+  ],
+  "Astra.Components.Joint.AngularXMotor": [
+    "angular_x_motor"
+  ],
+  "Astra.Components.Joint.AngularYMotion": [
+    "angular_y_motion"
+  ],
+  "Astra.Components.Joint.AngularYMotor": [
+    "angular_y_motor"
+  ],
+  "Astra.Components.Joint.AngularZMotion": [
+    "angular_z_motion"
+  ],
+  "Astra.Components.Joint.AngularZMotor": [
+    "angular_z_motor"
+  ],
+  "Astra.Components.Joint.ConnectedBody": [
+    "connected_body"
+  ],
+  "Astra.Components.DynamicBodyMotor.Speed": [
+    "speed"
+  ],
+  "Astra.Components.DynamicBodyMotor.Acceleration": [
+    "acceleration"
+  ],
+  "Astra.Components.DynamicBodyMotor.Braking": [
+    "braking"
+  ],
+  "Astra.Components.DynamicBodyMotor.AirControl": [
+    "air_control"
+  ],
+  "Astra.Components.DynamicBodyMotor.JumpSpeed": [
+    "jump_speed"
+  ],
+  "Astra.Components.DynamicBodyMotor.ProbeHeight": [
+    "probe_height"
+  ],
+  "Astra.Components.DynamicBodyMotor.ProbeDistance": [
+    "probe_distance"
+  ],
+  "Astra.Components.DynamicBodyMotor.SupportRadius": [
+    "support_radius"
+  ],
+  "Astra.Components.DynamicBodyMotor.MaxSlope": [
+    "max_slope"
+  ],
+  "Astra.Components.DynamicBodyMotor.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.DynamicBodyMotor.InheritPlatformVelocity": [
+    "inherit_platform_velocity"
+  ],
+  "Astra.Components.DynamicBodyMotor.AutomaticSupport": [
+    "automatic_support"
+  ],
+  "Astra.Components.Animation.Speed": [
+    "speed"
+  ],
+  "Astra.Components.Animation.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.Animation.PlayAutomatically": [
+    "play_automatically"
+  ],
+  "Astra.Components.Animation.WrapMode": [
+    "wrap_mode"
+  ],
+  "Astra.Components.Animation.ClipCount": [
+    "clip_count"
+  ],
+  "Astra.Components.GravityField2D.HalfExtents": [
+    "half_x",
+    "half_y"
+  ],
+  "Astra.Components.GravityField2D.Offset": [
+    "offset_x",
+    "offset_y"
+  ],
+  "Astra.Components.GravityField2D.Vector": [
+    "vector_x",
+    "vector_y"
+  ],
+  "Astra.Components.GravityField2D.Radius": [
+    "radius"
+  ],
+  "Astra.Components.GravityField2D.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.GravityField2D.WakeBodies": [
+    "wake_bodies"
+  ],
+  "Astra.Components.GravityField2D.ReplaceWorldGravity": [
+    "replace_world_gravity"
+  ],
+  "Astra.Components.GravityField2D.Shape": [
+    "shape"
+  ],
+  "Astra.Components.GravityField2D.Falloff": [
+    "falloff"
+  ],
+  "Astra.Components.GravityField2D.AffectedLayer": [
+    "affected_layer"
+  ],
+  "Astra.Components.WindField2D.HalfExtents": [
+    "half_x",
+    "half_y"
+  ],
+  "Astra.Components.WindField2D.Offset": [
+    "offset_x",
+    "offset_y"
+  ],
+  "Astra.Components.WindField2D.Vector": [
+    "vector_x",
+    "vector_y"
+  ],
+  "Astra.Components.WindField2D.Radius": [
+    "radius"
+  ],
+  "Astra.Components.WindField2D.Coefficient": [
+    "coefficient"
+  ],
+  "Astra.Components.WindField2D.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.WindField2D.WakeBodies": [
+    "wake_bodies"
+  ],
+  "Astra.Components.WindField2D.Shape": [
+    "shape"
+  ],
+  "Astra.Components.WindField2D.Falloff": [
+    "falloff"
+  ],
+  "Astra.Components.WindField2D.AffectedLayer": [
+    "affected_layer"
+  ],
+  "Astra.Components.DragField2D.HalfExtents": [
+    "half_x",
+    "half_y"
+  ],
+  "Astra.Components.DragField2D.Offset": [
+    "offset_x",
+    "offset_y"
+  ],
+  "Astra.Components.DragField2D.Radius": [
+    "radius"
+  ],
+  "Astra.Components.DragField2D.LinearDrag": [
+    "linear_drag"
+  ],
+  "Astra.Components.DragField2D.AngularDrag": [
+    "angular_drag"
+  ],
+  "Astra.Components.DragField2D.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.DragField2D.WakeBodies": [
+    "wake_bodies"
+  ],
+  "Astra.Components.DragField2D.Shape": [
+    "shape"
+  ],
+  "Astra.Components.DragField2D.Falloff": [
+    "falloff"
+  ],
+  "Astra.Components.DragField2D.AffectedLayer": [
+    "affected_layer"
+  ],
+  "Astra.Components.RadialField2D.HalfExtents": [
+    "half_x",
+    "half_y"
+  ],
+  "Astra.Components.RadialField2D.Offset": [
+    "offset_x",
+    "offset_y"
+  ],
+  "Astra.Components.RadialField2D.Radius": [
+    "radius"
+  ],
+  "Astra.Components.RadialField2D.Acceleration": [
+    "acceleration"
+  ],
+  "Astra.Components.RadialField2D.TangentialAcceleration": [
+    "tangential_acceleration"
+  ],
+  "Astra.Components.RadialField2D.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.RadialField2D.WakeBodies": [
+    "wake_bodies"
+  ],
+  "Astra.Components.RadialField2D.Shape": [
+    "shape"
+  ],
+  "Astra.Components.RadialField2D.Falloff": [
+    "falloff"
+  ],
+  "Astra.Components.RadialField2D.AffectedLayer": [
+    "affected_layer"
+  ],
+  "Astra.Components.PhysicsEventConnection2D.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.PhysicsEventConnection2D.Event": [
+    "event"
+  ],
+  "Astra.Components.PhysicsEventConnection2D.Action": [
+    "action"
+  ],
+  "Astra.Components.PhysicsEventConnection2D.Receiver": [
+    "receiver"
+  ],
+  "Astra.Components.PhysicsEventConnection2D.OtherFilter": [
+    "other_filter"
+  ],
+  "Astra.Components.ConstantForce2D.ForceX": [
+    "force_x"
+  ],
+  "Astra.Components.ConstantForce2D.ForceY": [
+    "force_y"
+  ],
+  "Astra.Components.ConstantForce2D.RelativeForceX": [
+    "relative_force_x"
+  ],
+  "Astra.Components.ConstantForce2D.RelativeForceY": [
+    "relative_force_y"
+  ],
+  "Astra.Components.ConstantForce2D.Torque": [
+    "torque"
+  ],
+  "Astra.Components.ConstantForce2D.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.Joint2D.AnchorAX": [
+    "anchor_a_x"
+  ],
+  "Astra.Components.Joint2D.AnchorAY": [
+    "anchor_a_y"
+  ],
+  "Astra.Components.Joint2D.AnchorBX": [
+    "anchor_b_x"
+  ],
+  "Astra.Components.Joint2D.AnchorBY": [
+    "anchor_b_y"
+  ],
+  "Astra.Components.Joint2D.ReferenceAngleDegrees": [
+    "reference_angle_degrees"
+  ],
+  "Astra.Components.Joint2D.AxisAngleDegrees": [
+    "axis_angle_degrees"
+  ],
+  "Astra.Components.Joint2D.Length": [
+    "length"
+  ],
+  "Astra.Components.Joint2D.MinLength": [
+    "min_length"
+  ],
+  "Astra.Components.Joint2D.MaxLength": [
+    "max_length"
+  ],
+  "Astra.Components.Joint2D.LowerLimit": [
+    "lower_limit"
+  ],
+  "Astra.Components.Joint2D.UpperLimit": [
+    "upper_limit"
+  ],
+  "Astra.Components.Joint2D.MotorSpeed": [
+    "motor_speed"
+  ],
+  "Astra.Components.Joint2D.MotorAngularSpeedDegrees": [
+    "motor_angular_speed_degrees"
+  ],
+  "Astra.Components.Joint2D.MaxMotorForce": [
+    "max_motor_force"
+  ],
+  "Astra.Components.Joint2D.MaxMotorTorque": [
+    "max_motor_torque"
+  ],
+  "Astra.Components.Joint2D.SpringHertz": [
+    "spring_hertz"
+  ],
+  "Astra.Components.Joint2D.SpringDamping": [
+    "spring_damping"
+  ],
+  "Astra.Components.Joint2D.SpringTargetTranslation": [
+    "spring_target_translation"
+  ],
+  "Astra.Components.Joint2D.SpringTargetAngleDegrees": [
+    "spring_target_angle_degrees"
+  ],
+  "Astra.Components.Joint2D.LinearHertz": [
+    "linear_hertz"
+  ],
+  "Astra.Components.Joint2D.AngularHertz": [
+    "angular_hertz"
+  ],
+  "Astra.Components.Joint2D.LinearDampingRatio": [
+    "linear_damping_ratio"
+  ],
+  "Astra.Components.Joint2D.AngularDampingRatio": [
+    "angular_damping_ratio"
+  ],
+  "Astra.Components.Joint2D.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.Joint2D.WorldAnchor": [
+    "world_anchor"
+  ],
+  "Astra.Components.Joint2D.CollideConnected": [
+    "collide_connected"
+  ],
+  "Astra.Components.Joint2D.LimitEnabled": [
+    "limit_enabled"
+  ],
+  "Astra.Components.Joint2D.MotorEnabled": [
+    "motor_enabled"
+  ],
+  "Astra.Components.Joint2D.SpringEnabled": [
+    "spring_enabled"
+  ],
+  "Astra.Components.Joint2D.Kind": [
+    "kind"
+  ],
+  "Astra.Components.Joint2D.Target": [
+    "target"
+  ],
+  "Astra.Components.Body2D.Mass": [
+    "mass"
+  ],
+  "Astra.Components.Body2D.GravityScale": [
+    "gravity_scale"
+  ],
+  "Astra.Components.Body2D.VelocityX": [
+    "velocity_x"
+  ],
+  "Astra.Components.Body2D.VelocityY": [
+    "velocity_y"
+  ],
+  "Astra.Components.Body2D.AngularVelocityDegrees": [
+    "angular_velocity_degrees"
+  ],
+  "Astra.Components.Body2D.LinearDamping": [
+    "linear_damping"
+  ],
+  "Astra.Components.Body2D.AngularDamping": [
+    "angular_damping"
+  ],
+  "Astra.Components.Body2D.FixedRotation": [
+    "fixed_rotation"
+  ],
+  "Astra.Components.Body2D.AllowSleep": [
+    "allow_sleep"
+  ],
+  "Astra.Components.Body2D.Motion": [
+    "motion"
+  ],
+  "Astra.Components.Collider2D.HalfX": [
+    "half_x"
+  ],
+  "Astra.Components.Collider2D.HalfY": [
+    "half_y"
+  ],
+  "Astra.Components.Collider2D.Radius": [
+    "radius"
+  ],
+  "Astra.Components.Collider2D.CapsuleHalfLength": [
+    "capsule_half_length"
+  ],
+  "Astra.Components.Collider2D.OffsetX": [
+    "offset_x"
+  ],
+  "Astra.Components.Collider2D.OffsetY": [
+    "offset_y"
+  ],
+  "Astra.Components.Collider2D.Friction": [
+    "friction"
+  ],
+  "Astra.Components.Collider2D.Restitution": [
+    "restitution"
+  ],
+  "Astra.Components.Collider2D.Sensor": [
+    "sensor"
+  ],
+  "Astra.Components.Collider2D.Shape": [
+    "shape"
+  ],
+  "Astra.Components.AudioSource.Volume": [
+    "volume"
+  ],
+  "Astra.Components.AudioSource.Pitch": [
+    "pitch"
+  ],
+  "Astra.Components.AudioSource.Pan": [
+    "pan"
+  ],
+  "Astra.Components.AudioSource.MinDistance": [
+    "min_distance"
+  ],
+  "Astra.Components.AudioSource.MaxDistance": [
+    "max_distance"
+  ],
+  "Astra.Components.AudioSource.RolloffFactor": [
+    "rolloff_factor"
+  ],
+  "Astra.Components.AudioSource.ConeInner": [
+    "cone_inner"
+  ],
+  "Astra.Components.AudioSource.ConeOuter": [
+    "cone_outer"
+  ],
+  "Astra.Components.AudioSource.ConeGain": [
+    "cone_gain"
+  ],
+  "Astra.Components.AudioSource.Doppler": [
+    "doppler"
+  ],
+  "Astra.Components.AudioSource.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.AudioSource.Mute": [
+    "mute"
+  ],
+  "Astra.Components.AudioSource.Loop": [
+    "loop"
+  ],
+  "Astra.Components.AudioSource.Playback": [
+    "playback"
+  ],
+  "Astra.Components.AudioSource.Dimension": [
+    "dimension"
+  ],
+  "Astra.Components.AudioSource.Rolloff": [
+    "rolloff"
+  ],
+  "Astra.Components.AudioSource.Bus": [
+    "bus"
+  ],
+  "Astra.Components.AudioListener.Volume": [
+    "volume"
+  ],
+  "Astra.Components.AudioListener.Priority": [
+    "priority"
+  ],
+  "Astra.Components.AudioListener.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.AudioBus.Volume": [
+    "volume"
+  ],
+  "Astra.Components.AudioBus.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.AudioBus.Mute": [
+    "mute"
+  ],
+  "Astra.Components.AudioBus.Solo": [
+    "solo"
+  ],
+  "Astra.Components.AudioBus.Output": [
+    "output"
+  ],
+  "Astra.Components.PathComponent.Up": [
+    "up_x",
+    "up_y",
+    "up_z"
+  ],
+  "Astra.Components.PathComponent.Closed": [
+    "closed"
+  ],
+  "Astra.Components.PathFollow.ProgressDistance": [
+    "progress_distance"
+  ],
+  "Astra.Components.PathFollow.Speed": [
+    "speed"
+  ],
+  "Astra.Components.PathFollow.Duration": [
+    "duration"
+  ],
+  "Astra.Components.PathFollow.OffsetX": [
+    "offset_x"
+  ],
+  "Astra.Components.PathFollow.OffsetY": [
+    "offset_y"
+  ],
+  "Astra.Components.PathFollow.OffsetZ": [
+    "offset_z"
+  ],
+  "Astra.Components.PathFollow.Enabled": [
+    "enabled"
+  ],
+  "Astra.Components.PathFollow.Autoplay": [
+    "autoplay"
+  ],
+  "Astra.Components.PathFollow.Loop": [
+    "loop"
+  ],
+  "Astra.Components.PathFollow.Backwards": [
+    "backwards"
+  ],
+  "Astra.Components.PathFollow.Orient": [
+    "orient"
+  ],
+  "Astra.Components.PathFollow.Mode": [
+    "mode"
+  ],
+  "Astra.Components.PathFollow.Target": [
+    "target"
+  ]
+}

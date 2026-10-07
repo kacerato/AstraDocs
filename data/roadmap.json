@@ -1,0 +1,1289 @@
+{
+  "reviewedAt": "2026-10-06",
+  "ledgerBaseDate": "2026-10-01",
+  "note": "Uma linha é uma capacidade/família, não um tipo, API ou propriedade. Auditar não significa ausência de código.",
+  "families": [
+    {
+      "id": "F001",
+      "name": "B Objeto / Unity GameObject, Godot Node",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "ID, nome, ativo próprio/efetivo, pai, ordem, grupos, layer; criar/destruir/duplicar/consultar",
+      "dependencies": "Mundo+geração; nome não é identidade; ciclo rejeitado; filhos e referências remapeados em duplicação",
+      "scope": "obrigatorio",
+      "state": "concluida",
+      "gaps": [],
+      "validationLimits": [
+        "Revisão ABI34 não instalada/executada no aparelho; captura é do executável host, não Vulkan Android."
+      ]
+    },
+    {
+      "id": "F002",
+      "name": "B Transform 3D / Transform, Node3D",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "Posição/rotação/escala local, pose mundial, pivô/convenções, reparent com preservar local ou mundo, conversão de ponto/vetor/direção",
+      "dependencies": "Um escritor de pose por fase; shear e escala negativa têm política; invalidar descendentes/bounds",
+      "scope": "obrigatorio",
+      "state": "concluida",
+      "gaps": [],
+      "validationLimits": [
+        "Revisão ABI34 não instalada/executada no aparelho; captura é do executável host, não Vulkan Android."
+      ]
+    },
+    {
+      "id": "F003",
+      "name": "B Transform 2D / RectTransform/Transform, Node2D",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "Posição, ângulo, escala, skew/pivô se suportado, z/sorting, local/mundo",
+      "dependencies": "Não misturar ângulo em radianos/graus; 2D não herda automaticamente física 3D",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F004",
+      "name": "R/S Cena / Scene, PackedScene/SceneTree",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "Recurso, raiz, cenas aditivas, load/unload, progresso, cancelamento, cena ativa",
+      "dependencies": "Dependências de assets; publication atômica; IDs persistentes versus handles de execução",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F005",
+      "name": "R Prefab/subcena / Prefab, PackedScene",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "Raiz e filhos, overrides por PropertyId, elementos adicionados/removidos, variantes, apply/revert, instanciar",
+      "dependencies": "Grafo acíclico de dependências; contexto de edição; propagação não apaga overrides",
+      "scope": "obrigatorio",
+      "state": "parcial",
+      "gaps": [
+        "Reconciliar adição/remoção/reparent de objetos da árvore.",
+        "Nested prefabs e variantes com dependências acíclicas."
+      ],
+      "validationLimits": [
+        "Sem execução física Android desta revisão."
+      ]
+    },
+    {
+      "id": "F006",
+      "name": "R Receita/preset",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "Componentes iniciais, defaults, requisitos, referências externas, remapeamento",
+      "dependencies": "Cria composição via resolvedor; não acrescenta classes especiais por demo",
+      "scope": "obrigatorio",
+      "state": "concluida",
+      "gaps": [],
+      "validationLimits": [
+        "Sem instalacao/execucao fisica Android desta revisao. UI e runtime verificados no host; arquivo de receita v3, ABI34 no APK."
+      ]
+    },
+    {
+      "id": "F007",
+      "name": "C Comportamento / MonoBehaviour, script em Node",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "Fonte/tipo/instância, ativação, propriedades expostas, ordem, callbacks, erros",
+      "dependencies": "Compilação + mundo; múltiplas instâncias por contrato; referência desconhecida preservada",
+      "scope": "obrigatorio",
+      "state": "concluida",
+      "gaps": [],
+      "validationLimits": [
+        "Cenarios e capturas historicos reconciliados; nao reexecutados nesta revisao. Sem instalacao/execucao fisica nova da ABI34."
+      ]
+    },
+    {
+      "id": "F008",
+      "name": "S Eventos/conexões / UnityEvent, signals",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "Assinatura, emissor/receptor, método/ação, payload, prioridade, conexão/desconexão, sinal único",
+      "dependencies": "Tipagem, lifetime, reentrância, ownership e despacho em thread definida",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F009",
+      "name": "C/S Timer / timers de gameplay, Timer",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "Intervalo, repetição, ativação, autostart e escolha de relógio; início/parada/pausa e restante pelo scheduler real",
+      "dependencies": "Scheduler do Play, evento ABI/C#, cancelamento em Stop/destruição; controles na Inspeção durante Play",
+      "scope": "obrigatorio",
+      "state": "concluida",
+      "gaps": [],
+      "validationLimits": [
+        "Reconciliacao atual usa cenarios host e capturas existentes; nao reexecutados nesta revisao. Pacote ABI34 conferido; sem execucao fisica Android nova."
+      ]
+    },
+    {
+      "id": "F010",
+      "name": "R/S Tween / animação de propriedades, Tween",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "Alvo, PropertyId, origem/destino, duração, easing, sequência/paralelo, loop",
+      "dependencies": "Propriedade elegível; cancelamento e concorrência com física/animação definidos",
+      "scope": "obrigatorio",
+      "state": "parcial",
+      "gaps": [
+        "Sequencia/paralelo compostos ainda sem contrato persistente e scheduler; TransformTween e NumberTween isolados funcionam."
+      ],
+      "validationLimits": []
+    },
+    {
+      "id": "F011",
+      "name": "S Grupos/tags/consultas",
+      "family": "Identidade, cenas, composição e execução — P01–P06",
+      "requirements": "Membership múltipla, consulta, escopo de mundo, layers separados",
+      "dependencies": "Grupos de organização não viram máscara física automaticamente",
+      "scope": "obrigatorio",
+      "state": "concluida",
+      "gaps": [],
+      "validationLimits": [
+        "Reconciliacao atual usa cenarios host e capturas existentes; nao reexecutados nesta revisao. Pacote ABI34 conferido; sem execucao fisica Android nova."
+      ]
+    },
+    {
+      "id": "F012",
+      "name": "R Mesh / Mesh, ArrayMesh",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Vértices/índices, atributos, topologia, submeshes, bounds, derivados, flags de leitura",
+      "dependencies": "Importador/cooker, buffers RHI; preservação de fonte e GUID",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F013",
+      "name": "C MeshRenderer / MeshFilter+MeshRenderer, MeshInstance3D",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Mesh, slots de material, enabled, shadows, visibility/layers, sorting, bounds override",
+      "dependencies": "Mesh renderizável, material compatível; colisor independente",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F014",
+      "name": "C SkinnedMesh / SkinnedMeshRenderer, MeshInstance3D+Skin+Skeleton3D",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Skin, root/bones, bind poses, pesos, quality, bounds, morph weights",
+      "dependencies": "Mesh/skin, alvos válidos e backend de deformação; limite reportado",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F015",
+      "name": "C InstancedRenderer / instancing Unity, MultiMeshInstance3D",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Recurso mesh, transforms/cores por instância, custom data, bounds, culling",
+      "dependencies": "Buffers/instâncias; compartilhamento sem alias indevido",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F016",
+      "name": "C LODGroup / LODGroup, visibility ranges",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Níveis, renderers, limiares, fade, referência de tamanho, culling",
+      "dependencies": "Objetos descendentes/alvos válidos; recursos e política por vista",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F017",
+      "name": "R Shader",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Parâmetros tipados, passes, variantes, keywords/perfil, tipos de textura e bindings",
+      "dependencies": "Compilação/reflexão, pipeline RHI; mensagens de erro apontam fonte",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F018",
+      "name": "R Material / Material, ShaderMaterial",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Shader, parâmetros escalares/vetores/cores/texturas, blend/cull/depth conforme shader",
+      "dependencies": "Shader + recursos; material compartilhado versus override de instância",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F019",
+      "name": "R Texture / Texture, Texture2D",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Fonte, espaço de cor, formato, dimensões, mipmaps, compressão, streaming",
+      "dependencies": "Decode/cooker/residência; importação distinta de edição de sampler",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F020",
+      "name": "R Sampler/binding",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Wrap U/V/W, filtro min/mag/mip, anisotropia, UV set/transform por binding",
+      "dependencies": "Imagem/view/sampler separados; capacidade de aparelho explícita",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F021",
+      "name": "R RenderTarget / RenderTexture, ViewportTexture",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Tamanho/escala, cor/depth, formato, MSAA, lifetime e resize",
+      "dependencies": "View/render graph; não pode ler/escrever recurso em conflito",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F022",
+      "name": "C Camera / Camera, Camera3D",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Perspective/ortho, FOV/tamanho, near/far, aspect/viewport, priority/main, mask, target, clear, exposure",
+      "dependencies": "Transform completo, view; câmera editor separada; roll preservado",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F023",
+      "name": "C CameraRig / Cinemachine, composição Camera3D+SpringArm3D",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Follow de posição, offset e damping implementados; look-at, limites, colisão, blend pendentes",
+      "dependencies": "`astra.camera.follow` requer Camera e alvo por referência; executa após física",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F024",
+      "name": "C Decal / URP DecalProjector, Decal",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Material, box size, normal/angle fade, distância, mask, ordem",
+      "dependencies": "Passe/backend decal, render layers; sem equivalência a mesh decal automática",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F025",
+      "name": "C Line/Trail / LineRenderer/TrailRenderer, Line2D",
+      "family": "Recursos, geometria, materiais e câmeras — P05/P08",
+      "requirements": "Pontos, largura por curva, material, cor/gradient, duração, caps/joins, espaço",
+      "dependencies": "Recurso curva/material, renderer de linha; dimensionalidade explícita",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F026",
+      "name": "C Light / Light; DirectionalLight3D, OmniLight3D, SpotLight3D",
+      "family": "Luz, ambiente e volumes — P08/P16",
+      "requirements": "Tipo, cor/temperatura, unidade/intensidade, alcance, cone, layers, enable",
+      "dependencies": "Renderer/light cluster, pose; unidade por tipo e conversões documentadas",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F027",
+      "name": "Configuração de sombra",
+      "family": "Luz, ambiente e volumes — P08/P16",
+      "requirements": "Cast, bias/normal bias, resolution/budget, distance, cascades/faces, filtering",
+      "dependencies": "Shadow passes reais, atlas, backend/aparelho",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F028",
+      "name": "C/R Ambiente / Volume, WorldEnvironment",
+      "family": "Luz, ambiente e volumes — P08/P16",
+      "requirements": "Sky, exposure, tone map, ambient, fog, effects/profile, prioridade, blend",
+      "dependencies": "Perfis tipados, consumidor de render; global versus local",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F029",
+      "name": "R Céu/atmosfera",
+      "family": "Luz, ambiente e volumes — P08/P16",
+      "requirements": "HDRI, orientação, sol, intensidade, turbidez/parâmetros físicos pertinentes",
+      "dependencies": "Atmosfera/env map existentes; iluminação e fundo separados",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F030",
+      "name": "C ReflectionProbe",
+      "family": "Luz, ambiente e volumes — P08/P16",
+      "requirements": "Shape/extents, offset, capture/baked data, resolution, layers, refresh, blend",
+      "dependencies": "Captura, cubemap/atlas e seleção por instância",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F031",
+      "name": "C Irradiance/LightProbe volume",
+      "family": "Luz, ambiente e volumes — P08/P16",
+      "requirements": "Distribuição, bake data, bounds, interpolation, atualização",
+      "dependencies": "Bake e amostragem indireta real",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F032",
+      "name": "R Lightmap/bake settings",
+      "family": "Luz, ambiente e volumes — P08/P16",
+      "requirements": "UV set, texel density, charts, atlas, output, quality, cancel/progress",
+      "dependencies": "Geometria/material/luz estáticos, bake job e renderer",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F033",
+      "name": "C Fog volume",
+      "family": "Luz, ambiente e volumes — P08/P16",
+      "requirements": "Forma, densidade, albedo/emissão, anisotropia se implementada, falloff",
+      "dependencies": "Integração volumétrica; neblina simples não equivale a volume",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F034",
+      "name": "C/R WaterBody/WaterWorld",
+      "family": "Luz, ambiente e volumes — P08/P16",
+      "requirements": "Forma/limites, material, ondas, corrente, profundidade, buoyancy/queries",
+      "dependencies": "Sistema de água já existente, renderer e física sincronizados",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F035",
+      "name": "C Corpo 3D / Rigidbody, RigidBody3D/StaticBody3D/AnimatableBody3D",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Tipo de movimento, massa/densidade se suportada, gravidade, damping, COM/inércia, velocities, forças/impulsos/torques, sleep, CCD/interpolation, locks",
+      "dependencies": "Mundo Jolt, shapes pertinentes; modo determina escritor da pose",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F036",
+      "name": "C Collider box/sphere/capsule",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Tamanho/raio/altura, centro/rotação local, enabled, sensor, material, layers/masks",
+      "dependencies": "Forma independente da mesh; corpo estático implícito ou relação explícita definida",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F037",
+      "name": "C Collider convex/mesh/heightfield",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Fonte geométrica própria, convex/decomposition, cooking, scale, margin",
+      "dependencies": "Cooked data; restrições de corpo dinâmico do backend; sem fallback silencioso",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F038",
+      "name": "C Composição de colisores",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Lista/filhos shapes, IDs, pose e material por shape",
+      "dependencies": "Agregação em corpo proprietário; remover filho invalida composição",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F039",
+      "name": "R PhysicsMaterial",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Friction, restitution, combine policy, surface data",
+      "dependencies": "Propriedade suportada no backend; compartilhado/override explícito",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F040",
+      "name": "C Sensor/Area",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Shape, monitoring, monitorable, layers, enter/stay/exit",
+      "dependencies": "Consulta de contatos; referência ao objeto/shape; sem obrigar renderer",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F041",
+      "name": "C Joint fixo/hinge/slider/spring/6DOF",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Corpos A/B, frames/anchors, eixos, limits, motor, força/torque, damping, break threshold",
+      "dependencies": "Pelo menos corpo proprietário; segundo corpo ou world anchor; validação de frames",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F042",
+      "name": "C CharacterMotor / CharacterController, CharacterBody3D",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Shape, speed, slope, step, skin margin, gravity, floor snap, platform velocity, up direction, jump",
+      "dependencies": "Backend CharacterVirtual; conflicts atuais com Body/Collider devem evoluir com migração",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F043",
+      "name": "S Physics queries",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Ray/shape casts, overlaps, filters, triggers, max distance, initial overlap",
+      "dependencies": "Mundo, alocação/buffer e truncamento explícitos; hits com IDs válidos",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F044",
+      "name": "C/R Ragdoll",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Corpos/joints por osso, blend, limites, transição animated/dynamic",
+      "dependencies": "Skeleton + physics; uma autoridade final por osso",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F045",
+      "name": "C/S Physics2D",
+      "family": "Física e personagem — P07/P12",
+      "requirements": "Bodies, circle/box/capsule/polygon/edge, sensors, joints, character e queries",
+      "dependencies": "Backend escolhido, mundo 2D, unidade; não colidir implicitamente com 3D",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F046",
+      "name": "R/S ActionMap/InputContext",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Actions, bindings, interactions, deadzones, axes, device groups, enabled, rebind",
+      "dependencies": "Entrada plataforma + foco; contexto de editor/Play separado",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F047",
+      "name": "C/R Canvas/root UI",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Screen/world space, escala, viewport/target, sorting, safe area",
+      "dependencies": "Runtime UI, transform/layout, renderer",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F048",
+      "name": "C Rect/layout",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Anchors, offsets, pivot, min/preferred/max, stretch, alignment, aspect",
+      "dependencies": "Parent layout, política de medida/arranjo; não expor valores sem efeito",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F049",
+      "name": "C Containers row/column/grid/flow",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Gap, padding, alignment, wrap, sizing",
+      "dependencies": "Filhos UI; layout controla posição, não script concorrente",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F050",
+      "name": "C Image/NineSlice",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Texture/region, tint, borders, fill/mode, aspect",
+      "dependencies": "Texture e sampler; atlas/pivô",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F051",
+      "name": "C Text/RichText",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "String/localization key, font, size, wrap, alignment, spans, ellipsis, selection",
+      "dependencies": "Font/shaping/fallback; rich text com marcação definida",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F052",
+      "name": "C Button/Toggle/Radio",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Text/icon, interactable, pressed/checked, group, transitions, click/change",
+      "dependencies": "Foco e input, tema; Radio precisa de grupo explícito",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F053",
+      "name": "C Slider/Range/Progress",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Min/max/value/step, orientation, format, change event",
+      "dependencies": "Validação de domínio; Progress pode ser read-only na entrada",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F054",
+      "name": "C Scroll/List/Tree/Dropdown",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Scroll, selection, item source, virtualization, expansion, clipping",
+      "dependencies": "Layout, input/capture e item IDs; dado separado do widget",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F055",
+      "name": "C TextInput",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Value, placeholder, multiline, selection/caret, validation, keyboard type, submit",
+      "dependencies": "IME/clipboard/foco Android; dado sensível não entra em logs",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F056",
+      "name": "R Theme/Style",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Tokens, estados, fonts, colors, sizes, variants",
+      "dependencies": "Herança de recurso; alteração invalida layout/draw conforme efeito",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F057",
+      "name": "S Accessibility/Localization",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Nome/role/state, foco/ordem, locale, fontes substitutas, RTL, contraste",
+      "dependencies": "Semântica de UI e plataforma; leitura de tela não depende só de cor",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F058",
+      "name": "R AudioClip/Stream",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Fonte, formato, sample rate/channels, duração, import/streaming, loop points",
+      "dependencies": "Decode, cache e threads de áudio; GUID durável",
+      "scope": "obrigatorio",
+      "state": "parcial",
+      "gaps": [
+        "Streaming de clipe e pontos de loop autorados nao implementados; WAV decodificado/cached e loop inteiro funcionam."
+      ],
+      "validationLimits": []
+    },
+    {
+      "id": "F059",
+      "name": "C AudioSource 2D/3D",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Clip/stream, bus, volume, pitch, loop, autoplay, priority, spatial blend/range/cone",
+      "dependencies": "Audio world; Transform para 3D; não exigir renderer",
+      "scope": "obrigatorio",
+      "state": "parcial",
+      "gaps": [
+        "Prioridade/preempcao de fontes e mistura espacial continua ainda nao implementadas; dimensao plana/espacial e demais propriedades possuem consumidor."
+      ],
+      "validationLimits": []
+    },
+    {
+      "id": "F060",
+      "name": "C AudioListener",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Enabled, priority, orientação, seleção de listener de jogo",
+      "dependencies": "Audio world; câmera é relação opcional",
+      "scope": "obrigatorio",
+      "state": "concluida",
+      "gaps": [],
+      "validationLimits": [
+        "Captura e cenarios executados no host. APK conferido; revisao nao instalada/executada fisicamente no Android."
+      ]
+    },
+    {
+      "id": "F061",
+      "name": "R/S Mixer/buses/effects",
+      "family": "Input, UI de jogo, texto e áudio — P06/P09/P10",
+      "requirements": "Gain, mute/solo, sends, effects/params, snapshots",
+      "dependencies": "Grafo sem ciclos não suportados; DSP real; lifecycle da plataforma",
+      "scope": "obrigatorio",
+      "state": "parcial",
+      "gaps": [
+        "Sends, efeitos DSP/parametros e snapshots ainda nao implementados; buses atuais executam apenas encadeamento de ganho, mute/solo."
+      ],
+      "validationLimits": []
+    },
+    {
+      "id": "F062",
+      "name": "R AnimationClip",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Tracks, target IDs, keyframes, interpolation, duration, loop, events",
+      "dependencies": "Recursos importados/autorais; curvas e propriedades animáveis",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F063",
+      "name": "C AnimationPlayer",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Clips, default, autoplay, speed, play/stop/seek/blend e estado transitório",
+      "dependencies": "Clips/alvos; não persistir tempo de Play por acidente",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F064",
+      "name": "R Animator graph",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "States, transitions, conditions, parameters, blend spaces, layers, masks",
+      "dependencies": "Clip evaluator; árvore/grafo validado; máquina de estados salva em resource",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F065",
+      "name": "C/R Rig/IK/constraints",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Targets, chains, poles, limits, weights, solver order",
+      "dependencies": "Skeleton; targets válidos; controle de pose por fase",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F066",
+      "name": "R/C Timeline",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Tracks, bindings, clips, markers, ranges, preview/record",
+      "dependencies": "Tempo, animation/audio/camera/events; update determinístico do editor",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F067",
+      "name": "C NavigationRegion/Surface",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Geometry source, bounds, layers, cell size, radius/height/step/slope, bake data",
+      "dependencies": "Bake/cooker + recurso navmesh",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F068",
+      "name": "C NavigationAgent",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Destination, speed/accel, radius, avoidance, path state, stop distance, masks",
+      "dependencies": "Nav world + motor de movimento; não exigir Rigidbody automaticamente",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F069",
+      "name": "C NavigationObstacle/Link",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Shape/radius/velocity; start/end, cost, direction, enabled",
+      "dependencies": "Nav world; dynamic obstacle não equivale a rebake global",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F070",
+      "name": "C Perception/state logic",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Sensors/queries, memory, state/action graph, timers, events",
+      "dependencies": "Capacidade composta de gameplay; sem `EnemyAI` especial no núcleo",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F071",
+      "name": "C Sprite/AnimatedSprite",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Texture/frames, region, pivot, tint, flip, sorting, fps/playback",
+      "dependencies": "Atlas/material 2D; frame IDs duráveis",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F072",
+      "name": "R TileSet / C TileMapLayer",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Tiles, atlas, cells, terrain/autotile, metadata, collisions, nav, animation",
+      "dependencies": "Painting, chunk bounds, física/nav 2D opcionais",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F073",
+      "name": "C Camera2D/Parallax",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Zoom, offset, limits, smoothing, follow, repeats",
+      "dependencies": "Transform2D e view; game camera independente do editor",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F074",
+      "name": "C Light2D/Occluder2D",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Type, color/energy, texture, masks, shape, shadow params",
+      "dependencies": "Renderer 2D e occlusion; não reusar sombras 3D semanticamente",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F075",
+      "name": "C/R ParticleEmitter",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Rate/bursts, shape, lifetime, seed, local/world, velocity, color/size curves, collision",
+      "dependencies": "Simulation CPU/GPU declarada, material e bounds",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F076",
+      "name": "R Curve/Gradient",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Keys/stops, interpolation, tangent/mode, extrapolation, colorspace",
+      "dependencies": "Identidade de key se referenciada; edição agrupada em Undo",
+      "scope": "obrigatorio",
+      "state": "concluida",
+      "gaps": [],
+      "validationLimits": [
+        "Captura e cenarios executados no host. APK conferido; revisao nao instalada/executada fisicamente no Android."
+      ]
+    },
+    {
+      "id": "F077",
+      "name": "R Spline / C Path",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Points, tangents, closed, up/roll, sampling, length",
+      "dependencies": "Geometry resource e ferramentas de edição",
+      "scope": "obrigatorio",
+      "state": "concluida",
+      "gaps": [],
+      "validationLimits": [
+        "Host e pacote ABI35; revisao nao instalada/executada fisicamente no Android."
+      ]
+    },
+    {
+      "id": "F078",
+      "name": "C PathFollower",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Path ref, offset/distance, speed, orientation, loop",
+      "dependencies": "Path + Transform; física tem autoridade se usada",
+      "scope": "obrigatorio",
+      "state": "concluida",
+      "gaps": [],
+      "validationLimits": [
+        "Aceite P15a anterior reconciliado; nao reexecutado. Pacote ABI34 conferido, sem execucao fisica desta revisao."
+      ]
+    },
+    {
+      "id": "F079",
+      "name": "C Terrain",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Heightfield/tiles, size/resolution, material layers, holes, normals, collision",
+      "dependencies": "Streaming/cooking, mesh/render e física; brush transacional",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F080",
+      "name": "C Foliage/scatter",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Source meshes, seed, density, masks, slope/height, scale/rotation range, LOD",
+      "dependencies": "Instancing e terreno/surface; instâncias derivadas versus autorais",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F081",
+      "name": "S World streaming",
+      "family": "Animação, navegação, 2D, efeitos e mundo — P11–P16",
+      "requirements": "Regions, budgets, load radius/priorities, async progress, rebasing policy",
+      "dependencies": "Scenes/assets, handle invalidation, GPU/CPU lifetime",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F082",
+      "name": "S SaveGame",
+      "family": "Projeto, ferramentas e módulos condicionais — P17–P20",
+      "requirements": "Schema/version, slot, timestamp, data/ref mapping, migration",
+      "dependencies": "Storage e dados de gameplay, não cópia do EditorDocument",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F083",
+      "name": "E Import profiles",
+      "family": "Projeto, ferramentas e módulos condicionais — P17–P20",
+      "requirements": "Scale/axes, geometry, material/textures, animation, collisions, exclusions",
+      "dependencies": "Importador, fonte, reconciliação e jobs",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F084",
+      "name": "E Inspector extensions",
+      "family": "Projeto, ferramentas e módulos condicionais — P17–P20",
+      "requirements": "Widget por tipo, group, conditions, custom renderer validado",
+      "dependencies": "Schema/commands/Undo, não mutação direta",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F085",
+      "name": "E Code/graph workspace",
+      "family": "Projeto, ferramentas e módulos condicionais — P17–P20",
+      "requirements": "Diagnostics, help, completion, graph nodes/ports, debug",
+      "dependencies": "Compiler/Flow/API/metadata reais",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F086",
+      "name": "E Profiler/debug overlays",
+      "family": "Projeto, ferramentas e módulos condicionais — P17–P20",
+      "requirements": "Frame/sample, CPU/GPU/mem, draw/physics/navigation overlays",
+      "dependencies": "Profiler e medições reais, ativação explícita",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F087",
+      "name": "S Build/export profiles",
+      "family": "Projeto, ferramentas e módulos condicionais — P17–P20",
+      "requirements": "Startup scene, target, assets, quality/input/physics, modules",
+      "dependencies": "Cooker/runtime/bootstrap; assinatura separada",
+      "scope": "obrigatorio",
+      "state": "auditar",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F088",
+      "name": "C/S Network identity/replication",
+      "family": "Projeto, ferramentas e módulos condicionais — P17–P20",
+      "requirements": "Authority, ID, ownership, properties, RPC policy, spawn, interpolation",
+      "dependencies": "Transport + serialization + scenes + time",
+      "scope": "condicional-P19",
+      "state": "condicional",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F089",
+      "name": "C XR origin/controller/AR data",
+      "family": "Projeto, ferramentas e módulos condicionais — P17–P20",
+      "requirements": "Tracking origin, poses/actions, anchors/planes opcionais",
+      "dependencies": "Runtime e hardware específicos",
+      "scope": "condicional-P19",
+      "state": "condicional",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F090",
+      "name": "C VideoPlayer",
+      "family": "Projeto, ferramentas e módulos condicionais — P17–P20",
+      "requirements": "Source, loop, speed, seek, audio/target, aspect",
+      "dependencies": "Decode/plataforma, texture e áudio",
+      "scope": "condicional-P19",
+      "state": "condicional",
+      "gaps": [],
+      "validationLimits": []
+    },
+    {
+      "id": "F091",
+      "name": "C Vehicle/Cloth/SoftBody",
+      "family": "Projeto, ferramentas e módulos condicionais — P17–P20",
+      "requirements": "Parâmetros de solver e autoria pertinentes à família",
+      "dependencies": "Física, mesh/skin, orçamento e backend",
+      "scope": "condicional-P19",
+      "state": "condicional",
+      "gaps": [],
+      "validationLimits": []
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "render.light.directional",
+      "name": "Sol direcional",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.light.punctual",
+      "name": "Luzes pontuais e spot",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.light.temperature",
+      "name": "Temperatura de cor em kelvin",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.light.photometric",
+      "name": "Unidades fotométricas (lux, lumen, candela)",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.light.cookie",
+      "name": "Máscara projetada (cookie)",
+      "state": "Planned",
+      "limitation": "Sem amostragem de textura por luz no shader de fragmento"
+    },
+    {
+      "id": "render.light.area",
+      "name": "Luz de área",
+      "state": "Planned",
+      "limitation": "Sem integração de fonte com extensão"
+    },
+    {
+      "id": "render.shadow.directional",
+      "name": "Sombra do sol em cascatas",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.shadow.punctual",
+      "name": "Sombra de luz pontual ou spot",
+      "state": "Implemented",
+      "limitation": "Atlas em quadtree: spot ocupa um mapa, pontual seis faces"
+    },
+    {
+      "id": "render.ambient.hemispheric",
+      "name": "Ambiente hemisférico céu/chão",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.ambient.specular",
+      "name": "Reflexo especular do ambiente",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.gi.lightmap",
+      "name": "Lightmap indireto externo por submalha",
+      "state": "DeviceLimited",
+      "limitation": "RGB linear de irradiância; UV1 autoral; exige bindless. Sem bake, unwrap ou probes"
+    },
+    {
+      "id": "render.probe.irradiance",
+      "name": "Sonda de irradiância por objeto",
+      "state": "Planned",
+      "limitation": "Sem recurso de sonda nem amostragem por instância"
+    },
+    {
+      "id": "render.probe.reflection",
+      "name": "Sonda de reflexão local",
+      "state": "Planned",
+      "limitation": "Sem captura local, atlas nem blend por volume"
+    },
+    {
+      "id": "render.material.pbr",
+      "name": "Superfície PBR metálico/rugosidade",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.material.alpha_mask",
+      "name": "Recorte por alfa, inclusive na sombra",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.material.alpha_blend",
+      "name": "Transparência com mistura",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.material.double_sided",
+      "name": "Desenho de face dupla",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.material.uv_transform",
+      "name": "Conjunto de UV e transformação por binding",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.material.variants",
+      "name": "Especialização de pipeline por material",
+      "state": "DeviceLimited",
+      "limitation": "Drivers móveis podem regredir com muitos pipelines pequenos"
+    },
+    {
+      "id": "render.material.clearcoat",
+      "name": "Camada de verniz e transmissão",
+      "state": "Planned",
+      "limitation": "Sem variante de BRDF com camada adicional"
+    },
+    {
+      "id": "render.texture.anisotropy",
+      "name": "Filtragem anisotrópica",
+      "state": "DeviceLimited",
+      "limitation": "Depende da GPU expor samplerAnisotropy"
+    },
+    {
+      "id": "render.texture.bindless",
+      "name": "Indexação sem limite de descritor",
+      "state": "DeviceLimited",
+      "limitation": "Depende de descriptor indexing no backend"
+    },
+    {
+      "id": "render.lod.package",
+      "name": "Níveis de detalhe do pacote de mapa",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.lod.group",
+      "name": "Grupo de LOD autoral por objeto",
+      "state": "Implemented",
+      "limitation": "Níveis são objetos do autor ou da convenção _LOD<n>; simplificação automática de malha ainda não existe"
+    },
+    {
+      "id": "render.visibility.hzb",
+      "name": "Oclusão por pirâmide de profundidade",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.instancing.gpu",
+      "name": "Culling e compactação de desenho em GPU",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.motion_vectors",
+      "name": "Vetores de movimento por pixel",
+      "state": "Implemented",
+      "limitation": "Transparência e água usam as máscaras de reatividade/composição, não vetor próprio"
+    },
+    {
+      "id": "render.skinning",
+      "name": "Malha deformada por esqueleto",
+      "state": "Implemented",
+      "limitation": "Até 4 influências por vértice e 256 juntas por skin; morph targets não são importados"
+    },
+    {
+      "id": "render.environment.atmosphere",
+      "name": "Céu atmosférico",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.environment.physical_atmosphere",
+      "name": "Céu físico Rayleigh/Mie",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.environment.fog",
+      "name": "Neblina por profundidade",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.environment.volumes",
+      "name": "Volumes de ambiente por câmera",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.post.tonemap",
+      "name": "Exposição e mapeamento de tom",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.post.auto_exposure",
+      "name": "Exposição automática por histograma",
+      "state": "Implemented",
+      "limitation": "Histograma e adaptação por vista; o EV fica restrito à faixa autoral"
+    },
+    {
+      "id": "render.post.bloom",
+      "name": "Brilho estourado",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.post.film_grain",
+      "name": "Grão de filme",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.post.ambient_occlusion",
+      "name": "Oclusão ambiente em tela",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.aa.fxaa",
+      "name": "Antisserrilhado espacial",
+      "state": "Implemented",
+      "limitation": ""
+    },
+    {
+      "id": "render.aa.temporal",
+      "name": "Antisserrilhado temporal",
+      "state": "DeviceLimited",
+      "limitation": "Exige histórico e profundidade alocáveis no backend"
+    },
+    {
+      "id": "render.upscale.temporal",
+      "name": "Ampliação temporal Arm ASR / AMD FSR 2",
+      "state": "DeviceLimited",
+      "limitation": "Exige float16/int16, formatos de storage e subgrupos no aparelho; recusa com motivo quando falta"
+    },
+    {
+      "id": "animation.clip",
+      "name": "Clipe de animação por nós",
+      "state": "Implemented",
+      "limitation": "Translação, rotação e escala; pesos de morph não; sem mistura entre clipes"
+    }
+  ]
+}
