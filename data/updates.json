@@ -4,6 +4,30 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-publicacao-historico",
+      "date": "2026-10-07",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "fix",
+      "title": "Publicação consistente do histórico",
+      "summary": "A verificação de atualização reconhece o mesmo conteúdo ao publicar a documentação a partir de ambientes diferentes.",
+      "version": "Docs · revisão 07/10/2026",
+      "availability": "documentation",
+      "details": [
+        "Arquivos de texto são comparados com a mesma regra de quebras de linha no Windows e na Vercel, evitando bloquear conteúdo idêntico durante a publicação.",
+        "Os arquivos nativos de UI e imagens continuam comparados pelos bytes originais. A exigência de uma nota nova para cada revisão permanece ativa."
+      ],
+      "validation": "Build local, links, comparação com os arquivos do Git e publicação na Vercel conferidos. Nenhuma nova execução do aplicativo é declarada nesta correção.",
+      "migration": "Nenhuma alteração no APK ou nos projetos.",
+      "links": [
+        {
+          "label": "Central de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-central-atualizacoes",
       "date": "2026-10-07",
       "scopes": [

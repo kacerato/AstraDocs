@@ -57,7 +57,7 @@ export function contentHash() {
   const hash = crypto.createHash('sha256');
   for (const f of contentFiles()) {
     const bytes = fs.readFileSync(f);
-    hash.update(f + '\0').update(/\.(json|mjs|astro|css|ts|md|txt|svg|webmanifest)$/.test(f) ? bytes.toString('utf8').replace(/\r\n/g, '\n') : bytes).update('\0');
+    hash.update(f + '\0').update(/\.(json|mjs|astro|css|ts|md|txt|csv|svg|webmanifest)$/.test(f) ? bytes.toString('utf8').replace(/\r\n/g, '\n') : bytes).update('\0');
   }
   return hash.digest('hex');
 }
