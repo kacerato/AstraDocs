@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-animator-maquina-de-estados",
+      "date": "2026-10-07",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Animator: máquina de estados de animação com editor de grafo",
+      "summary": "Personagens importados ganham um Animator com parâmetros, estados, transições com condições, misturas 1D e 2D, camadas com máscara e eventos, editado num grafo em tela cheia e controlado por scripts pelo nome dos parâmetros.",
+      "version": "Bloco I, parte 1 · revisão de desenvolvimento 07/10/2026 (commit af1d9981 da engine; Astra Dev 0.2.4-dev.20261007)",
+      "availability": "development",
+      "details": [
+        "Componente Animator: parâmetros Float, Int, Bool e Gatilho; camadas com peso e máscara por parte da hierarquia; estados de Clipe, Mistura 1D (por limiares) e Mistura 2D (por pontos); transições de um estado ou de Qualquer estado com condições, tempo de saída e duração; eventos marcados no tempo de cada estado.",
+        "Editor de grafo: abra pelo cartão do Animator na Inspeção. Camadas em abas, parâmetros à esquerda, estados e setas no centro, propriedades à direita. Crie e arraste estados, ligue transições (Transição → origem → destino), defina o estado padrão, escolha clipes das fontes importadas e a máscara pela hierarquia. Tudo pode ser desfeito.",
+        "No Play, o grafo mostra o estado vivo com a barra de tempo, a transição em andamento e os valores atuais dos parâmetros, só para leitura.",
+        "Scripts C#: GameObject.Animator() com SetFloat, SetInteger, SetBool, SetTrigger, ResetTrigger, GetFloat, Play, CrossFade e GetCurrentState; eventos OnStateEntered e OnStateEvent. Conexões de evento recebem Animator: entrou num estado e Animator: evento do estado.",
+        "Criar → Gameplay → Animator cria um controlador para o modelo escolhido; no modelo importado, Adicionar componente → Animator. Animator e Animação legada não ficam no mesmo objeto.",
+        "Referências estudadas: Unity 6000.0 Animator Controller, Transitions, Blend Trees e Layers; Godot 4.5 BlendSpace2D. Pendentes: sub-máquinas de estado, interrupção de transição, camadas aditivas, root motion, IK e Timeline."
+      ],
+      "validation": "Engine: 5 testes do Animator no host (misturas, contrato, transições e gatilhos, mistura por parâmetro, camadas com máscara e eventos); suíte nativa 1452/1460 com as 8 falhas anteriores ao bloco; suíte C# 522/0; build Android arm64. Aparelho: Fox com Animator no canal Astra Dev — estado padrão, mistura mudando a pose, tipo de parâmetro errado recusado, gatilho de Qualquer estado com retorno por tempo de saída e eventos — e o fluxo de edição do grafo conferido em capturas. Não está no APK público 0.2.2-preview.20261007.",
+      "migration": "Tipo novo (astra.animation.animator v1); cenas existentes não mudam. Para trocar a Animação legada por um Animator no mesmo objeto, remova a Animação antes.",
+      "links": [
+        {
+          "label": "APK público e disponibilidade",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-mixer-de-audio",
       "date": "2026-10-07",
       "scopes": [
