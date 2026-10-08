@@ -2,6 +2,7 @@ node_modules
 .astro
 .vercel
 evidence
-tools/export-api
+tools/export-api/bin
+tools/export-api/obj
 README.md
 DESIGN.md

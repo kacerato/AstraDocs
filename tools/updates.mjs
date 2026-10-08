@@ -62,7 +62,7 @@ export function contentHash() {
     const bytes = fs.readFileSync(f);
     // Vercel rewrites its config formatting before executing the build.
     // Compare every configuration value, preserving order in routing arrays.
-    const content = f === 'vercel.json' ? JSON.stringify(canonical(JSON.parse(bytes.toString('utf8')))) : /\.(json|mjs|astro|css|ts|md|txt|csv|svg|webmanifest)$/.test(f) ? bytes.toString('utf8').replace(/\r\n/g, '\n') : bytes;
+    const content = f === 'vercel.json' ? JSON.stringify(canonical(JSON.parse(bytes.toString('utf8')))) : /\.(json|mjs|astro|css|ts|md|txt|csv|svg|webmanifest|cs|cpp)$/.test(f) ? bytes.toString('utf8').replace(/\r\n/g, '\n') : bytes;
     hash.update(f + '\0').update(content).update('\0');
   }
   return hash.digest('hex');

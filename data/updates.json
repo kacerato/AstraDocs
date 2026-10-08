@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-publicacao-catalogo",
+      "date": "2026-10-07",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "fix",
+      "title": "Publicação do catálogo de 07/10 na Vercel",
+      "summary": "A entrega inclui os extratores públicos necessários à verificação da origem do catálogo. A cobertura compara texto de forma consistente no Windows e no Linux.",
+      "version": "snapshot-2026-10-07 · APK 0.2.3",
+      "availability": "documentation",
+      "details": [
+        "Os arquivos públicos do extrator C# participam da verificação; binários, caches e fontes privadas da engine permanecem fora do deploy.",
+        "A comparação da cobertura normaliza finais de linha dos extratores C# e C++, preservando o conteúdo. Os contratos JSON continuam protegidos por seus hashes próprios.",
+        "Use o catálogo de 07/10 para os componentes do APK 0.2.3; o histórico de 06/10 segue disponível."
+      ],
+      "validation": "Build local e verificação de cobertura dos arquivos preparados para deploy. A publicação é confirmada pelo estado READY da Vercel e pelo conteúdo no domínio público. Nenhum APK novo ou teste de Play/aparelho nesta correção.",
+      "migration": "Nenhuma migração de projetos. A correção altera o processo de publicação das docs.",
+      "links": [
+        {
+          "label": "Catálogo atual",
+          "url": "/pt-br/snapshot-2026-10-07/componentes/"
+        },
+        {
+          "label": "Novas fichas e mudanças",
+          "url": "/pt-br/snapshot-2026-10-07/componentes/novidades/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-catalogo-apk-0-2-3",
       "date": "2026-10-07",
       "scopes": [
