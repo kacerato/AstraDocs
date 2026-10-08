@@ -4,6 +4,39 @@
   "updatedAt": "2026-10-08",
   "entries": [
     {
+      "id": "2026-10-08-animator-composicao-aditiva",
+      "date": "2026-10-08",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Animator: composição aditiva e pose de referência",
+      "summary": "Camadas relativas de posição, rotação, escala e morph; referência inicial ou clipe/tempo, máscara, histórico e controle por instância no SDK.",
+      "version": "Animator v4 · AEANIMATOR 2 · Astra Dev 0.2.7-dev.20261008 · code 15",
+      "availability": "development",
+      "details": [
+        "Camadas aditivas aplicam diferença de posição/morph, quaternion relativo local e razão de escala. Peso zero e estado ativo sem canais removem a contribuição antiga; máscara e autoridade física continuam efetivas.",
+        "Referência explícita é amostrada por alvo/canal e tempo em segundos. Ausência, incompatibilidade, escala zero e quaternion/TRS inválidos produzem diagnóstico. Canais compatíveis continuam; não há referência inventada.",
+        "Ajustes da camada expõe composição, peso, referência/tempo condicionais e pose inicial. Editar recurso conserva autoridade compartilhada; Undo/Redo, journal e salvar/reabrir preservam a autoria. Novos ícones aditiva/referência integrados ao SVG, PNG e atlas real.",
+        "Dez operações de composição no consumidor nativo e C# permitem consultar/alterar peso, modo, referência e tempo e restaurar autoria. Play usa ajustes por instância, sem gravar o recurso; Stop descarta ajustes runtime.",
+        "Novo guia de uso com captura real, API, diagnóstico, migração e validação. Submáquinas, interrupções, editor de clipes, retargeting, IK, root motion e FBX não são capacidades entregues nesta nota.",
+        "FinalIK 2.2 e UMotion Pro 1.29p04: inventário privado de 783 arquivos e 75 páginas, com hashes/dependências/propriedades. Pesquisa não equivale a importação: nenhum asset desses pacotes foi disponibilizado na biblioteca da engine nesta revisão. BoZo segue excluído."
+      ],
+      "validation": "16/16 cenários focados host, incluindo matemática, transições, máscaras, física, morph, skin, migração, histórico e isolamento; SDK Release sem erros/avisos; build nativo Android e APK concluídos. POCO F7/Android 16: oito checks C# passaram antes/depois da autoria; peso 0,65 e referência 0,25 s preservados após salvar/encerrar/reabrir. Todos os 417 frames revisados em 14 folhas e capturas completas, com PTS/hashes. APK instalado igual ao local (85f00c0294dc…). Skin/morph validados no host; cenário Android usa mecanismos sem skin. Não mede multidões, FPS sustentado nem suavidade de caminhada.",
+      "migration": "Animator v4 e AEANIMATOR 2 leem versões anteriores; grafos legados migram para Override com peso integral da base. APKs antigos não leem os novos formatos: preserve backup antes de salvar no Dev. API runtime não altera autoria. O APK público 0.2.3 e seu catálogo permanecem intactos.",
+      "links": [
+        {
+          "label": "Composição aditiva no Dev",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animator-aditivo/"
+        },
+        {
+          "label": "Disponibilidade do APK",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-08-animator-controller-overrides",
       "date": "2026-10-08",
       "scopes": [
