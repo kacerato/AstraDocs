@@ -80,10 +80,10 @@ const guiFields={
   GuiSnapshot:{World:'Mundo da execução.',Id:'ID local do nó.',Kind:'Tipo de nó.',Visible:'Visibilidade do estado local.',Enabled:'Habilitação do estado local.',Value:'Valor de Toggle/Slider/Progress.',Minimum:'Extremo inferior autorado.',Maximum:'Extremo superior autorado.'},
   GuiEvent:{Element:'Handle da origem na instância que emitiu.',Kind:'Click ou ValueChanged.',Value:'Valor entregue com o evento.'},
 };
-export function memberGuide(type,m,context,componentMemberMap={}) {
+export function memberGuide(type,m,context,componentMemberMap={},usageForField=propertyUsage) {
   let usage='';
   const mapping=componentMemberMap[`${type.fullName}.${m.name}`];
-  if(context.component&&mapping){const fields=context.component.properties.filter(p=>mapping.includes(p.id));if(fields.length)usage=fields.map(p=>`**${p.name}:** ${propertyUsage(context.component,p)}`).join(' ');}
+  if(context.component&&mapping){const fields=context.component.properties.filter(p=>mapping.includes(p.id));if(fields.length)usage=fields.map(p=>`**${p.name}:** ${usageForField(context.component,p)}`).join(' ');}
   if(!usage&&['GuiElement','GuiAccess','GuiInputAccess'].includes(type.name))usage=guiUsage[m.name]||'';
   if(!usage&&guiFields[type.name])usage=guiFields[type.name][m.name]||'';
   if(!usage && m.name==='.ctor')usage='Constrói o tipo pela assinatura declarada. Um construtor de fachada envolve um componente existente; um record de configuração só tem efeito quando atribuído ao consumidor.';

@@ -13,5 +13,5 @@ for(let i=0;i<starts.length;i++) {
   }
 }
 if(!Object.keys(map).length)throw Error('Nenhum vínculo extraído.');
-fs.writeFileSync('data/component-member-map.json',JSON.stringify(map,null,2)+'\n');
+fs.writeFileSync(process.argv[3] || 'data/component-member-map.json',JSON.stringify(map,null,2)+'\n');
 console.log(JSON.stringify({mappedMembers:Object.keys(map).length}));

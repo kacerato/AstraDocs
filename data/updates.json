@@ -4,6 +4,49 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-catalogo-apk-0-2-3",
+      "date": "2026-10-07",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Catálogo do APK 0.2.3: 14 novas fichas de componentes",
+      "summary": "A referência de 07/10 reúne 63 componentes e 1.105 campos da fonte exata do APK público. Câmera virtual, Cérebro, consultas físicas, tweens, mixer e Animator passam a ter fichas próprias.",
+      "version": "snapshot-2026-10-07 · APK 0.2.3 · fonte af1d9981",
+      "availability": "documentation",
+      "details": [
+        "Acesse Componentes na navegação principal. Pesquise nome, campo ou alias; abra a ficha para caminho de criação, valores, receita, dependências, comandos, eventos e limites.",
+        "API C# do mesmo recorte: 357 tipos e 3.892 membros, com vínculos entre fachadas e componentes. Assinaturas não representam aceite universal de runtime.",
+        "Componentes existentes recebem os contratos atuais: posse de controle, materiais físicos, centro de massa/inércia, quebra de juntas, órbita de Camera Follow, streaming e vozes.",
+        "Recursos e coleções especializados são explicados fora da tabela numérica: grafo de Animator, seletor de propriedade e slots de snapshot. A ficha do Animator sinaliza o aviso herdado desatualizado sobre mistura de clipes.",
+        "Snapshot de 06/10 preservado como histórico. HTML, Markdown e JSON versionados compartilham os mesmos contratos. A extração agora registra commit, release e hashes e bloqueia catálogo incompatível com o manifesto."
+      ],
+      "validation": "Contratos nativos compilados e API extraída semanticamente com Roslyn/MSBuild, sem erros. Build do portal, integridade das extrações, vínculos e revisão de busca/fichas em desktop e celular. Esta atualização de documentação não executou testes de Play/aparelho nem produziu outro APK; as evidências da distribuição permanecem nas notas 0.2.3.",
+      "migration": "Nenhuma migração de projetos por esta publicação das docs. URLs antigas continuam disponíveis. Para um projeto no APK 0.2.3, use o catálogo de 07/10; guias gerais/UI preservam o recorte indicado no endereço.",
+      "links": [
+        {
+          "label": "Catálogo do APK 0.2.3",
+          "url": "/pt-br/snapshot-2026-10-07/componentes/"
+        },
+        {
+          "label": "Novas fichas e mudanças",
+          "url": "/pt-br/snapshot-2026-10-07/componentes/novidades/"
+        },
+        {
+          "label": "API C# de 07/10",
+          "url": "/pt-br/snapshot-2026-10-07/api/"
+        },
+        {
+          "label": "Animator",
+          "url": "/pt-br/snapshot-2026-10-07/componentes/astra-animation-animator/"
+        },
+        {
+          "label": "Câmera virtual",
+          "url": "/pt-br/snapshot-2026-10-07/componentes/astra-camera-virtual/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-apk-preview-0-2-3",
       "date": "2026-10-07",
       "scopes": [

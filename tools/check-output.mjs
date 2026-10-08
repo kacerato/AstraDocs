@@ -3,6 +3,16 @@ import path from 'node:path';
 const root=path.resolve('dist');
 const pages=JSON.parse(fs.readFileSync('data/pages.json','utf8'));
 const errors=[];let links=0;
+// Many pages share the same navigation and field anchors. Parse each target once
+// rather than rereading its full HTML for every incoming link.
+const targetAnchors=new Map();
+const hasAnchor=(file,id)=>{
+  if(!targetAnchors.has(file)) {
+    const html=fs.readFileSync(file,'utf8');
+    targetAnchors.set(file,new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1])));
+  }
+  return targetAnchors.get(file).has(id);
+};
 const decode=s=>s.replaceAll('&amp;','&').replaceAll('&#x26;','&');
 for(const page of pages){
   const file=path.join(root,page.url,'index.html');
@@ -19,8 +29,8 @@ for(const page of pages){
     links++;
     if(!fs.existsSync(target))errors.push(`${page.url} -> ${url}`);
     else if(parsed.hash&&target.endsWith('.html')){
-      const dest=fs.readFileSync(target,'utf8');const id=decodeURIComponent(parsed.hash.slice(1));
-      if(!dest.includes(`id="${id}"`))errors.push(`Missing anchor ${url}`);
+      const id=decodeURIComponent(parsed.hash.slice(1));
+      if(!hasAnchor(target,id))errors.push(`Missing anchor ${url}`);
     }
   }
   if(/C:\\Users\\|github\.com\/kacerato\/(?!AstraDocs(?:[\/"#?]|$))|<script[^>]+src="https:\/\/(?!vercel)/i.test(html))errors.push(`Private path or external script: ${page.url}`);

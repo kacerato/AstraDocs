@@ -35,11 +35,12 @@ export default defineConfig({
       section('Comece aqui', 'comece'),
       section('Manual do editor', 'editor'),
       section('Conceitos', 'conceitos'),
-      { label: 'Componentes', link: `/${base}/componentes/` },
+      { label: 'Componentes · APK 0.2.3', link: '/pt-br/snapshot-2026-10-07/componentes/' },
+      { label: 'Novas fichas e mudanças', link: '/pt-br/snapshot-2026-10-07/componentes/novidades/' },
       section('UI de jogo e HUD', 'ui'),
       { label: 'Referência C#', items: [
-        { label: 'Todos os tipos', link: `/${base}/api/` },
-        ...['Behavior','GameObject','Component','WorldStatus','TimeAccess','InputAccess','SaveStore','ScenesAccess'].map(name => ({label:name,link:`/${base}/api/astra-${name.toLowerCase()}/`}))
+        { label: 'Todos os tipos · APK 0.2.3', link: '/pt-br/snapshot-2026-10-07/api/' },
+        ...['Behavior','GameObject','Component','WorldStatus','TimeAccess','InputAccess','SaveStore','ScenesAccess'].map(name => ({label:name,link:`/pt-br/snapshot-2026-10-07/api/astra-${name.toLowerCase()}/`}))
       ] },
       section('Sistemas', 'sistemas'),
       section('Receitas', 'receitas'),
@@ -49,6 +50,10 @@ export default defineConfig({
       section('Versões', 'versoes'),
       section('Roadmap por função', 'roadmap'),
       section('Para IA', 'ia'),
+      { label: 'Arquivo · 06/10', collapsed: true, items: [
+        { label: 'Componentes históricos', link: `/${base}/componentes/` },
+        { label: 'API histórica', link: `/${base}/api/` },
+      ] },
     ],
     expressiveCode: { themes: ['github-dark', 'github-light'], styleOverrides: { borderRadius: '0.65rem', codeFontFamily: '"Cascadia Code", Consolas, monospace', codeFontSize: '0.875rem' } },
   })],

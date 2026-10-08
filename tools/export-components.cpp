@@ -42,6 +42,29 @@ int main() {
         <<",\"perSlot\":"<<(p.perSlot?"true":"false")<<",\"tweenable\":"<<(p.tweenable?"true":"false")
         <<",\"slots\":"<<p.slots<<'}';
     }
+    std::cout << "],\"resources\":[";rfirst=true;
+    for(const auto &r:s.type->resourceBindings) {
+      if(!rfirst)std::cout<<',';rfirst=false;std::cout<<'{';
+      field("id",r.id);field("name",r.name);field("kind",ae::resources::assetTypeName(r.kind));
+      field("group",r.presentation.group);field("help",r.presentation.help?r.presentation.help:"");
+      str("inheritable");std::cout<<':'<<(r.inheritable?"true":"false")<<'}';
+    }
+    std::cout << "],\"methods\":[";rfirst=true;
+    for(const auto &m:s.type->methods) {
+      if(!rfirst)std::cout<<',';rfirst=false;std::cout<<'{';
+      field("id",m.id);field("name",m.name);field("help",m.help?m.help:"");field("result",componentValueKindName(m.result));
+      std::cout<<"\"parameters\":[";bool pfirst=true;
+      for(const auto &p:m.parameters) {if(!pfirst)std::cout<<',';pfirst=false;std::cout<<'{';field("id",p.id);field("name",p.name);field("kind",componentValueKindName(p.kind));str("unit");std::cout<<':';str(p.unit);std::cout<<'}';}
+      std::cout<<"]}";
+    }
+    std::cout << "],\"events\":[";rfirst=true;
+    for(const auto &e:s.type->events) {
+      if(!rfirst)std::cout<<',';rfirst=false;std::cout<<'{';
+      field("id",e.id);field("name",e.name);field("help",e.help?e.help:"");
+      std::cout<<"\"payload\":[";bool pfirst=true;
+      for(const auto &p:e.payload) {if(!pfirst)std::cout<<',';pfirst=false;std::cout<<'{';field("id",p.id);field("name",p.name);field("kind",componentValueKindName(p.kind));str("unit");std::cout<<':';str(p.unit);std::cout<<'}';}
+      std::cout<<"]}";
+    }
     std::cout << "]}";
   }
   std::cout << "]\n";

@@ -77,7 +77,9 @@ var types = Types(compilation.Assembly.GlobalNamespace).Where(t => PublicType(t)
                 parameters = m is IMethodSymbol fn ? fn.Parameters.Select(p => new { name = p.Name, type = p.Type.ToDisplayString(), modifier = p.RefKind.ToString(), optional = p.IsOptional, defaultValue = p.HasExplicitDefaultValue ? Convert.ToString(p.ExplicitDefaultValue, System.Globalization.CultureInfo.InvariantCulture) : null }) : null
             }).ToArray()
     }).ToArray();
-var output = new { format = 1, engineGeneration = "astra-current", version = "snapshot-2026-10-06", language = "C#", assembly = "Astra.Scripting", extraction = "Roslyn/MSBuild semantic compilation", runtimeVerified = false, platformEvidence = Array.Empty<string>(), types };
+var snapshot = Environment.GetEnvironmentVariable("ASTRA_DOCS_SNAPSHOT") ?? "snapshot-2026-10-06";
+if (!Regex.IsMatch(snapshot, "^snapshot-\\d{4}-\\d{2}-\\d{2}$")) throw new ArgumentException("Invalid snapshot version");
+var output = new { format = 1, engineGeneration = "astra-current", version = snapshot, language = "C#", assembly = "Astra.Scripting", extraction = "Roslyn/MSBuild semantic compilation", runtimeVerified = false, platformEvidence = Array.Empty<string>(), types };
 Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(args[1]))!);
 await File.WriteAllTextAsync(args[1], JsonSerializer.Serialize(output, new JsonSerializerOptions { WriteIndented = true }));
 Console.WriteLine($"Exported {types.Length} types and {types.Sum(t => t.members.Length)} members. Semantic compilation: no errors. Runtime was not executed.");

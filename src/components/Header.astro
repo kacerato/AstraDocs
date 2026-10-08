@@ -2,7 +2,8 @@
 import Search from '@astrojs/starlight/components/Search.astro';
 import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
 const base = '/pt-br/snapshot-2026-10-06';
-const links = [['Aprender', base+'/comece/indice/'], ['Componentes', base+'/componentes/'], ['API C#', base+'/api/'], ['Exemplos', base+'/exemplos/como-executar-exemplos/'], ['Atualizações', '/atualizacoes/'], ['Download', '/download/']];
+const current = '/pt-br/snapshot-2026-10-07';
+const links = [['Aprender', base+'/comece/indice/'], ['Componentes', current+'/componentes/'], ['API C#', current+'/api/'], ['Exemplos', base+'/exemplos/como-executar-exemplos/'], ['Atualizações', '/atualizacoes/'], ['Download', '/download/']];
 const home = !Astro.locals.starlightRoute.hasSidebar;
 ---
 <div class="astra-header">

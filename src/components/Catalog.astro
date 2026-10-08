@@ -1,12 +1,19 @@
 ---
-import components from '../../data/components.json';
-import api from '../../data/api.json';
+import archivedComponents from '../../data/components.json';
+import archivedApi from '../../data/api.json';
+import currentComponents from '../../data/snapshots/snapshot-2026-10-07/components.json';
+import currentApi from '../../data/snapshots/snapshot-2026-10-07/api.json';
 import { uiNodes } from '../../data/ui-guides.mjs';
 import { componentGuide } from '../../data/component-guides.mjs';
-const { kind = 'component' } = Astro.props;
-const base = '/pt-br/snapshot-2026-10-06';
+import { currentComponentGuide } from '../../data/current-component-guides.mjs';
+const { kind = 'component', snapshot = 'snapshot-2026-10-06' } = Astro.props;
+if(!['snapshot-2026-10-06','snapshot-2026-10-07'].includes(snapshot))throw Error('Unknown catalog snapshot');
+const current=snapshot==='snapshot-2026-10-07';
+const components=current?currentComponents:archivedComponents, api=current?currentApi:archivedApi;
+const guide=current?currentComponentGuide:componentGuide;
+const base = `/pt-br/${snapshot}`, uiBase='/pt-br/snapshot-2026-10-06';
 const slug = (s:string) => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-$/,'');
-const items = kind === 'api' ? api.types.map(t => ({name:t.name, code:t.fullName, family:t.ns, description:t.docs.summary || `${t.kind} · ${t.members.length} membros declarados.`, url:`${base}/api/${slug(t.fullName)}/`, search:t.members.map(m=>m.name).join(' '),access:'Área de código · acesso e roadmap na referência'})) : [...components.map(t=>({name:t.name, code:t.typeId, family:t.family, description:t.description, url:`${base}/componentes/${slug(t.typeId)}/`, search:`${t.aliases} ${t.properties.map(p=>`${p.name} ${p.id} ${p.help}`).join(' ')}`,access:componentGuide(t).location.replaceAll('**','')})),...uiNodes.map(t=>({name:t.name==='Image'?'Image (UiImage)':t.name,code:`GuiKind.${t.name}`,family:'UI de jogo · elementos',description:t.purpose,url:`${base}/${t.route}/`,search:`${t.fields} ${t.example} ${t.name==='Image'?'uiimg uiimage imagem coração coracao hud':''}`,access:`Interface → documento .aeui → + Elemento → ${t.name}`}))];
+const items = kind === 'api' ? api.types.map(t => ({name:t.name, code:t.fullName, family:t.ns, description:t.docs.summary || `${t.kind} · ${t.members.length} membros declarados.`, url:`${base}/api/${slug(t.fullName)}/`, search:t.members.map(m=>m.name).join(' '),access:'Área de código · acesso e roadmap na referência'})) : [...components.map(t=>({name:t.name, code:t.typeId, family:t.family, description:t.description, url:`${base}/componentes/${slug(t.typeId)}/`, search:`${t.aliases} ${current ? [...(t.resources||[]),...(t.methods||[]),...(t.events||[])].map(p=>`${p.name} ${p.id} ${p.help}`).join(" ") : ""} ${t.properties.map(p=>`${p.name} ${p.id} ${p.help}`).join(' ')}`,access:guide(t).location.replaceAll('**','')})),...uiNodes.map(t=>({name:t.name==='Image'?'Image (UiImage)':t.name,code:`GuiKind.${t.name}`,family:'UI de jogo · elementos',description:t.purpose,url:`${uiBase}/${t.route}/`,search:`${t.fields} ${t.example} ${t.name==='Image'?'uiimg uiimage imagem coração coracao hud':''}`,access:`Interface → documento .aeui → + Elemento → ${t.name}`}))];
 const families = [...new Set(items.map(t => t.family))].sort();
 ---
 <astra-catalog>

@@ -60,3 +60,10 @@ distribuição e declare separadamente build, assinatura e execução em aparelh
 Mantenha separados: contrato de código, explicação editorial, exemplo compilado
 e comportamento validado na engine/dispositivo. Não apresente planos de Astra 2
 ou referências de outras engines como recursos comprovados da Astra atual.
+
+O catálogo principal de componentes/API acompanha o APK publicado. Os contratos
+de 07/10 estão em `data/snapshots/snapshot-2026-10-07/`, com origem e hashes em
+`source.json`. Use `sync:snapshot` conforme o README; não substitua os contratos
+históricos de 06/10. Toda distribuição nova exige revisar o recorte e a orientação
+dos componentes novos antes do deploy. Preserve métodos, eventos, recursos e
+coleções especializadas, além dos campos numéricos.

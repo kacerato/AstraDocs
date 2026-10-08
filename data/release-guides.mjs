@@ -10,7 +10,7 @@ Este capítulo acompanha o **APK 0.2.3-preview.20261007, versionCode 12**, gerad
 
 A atualização instala por cima da Astra pública anterior, com a mesma chave, e preserva os projetos. Projetos salvos com os componentes novos podem não abrir em versões antigas: guarde uma cópia antes de testar.
 
-O catálogo de componentes extraído continua identificado como snapshot de 06/10/2026; os componentes abaixo ainda não têm fichas nele. A Astra segue uma prévia limitada; esta versão não anuncia a engine completa.
+O [catálogo de 07/10](/pt-br/snapshot-2026-10-07/componentes/) agora acompanha este APK: os componentes abaixo têm fichas próprias com campos, caminhos e exemplos. O catálogo de 06/10 permanece como histórico. [Novas fichas e mudanças](/pt-br/snapshot-2026-10-07/componentes/novidades/). A Astra segue uma prévia limitada; esta versão não anuncia a engine completa.
 
 ## Câmera virtual e Cérebro
 
@@ -81,7 +81,7 @@ ${link('comece/ajuda-por-sintoma','Como relatar um problema')} · ${link('comece
 
 Este capítulo acompanha o **APK 0.2.1-preview.20261007, versionCode 6**, gerado da main no commit **09bd7349**, sem alterações locais de comportamento da engine. [Download](/download/) · [Registro da atualização](/atualizacoes/#2026-10-07-apk-preview).
 
-A referência geral de API/componentes continua identificada como **snapshot de 06/10/2026**. Este guia complementa esse recorte com contratos novos conferidos na main. Os componentes novos abaixo ainda não têm fichas extraídas naquele catálogo; sua ausência ali não significa ausência no novo APK.
+Este capítulo é histórico do **APK 0.2.1**. Os componentes novos não constam do catálogo de 06/10; agora têm fichas no [catálogo de 07/10 para o APK 0.2.3](/pt-br/snapshot-2026-10-07/componentes/). Consulte aquele recorte para os contratos atuais; ele não converte a API 0.2.1 em API 0.2.3.
 
 A Astra permanece uma prévia limitada e incompleta, com cerca de 20% da meta global declarada. Esta distribuição não anuncia conclusão da engine ou paridade integral com outras engines.
 
