@@ -1,5 +1,78 @@
 import { link } from './workflow-guide-tools.mjs';
 export const releasePages = [{
+  route:'versoes/preview-0-2-3', title:'Astra 0.2.3: câmera virtual, mixer de áudio e Animator',
+  description:'Como usar a câmera virtual, o mixer de áudio com efeitos e snapshots e o Animator com editor de grafo, incluídos no APK 0.2.3.',
+  options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-07',appRelease:'0.2.3-preview.20261007',runtimeVerified:true,prev:false,next:false}},
+  body:`
+## Versão e recorte
+
+Este capítulo acompanha o **APK 0.2.3-preview.20261007, versionCode 12**, gerado da main no commit **af1d9981**, sem alterações locais. [Download](/download/) · [Registro da atualização](/atualizacoes/#2026-10-07-apk-preview-0-2-3).
+
+A atualização instala por cima da Astra pública anterior, com a mesma chave, e preserva os projetos. Projetos salvos com os componentes novos podem não abrir em versões antigas: guarde uma cópia antes de testar.
+
+O catálogo de componentes extraído continua identificado como snapshot de 06/10/2026; os componentes abaixo ainda não têm fichas nele. A Astra segue uma prévia limitada; esta versão não anuncia a engine completa.
+
+## Câmera virtual e Cérebro
+
+**Caminho:** Hierarquia → selecione o personagem → **+ → Básicos → Câmera virtual**. A câmera nasce em órbita sobre o objeto selecionado, com mira e desvio de paredes. Se a cena ainda não tiver um Cérebro, ele entra na câmera da cena no mesmo passo de desfazer.
+
+- **Prioridade:** a câmera virtual ativa de maior prioridade fica ao vivo. Para trocar de câmera, aumente a prioridade de outra (por script ou Conexão de evento).
+- **Posição:** Fixa, Seguir (deslocamento com amortecimento) ou Órbita (ângulos e raio; o gesto de olhar gira enquanto ela está ao vivo).
+- **Rotação:** Fixa, Olhar para o alvo ou Rotação do alvo.
+- **Colisão:** "Evitar obstáculos" aproxima a câmera quando uma parede fica entre ela e o alvo.
+- **Cérebro:** fica na câmera do jogo e mistura pose e lente na troca (Corte, Suave, Linear e variações).
+
+No Play, o cartão da câmera na Inspeção mostra **Ao vivo** ou **Em espera**; o do Cérebro mostra a câmera ao vivo e a barra da transição.
+
+## Mixer de áudio
+
+Cada **Bus de áudio** processa o som das fontes ligadas a ele. Os efeitos ficam no mesmo objeto do bus e agem na ordem dos componentes:
+
+| Componente | Para que serve |
+| --- | --- |
+| Filtro de áudio | Passa-baixa abafa (porta fechada, embaixo d'água); passa-alta afina (rádio, telefone); também pico e prateleiras |
+| Eco | Repetições atrasadas com realimentação |
+| Reverberação | Sala simulada (tamanho, amortecimento, pré-atraso, mistura) |
+| Compressor | Controla picos; com **Sidechain** em outro bus, abaixa a música quando aquele bus soa (ducking) |
+| Envio de áudio | Copia o som daquele ponto para outro bus, por exemplo um bus só com reverberação |
+| Snapshot de mixer | Leva até 8 valores (ganho, corte do filtro, mistura de reverb…) a novos valores com transição |
+
+**Experimente o ducking:** + → Áudio → **Bus com ducking** (escolha o bus de falas no seletor que abre), outro **Bus de áudio** para falas, e ligue cada Fonte de áudio ao seu bus. Em Play, o cartão do Compressor mostra quantos dB está reduzindo e o do bus mostra o nível.
+
+Na **Fonte de áudio**: Mistura espacial (0 = 2D, 1 = 3D), Prioridade (0 é a mais importante; acima de 32 vozes as menos importantes ficam virtuais e voltam do ponto certo), Início/Fim do loop e Carregamento **Streaming** para músicas longas. WAV acima de cerca de 43 s é importado como streaming; salve a cena depois de importar.
+
+Scripts: \`AudioBus.PeakDb()\`, \`AudioCompressor.ReductionDb()\`, \`AudioSnapshot.TransitionTo(segundos)\` e \`AudioSource.IsVirtual()\`.
+
+## Animator
+
+Para personagens importados com animações (glTF). **Caminho:** selecione a raiz do modelo → Componentes → Adicionar componente → família **Animação** → **Animator** (remova a Animação legada antes; os dois não ficam no mesmo objeto). Depois, no cartão do Animator, toque **Abrir grafo do Animator**.
+
+No grafo:
+
+1. **Parâmetros** (coluna esquerda): + Float, + Int, + Bool ou + Gatilho. Toque no nome para renomear e no valor para mudar o padrão.
+2. **Estados:** + Estado cria no centro da vista; arraste para organizar. Na direita, escolha o tipo: Clipe, Mistura 1D (clipes por limiar de um parâmetro, por exemplo Parado 0, Andar 1, Correr 2 pela Velocidade) ou Mistura 2D (clipes em pontos X/Y). **Padrão** define o estado inicial.
+3. **Transições:** toque **Transição**, depois o estado de origem (ou **Qualquer estado**) e o de destino. Na direita: tempo de saída, duração e condições (por exemplo, Velocidade Maior que 0,5; ou o gatilho Pular).
+4. **Camadas:** + camada sobrepõe outra máquina, com peso e máscara (só uma parte da hierarquia, como o tronco).
+5. **Eventos:** num estado, + evento marca um tempo (0 a 1) e um número que chega ao script.
+
+Tudo pode ser desfeito. No Play, o grafo mostra o estado vivo com a barra de tempo e os valores dos parâmetros, só para leitura.
+
+\`\`\`csharp
+var animator = Object.Animator();
+animator.SetFloat("Velocidade", 1.5f);
+if (pulou) animator.SetTrigger("Pular");
+var estado = animator.GetCurrentState();   // estado.Name, estado.IsInTransition
+\`\`\`
+
+Nome de parâmetro ou tipo errado lança \`WorldException\`. Pendentes: sub-máquinas de estado, interrupção de transição, camadas aditivas e root motion.
+
+## Evidências e limites
+
+Build, assinatura (mesmo certificado das prévias) e integridade foram conferidos. No POCO F7 com Android 16, este APK atualizou a Astra anterior sem apagar projetos e executou o aceite da câmera virtual. Mixer de áudio e Animator foram aceitos na instalação Astra Dev com a mesma biblioteca nativa deste APK. Não há garantia para todo aparelho ou cena, nem medição de desempenho sustentado. Áudio só em WAV.
+
+${link('comece/ajuda-por-sintoma','Como relatar um problema')} · ${link('comece/indice','Trilha do zero')} · [Discord oficial](https://discord.gg/KpqnBvt4uG).
+`
+}, {
   route:'versoes/preview-2026-10-07', title:'Prévia de 07/10/2026: mudanças e primeiros usos',
   description:'Onde encontrar os novos tweens, consultas físicas, materiais e ferramentas de autoria desta distribuição.',
   options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-07',appRelease:'0.2.1-preview.20261007',prev:false,next:false}},

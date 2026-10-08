@@ -1,18 +1,18 @@
 {
-  "version": "0.2.2-preview.20261007",
-  "versionCode": 7,
+  "version": "0.2.3-preview.20261007",
+  "versionCode": 12,
   "package": "dev.aether.editor",
   "date": "2026-10-07",
   "dateLabel": "7 de outubro de 2026",
   "channel": "preview",
-  "filename": "Astra-0.2.2-preview.20261007-android-arm64.apk",
-  "sizeLabel": "98,1 MiB",
-  "bytes": 102909341,
-  "sha256": "61f7d8d85581dc090ad906e865b2e96c4ff974bf14cab4b5202806c0a2075936",
+  "filename": "Astra-0.2.3-preview.20261007-android-arm64.apk",
+  "sizeLabel": "98,6 MiB",
+  "bytes": 103391754,
+  "sha256": "b4301d7aadb164cf38fb2ca756a0f09cbecb5ab2c3742250672f22d11306eccc",
   "certificateSha256": "cfbd4391d3d9f63f91901dbc22886ec6544de503d7e599543c39a68facd4ef6b",
-  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07-u07/Astra-0.2.2-preview.20261007-android-arm64.apk",
-  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.07-u07",
-  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07-u07/SHA256SUMS.txt",
+  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07-hi/Astra-0.2.3-preview.20261007-android-arm64.apk",
+  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.07-hi",
+  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07-hi/SHA256SUMS.txt",
   "requirements": {
     "minSdk": 26,
     "android": "8.0+",
@@ -24,13 +24,13 @@
   "signatureVerified": true,
   "deviceRuntimeVerified": true,
   "source": {
-    "baselineCommit": "2e6ea4084f10c3be95d1a1b702f883f3e5bc25fd",
+    "baselineCommit": "af1d99812940b2c73564bae2c86fb83046529578",
     "localChangesIncluded": false,
     "snapshotDate": "2026-10-07",
-    "nativeLibrarySha256": "ca59be419bd18110bd478e3f00c5eefbbb1233168dccf2bd728d51f32b8a7175",
+    "nativeLibrarySha256": "d7750dd109fb2f16056dc1b3da9eff6e117df1337dfbaf2e620090c35f470ec5",
     "versionOverrides": {
-      "versionCode": 7,
-      "versionName": "0.2.2-preview.20261007"
+      "versionCode": 12,
+      "versionName": "0.2.3-preview.20261007"
     }
   },
   "bundledProjects": {
@@ -42,29 +42,28 @@
     "device": "POCO F7 / 25053PC47G",
     "os": "Android 16",
     "publicPackage": [
-      "update with existing certificate",
-      "sole bundled lab",
+      "update with existing certificate (versionCode 7 → 12, first install time preserved)",
       "user project files preserved",
-      "save / process restart / reopen / Play"
+      "virtual camera acceptance PASS inside the public package"
     ],
-    "motionAndCamera": {
-      "reviewedFrames": 527,
-      "contactPages": 67,
-      "sampling": "none",
-      "recordingPackage": "dev.aether.editor.u07",
-      "sameNativeLibraryAsPublicPackage": true
+    "developmentPackage": {
+      "package": "dev.aether.editor.u07",
+      "sameNativeLibraryAsPublicPackage": true,
+      "acceptances": [
+        "audio mixer, ducking, streaming and snapshot PASS",
+        "Animator on Fox PASS",
+        "Animator graph editing captured"
+      ]
     },
     "host": {
-      "targeted": 12,
-      "editorRegressionFinalRetry": 121,
-      "projectStore": 7,
-      "projectCompiler": 1
+      "nativeSuite": "1452/1460 (8 failures predate blocks G–I)",
+      "managedSuite": "522/0"
     },
     "limits": [
       "not a universal device compatibility guarantee",
       "no sustained FPS/thermal measurement",
-      "camera may crop actor at constrained extreme pitch",
-      "no foot IK/runtime root motion/rig retargeting"
+      "WAV only; no MP3/OGG",
+      "Animator without sub-state machines, interruption, additive layers or root motion"
     ]
   }
 }

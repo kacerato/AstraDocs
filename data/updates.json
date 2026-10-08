@@ -4,6 +4,45 @@
   "updatedAt": "2026-10-07",
   "entries": [
     {
+      "id": "2026-10-07-apk-preview-0-2-3",
+      "date": "2026-10-07",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "APK 0.2.3 publicado: câmera virtual, mixer de áudio e Animator",
+      "summary": "A prévia pública passa a incluir câmeras virtuais com Cérebro, o mixer de áudio com efeitos, ducking, snapshots e streaming, e o Animator com editor de grafo. Atualiza a Astra anterior sem apagar projetos.",
+      "version": "0.2.3-preview.20261007 · versionCode 12 · commit af1d9981",
+      "releaseVersion": "0.2.3-preview.20261007",
+      "versionCode": 12,
+      "availability": "distributed",
+      "details": [
+        "Baixe em Download ou na Release pública do GitHub; o APK usa a mesma chave das prévias e instala por cima da 0.2.2 (versionCode 7 → 12), preservando os projetos.",
+        "Câmera virtual: Criar → Básicos → Câmera virtual; troque de câmera pela prioridade. O Cérebro mistura pose e lente na troca.",
+        "Mixer de áudio: Criar → Áudio → Bus de reverberação, Bus com ducking e Snapshot de mixer; efeitos Filtro, Eco, Reverberação, Compressor e Envio no objeto do bus; Fonte de áudio com mistura espacial, prioridade, pontos de loop e streaming.",
+        "Animator: Adicionar componente → família Animação → Animator na raiz do modelo importado, depois Abrir grafo do Animator na Inspeção.",
+        "Docs: novo capítulo Astra 0.2.3 em Versões, com caminhos, exemplos e limites; página de Download atualizada.",
+        "Exemplo embutido continua sendo o U07 Laboratório de Controle; nenhum projeto do usuário é alterado pela atualização."
+      ],
+      "validation": "Build e assinatura verificados (certificado cfbd4391…, SHA-256 do APK b4301d7a…, igual ao asset publicado). POCO F7/Android 16: atualização sem desinstalar, projetos preservados e aceite da câmera virtual dentro do APK público. Mixer de áudio e Animator aceitos no Astra Dev com a mesma biblioteca nativa (d7750dd1…). Host: suíte nativa 1452/1460 (8 falhas anteriores a estes blocos) e C# 522/0. Sem garantia para todo aparelho/cena nem medição de desempenho sustentado.",
+      "migration": "Fonte de áudio passa ao payload 2 (cenas antigas mantêm o mesmo som). Tipos novos: astra.camera.virtual, astra.camera.brain, astra.audio.filter/echo/reverb/compressor/send/snapshot e astra.animation.animator. Projetos salvos com eles podem não abrir na 0.2.2: guarde uma cópia antes de testar.",
+      "links": [
+        {
+          "label": "Baixar Astra 0.2.3",
+          "url": "/download/"
+        },
+        {
+          "label": "O que mudou e como usar",
+          "url": "/pt-br/snapshot-2026-10-06/versoes/preview-0-2-3/"
+        },
+        {
+          "label": "Release pública no GitHub",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.07-hi"
+        }
+      ]
+    },
+    {
       "id": "2026-10-07-animator-maquina-de-estados",
       "date": "2026-10-07",
       "scopes": [
