@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-08",
   "entries": [
     {
+      "id": "2026-10-08-propriedades-iconografia-angular",
+      "date": "2026-10-08",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Propriedades em seções e primeira integração dos ícones angulares",
+      "summary": "Revisão em desenvolvimento da inspeção principal: Transformação e Corpo físico com controles diretos, acesso aos detalhes existentes e uma família angular para o catálogo de ícones.",
+      "version": "Propriedades e iconografia A v1 · revisão host 08/10/2026",
+      "availability": "development",
+      "details": [
+        "A inspeção principal apresenta seções roláveis. Transformação mantém XYZ; Corpo físico expõe Estático, Dinâmico e Cinemático, massa e fator de gravidade conforme o contrato do componente. A seta abre as propriedades avançadas existentes.",
+        "Números e ações reutilizam o modelo, validação e histórico do editor. Arraste vertical rola a superfície; horizontal mantém a edição numérica. Desenho e áreas de toque compartilham o recorte. O menu permite retornar ao layout clássico.",
+        "Os 290 ícones do catálogo da base desta revisão receberam fontes SVG e pixels angulares integrados ao atlas. Os identificadores e as duas marcas existentes foram preservados. IDE e shell passam a consumir a mesma origem, ainda sem compilação Android nesta revisão.",
+        "Materiais, texturas, scripts, água, importação, prefab, presets, recursos e inspectores focados mantêm suas rotas especializadas. A reorganização visual completa desses contextos e do editor de elementos UI ainda está pendente.",
+        "Em landscape baixo, uma seção aberta por vez dá espaço aos controles: abrir Corpo físico recolhe Transformação e vice-versa. A direção angular foi confirmada; refinamento de legibilidade e demais layouts seguem em revisão com o usuário. Isso não significa disponibilidade no APK público."
+      ],
+      "validation": "Build nativo host da ferramenta de prévia concluído. Seis capturas da UI executável em 1600×900 e 1200×540, sem comandos descartados ou glifos ausentes; viewport sem renderização 3D nessa ferramenta. Nenhuma suíte de testes, APK, instalação, ADB ou aceite de toque/Play/aparelho nesta revisão. Ainda é necessário validar edição, undo/redo, múltiplos alvos, persistência e Play em cenário de uso.",
+      "migration": "Nenhuma alteração no formato de cena ou payload dos componentes. A preferência de layout usa uma chave adicional no arquivo de preferências existente. O APK público permanece igual; a mudança está em uma revisão isolada de desenvolvimento.",
+      "links": [
+        {
+          "label": "APK público e disponibilidade",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-08-animator-workspace-universal",
       "date": "2026-10-08",
       "scopes": [
