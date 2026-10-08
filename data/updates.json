@@ -4,6 +4,38 @@
   "updatedAt": "2026-10-08",
   "entries": [
     {
+      "id": "2026-10-08-animator-hierarquia-interrupcoes",
+      "date": "2026-10-08",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Animator: grupos aninhados e interrupções de pose",
+      "summary": "Entrada condicional, saída encadeada, caminhos completos, autoria de árvores com histórico e cinco políticas que interrompem a mistura a partir da pose realmente exibida.",
+      "version": "Animator v5 · AEANIMATOR 3 · Astra Dev 0.2.8-dev.20261008 · code 16",
+      "availability": "development",
+      "details": [
+        "IDs e parentagem estáveis; entrada/default, Qualquer estado local/global, saída por grupos e destinos externos. Rotas inválidas são diagnosticadas sem estado inventado ou consumo indevido de gatilho.",
+        "Interrupção por origem, destino, ordem entre ambos ou só Qualquer estado; prioridade, reentrada, offset e duração em segundos/voltas têm consumidor real. Captura por propriedade preserva mistura, camadas, máscara, quaternion, escala e morph durante interrupções repetidas.",
+        "Grafo por níveis com breadcrumbs e vista preservada; criar, mover, duplicar e remover árvores com Undo/Redo transacional. Ligações projetadas sobre o mesmo grupo fechado e self-links têm trajetos individualmente selecionáveis. Ícones novos grupo/interrupção integrados ao SVG, PNG e atlas.",
+        "SDK executa Play/CrossFade por caminho ou nome curto único, inspeciona Path/NextPath/LeafName/IsInMachine e oferece eventos tipados de entrada/saída/interrupção. Estado é por instância; Play não grava o controller. Autoria de topologia/clipes por C# continua pendente.",
+        "Guia público com captura real, workflow, semântica, limites e migração. Editor completo de clipes/poses/curvas, retargeting, IK, root motion e biblioteca/importação de FBX não são entregues nesta revisão. FinalIK/UMotion permanecem inventariados, com zero assets importados; BoZo excluído."
+      ],
+      "validation": "25/25 cenários host, SDK Release e sonda C# compilados, contrato de componente e seis cenários de eventos. Build Android/APK Dev concluído; POCO F7/Android 16: 15 checks C# antes/depois da autoria, hierarquia de três níveis, entrada/saída, interrupções e isolamento. Toque, histórico, salvar/encerrar/reabrir preservaram grupo movido, Destino → origem e offset 0,20; arquivo idêntico após Play. Todos os 598 frames revisados em 20 folhas com PTS/hashes. Skin/morph no host; mecanismo sem skin no aparelho. Não mede FPS sustentado, multidões nem caminhada.",
+      "migration": "Animator v5 e AEANIMATOR 3 leem versões anteriores; grafos legados ficam na raiz. APKs antigos não leem os novos formatos: preserve backup. Limites de camada/estados/grupos/profundidade registrados no guia. APK público 0.2.3 e seu catálogo permanecem intactos.",
+      "links": [
+        {
+          "label": "Grupos e interrupções no Dev",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animator-hierarquia/"
+        },
+        {
+          "label": "Disponibilidade do APK",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-08-animator-composicao-aditiva",
       "date": "2026-10-08",
       "scopes": [

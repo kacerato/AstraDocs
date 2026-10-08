@@ -14,6 +14,7 @@ import { motorControlGuide } from '../data/motor-control-guide.mjs';
 import { animatorWorkspaceGuide } from '../data/animator-workspace-guide.mjs';
 import { animatorControllerGuide } from '../data/animator-controller-guide.mjs';
 import { animatorAdditiveGuide } from '../data/animator-additive-guide.mjs';
+import { animatorHierarchyGuide } from '../data/animator-hierarchy-guide.mjs';
 const root = path.resolve('src/content/docs');
 let version = 'snapshot-2026-10-06';
 const legacyVersion = version;
@@ -164,5 +165,6 @@ write(motorControlGuide.route,motorControlGuide.title,motorControlGuide.descript
 write(animatorWorkspaceGuide.route,animatorWorkspaceGuide.title,animatorWorkspaceGuide.description,animatorWorkspaceGuide.body,{front:{version:'snapshot-2026-10-07',reviewedAt:'2026-10-08',runtimeVerified:true,appRelease:'development'},platformEvidence:['Host: 9/9 focused Animator runtime/editor scenarios; SDK Release without errors or warnings','POCO F7 / Android 16: Dev 0.2.5 installed in place; separate physics source on non-skinned mechanism, manual live parameters, trigger, pinch, scrolling, undo/redo, save/cold reopen; 717 motion frames reviewed','Public 0.2.3 keeps prior workspace; root motion, retargeting, IK, arbitrary property tracks and sustained performance are not validated or completed by this review']});
 write(animatorControllerGuide.route,animatorControllerGuide.title,animatorControllerGuide.description,animatorControllerGuide.body,{front:{version:'snapshot-2026-10-07',reviewedAt:'2026-10-08',runtimeVerified:true,appRelease:'development'},platformEvidence:['Dev 0.2.6: POCO F7 Android 16, six runtime checks and authoring/cold reopen; host 11/11; 537 frames reviewed; public APK 0.2.3 unchanged']});
 write(animatorAdditiveGuide.route,animatorAdditiveGuide.title,animatorAdditiveGuide.description,animatorAdditiveGuide.body,{front:{version:'snapshot-2026-10-07',reviewedAt:'2026-10-08',runtimeVerified:true,appRelease:'development'},platformEvidence:['Development 0.2.7/code 15: 16 focused host scenarios, 8 C# device checks, authored values preserved after cold reopen, all 417 video frames reviewed. Skin/morph verified on host; Android fixture uses mechanisms without skin. Public APK 0.2.3 unchanged.']});
+write(animatorHierarchyGuide.route,animatorHierarchyGuide.title,animatorHierarchyGuide.description,animatorHierarchyGuide.body,{front:{version:'snapshot-2026-10-07',reviewedAt:'2026-10-08',runtimeVerified:true,appRelease:'development'},platformEvidence:['Dev 0.2.8/code 16: 25 focused host scenarios, 15 C# device checks, touch authoring and cold reopen, all 598 frames reviewed in 20 sheets; skin/morph host evidence, physical mechanisms without skin. Public APK 0.2.3 unchanged.']});
 fs.writeFileSync('data/generated-files.json',JSON.stringify(generated,null,2));
 fs.writeFileSync('data/pages.json',JSON.stringify(manifest,null,2));

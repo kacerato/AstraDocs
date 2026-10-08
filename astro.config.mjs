@@ -35,6 +35,7 @@ export default defineConfig({
       { label: 'Animator universal · Dev', link: '/pt-br/snapshot-2026-10-07/sistemas/animator-universal/' },
       { label: 'Controllers e overrides · Dev', link: '/pt-br/snapshot-2026-10-07/sistemas/animator-controllers/' },
       { label: 'Composição aditiva · Dev', link: '/pt-br/snapshot-2026-10-07/sistemas/animator-aditivo/' },
+      { label: 'Grupos e interrupções · Dev', link: '/pt-br/snapshot-2026-10-07/sistemas/animator-hierarquia/' },
       section('Comece aqui', 'comece'),
       section('Manual do editor', 'editor'),
       section('Conceitos', 'conceitos'),
