@@ -1,8 +1,41 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-07",
+  "updatedAt": "2026-10-08",
   "entries": [
+    {
+      "id": "2026-10-08-animator-workspace-universal",
+      "date": "2026-10-08",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Animator universal: workspace contextual e vínculos com movimento físico",
+      "summary": "Grafo para objetos, mecanismos e personagens com uma gaveta contextual, novos ícones, rolagem, pinça, duplicação, ordem de transições, pesos de mistura e parâmetros de teste no Play. Movimento físico é uma fonte opcional.",
+      "version": "Animator v2 · Astra Dev 0.2.5-dev.20261007 · aceite 08/10/2026",
+      "availability": "development",
+      "details": [
+        "O Animator não exige jogador ou esqueleto humano. Clipes importados de transform servem a hierarquias gerais; propriedades arbitrárias de UI/material/áudio continuam dependentes da expansão de tracks.",
+        "Params e Ajustes compartilham uma gaveta; propriedades e parâmetros rolam. Pinça navega; duplicação gera identidade própria; subir/descer transições altera prioridade dentro do grupo; o plot de mistura usa pesos do runtime.",
+        "Fontes opcionais: velocidade no plano, vertical, total e apoio. Corpo comum fornece velocidade; Character/Motor fornecem apoio e movimento relativo à plataforma. Fonte inválida é diagnosticada; setter de parâmetro vinculado é recusado.",
+        "Float vinculado tem resposta exponencial e escala. A medição vem do último passo físico resolvido; o pipeline pode apresentar um quadro de atraso. Parâmetros manuais podem ser ajustados no Play sem gravar seus valores de teste.",
+        "Ícones angulares de estado, transição, parâmetros, camadas, mistura, vínculo, enquadramento e duplicação foram integrados ao atlas real. Novo guia de desenvolvimento em Sistemas; o APK público 0.2.3 permanece disponível com o workspace anterior.",
+        "Pendentes reais: submáquinas, interrupções, camadas aditivas, recursos de controller/overrides, root motion, retargeting, IK, edição de clipes/Timeline, tracks tipados de outras propriedades. U03/U06/U08 inteiros não são declarados concluídos."
+      ],
+      "validation": "Host: 9/9 cenários focados do Animator/editor e SDK Release sem erros ou avisos. POCO F7/Android 16: Dev atualizado sem desinstalar; mecanismo glTF sem skin com fonte física independente, velocidade medida 1.500, pose alterada e restaurada após parar, setter vinculado recusado; Float/Bool/gatilho ao vivo pela UI, pinça com dedos 0/1, rolagem dos 32 parâmetros/oito eventos, duplicar/desfazer/refazer e salvar/encerrar/reabrir com defaults preservados. Todos os 717 quadros da gravação do mecanismo foram revisados, sem salto. Hash do APK instalado igual ao local (3b9dfaec…). Não mede FPS sustentado, todo aparelho/cena nem foot sliding de todo personagem.",
+      "migration": "Payload Animator v1 → v2: gráficos antigos mantêm parâmetros manuais, escala 1 e resposta 0. V2 salva a origem física e configuração dos parâmetros. APKs anteriores não conhecem v2; guarde cópia da cena antes de salvar no Dev. Não há novo APK público nesta nota.",
+      "links": [
+        {
+          "label": "Guia do Animator universal",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animator-universal/"
+        },
+        {
+          "label": "APK público e disponibilidade",
+          "url": "/download/"
+        }
+      ]
+    },
     {
       "id": "2026-10-07-publicacao-catalogo",
       "date": "2026-10-07",

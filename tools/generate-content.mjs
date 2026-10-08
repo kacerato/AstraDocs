@@ -11,6 +11,7 @@ import { updates, requireCoverage, markdown as updatesMarkdown } from './updates
 import { currentComponentGuide, currentPropertyUsage } from '../data/current-component-guides.mjs';
 import { validateSnapshot } from './check-snapshot.mjs';
 import { motorControlGuide } from '../data/motor-control-guide.mjs';
+import { animatorWorkspaceGuide } from '../data/animator-workspace-guide.mjs';
 const root = path.resolve('src/content/docs');
 let version = 'snapshot-2026-10-06';
 const legacyVersion = version;
@@ -158,5 +159,6 @@ console.log(JSON.stringify(coverage));
 version=legacyVersion; base=guideBase;
 fs.writeFileSync('data/reference-indexes.json',JSON.stringify(referenceIndexes,null,2));
 write(motorControlGuide.route,motorControlGuide.title,motorControlGuide.description,motorControlGuide.body,{front:{version:'snapshot-2026-10-07',reviewedAt:'2026-10-07',runtimeVerified:true,appRelease:release.version},platformEvidence:['host: 12 targeted scenarios, 121 editor regressions in final retry, 7 ProjectStore scenarios, real ProjectCompiler','Android 16 / POCO F7: public APK update, user project preservation, save/cold reopen/Play; 527 motion/camera frames reviewed in validation with identical native library','Public APK 0.2.2-preview.20261007 / baseline 2e6ea408; physical Android gamepad, universal scene/device behavior and sustained performance not measured']});
+write(animatorWorkspaceGuide.route,animatorWorkspaceGuide.title,animatorWorkspaceGuide.description,animatorWorkspaceGuide.body,{front:{version:'snapshot-2026-10-07',reviewedAt:'2026-10-08',runtimeVerified:true,appRelease:'development'},platformEvidence:['Host: 9/9 focused Animator runtime/editor scenarios; SDK Release without errors or warnings','POCO F7 / Android 16: Dev 0.2.5 installed in place; separate physics source on non-skinned mechanism, manual live parameters, trigger, pinch, scrolling, undo/redo, save/cold reopen; 717 motion frames reviewed','Public 0.2.3 keeps prior workspace; root motion, retargeting, IK, arbitrary property tracks and sustained performance are not validated or completed by this review']});
 fs.writeFileSync('data/generated-files.json',JSON.stringify(generated,null,2));
 fs.writeFileSync('data/pages.json',JSON.stringify(manifest,null,2));
