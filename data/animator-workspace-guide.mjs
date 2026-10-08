@@ -10,7 +10,7 @@ Este workspace ampliado está em desenvolvimento. O APK público **0.2.3-preview
 
 O Animator não exige jogador, cilindro, câmera ou esqueleto humano. Clipes importados com canais de transform animam portas, atuadores, objetos e hierarquias articuladas, além de personagens. A raiz animada e o objeto que fornece movimento físico são referências independentes.
 
-Curvas de propriedades arbitrárias de UI/material/áudio ainda não estão implementadas neste grafo. Submáquinas, interrupções, camadas aditivas, controller compartilhado, retargeting, root motion, IK e edição de clipes/Timeline continuam pendentes. Esta revisão não encerra todos os blocos U03/U06/U08.
+Curvas de propriedades arbitrárias de UI/material/áudio ainda não estão implementadas neste grafo. Controllers compartilhados e overrides chegaram no [bloco Dev 0.2.6](/pt-br/snapshot-2026-10-07/sistemas/animator-controllers/), com sua própria migração e validação. Submáquinas, interrupções, camadas aditivas, retargeting, root motion, IK e edição de clipes/Timeline continuam pendentes. Esta revisão não encerra todos os blocos U03/U06/U08.
 
 ## Criar e editar
 

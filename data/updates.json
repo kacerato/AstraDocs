@@ -4,6 +4,39 @@
   "updatedAt": "2026-10-08",
   "entries": [
     {
+      "id": "2026-10-08-animator-controller-overrides",
+      "date": "2026-10-08",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Animator: controllers compartilhados e overrides locais",
+      "summary": "Definição reutilizável em .aeanimator, poses e parâmetros independentes por objeto, substituição de clipes, histórico e referências locais no workspace de toque.",
+      "version": "Animator v3 · Astra Dev 0.2.6-dev.20261008 · code 14",
+      "availability": "development",
+      "details": [
+        "Criar/copiar publica arquivo e registro pelo journal. Escolher atribui o GUID; Editar recurso altera a definição compartilhada com autoridade explícita; Desvincular incorpora grafo e clipes resolvidos.",
+        "Overrides original/substituto têm validação de canais, reset e remoção de órfãos. Corpo e máscaras pertencem à instância. Clones/prefabs preservam recursos e remapeiam referências locais.",
+        "Undo/Redo usa identidades e revisão monotônicas. Arquivo externo divergente é recusado. Recurso ausente ou inválido interrompe a avaliação com diagnóstico, sem usar o antigo grafo inline.",
+        "O Play carrega os recursos em memória, com configuração resolvida cacheada; cada instância tem parâmetros, relógio e transições próprios. C# GetController/SetController usa o consumidor real e recusa GUID desconhecido antes de alterar o objeto.",
+        "Ícones controller/override integrados ao SVG, PNG e atlas; gaveta contextual com nome/revisão fixos, tabela de clipes e referências locais roláveis. Legenda distingue Play de topologia protegida na instância.",
+        "Novo guia com captura real e migração. Recursos não atribuídos abrem no editor textual; atribua a um Animator para autoria visual. Editor autônomo, submáquinas, aditivas, root motion, retargeting, IK e Timeline continuam pendentes."
+      ],
+      "validation": "Host: 11/11 cenários focados, SDK Release sem erros/avisos, build nativo e APK. POCO F7/Android 16: seis checks C# de controller/poses/parametrização/erro/desvinculação/reatribuição passaram; copiar/desfazer, edição compartilhada, estado/arrasto com histórico, escolha, substituição/reset, rolagem e salvar/encerrar/reabrir conferidos no APK Dev. Todos os 537 quadros foram revisados em 18 folhas e frames completos adicionais, com PTS/hashes. A sonda muda parâmetros em degraus para comparar poses; não mede suavidade de caminhada nem FPS sustentado.",
+      "migration": "V1/v2 são lidos como grafos locais; v3 acrescenta GUID e pares de clipes. AEANIMATOR 1 é o formato do recurso. APKs anteriores não leem v3: preserve backup antes de salvar no Dev. APK público 0.2.3 e seu catálogo permanecem na versão distribuída.",
+      "links": [
+        {
+          "label": "Controllers e overrides no Dev",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animator-controllers/"
+        },
+        {
+          "label": "Disponibilidade do APK",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-08-propriedades-iconografia-angular",
       "date": "2026-10-08",
       "scopes": [

@@ -33,6 +33,7 @@ export default defineConfig({
       { label: 'Atualizações', link: '/atualizacoes/' },
       { label: 'Posse de controle · U07', link: '/pt-br/snapshot-2026-10-07/sistemas/posse-de-controle/' },
       { label: 'Animator universal · Dev', link: '/pt-br/snapshot-2026-10-07/sistemas/animator-universal/' },
+      { label: 'Controllers e overrides · Dev', link: '/pt-br/snapshot-2026-10-07/sistemas/animator-controllers/' },
       section('Comece aqui', 'comece'),
       section('Manual do editor', 'editor'),
       section('Conceitos', 'conceitos'),
