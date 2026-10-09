@@ -4,6 +4,38 @@
   "updatedAt": "2026-10-09",
   "entries": [
     {
+      "id": "2026-10-09-animation-clips-authoring-layers",
+      "date": "2026-10-09",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Animation Studio: camadas de autoria não destrutivas",
+      "summary": "Máscaras esparsas, composição aditiva ou de substituição, referência, peso, Mudo/Solo, histórico e API C#; a mesma propriedade é avaliada no Studio e no runtime.",
+      "version": "AECLIP 3 · autoria ABI 3 · Astra Dev 0.2.10-dev.layers.20261009.1 · code 22",
+      "availability": "development",
+      "details": [
+        "Pilha de até 32 camadas incluindo Base permanente; criar, nomear, duplicar, ordenar e remover com seus canais. IDs e revisão monotônicos, journal, Undo/Redo e persistência do recurso independente da fonte.",
+        "Cada camada contém apenas propriedades autoradas de posição, rotação, escala e morphs. Override interpola; Additive usa diferença, razão de escala e delta local de rotação. Peso, referência neutra/temporal, Mudo e Solo têm consumidor no preview e em Animation/Animator.",
+        "Faixa de camadas substitui temporariamente o transporte; lista direta paginada, campos crus da camada e viewport composto. Pose se adapta ao viewport baixo com XYZ em faixa horizontal. Ícones Mudo/Solo entram no pipeline SVG/PNG/atlas real.",
+        "API tipada oferece configuração/ordem, canais com formato de rotação independente, cópia de Base, snapshots e SampleComposed. Sample conserva a leitura crua. ABI 3 mantém os prefixos 1/2; rascunhos, publicação e histórico não exigem abrir o painel.",
+        "Edições de tempo ajustam referências ou recusam deslocamentos incompatíveis; clipboard entre clipes recusa camada ambígua. A máscara é por propriedade inteira. Eventos/drivers, auto-key/espelho, conversões adicionais e bake FK/IK/root motion, retargeting, IK e biblioteca dos pacotes continuam fora deste recorte; não há equivalência completa com UMotion/FinalIK. BoZo excluído."
+      ],
+      "validation": "31/31 cenários host direcionados; SDK Release sem erros/avisos e integração C# com ponte nativa ABI 1/2/3. Code 22 ARM64 Release compilado e instalado com hash confirmado. POCO F7: autoria por toque, canais, peso, Mudo/Solo, referência, duplicação/ordem/remoção, copiar Base e Undo/Redo; criação e leitura de camadas por comando C# no IDE, cold reopen e cinco verificações do Animator em Play. 909/909 quadros examinados em 31 folhas de controles/preview/Play com PTS/hashes. Fonte GLB/licença preservadas; cena e script anteriores restaurados ao final. Mecanismos genéricos no aparelho, skin/morph no host. Não mede FPS sustentado/temperatura.",
+      "migration": "AECLIP 3 lê AECLIP 1/2 como Base única. Versões antigas não leem o novo formato: preserve backup. Mudo/Solo persistem e afetam Play. Atualize APK/SDK juntos; hosts ABI 1/2 recusam operações de camada. O APK público 0.2.3 e seus snapshots permanecem intactos; revisão Dev local não é um novo download público.",
+      "links": [
+        {
+          "label": "Camadas, curvas e API no Dev",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animation-clips/"
+        },
+        {
+          "label": "Disponibilidade do APK",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-09-animation-clips-bake-sdk",
       "date": "2026-10-09",
       "scopes": [
