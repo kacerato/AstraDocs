@@ -4,6 +4,37 @@
   "updatedAt": "2026-10-09",
   "entries": [
     {
+      "id": "2026-10-09-animation-clips-consolidation-euler",
+      "date": "2026-10-09",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Animation Studio: conversão Euler e consolidação de camadas",
+      "summary": "Converta Quaternion/Progressivo para Euler XYZ com referência explícita e publique a composição em outro clipe; interface, histórico e API C# usam o mesmo backend.",
+      "version": "AECLIP 3 · autoria ABI 4 · Astra Dev 0.2.11-dev.consolidation.20261009.1 · code 23",
+      "availability": "development",
+      "details": [
+        "Euler XYZ segue o representante equivalente mais próximo da referência e da pose anterior, incluindo gimbal. Referência obrigatória para conversão avançada; outras ordens Euler não são suportadas e voltas perdidas na fonte não podem ser recuperadas.",
+        "Clipe novo consolida TRS/morphs pelo compositor real, respeitando ordem, pesos, referência, Mudo/Solo. Publica GUID/arquivo próprio com uma Base, preserva a origem e oferece Undo/Redo da criação. O resultado é atribuído explicitamente ao Animator.",
+        "API tipada ClipEulerReference e ClipEdit.CreateConsolidated, com tolerância, redução, orçamento, relatório e publicação atômica. ABI 4 mantém prefixos 1/2/3; não exige painel aberto. A faixa contextual mantém viewport/timeline disponíveis; dois ícones novos entram no pipeline SVG/PNG/atlas.",
+        "Guia atualiza uso, API, falhas, limites, referência Unity 6000.0/Godot 4.5 e captura real. Não entrega FK/IK/root motion, eventos/drivers, auto-key/espelho, retargeting nem biblioteca de pacotes. BoZo excluído."
+      ],
+      "validation": "35/35 cenários host; SDK Release sem erros (dois avisos CS8981 existentes), ponte nativa C# ABI 1/2/3/4 com 1 passou e zero pulados. Code 23 ARM64 Release compilado/instalado com hash confirmado. POCO F7: conversão e referência por toque, criação/histórico, SDK com 401 poses, override no Animator e cinco verificações em Play. Cold reopen com nova conferência SDK e sete clipes byte a byte iguais. Todos os 1.431 quadros de três gravações revisados em 48 folhas com PTS/hashes; evidência curta, não teste térmico/FPS sustentado. Fonte/licença/controller/clipe autoral preservados; cena/script anteriores restaurados.",
+      "migration": "Formato permanece AECLIP 3. APK/SDK de autoria devem ser atualizados juntos; hosts ABI 1/2/3 recusam os comandos novos. Consolidação cria outro recurso e não altera a associação no Animator automaticamente. Preserve backups. APK público 0.2.3 e snapshots distribuídos permanecem intactos; esta revisão Dev é local.",
+      "links": [
+        {
+          "label": "Conversão, camadas e consolidação no Dev",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animation-clips/"
+        },
+        {
+          "label": "Disponibilidade do APK",
+          "url": "/download/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-09-animation-clips-authoring-layers",
       "date": "2026-10-09",
       "scopes": [

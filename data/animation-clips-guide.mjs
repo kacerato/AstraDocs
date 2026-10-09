@@ -1,9 +1,9 @@
 export const animationClipsGuide = {
   route: 'pt-br/snapshot-2026-10-07/sistemas/animation-clips',
-  title: 'Animation Studio: clipes, camadas e curvas',
+  title: 'Animation Studio: clipes, camadas, curvas e consolidação',
   description: 'Autore clipes independentes, componha camadas, edite curvas e reduza chaves pela interface ou pelo SDK C#.',
   body: `:::caution[Revisão Dev]
-Disponível no Astra Dev **0.2.10-dev.layers.20261009.1**, code **22**, instalado e conferido em aparelho em **09/10/2026**. O download público continua no APK **0.2.3**. Este guia documenta recortes funcionais de B4; B4, IK, retargeting e equivalência com os pacotes de referência continuam abertos.
+Disponível no Astra Dev **0.2.11-dev.consolidation.20261009.1**, code **23**, instalado e conferido em aparelho em **09/10/2026**. O download público continua no APK **0.2.3**. Este guia documenta recortes funcionais de B4; B4, IK, retargeting e equivalência com os pacotes de referência continuam abertos.
 :::
 
 ## Um recurso para objetos animáveis
@@ -83,13 +83,34 @@ Selecione uma trilha e abra **Edição → Bake e redução**. A faixa inferior 
 |---|---|
 | Amostras/s | Grade inicial de 1 a 240; tempos autorados, extremos e refinamento também entram na amostragem. Padrão 60. |
 | Erro | Tolerância finita e positiva; graus para rotação e unidades do canal nos demais casos. Padrão 0,01. |
-| Formato | Preservar, Quaternion ou Progressivo. Não altera propriedades que não sejam rotação. |
+| Formato | Preservar, Quaternion, Progressivo ou Euler XYZ. Não altera propriedades que não sejam rotação. |
+| Canal / Clipe novo | Canal altera uma trilha; Clipe novo consolida todas as propriedades compostas em outro recurso. |
+| XYZ / Ramo XYZ | Alterna os ajustes com a referência XYZ inicial; confirme o ramo e edite graus por eixo para converter para Euler. |
 | Redução | Ligada elimina poses redundantes dentro da verificação; desligada mantém as poses amostradas. |
 | Aplicar | Publica a trilha convertida em um passo do histórico; exibe chaves antes/depois, poses, maior erro medido e pontos verificados. |
 
 O relatório pertence à revisão e à trilha avaliadas. Mudar a trilha ou usar Undo/Redo remove os números antigos. A taxa é configuração da operação, não uma promessa de FPS nem o número final de chaves. A configuração retorna aos padrões ao reabrir o Studio; o resultado convertido permanece no recurso.
 
 O backend usa o avaliador real da engine, inclui extremos de curvas ponderadas e vizinhanças de degraus, refina rotações com múltiplas voltas, reduz e verifica o candidato antes da publicação. Erro excessivo ou orçamento excedido recusa a operação inteira. **A tolerância é verificada nos pontos amostrados, não certificada matematicamente para todo instante possível.**
+
+### Converter rotações e consolidar camadas
+
+![Consolidação real no Android: recurso novo, Base única e relatório de verificação.](/assets/animation-consolidation-dev.png)
+
+Para **Quaternion/Progressivo → Euler**, escolha Euler XYZ, abra XYZ, confirme Ramo XYZ e configure a referência inicial em graus. A engine segue o representante equivalente mais próximo da pose anterior, incluindo o gimbal. A ordem é XYZ fixa, na convenção Rz·Ry·Rx; não há seletor de outras ordens. A referência distingue representantes equivalentes, como 0°/360°, mas não recupera voltas que a fonte já perdeu.
+
+**Clipe novo → Criar** amostra a composição real de posição, rotação, escala e morphs, respeitando peso, ordem, referência, Mudo e Solo. Publica outro GUID/arquivo com uma única Base; conserva bindings e a dependência da fonte importada. Preservar usa Quaternion para rotações compostas. O original permanece intacto. Undo remove o recurso criado; Redo o recria. Atribua o resultado ao estado do Animator explicitamente.
+
+O relatório de consolidação soma chaves/poses/pontos de todos os canais. O maior erro aparece em **u/°** porque cada propriedade conserva suas unidades; o número não é uma norma física global entre canais. Consolidar não exporta FBX, não resolve IK nem extrai root motion.
+
+~~~csharp
+using var edit = editor.BeginClip(editor.Clips[0]);
+var rotation = edit.Snapshot.Tracks.First(t => t.Property == ClipProperty.Rotation);
+edit.Bake(rotation.Id, new ClipBakeSettings(Rotation: ClipRotation.Euler,
+    EulerReference: new ClipEulerReference(0, 360, 0)));
+var result = edit.CreateConsolidated("Versão consolidada");
+// CreateConsolidated publica só o recurso novo; não faz Commit do rascunho.
+~~~
 
 No aparelho, desligar a redução gerou **605 chaves**; ligá-la reduziu para **15**, com **121 poses**, **481 pontos** e erro exibido de aproximadamente **0,0000096°**. Esses números são desse clipe de teste, não de todos os recursos.
 
@@ -135,8 +156,9 @@ O exemplo separa criação, rascunho, operação e publicação. Na sonda execut
 | AddLayerTrack / SampleComposed | Máscara esparsa e avaliação da propriedade final. |
 | Sample / SampleCurve | Avaliação nativa compartilhada com runtime; rotação retorna Quaternion XYZW. |
 | Bake / Commit / Dispose | Bake altera o rascunho; Commit publica; Dispose descarta o não publicado. |
+| CreateConsolidated | Publica outro clipe e seu histórico, a partir da composição do rascunho, sem fazer Commit dele. |
 
-ClipBakeSettings expõe **SampleRate** (60), **Tolerance** (0,01), **Reduce** (true), **Rotation** (null preserva), **VerificationSteps** (4, entre 2 e 16) e **MaximumFrames** (16384, entre 2 e 65536). ClipBakeReport retorna **InputKeys**, **OutputKeys**, **SampledFrames**, **VerifiedSamples** e **MaximumError**. Os limites de avaliações/comparações continuam efetivos mesmo aumentando MaximumFrames.
+ClipBakeSettings expõe **SampleRate** (60), **Tolerance** (0,01), **Reduce** (true), **Rotation** (null preserva; em consolidação gera Quaternion), **VerificationSteps** (4, entre 2 e 16), **MaximumFrames** (16384, entre 2 e 65536 por canal) e **EulerReference** (nullable, XYZ em graus). ClipBakeReport retorna **InputKeys**, **OutputKeys**, **SampledFrames**, **VerifiedSamples** e **MaximumError**. ClipConsolidation retorna **Clip** (GUID novo) e **Report**. Os limites de avaliações/comparações continuam efetivos mesmo aumentando MaximumFrames.
 
 Tempo é em segundos, tangentes em valor/segundo e pesos em fração do segmento. PutPose recebe Quaternion XYZW ou Euler em graus; Progressivo deriva seu quinto canal. Morphs têm até 64 componentes. ClipBindingPath.Join codifica nomes com barra para não confundir nome e caminho.
 
@@ -144,20 +166,22 @@ Tempo é em segundos, tangentes em valor/segundo e pesos em fração do segmento
 
 Comandos são síncronos e executam na thread do editor, em Edit. Contexto, rascunhos e clipboards deixam de ser válidos após a invocação; uso tardio ou em outra thread é recusado. Existem até oito rascunhos e oito clipboards, com orçamentos separados de 262144 chaves. Cada criação/extração/Commit é uma transação própria; uma exceção posterior não desfaz publicações já concluídas. Use Undo para revertê-las.
 
-AECLIP conserva IDs e revisão; Undo restaura dados sem fazer o alocador reutilizar identidades. Snapshots são inspeção, não uma segunda fonte de verdade. A ABI de autoria 3 acrescenta SampleComposed e operações de camada, mantendo os prefixos ABI 1/2. Hosts antigos continuam disponíveis para comandos compatíveis e recusam capacidades novas explicitamente. AECLIP 1/2 migra para uma Base única; versões antigas do app não leem AECLIP 3. Preserve backup antes de editar com a revisão nova. APK/SDK devem ser atualizados juntos.
+AECLIP conserva IDs e revisão; Undo restaura dados sem fazer o alocador reutilizar identidades. Snapshots são inspeção, não uma segunda fonte de verdade. A ABI de autoria 4 acrescenta conversão avançada e consolidação, mantendo os prefixos ABI 1/2/3; ABI 3 fornece camadas e SampleComposed. Hosts antigos continuam disponíveis para comandos compatíveis e recusam capacidades novas explicitamente. AECLIP 1/2 migra para uma Base única; versões antigas do app não leem AECLIP 3. Preserve backup antes de editar com a revisão nova. APK/SDK devem ser atualizados juntos.
 
 ## Evidência e limites
 
-- Host desta revisão: **31/31 cenários direcionados**, incluindo matemática, migração, UI, histórico e consumidor Animator. SDK Release sem erros/avisos e integração C# com ponte nativa ABI 1/2/3.
-- Android: code 22 instalado com hash igual ao APK local. Camada/canal por toque, peso, Mudo/Solo, referência, ordem, duplicação, remoção, cópia da Base e Undo/Redo; comando C# compilado, publicado e executado pelo IDE.
-- Play: cinco verificações passaram no Animator: posição aditiva Y=20, escala 1,5, outra instância independente, override de clipe e rotação da Base avançando sob as correções. O cenário é um mecanismo genérico; skin/morph têm evidência host.
-- Reprodução desta revisão: **909/909 quadros examinados**, em 31 folhas de controles, preview e Play, com PTS/hashes. Gravação curta com transição de compilação não mede FPS sustentado, latência ou temperatura.
-- Salvar/reabrir: leitura pelo SDK embarcado confirmou as camadas, metadados e composição após encerrar e reabrir. Fonte GLB e licença preservadas; cena e script anteriores do projeto de aceite foram restaurados ao final, mantendo os clipes produzidos disponíveis.
-- Bake da revisão code 21: redução e conversão conferidas anteriormente, com **27/27 cenários host** e **477/477 quadros**. Essa evidência histórica continua separada do aceite de camadas.
+- Host desta revisão: **35/35 cenários direcionados**, incluindo ramo Euler/gimbal, múltiplas voltas, composição TRS/morph, cancelamento/orçamento, UI, histórico, publicação e reabertura. SDK Release sem erros, com dois avisos CS8981 existentes; integração C# com ponte nativa ABI 1/2/3/4: **1 passou, zero pulados**.
+- Android: code 23 instalado com hash igual ao APK local. Conversão com referência explícita, campo Y=360°, Undo/Redo, criação de clipe consolidado, remoção/recriação por histórico, escolha no catálogo e override local no Animator foram conferidos por toque. Comando C# converteu e comparou **401 poses**, publicou outro recurso e confirmou a preservação da origem.
+- Play: **cinco verificações passaram**: posição consolidada Y=20, escala 1,5, outra instância independente, estado com override e rotação consolidada avançando. O cenário é um mecanismo genérico; skin/morph têm evidência host.
+- Reprodução desta revisão: **1.431/1.431 quadros examinados em 48 folhas**, com PTS/hashes. Os trechos cobrem controles, criação/preview e Play; a gravação de controles contém períodos estáticos e não é, isoladamente, prova da conversão. Não mede FPS sustentado, latência ou temperatura.
+- Salvar/reabrir: SDK embarcado conferiu novamente 401 poses após encerrar e reabrir; sete clipes idênticos byte a byte. Fonte GLB, licença, controller e clipe autoral preservados. Cena e script anteriores do projeto de aceite foram restaurados, mantendo os clipes produzidos disponíveis.
+- Evidência histórica separada: camadas code 22 tiveram 31/31 cenários host e 909/909 quadros; bake code 21 teve 27/27 cenários host e 477/477 quadros.
 
-Permanecem pendentes: conversão Quaternion/Progressivo → Euler com ramo/eixos explícitos; bake de FK/IK/root motion; jobs de bake com progresso/cancelamento na UI; eventos, markers, drivers e propriedades arbitrárias; gizmos de pose/auto-key/espelho; merge de reimportação e biblioteca de pacotes. SourceOverride isolado não é política completa de merge. Não há equivalência completa com UMotion/FinalIK nem assets desses pacotes convertidos nesta entrega. BoZo permanece excluído.
+Permanecem pendentes: outras ordens Euler; bake de FK/IK/root motion; jobs de bake com progresso/cancelamento na UI; eventos, markers, drivers e propriedades arbitrárias; gizmos de pose/auto-key/espelho; merge de reimportação e biblioteca de pacotes. SourceOverride isolado não é política completa de merge. Não há equivalência completa com UMotion/FinalIK nem assets desses pacotes convertidos nesta entrega. BoZo permanece excluído.
 
 ## Referências e adaptação
+
+[Unity 6000.0: Euler curve import](https://docs.unity3d.com/6000.0/Documentation/Manual/AnimationEulerCurveImport.html) distingue representação, resampling e gimbal. O [avaliador/otimizador Godot 4.5-stable](https://github.com/godotengine/godot/blob/4.5-stable/scene/resources/animation.cpp) fundamenta comparação com a avaliação efetiva. A Astra usa levantamento XYZ com referência explícita e publica o compositor em um recurso separado. O tutorial oficial [UMotion: Export Animations](https://www.youtube.com/watch?v=IKjIsIJs5hM) foi estudado nos trechos de escolha de destino e publicação, com transcrição; não é alegação de revisão integral do vídeo nem de exportação FBX implementada.
 
 [Unity 6000.0: AnimationUtility.SetEditorCurve](https://docs.unity3d.com/6000.0/Documentation/ScriptReference/AnimationUtility.SetEditorCurve.html) fundamenta edição por API independente da janela; [Godot 4.5: Animation.optimize](https://docs.godotengine.org/en/4.5/classes/class_animation.html#class-animation-method-optimize) fundamenta redução configurável por precisão. A Astra aplica esses princípios ao recurso revisionado, sampler e histórico próprios, com uma faixa contextual adequada ao toque. [Unity 6000.0: Animation Layers](https://docs.unity3d.com/6000.0/Documentation/Manual/AnimationLayers.html) fundamenta máscara e composição; [Godot 4.5: AnimationNodeAdd2](https://docs.godotengine.org/en/4.5/classes/class_animationnodeadd2.html) oferece uma referência de avaliação aditiva. As camadas do clipe ficam separadas das camadas do controller. O manual UMotion Pro 1.29p04 fornecido foi estudado para curvas, modos de rotação e exportação; seu núcleo Unity não é o backend Android.
 `,
