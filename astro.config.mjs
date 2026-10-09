@@ -36,6 +36,7 @@ export default defineConfig({
       { label: 'Controllers e overrides · Dev', link: '/pt-br/snapshot-2026-10-07/sistemas/animator-controllers/' },
       { label: 'Composição aditiva · Dev', link: '/pt-br/snapshot-2026-10-07/sistemas/animator-aditivo/' },
       { label: 'Grupos e interrupções · Dev', link: '/pt-br/snapshot-2026-10-07/sistemas/animator-hierarquia/' },
+      { label: 'Clipes, curvas e bake · Dev', link: '/pt-br/snapshot-2026-10-07/sistemas/animation-clips/' },
       section('Comece aqui', 'comece'),
       section('Manual do editor', 'editor'),
       section('Conceitos', 'conceitos'),

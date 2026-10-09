@@ -1,8 +1,40 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-09",
   "entries": [
+    {
+      "id": "2026-10-09-animation-clips-bake-sdk",
+      "date": "2026-10-09",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Animation Studio: clipes editáveis, API e bake com redução",
+      "summary": "Recurso AECLIP independente, curvas e seleção múltipla, ferramentas C# de autoria e bake com relatório de erro; fluxo conferido em objeto mecânico no Android.",
+      "version": "AECLIP 2 · autoria ABI 2 · Astra Dev 0.2.9-dev.bake.20261008.5 · code 21",
+      "availability": "development",
+      "details": [
+        "Clipes tipados para posição, rotação, escala e morphs; Euler, Quaternion e Progressivo, tangentes/pesos, seleção múltipla e clipboard. Recurso separado da fonte importada, com IDs, revisão, journal e histórico.",
+        "IDE publica comandos EditorCommand em Edit; EditorContext oferece seleção/catálogos e rascunhos tipados para curvas, poses, transformações, sampling e Commit. Contexto e handles expiram ao final da invocação; ABI 2 mantém o prefixo ABI 1 e acrescenta Bake.",
+        "Bake usa a amostragem real, tempos/extremos/degraus, refinamento, redução opcional e verificação do candidato. A faixa inferior substitui o transporte sem cobrir viewport/curva; ícones novos bake/redução entram no pipeline SVG/PNG/atlas.",
+        "No Android: redução desligada gerou 605 chaves; ligada reduziu para 15, erro exibido de aproximadamente 0,0000096° em 481 pontos. Comando C# converteu 61 poses Euler (183 chaves escalares) em oito poses Quaternion (32 chaves), preservando duas voltas.",
+        "Guia público inclui captura real, configuração, API, lifecycle, falhas e limites. Verificação amostrada não certifica erro contínuo. Quaternion/Progressivo → Euler, bake FK/IK/root motion, jobs na UI e demais ferramentas de B4 permanecem pendentes. Retargeting, IK e biblioteca dos pacotes não estão entregues; zero assets desses pacotes convertidos nesta expansão. BoZo excluído."
+      ],
+      "validation": "27/27 cenários host direcionados; SDK Release e integração C# com ponte nativa ABI 1/2. Code 21 ARM64 Release compilado e instalado, hash confirmado. POCO F7: bake por toque, redução, Undo/Redo, compilação/publicação/execução de comando C#, preview e salvar/encerrar/reabrir. 477/477 quadros revisados em 16 folhas; recursos UI/API byte a byte iguais após reabrir e fonte GLB preservada. Mecanismos genéricos no aparelho; skin/morph têm evidência host. Não mede FPS sustentado/temperatura.",
+      "migration": "AECLIP 2 lê recursos anteriores; preserve backup antes de salvar. APK e SDK de autoria devem ser atualizados juntos; Bake não existe no host ABI 1. O APK público 0.2.3 e os snapshots distribuídos permanecem intactos. Esta revisão Dev é local, não um novo download público.",
+      "links": [
+        {
+          "label": "Clipes, curvas e bake no Dev",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animation-clips/"
+        },
+        {
+          "label": "Disponibilidade do APK",
+          "url": "/download/"
+        }
+      ]
+    },
     {
       "id": "2026-10-08-animator-hierarquia-interrupcoes",
       "date": "2026-10-08",
