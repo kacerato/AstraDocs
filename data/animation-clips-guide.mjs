@@ -3,7 +3,7 @@ export const animationClipsGuide = {
   title: 'Animation Studio: clipes, camadas, curvas e consolidação',
   description: 'Autore clipes independentes, componha camadas, edite curvas e reduza chaves pela interface ou pelo SDK C#.',
   body: `:::caution[Revisão Dev]
-Disponível no Astra Dev **0.2.11-dev.consolidation.20261009.1**, code **23**, instalado e conferido em aparelho em **09/10/2026**. O download público continua no APK **0.2.3**. Este guia documenta recortes funcionais de B4; B4, IK, retargeting e equivalência com os pacotes de referência continuam abertos.
+Revisão local instalada: Astra Dev **0.3.1-dev.pose.20261009.1**, code **28**, conferido em aparelho em **09/10/2026**. A revisão anterior code **23** documenta a consolidação de clipes. O download público continua no APK **0.2.3**; o code 28 não está distribuído pelo site. Este guia documenta recortes funcionais de B4; B4, IK, retargeting e equivalência com os pacotes de referência continuam abertos.
 :::
 
 ## Um recurso para objetos animáveis
@@ -21,6 +21,43 @@ O preview do Studio é temporário. Fechar ou trocar de contexto restaura a pose
 5. Use scrub e reprodução para conferir; Undo/Redo restaura operações de autoria. Salve, encerre e reabra para conferir os recursos persistidos.
 
 Curvas oferecem interpolação constante/linear/cúbica, tangentes e pesos. Euler conserva voltas por eixo; Quaternion interpola orientações; Progressivo acrescenta progressão angular derivada das poses. Converter sem bake só é permitido quando a operação preserva o comportamento suportado; perda de voltas/curvas é recusada.
+
+## Pose, preview e gravação
+
+A revisão de autoria **ABI 5** acrescenta um rascunho de pose independente do arquivo. No code 28 instalado, a conferência física cobriu rascunho numérico sem escrita, Cancelar, translação pelo gizmo, Gravar, Undo/Redo, confirmação numérica com Auto-key e reabertura após encerrar o processo. O projeto privado de aceite reúne Kyle e Viking Idle/Walk/Run com materiais e skin; não é uma biblioteca integral dos pacotes.
+
+1. Escolha um canal e abra **Pose**. O alvo e a propriedade selecionados definem o gizmo: posição, anéis de rotação ou escala local. Morphs usam os campos numéricos.
+2. **Auto-key**, ligado inicialmente, grava ao concluir a edição numérica ou soltar o gizmo. Um arraste completo cria um passo de Undo; os movimentos intermediários não escrevem o recurso.
+3. Desligue Auto-key para experimentar. **Sem gravar** identifica o rascunho. **Gravar** publica as propriedades preparadas no mesmo tempo em uma transação; **Cancelar** recompõe o clipe sem alterar a cena original.
+4. **Camada** alterna a inspeção isolada e o resultado composto. Os gizmos aparecem na camada isolada, onde seu movimento corresponde aos valores crus editados. Isso evita tratar uma correção aditiva com peso 0,5 como se fosse a pose final.
+5. Buscar outro tempo ou fechar o clipe descarta a pose não gravada. Cancelar um gesto restaura o rascunho que existia antes dele; cancelar a pose inteira descarta esse rascunho.
+
+Translação converte o deslocamento no mundo para o espaço do pai; rotação conserva a continuidade Euler ou o grupo Quaternion; escala segue os eixos locais projetados. Uma transformação que exigiria shear é recusada com diagnóstico. A edição não modifica transforms nem bytes do modelo fonte. Este recorte não é clipboard de rig completo, espelho, retargeting ou IK.
+
+### Preview e gravação pela API
+
+~~~csharp
+using System.Linq;
+using Astra.Editor;
+
+public static class PoseDoObjeto
+{
+    [EditorCommand("Preparar uma pose")]
+    public static void Preparar(EditorContext editor)
+    {
+        var clip = editor.Clips[0];
+        var track = editor.InspectClip(clip).Tracks.First(t =>
+            t.Property == ClipProperty.Translation && t.Layer == 0);
+        editor.PreviewClip(clip, editor.SelectedObject, 0);
+        editor.StagePose(track.Id, new float[] { 0, 1, 0 });
+        // Use CancelPose para descartar ou RecordPose para publicar.
+        editor.RecordPose();
+        editor.CloseClipPreview();
+    }
+}
+~~~
+
+Escolha uma raiz que resolva os bindings do clipe; o exemplo pressupõe um canal de posição na Base e um objeto selecionado compatível. StagePose aceita uma propriedade por chamada, acumula alterações no rascunho e sempre exige RecordPose, independentemente do Auto-key da interface. SeekClipPreview descarta a pose pendente ao mudar o tempo; CancelPose e CloseClipPreview são explícitos. Valores nativos usam Quaternion **XYZW**, Euler em **graus** e morph em fração **0–1**. A ABI 5 mantém os prefixos 1–4; hosts anteriores recusam estes comandos.
 
 ## Camadas de autoria
 
@@ -177,7 +214,13 @@ AECLIP conserva IDs e revisão; Undo restaura dados sem fazer o alocador reutili
 - Salvar/reabrir: SDK embarcado conferiu novamente 401 poses após encerrar e reabrir; sete clipes idênticos byte a byte. Fonte GLB, licença, controller e clipe autoral preservados. Cena e script anteriores do projeto de aceite foram restaurados, mantendo os clipes produzidos disponíveis.
 - Evidência histórica separada: camadas code 22 tiveram 31/31 cenários host e 909/909 quadros; bake code 21 teve 27/27 cenários host e 477/477 quadros.
 
-Permanecem pendentes: outras ordens Euler; bake de FK/IK/root motion; jobs de bake com progresso/cancelamento na UI; eventos, markers, drivers e propriedades arbitrárias; gizmos de pose/auto-key/espelho; merge de reimportação e biblioteca de pacotes. SourceOverride isolado não é política completa de merge. Não há equivalência completa com UMotion/FinalIK nem assets desses pacotes convertidos nesta entrega. BoZo permanece excluído.
+Ampliação ABI 5: **38/38 cenários host**, incluindo draft, gesto, cancelamento, Auto-key, composição isolada, histórico, pai girado e reabertura. Integração C# com ponte nativa ABI 1–5: **1 passou, zero pulados**, incluindo acúmulo de duas propriedades e gravação em uma transação. Capturas executáveis de UI em 853×394 e 655×300 foram inspecionadas.
+
+No POCO F7, o APK Dev code **28** foi compilado, instalado e comparado por SHA-256. A conferência física cobriu rascunho numérico sem alterar o arquivo, Cancelar, translação pelo gizmo, Gravar, Undo/Redo, Auto-key numérico e persistência após encerrar/reabrir. O Play mostrou os quatro personagens com skin e materiais. Foram revisados **887 quadros de duas gravações**, sem saltos na extração: 657 do gesto/histórico e 230 do Play. Não foram observadas malhas quebradas nesses trechos; não são medição prolongada de desempenho ou aceite de IK/locomoção. Rotação, escala, morphs e comandos SDK desta revisão têm evidência no host, sem aceite físico equivalente.
+
+Robot Kyle (49 juntas) e Viking Idle/Walk/Run (22 juntas por fonte) foram convertidos dos pacotes fornecidos para GLB com materiais e hierarquia de skin. Importação nativa, amostragem e deformação CPU passaram; os três clipes tiveram 61 amostras por fonte. Walk/Run possuem repousos diferentes do Viking base e permanecem rigs completos separados. Isso não declara retargeting entre eles. Os pacotes privados e seus arquivos não fazem parte do download público.
+
+Permanecem pendentes: aceite físico de rotação/escala/morphs e comandos SDK; outras ordens Euler; bake de FK/IK/root motion; jobs de bake com progresso/cancelamento na UI; eventos, markers, drivers e propriedades arbitrárias; cópia/espelho de rig completo; merge de reimportação e biblioteca completa dos pacotes. SourceOverride isolado não é política completa de merge. Não há equivalência completa com UMotion/FinalIK. A seleção de personagens BoZo foi autorizada posteriormente, mas nenhum personagem desse pacote entra neste recorte.
 
 ## Referências e adaptação
 

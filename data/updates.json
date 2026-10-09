@@ -4,6 +4,29 @@
   "updatedAt": "2026-10-09",
   "entries": [
     {
+      "id": "2026-10-09-animation-pose-draft-gizmos",
+      "date": "2026-10-09",
+      "scopes": ["app", "docs"],
+      "kind": "feature",
+      "title": "Animation Studio: poses temporárias, gizmos e gravação",
+      "summary": "Prepare poses sem alterar a fonte, grave um gesto em uma transação e inspecione camada isolada ou composição; API C# e biblioteca privada de personagens avançam com evidência separada.",
+      "version": "0.3.1-dev.pose.20261009.1 · code 28 · autoria ABI 5",
+      "availability": "development",
+      "details": [
+        "Modo Pose com Auto-key, Gravar e Cancelar. Campos e gizmos usam o mesmo rascunho; movimentos intermediários não escrevem o recurso. Cancelar um gesto restaura o rascunho anterior; gravar publica em um passo de histórico.",
+        "Inspeção isolada permite editar os valores crus da camada; o resultado composto permanece disponível. Translação converte pelo pai, rotação preserva o formato e escala segue eixos locais. Shear é recusado explicitamente.",
+        "ABI 5 acrescenta PreviewClip, SeekClipPreview, StagePose, RecordPose, CancelPose e CloseClipPreview, mantendo os prefixos 1–4. A API usa tracks tipadas e não depende de um player. Ícones novos entram no pipeline SVG/PNG/atlas.",
+        "Robot Kyle e Viking Idle/Walk/Run foram convertidos de pacotes privados fornecidos para GLB com skin, materiais e fontes preservadas. Walk e Run permanecem rigs separados por diferenças de repouso; não se declara retargeting, portabilidade de shaders/controllers Unity ou biblioteca integral dos pacotes.",
+        "Guia diferencia a ampliação local ABI 5 da conferência histórica do code 23. Retargeting, IK, cópia/espelho de rig completo, eventos/drivers, bake FK/IK/root motion e merge de reimportação continuam pendentes. Não altera o APK público."
+      ],
+      "validation": "38/38 cenários host; integração C# nativa ABI 1–5: 1 passou, zero pulados. Kyle com 49 juntas e Viking com 22 por fonte passaram pela importação e deformação CPU, com 61 amostras por clipe Viking. APK Dev code 28 compilado, instalado e conferido por SHA-256 no POCO F7: rascunho numérico sem escrita, Cancelar, gizmo de translação, Gravar, Undo/Redo, Auto-key numérico e reabertura após encerrar o processo. Play com quatro personagens; 887 quadros de duas gravações revisados, sem malha quebrada observada nesses trechos. Rotação/escala/morphs e comandos SDK têm evidência no host, sem aceite físico equivalente. Não é medição prolongada nem validação de IK/retargeting.",
+      "migration": "Formato AECLIP 3 mantido. Atualize APK/SDK/atlas juntos; hosts ABI 1–4 recusam os novos comandos de pose. StagePose sempre prepara e exige RecordPose. Preview não grava transforms na cena. Fontes e pacotes privados não são distribuídos pelo site; APK público 0.2.3 permanece intacto.",
+      "links": [
+        {"label": "Pose, camadas e API de autoria", "url": "/pt-br/snapshot-2026-10-07/sistemas/animation-clips/"},
+        {"label": "Disponibilidade do APK", "url": "/download/"}
+      ]
+    },
+    {
       "id": "2026-10-09-animation-clips-consolidation-euler",
       "date": "2026-10-09",
       "scopes": [
