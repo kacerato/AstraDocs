@@ -4,9 +4,60 @@
   "updatedAt": "2026-10-09",
   "entries": [
     {
+      "id": "2026-10-09-apk-preview-0-3-0",
+      "date": "2026-10-09",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "APK 0.3.0 publicado: navegação, Animation Studio e Animator ampliado",
+      "summary": "A prévia pública ganha navegação com malha assada, agentes, obstáculos e links, e passa a incluir o Animation Studio e as ampliações do Animator que estavam no canal de desenvolvimento. Atualiza a Astra anterior sem apagar projetos.",
+      "version": "0.3.0-preview.20261009 · versionCode 28 · commit a868c8ac",
+      "releaseVersion": "0.3.0-preview.20261009",
+      "versionCode": 28,
+      "availability": "distributed",
+      "details": [
+        "Baixe em Download ou na Release pública do GitHub; o APK usa a mesma chave das prévias e instala por cima da 0.2.3 (versionCode 12 → 28), preservando os projetos.",
+        "Navegação: Criar → Navegação → Superfície e Assar na Inspeção (progresso, cancelar, malha no viewport, recurso Navegação/<nome>.navmesh); Agente perseguidor com Personagem; Obstáculo que recorta a malha no Play; Link para vãos e saltos; Modificador de área.",
+        "Agente em C#: SetDestination, Stop, Resume, Warp, RemainingDistance, PathStatus e eventos de chegada, falha e link. A velocidade vai ao Personagem/Motor pela posse de controle na fonte IA, ao corpo pela velocidade ou à própria pose.",
+        "Animation Studio (clipes editáveis, curvas, bake, camadas, consolidação) e Animator ampliado (controllers, camadas aditivas, grupos e interrupção) chegam ao APK público.",
+        "Correções: folha Criar abre com receita e destino visíveis; pulo e movimento diretos não disputam com scripts; primitivas de script sob Personagem, corpo móvel ou Agente nascem só visuais; preenchimentos da interface aparecem.",
+        "Docs: catálogo de 09/10 (68 componentes, 1175 campos, 370 tipos de API) extraído do commit do APK, guia de Navegação, capítulo Astra 0.3.0 e guias de animação marcados como disponíveis no público. Os recortes de 07/10 e 06/10 continuam publicados.",
+        "Inclui Recast/Detour 1.6.0 (licença zlib), com o aviso de licença dentro do APK."
+      ],
+      "validation": "Build e assinatura verificados (certificado cfbd4391…, SHA-256 do APK 85d1c766…, igual ao asset publicado). POCO F7/Android 16: atualização sem desinstalar, projetos preservados e, dentro do APK público, bake pela Inspeção e 7/7 verificações de navegação em Play. Astra Dev code 27 com a mesma biblioteca nativa (cdb8411a…): mesmo aceite e reabertura a frio com a malha assada; Animation Studio e Animator aceitos nos codes 14 a 23. Host: nativa 1527/1527 e C# 523/0. Links e obstáculos móveis validados no host. Sem garantia para todo aparelho/cena nem desempenho sustentado.",
+      "migration": "Tipos novos: astra.navigation.surface/agent/obstacle/link/modifier e o recurso navmesh. Cenas com eles, com controllers, camadas ou clipes AECLIP 3 podem não abrir na 0.2.3: guarde uma cópia antes de testar. Malhas assadas ficam no projeto e são recarregadas ao abrir; refaça o bake depois de mudar a geometria.",
+      "links": [
+        {
+          "label": "Baixar Astra 0.3.0",
+          "url": "/download/"
+        },
+        {
+          "label": "O que mudou e como usar",
+          "url": "/pt-br/snapshot-2026-10-06/versoes/preview-0-3-0/"
+        },
+        {
+          "label": "Guia de navegação",
+          "url": "/pt-br/snapshot-2026-10-09/sistemas/navegacao/"
+        },
+        {
+          "label": "Catálogo do APK 0.3.0",
+          "url": "/pt-br/snapshot-2026-10-09/componentes/"
+        },
+        {
+          "label": "Release pública no GitHub",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.09-j"
+        }
+      ]
+    },
+    {
       "id": "2026-10-09-animation-pose-draft-gizmos",
       "date": "2026-10-09",
-      "scopes": ["app", "docs"],
+      "scopes": [
+        "app",
+        "docs"
+      ],
       "kind": "feature",
       "title": "Animation Studio: poses temporárias, gizmos e gravação",
       "summary": "Prepare poses sem alterar a fonte, grave um gesto em uma transação e inspecione camada isolada ou composição; API C# e biblioteca privada de personagens avançam com evidência separada.",
@@ -22,8 +73,14 @@
       "validation": "38/38 cenários host; integração C# nativa ABI 1–5: 1 passou, zero pulados. Kyle com 49 juntas e Viking com 22 por fonte passaram pela importação e deformação CPU, com 61 amostras por clipe Viking. APK Dev code 28 compilado, instalado e conferido por SHA-256 no POCO F7: rascunho numérico sem escrita, Cancelar, gizmo de translação, Gravar, Undo/Redo, Auto-key numérico e reabertura após encerrar o processo. Play com quatro personagens; 887 quadros de duas gravações revisados, sem malha quebrada observada nesses trechos. Rotação/escala/morphs e comandos SDK têm evidência no host, sem aceite físico equivalente. Não é medição prolongada nem validação de IK/retargeting.",
       "migration": "Formato AECLIP 3 mantido. Atualize APK/SDK/atlas juntos; hosts ABI 1–4 recusam os novos comandos de pose. StagePose sempre prepara e exige RecordPose. Preview não grava transforms na cena. Fontes e pacotes privados não são distribuídos pelo site; APK público 0.2.3 permanece intacto.",
       "links": [
-        {"label": "Pose, camadas e API de autoria", "url": "/pt-br/snapshot-2026-10-07/sistemas/animation-clips/"},
-        {"label": "Disponibilidade do APK", "url": "/download/"}
+        {
+          "label": "Pose, camadas e API de autoria",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animation-clips/"
+        },
+        {
+          "label": "Disponibilidade do APK",
+          "url": "/download/"
+        }
       ]
     },
     {

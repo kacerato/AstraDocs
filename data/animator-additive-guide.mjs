@@ -2,8 +2,8 @@ export const animatorAdditiveGuide = {
   route: 'pt-br/snapshot-2026-10-07/sistemas/animator-aditivo',
   title: 'Animator: composição aditiva e pose de referência',
   description: 'Sobreponha deslocamentos relativos em hierarquias, mecanismos, modelos com skin e canais de morph.',
-  body: `:::caution[Desenvolvimento]
-Composição aditiva está implementada e validada no Astra Dev 0.2.7-dev.20261008 (code 15). O APK público 0.2.3 e seu catálogo permanecem intactos. A validação desta revisão é registrada em Atualizações.
+  body: `:::note[Disponível no APK público 0.3.0]
+A composição aditiva, aceita no Astra Dev 0.2.7 (code 15), está no APK público **0.3.0-preview.20261009**, versionCode 28, em [Download](/download/). A validação desta revisão segue registrada em Atualizações.
 :::
 
 ## O que a camada faz

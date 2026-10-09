@@ -8,7 +8,49 @@ export function currentFamilyFor(id) {
 const chapter = '/pt-br/snapshot-2026-10-06/versoes/preview-0-2-3/';
 const firstPreview = '/pt-br/snapshot-2026-10-06/versoes/preview-2026-10-07/';
 const control = '/pt-br/snapshot-2026-10-07/sistemas/posse-de-controle/';
+const navigation = '/pt-br/snapshot-2026-10-09/sistemas/navegacao/';
+const release030 = '/pt-br/snapshot-2026-10-06/versoes/preview-0-3-0/';
 const guides = {
+  'astra.navigation.surface': {
+    purpose:'Assa a malha de navegação a partir dos colisores estáticos da cena e a carrega no Play. Agentes só andam onde existe malha assada.',
+    use:'Crie pela folha Criar → Navegação → Superfície ou adicione a um objeto vazio. Ajuste as medidas do agente (raio, altura, degrau, inclinação) e toque **Assar** na Inspeção. O resultado vira o recurso Navegação/<nome>.navmesh do projeto.',
+    example:'Com um chão estático 20×20 m e uma parede de 12 m, mantenha raio .5, altura 2, degrau .4 e inclinação 45°. Asse: o cartão mostra polígonos, área e tiles, e o viewport desenha a malha com um vão ao redor da parede. Mova a parede e veja o cartão passar a "Desatualizada"; asse de novo.',
+    extra:'Coleta: toda a cena, só os filhos ou um volume (centro/tamanho no espaço do objeto); a camada física filtra os colisores. Objetos com Agente ou Obstáculo não viram chão. O bake roda em segundo plano com progresso e Cancelar; assar de novo reescreve o mesmo recurso. A atribuição do recurso é um passo de Desfazer. A malha fica onde foi assada: mover o objeto da Superfície não a desloca.',
+    next:'Presente na 0.3.0. Áreas nomeadas por projeto, volume modificador e superfície que acompanha o objeto não estão implementados. Sem data prometida.',
+    related:`[Guia de navegação](${navigation}) · [Notas 0.3.0](${release030}#navegação)`,
+  },
+  'astra.navigation.agent': {
+    purpose:'Anda pela malha até um destino ou persegue um objeto, desviando de outros agentes. Entrega a velocidade a quem move o objeto.',
+    use:'Em um objeto com Personagem, Motor dinâmico, corpo móvel ou sem física, adicione o Agente. Defina Velocidade, Aceleração e Distância de parada. Para perseguir sem script, escolha **Seguir objeto**; por script use SetDestination(Vector3).',
+    example:'Crie Criar → Navegação → Agente perseguidor com o alvo selecionado. Em Play, o Personagem contorna a parede até ficar à distância de parada. Pelo Behavior: `var agente = Object.GetComponent<NavAgent>()!.Value; agente.SetDestination(new Vector3(7,0,-7));` e inscreva `OnDestinationReached`.',
+    extra:'Personagem e Motor dinâmico recebem a velocidade pela posse de controle, fonte IA (a menor prioridade: jogador e scripts vencem); corpo móvel recebe velocidade linear; sem física, o agente move a própria pose (um filho com corpo físico impede isso e o cartão avisa). Frear ao chegar desacelera antes da distância de parada. Stop guarda o destino para Resume; Warp teleporta Personagem ou pose para a malha.',
+    next:'Presente na 0.3.0. Prioridade de desvio, tipos de agente e animação de travessia de link personalizada não estão implementados. Sem data prometida.',
+    related:`[Guia de navegação](${navigation}) · [Posse de controle](${control})`,
+  },
+  'astra.navigation.obstacle': {
+    purpose:'Recorta a malha de navegação onde o objeto está, durante o Play. Use em portas, caixas móveis ou bloqueios temporários.',
+    use:'Adicione ao objeto que bloqueia o caminho e escolha Caixa ou Cilindro com o tamanho real. O recorte só existe no Play e reconstrói apenas os tiles tocados.',
+    example:'Coloque um Obstáculo 1×2×4 m atravessando um corredor de 4 m: os agentes deixam de ter caminho. Desative o objeto em Play e o corredor volta a ter caminho no quadro seguinte.',
+    extra:'Recortar só parado remove o recorte enquanto o objeto se move e o recoloca depois de Tempo até parado; o Limiar de movimento decide o que conta como mover. A caixa gira com o objeto em Y. Objetos com Obstáculo não entram no bake como chão.',
+    next:'Presente na 0.3.0, sempre recortando. O modo "só desvio" da Unity (sem recorte) não existe. Sem data prometida.',
+    related:`[Guia de navegação](${navigation}#obstáculos)`,
+  },
+  'astra.navigation.link': {
+    purpose:'Liga dois pontos da malha que não se tocam: vão, salto, escada ou porta.',
+    use:'Adicione ao objeto e posicione Início e Fim no espaço dele, cada um a menos do Raio de conexão de uma borda da malha. Área Salto exige que o agente use links e áreas de salto.',
+    example:'Com duas plataformas separadas por 4 m, ponha Início a .2 m da borda da primeira e Fim a .2 m da borda da segunda. Um agente com destino na outra plataforma atravessa pelo link e emite link_entered.',
+    extra:'Vários links por objeto são permitidos. Mudanças em Play reconstroem só os tiles das pontas. Nos dois sentidos desligado permite ir só do início ao fim. A travessia é linear; Personagem e pose acompanham a multidão.',
+    next:'Presente na 0.3.0. Pontas que caem numa fatia de tile muito estreita podem não conectar; posicione-as dentro da malha. Sem data prometida.',
+    related:`[Guia de navegação](${navigation}#links)`,
+  },
+  'astra.navigation.modifier': {
+    purpose:'Muda a área do chão dos colisores deste objeto no bake, ou os tira do bake.',
+    use:'Adicione ao objeto com colisores: Alterar área (Caminhável, Não caminhável, Salto, Difícil) ou Ignorar no bake. Aplicar aos filhos estende a regra a filhos sem modificador próprio. Asse a Superfície de novo.',
+    example:'Marque uma faixa de lama como Difícil: agentes com custo alto contornam, agentes com custo 1 atravessam. Marque um canteiro como Não caminhável e ele vira buraco na malha mesmo sendo baixo.',
+    extra:'A área é marcada no heightfield do bake, então vence a fusão de pequenos degraus. Os custos ficam no Agente (custo do salto e da área difícil), não no modificador.',
+    next:'Presente na 0.3.0. Áreas nomeadas do projeto e volume modificador não estão implementados. Sem data prometida.',
+    related:`[Guia de navegação](${navigation}#áreas-e-modificadores)`,
+  },
   'astra.tween.property': {
     purpose:'Interpola uma propriedade numérica de um componente existente. Use para variar uma luz, um parâmetro de material ou outro campo marcado como interpolável.',
     use:'Escolha Alvo; vazio usa este objeto. No seletor de propriedade, escolha o tipo de componente e o campo numérico. Destino usa a unidade desse campo. Recursos, strings, booleanos e enums não entram nesse seletor.',
@@ -182,7 +224,85 @@ const exact = {
   break_torque:'Limite de torque para quebra; zero conserva sem quebra por torque. Ligue um receptor ao evento para uma regra de gameplay.',
   control_source:'Automático arbitra os canais; UI/Teclado/Gamepad/Script/IA escolhe uma origem exclusiva. Origem exclusiva neutra mantém a posse; não passa para a IA.',
 };
+const navigationUsage = {
+  'astra.navigation.surface': {
+    agent_radius:'Raio do agente para o bake, em metros: a malha recua essa distância das paredes. Agentes maiores que ele podem raspar; asse de novo ao mudar.',
+    agent_height:'Espaço livre mínimo acima do chão, em metros. Passagens mais baixas ficam fora da malha.',
+    agent_max_climb:'Desnível que o agente vence sem link, em metros (degrau). Maior junta plataformas próximas; menor exige rampas ou links.',
+    agent_max_slope:'Inclinação máxima caminhável, em graus. Rampas mais íngremes não entram na malha.',
+    volume_center_x:'Coordenada X do centro do volume de coleta, no espaço do objeto da Superfície. Usada só com Coletar = Volume.',
+    volume_center_y:'Coordenada Y do centro do volume de coleta, no espaço do objeto. Usada só com Coletar = Volume.',
+    volume_center_z:'Coordenada Z do centro do volume de coleta, no espaço do objeto. Usada só com Coletar = Volume.',
+    volume_size_x:'Largura do volume de coleta em metros (eixo X do objeto). Colisores fora dele não entram no bake.',
+    volume_size_y:'Altura do volume de coleta em metros. Inclua o chão e o espaço livre do agente.',
+    volume_size_z:'Profundidade do volume de coleta em metros (eixo Z do objeto).',
+    cell_size:'Tamanho horizontal da célula de voxel, em metros. Menor aumenta precisão e tempo de bake; maior pode fechar vãos estreitos.',
+    cell_height:'Altura da célula de voxel, em metros. Define a precisão vertical dos degraus.',
+    min_region_area:'Área mínima, em m², de uma ilha de malha. Ilhas menores (topos de caixas, quinas) são descartadas.',
+    tile_size:'Lado do tile em células. Obstáculos e links reconstroem só os tiles que tocam; tiles menores reconstroem menos por vez.',
+    edge_max_length:'Comprimento máximo das bordas da malha, em metros; zero não limita.',
+    edge_max_error:'Quanto o contorno simplificado pode se afastar das paredes, em células. Maior gera menos vértices.',
+    detail_sample_distance:'Distância de amostragem da malha de detalhe de altura, em células. Abaixo de 1 desliga o detalhe.',
+    detail_sample_max_error:'Erro máximo de altura da malha de detalhe, em células.',
+    enabled:'Desligada não carrega a malha no Play; o recurso assado é preservado.',
+    collect:'Quais colisores estáticos entram: toda a cena, este objeto e filhos, ou só os que tocam o Volume.',
+    layer:'Todas as camadas físicas ou só uma. Colisores de outras camadas não viram chão.',
+  },
+  'astra.navigation.agent': {
+    speed:'Velocidade máxima pedida à multidão, em m/s. Com Personagem, o agente nunca passa da velocidade do próprio Personagem.',
+    acceleration:'Quanto a velocidade pode mudar por segundo, em m/s². Também limita a frenagem ao chegar.',
+    angular_speed:'Velocidade de giro, em graus/s, para virar o objeto na direção do movimento (Personagem e própria pose).',
+    stopping_distance:'Distância do destino em que o agente considera que chegou e para; emite o evento de chegada uma vez.',
+    radius:'Raio usado no desvio entre agentes, em metros. Não altera a malha assada; use o raio da Superfície para isso.',
+    height:'Altura do agente para o desvio, em metros.',
+    base_offset:'Altura do pivô acima da malha, em metros, quando o agente move a própria pose.',
+    jump_cost:'Multiplicador do custo de links e áreas de Salto. Maior faz o caminho evitar saltos quando há alternativa.',
+    difficult_cost:'Multiplicador do custo da área Difícil. Com 1 atravessa; valores altos contornam.',
+    repath_distance:'Quanto o objeto seguido precisa se mover, em metros, para o caminho ser refeito.',
+    enabled:'Desligado sai da multidão e para de mover o objeto; o destino guardado continua no Play.',
+    auto_braking:'Desacelera antes do destino para parar na distância de parada. Desligado mantém a velocidade até chegar.',
+    update_rotation:'Gira o objeto em Y para a direção do movimento (Personagem e própria pose).',
+    use_jump:'Permite usar links e áreas de Salto no caminho.',
+    use_difficult:'Permite atravessar a área Difícil, com o custo configurado.',
+    avoidance:'Qualidade do desvio entre agentes: Nenhum desliga; Alto amostra mais velocidades e custa mais.',
+    surface:'Superfície cuja malha o agente usa; vazio escolhe a que contém o objeto no início do Play.',
+    target:'Objeto perseguido sem script. SetDestination substitui o alvo até Resume.',
+  },
+  'astra.navigation.obstacle': {
+    center_x:'Centro do recorte em X, no espaço do objeto, em metros.',
+    center_y:'Centro do recorte em Y, no espaço do objeto, em metros.',
+    center_z:'Centro do recorte em Z, no espaço do objeto, em metros.',
+    size_x:'Largura da caixa recortada, em metros (escala do objeto aplicada).',
+    size_y:'Altura da caixa recortada, em metros.',
+    size_z:'Profundidade da caixa recortada, em metros.',
+    radius:'Raio do cilindro recortado, em metros.',
+    height:'Altura do cilindro recortado, em metros.',
+    move_threshold:'Deslocamento, em metros, que conta como movimento e refaz o recorte.',
+    stationary_time:'Tempo parado, em segundos, para o recorte voltar quando Recortar só parado está ligado.',
+    enabled:'Desligado devolve à malha a área recortada no quadro seguinte.',
+    carve_only_stationary:'Tira o recorte enquanto o objeto se move e o recoloca quando ele para: menos reconstruções.',
+    shape:'Caixa (gira com o objeto em Y) ou Cilindro (fica de pé).',
+  },
+  'astra.navigation.link': {
+    start_x:'Início do link em X, no espaço do objeto, em metros. Deve ficar a menos do Raio de conexão de uma borda da malha.',
+    start_y:'Início do link em Y, no espaço do objeto.',
+    start_z:'Início do link em Z, no espaço do objeto.',
+    end_x:'Fim do link em X, no espaço do objeto, em metros. Deve ficar a menos do Raio de conexão de uma borda da malha.',
+    end_y:'Fim do link em Y, no espaço do objeto.',
+    end_z:'Fim do link em Z, no espaço do objeto.',
+    radius:'Distância da malha, em metros, em que cada ponta se conecta.',
+    enabled:'Desligado remove a conexão da malha; os tiles das pontas são reconstruídos.',
+    bidirectional:'Ligado permite atravessar nos dois sentidos; desligado só do início ao fim.',
+    area:'Caminhável, Salto ou Difícil. Salto exige que o agente use links e áreas de salto.',
+  },
+  'astra.navigation.modifier': {
+    apply_to_children:'Filhos sem modificador próprio herdam esta regra no bake.',
+    mode:'Alterar área muda o chão destes colisores; Ignorar no bake os tira da malha.',
+    area:'Área do chão destes colisores: Caminhável, Não caminhável (buraco), Salto ou Difícil.',
+  },
+};
 export function currentPropertyUsage(c,p) {
+  if (navigationUsage[c.typeId]?.[p.id]) return navigationUsage[c.typeId][p.id];
   if(c.typeId === 'astra.physics.shapecast' && p.id === 'shape') return 'Escolhe Esfera, Caixa, Cápsula ou Cilindro para a varredura. Configure somente as dimensões relevantes da forma; isso não cria um collider persistente.';
   if (c.typeId === 'astra.audio.echo' && p.id === 'delay') return 'Intervalo entre repetições, em milissegundos. 300 ms = .3 s; não é a espera inicial de um tween.';
   if (c.typeId === 'astra.audio.source' && p.id === 'priority') return '0 é a prioridade mais importante. Ao exceder 32 vozes reais, as menos importantes podem ficar virtuais e conservar o progresso para retornar.';

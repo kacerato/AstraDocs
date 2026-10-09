@@ -1,5 +1,48 @@
 import { link } from './workflow-guide-tools.mjs';
 export const releasePages = [{
+  route:'versoes/preview-0-3-0', title:'Astra 0.3.0: navegação, Animation Studio e Animator ampliado',
+  description:'Como usar a navegação nova (malha, agentes, obstáculos e links), o Animation Studio e as ampliações do Animator incluídos no APK 0.3.0.',
+  options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-09',appRelease:'0.3.0-preview.20261009',runtimeVerified:true,prev:false,next:false}},
+  body:`
+## Versão e recorte
+
+Este capítulo acompanha o **APK 0.3.0-preview.20261009, versionCode 28**, gerado da main no commit **a868c8ac**, sem alterações locais. [Download](/download/) · [Registro da atualização](/atualizacoes/#2026-10-09-apk-preview-0-3-0).
+
+A atualização instala por cima da Astra pública anterior, com a mesma chave, e preserva os projetos. Projetos salvos com os componentes novos podem não abrir em versões antigas: guarde uma cópia antes de testar.
+
+O [catálogo de 09/10](/pt-br/snapshot-2026-10-09/componentes/) acompanha este APK, com 68 componentes e a família Navegação. [Novas fichas e mudanças](/pt-br/snapshot-2026-10-09/componentes/novidades/). O catálogo de 07/10 (APK 0.2.3) e o de 06/10 continuam nos seus endereços. A Astra segue uma prévia limitada; esta versão não anuncia a engine completa.
+
+## Navegação
+
+**Caminho:** + → **Navegação → Superfície**. Selecione a Superfície e toque **Assar** na Inspeção: os colisores estáticos viram uma malha (polígonos verdes no viewport) salva em \`Navegação/<nome>.navmesh\`. Depois selecione um alvo e crie **+ → Navegação → Agente perseguidor**; em Play ele contorna as paredes até a distância de parada.
+
+- **Agente:** move Personagem e Motor dinâmico pela posse de controle (fonte IA), corpo pela velocidade ou a própria pose; Seguir objeto, desvio de agentes, frenagem e áreas.
+- **Obstáculo:** recorta a malha no Play; **Link:** liga vãos e saltos; **Modificador:** muda a área ou tira objetos do bake.
+- **Scripts:** \`SetDestination\`, \`Stop\`, \`Resume\`, \`Warp\`, \`RemainingDistance\`, \`PathStatus\` e os eventos de chegada, falha e link.
+
+[Guia completo da navegação](/pt-br/snapshot-2026-10-09/sistemas/navegacao/).
+
+## Animation Studio e Animator
+
+O que estava no canal de desenvolvimento entra no APK público:
+
+- [Workspace universal do Animator](/pt-br/snapshot-2026-10-07/sistemas/animator-universal/), [controllers reutilizáveis e overrides](/pt-br/snapshot-2026-10-07/sistemas/animator-controllers/), [camadas aditivas](/pt-br/snapshot-2026-10-07/sistemas/animator-aditivo/) e [grupos com interrupção](/pt-br/snapshot-2026-10-07/sistemas/animator-hierarquia/).
+- [Clipes editáveis, curvas, bake, camadas e consolidação](/pt-br/snapshot-2026-10-07/sistemas/animation-clips/), também pela API C# de autoria.
+
+## Correções
+
+- A folha **Criar** abre com uma receita selecionada, com o destino (raiz ou filho) visível.
+- Pulo e movimento diretos do editor não disputam mais com scripts.
+- Primitivas criadas por script sob Personagem, corpo móvel ou Agente nascem só visuais (antes o Play podia parar).
+- Preenchimentos da interface (malha de navegação, nós de grupo do Animator) aparecem.
+
+## Evidências e limites
+
+Build, assinatura (mesmo certificado das prévias) e integridade foram conferidos. No POCO F7 com Android 16, este APK atualizou a Astra anterior sem apagar projetos e, dentro do pacote público, assou a malha pela Inspeção e passou 7/7 verificações de navegação em Play. A mesma biblioteca nativa passou no canal Astra Dev com reabertura a frio. Host: suíte nativa 1527/1527 e C# 523/0. Links e obstáculos em movimento foram validados no host. Sem garantia para todo aparelho ou cena e sem medição de desempenho sustentado. Inclui Recast/Detour 1.6.0 (licença zlib).
+
+${link('comece/ajuda-por-sintoma','Como relatar um problema')} · ${link('comece/indice','Trilha do zero')} · [Discord oficial](https://discord.gg/KpqnBvt4uG).
+`
+}, {
   route:'versoes/preview-0-2-3', title:'Astra 0.2.3: câmera virtual, mixer de áudio e Animator',
   description:'Como usar a câmera virtual, o mixer de áudio com efeitos e snapshots e o Animator com editor de grafo, incluídos no APK 0.2.3.',
   options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-07',appRelease:'0.2.3-preview.20261007',runtimeVerified:true,prev:false,next:false}},

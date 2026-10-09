@@ -3,7 +3,7 @@ import crypto from 'node:crypto';
 import { reviewedNewComponentIds } from '../data/current-component-guides.mjs';
 const read = file => JSON.parse(fs.readFileSync(file,'utf8'));
 export function validateSnapshot() {
-  const version='snapshot-2026-10-07', dir=`data/snapshots/${version}`;
+  const version='snapshot-2026-10-09', dir=`data/snapshots/${version}`;
   const source=read(`${dir}/source.json`), release=read('data/release.json');
   if(source.version!==version || source.releaseVersion!==release.version || source.versionCode!==release.versionCode || source.sourceCommit!==release.source.baselineCommit) throw Error('Current catalog must be extracted from the published APK source; refresh the snapshot before publishing another release.');
   for(const [file,hash] of Object.entries(source.sha256)) {

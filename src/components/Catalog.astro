@@ -1,15 +1,18 @@
 ---
 import archivedComponents from '../../data/components.json';
 import archivedApi from '../../data/api.json';
-import currentComponents from '../../data/snapshots/snapshot-2026-10-07/components.json';
-import currentApi from '../../data/snapshots/snapshot-2026-10-07/api.json';
+import components07 from '../../data/snapshots/snapshot-2026-10-07/components.json';
+import api07 from '../../data/snapshots/snapshot-2026-10-07/api.json';
+import components09 from '../../data/snapshots/snapshot-2026-10-09/components.json';
+import api09 from '../../data/snapshots/snapshot-2026-10-09/api.json';
 import { uiNodes } from '../../data/ui-guides.mjs';
 import { componentGuide } from '../../data/component-guides.mjs';
 import { currentComponentGuide } from '../../data/current-component-guides.mjs';
 const { kind = 'component', snapshot = 'snapshot-2026-10-06' } = Astro.props;
-if(!['snapshot-2026-10-06','snapshot-2026-10-07'].includes(snapshot))throw Error('Unknown catalog snapshot');
-const current=snapshot==='snapshot-2026-10-07';
-const components=current?currentComponents:archivedComponents, api=current?currentApi:archivedApi;
+const versioned:Record<string,{components:any,api:any}>={'snapshot-2026-10-07':{components:components07,api:api07},'snapshot-2026-10-09':{components:components09,api:api09}};
+if(snapshot!=='snapshot-2026-10-06'&&!versioned[snapshot])throw Error('Unknown catalog snapshot');
+const current=!!versioned[snapshot];
+const components=current?versioned[snapshot].components:archivedComponents, api=current?versioned[snapshot].api:archivedApi;
 const guide=current?currentComponentGuide:componentGuide;
 const base = `/pt-br/${snapshot}`, uiBase='/pt-br/snapshot-2026-10-06';
 const slug = (s:string) => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-$/,'');

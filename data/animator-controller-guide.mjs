@@ -2,8 +2,8 @@ export const animatorControllerGuide = {
   route: 'pt-br/snapshot-2026-10-07/sistemas/animator-controllers',
   title: 'Animator: controllers compartilhados e overrides',
   description: 'Reutilize a definição de um grafo e substitua clipes por instância, em mecanismos, objetos e personagens.',
-  body: `:::caution[Desenvolvimento]
-Este bloco pertence ao **Astra Dev 0.2.6-dev.20261008**. Aceite no POCO F7/Android 16 e 11 cenários focados no host. O APK público **0.2.3-preview.20261007** mantém sua distribuição atual; não há novo APK público nesta página. [Disponibilidade](/download/).
+  body: `:::note[Disponível no APK público 0.3.0]
+Controllers e overrides, aceitos no Astra Dev 0.2.6 (08/10/2026), estão no APK público **0.3.0-preview.20261009**, versionCode 28, em [Download](/download/).
 :::
 
 ## Definição compartilhada, execução independente

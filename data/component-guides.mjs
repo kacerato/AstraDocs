@@ -26,6 +26,7 @@ export function familyFor(id) {
   if (id.includes('.skinned_mesh') || id==='astra.animation') return 'animation';
   if (id.startsWith('astra.render.')) return 'render';
   if (id.startsWith('astra.camera')) return 'camera';
+  if (id.startsWith('astra.navigation')) return 'camera';
   if (id.startsWith('astra.physics2d')) return 'physics2d';
   if (id.startsWith('astra.physics')) return 'physics';
   if (id.startsWith('astra.audio')) return 'audio';

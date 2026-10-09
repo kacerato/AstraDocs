@@ -2,8 +2,8 @@ export const animatorWorkspaceGuide = {
   route: 'pt-br/snapshot-2026-10-07/sistemas/animator-universal',
   title: 'Animator universal: grafo e fontes de movimento',
   description: 'Edite animações de objetos, mecanismos e personagens com uma superfície contextual e vínculos opcionais com física.',
-  body: `:::caution[Revisão de desenvolvimento]
-Este workspace ampliado está em desenvolvimento. O APK público **0.2.3-preview.20261007** conserva o Animator anterior. Astra Dev **0.2.5-dev.20261007** foi aceita no POCO F7/Android 16 em 08/10/2026: mecanismo sem skin, vínculos físicos, parâmetros ao vivo, gestos e salvar/reabrir. O build do host passou em 9/9 cenários focados. Esta revisão ainda não foi distribuída no APK público. [Disponibilidade e APK](/download/).
+  body: `:::note[Disponível no APK público 0.3.0]
+O workspace ampliado do Animator, aceito no Astra Dev 0.2.5 (POCO F7/Android 16, 08/10/2026), está no APK público **0.3.0-preview.20261009**, versionCode 28, em [Download](/download/). A evidência abaixo continua sendo a da revisão de desenvolvimento, com a mesma lógica distribuída depois.
 :::
 
 ## Um grafo para objetos e hierarquias

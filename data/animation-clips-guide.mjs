@@ -2,8 +2,12 @@ export const animationClipsGuide = {
   route: 'pt-br/snapshot-2026-10-07/sistemas/animation-clips',
   title: 'Animation Studio: clipes, camadas, curvas e consolidação',
   description: 'Autore clipes independentes, componha camadas, edite curvas e reduza chaves pela interface ou pelo SDK C#.',
-  body: `:::caution[Revisão Dev]
-Revisão local instalada: Astra Dev **0.3.1-dev.pose.20261009.1**, code **28**, conferido em aparelho em **09/10/2026**. A revisão anterior code **23** documenta a consolidação de clipes. O download público continua no APK **0.2.3**; o code 28 não está distribuído pelo site. Este guia documenta recortes funcionais de B4; B4, IK, retargeting e equivalência com os pacotes de referência continuam abertos.
+  body: `:::note[Disponível no APK público 0.3.0]
+Clipes editáveis, curvas, bake, camadas e consolidação, aceitos no Astra Dev até o code 23 (09/10/2026), estão no APK público **0.3.0-preview.20261009**, versionCode 28, em [Download](/download/). B4, IK, retargeting e equivalência com os pacotes de referência continuam abertos.
+:::
+
+:::caution[Revisão Dev 0.3.1]
+Rascunhos de pose e gizmos estão no Astra Dev **0.3.1-dev.pose.20261009.1** (pacote de desenvolvimento, code 28 desse pacote), conferido em aparelho em **09/10/2026**. Essa revisão ainda não está no APK público 0.3.0.
 :::
 
 ## Um recurso para objetos animáveis

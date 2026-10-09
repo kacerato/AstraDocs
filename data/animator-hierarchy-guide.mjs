@@ -2,8 +2,8 @@ export const animatorHierarchyGuide = {
   route: 'pt-br/snapshot-2026-10-07/sistemas/animator-hierarquia',
   title: 'Animator: grupos, entradas e interrupções',
   description: 'Organize estados em grupos aninhados, configure rotas e interrompa misturas preservando a pose exibida.',
-  body: `:::caution[Desenvolvimento]
-Implementado no Astra Dev **0.2.8-dev.20261008**, code **16**. O APK público 0.2.3 e seus contratos continuam na versão distribuída. Este guia explica a revisão Dev; não anuncia equivalência completa com UMotion ou FinalIK.
+  body: `:::note[Disponível no APK público 0.3.0]
+Grupos e interrupções, aceitos no Astra Dev 0.2.8 (code 16), estão no APK público **0.3.0-preview.20261009**, versionCode 28, em [Download](/download/). Este guia não anuncia equivalência completa com UMotion ou FinalIK.
 :::
 
 ## Usar em qualquer objeto animável

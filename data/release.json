@@ -1,18 +1,18 @@
 {
-  "version": "0.2.3-preview.20261007",
-  "versionCode": 12,
+  "version": "0.3.0-preview.20261009",
+  "versionCode": 28,
   "package": "dev.aether.editor",
-  "date": "2026-10-07",
-  "dateLabel": "7 de outubro de 2026",
+  "date": "2026-10-09",
+  "dateLabel": "9 de outubro de 2026",
   "channel": "preview",
-  "filename": "Astra-0.2.3-preview.20261007-android-arm64.apk",
-  "sizeLabel": "98,6 MiB",
-  "bytes": 103391754,
-  "sha256": "b4301d7aadb164cf38fb2ca756a0f09cbecb5ab2c3742250672f22d11306eccc",
+  "filename": "Astra-0.3.0-preview.20261009-android-arm64.apk",
+  "sizeLabel": "100,2 MiB",
+  "bytes": 105052608,
+  "sha256": "85d1c7667dc19e5a92f9c8420f399d32da4e4c6d7bfdf145535bc105f92fff54",
   "certificateSha256": "cfbd4391d3d9f63f91901dbc22886ec6544de503d7e599543c39a68facd4ef6b",
-  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07-hi/Astra-0.2.3-preview.20261007-android-arm64.apk",
-  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.07-hi",
-  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.07-hi/SHA256SUMS.txt",
+  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.09-j/Astra-0.3.0-preview.20261009-android-arm64.apk",
+  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.09-j",
+  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.09-j/SHA256SUMS.txt",
   "requirements": {
     "minSdk": 26,
     "android": "8.0+",
@@ -24,13 +24,13 @@
   "signatureVerified": true,
   "deviceRuntimeVerified": true,
   "source": {
-    "baselineCommit": "af1d99812940b2c73564bae2c86fb83046529578",
+    "baselineCommit": "a868c8ac518a774c867a7703482391c37df3990a",
     "localChangesIncluded": false,
-    "snapshotDate": "2026-10-07",
-    "nativeLibrarySha256": "d7750dd109fb2f16056dc1b3da9eff6e117df1337dfbaf2e620090c35f470ec5",
+    "snapshotDate": "2026-10-09",
+    "nativeLibrarySha256": "cdb8411a9a985000d1363fad789b55e0a2f343f41b720b09c4267c1c7e355c6c",
     "versionOverrides": {
-      "versionCode": 12,
-      "versionName": "0.2.3-preview.20261007"
+      "versionCode": 28,
+      "versionName": "0.3.0-preview.20261009"
     }
   },
   "bundledProjects": {
@@ -42,28 +42,28 @@
     "device": "POCO F7 / 25053PC47G",
     "os": "Android 16",
     "publicPackage": [
-      "update with existing certificate (versionCode 7 → 12, first install time preserved)",
+      "update with existing certificate (versionCode 12 → 28, first install time preserved)",
       "user project files preserved",
-      "virtual camera acceptance PASS inside the public package"
+      "navigation acceptance 7/7 PASS inside the public package (bake through the editor UI, then Play)"
     ],
     "developmentPackage": {
       "package": "dev.aether.editor.u07",
       "sameNativeLibraryAsPublicPackage": true,
       "acceptances": [
-        "audio mixer, ducking, streaming and snapshot PASS",
-        "Animator on Fox PASS",
-        "Animator graph editing captured"
+        "navigation 7/7 PASS, cold reopen with baked .navmesh (code 27)",
+        "Animation Studio clips, bake, layers and consolidation (codes 19–23, reports in docs/validacao)",
+        "Animator controllers, additive layers and nested machines (codes 14–16)"
       ]
     },
     "host": {
-      "nativeSuite": "1452/1460 (8 failures predate blocks G–I)",
-      "managedSuite": "522/0"
+      "nativeSuite": "1527/1527",
+      "managedSuite": "523/0 (71 skipped)"
     },
     "limits": [
       "not a universal device compatibility guarantee",
       "no sustained FPS/thermal measurement",
-      "WAV only; no MP3/OGG",
-      "Animator without sub-state machines, interruption, additive layers or root motion"
+      "navigation links and moving obstacles validated on host only",
+      "Animation Studio without FK/IK/root motion bake, events or retargeting"
     ]
   }
 }
