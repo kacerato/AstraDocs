@@ -1,7 +1,7 @@
 export const animationClipsGuide = {
   route: 'pt-br/snapshot-2026-10-07/sistemas/animation-clips',
-  title: 'Animation Studio: autoria, poses, clipes e curvas',
-  description: 'Crie clipes de objetos e juntas, prepare poses, componha camadas e edite curvas pela interface ou pelo SDK C#; disponibilidade e validação separadas por revisão.',
+  title: 'Animation Studio: poses, curvas, eventos e marcadores',
+  description: 'Crie clipes de objetos e juntas, componha camadas, edite curvas e associe eventos temporais pela interface ou pelo SDK C#; disponibilidade separada por revisão.',
   body: `:::note[Disponível no APK público 0.3.0]
 Clipes editáveis, curvas, bake, camadas e consolidação, aceitos no Astra Dev até o code 23 (09/10/2026), estão no APK público **0.3.0-preview.20261009**, versionCode 28, em [Download](/download/). B4, IK, retargeting e equivalência com os pacotes de referência continuam abertos.
 :::
@@ -12,13 +12,100 @@ Rascunhos de pose e gizmos estão no Astra Dev **0.3.1-dev.pose.20261009.1** (pa
 
 ## Um recurso para objetos animáveis
 
-Um clipe **AECLIP 3** pertence ao projeto, separado do modelo importado. Bindings identificam o dono, caminhos relativos e, quando disponível, o GUID do nó importado. Trilhas tipadas animam **posição, rotação, escala e morphs**. Mecanismos, objetos e hierarquias com skin usam o mesmo avaliador; não é necessário ser um jogador.
+Um clipe pertence ao projeto, separado do modelo importado: **AECLIP 3** no APK público e **AECLIP 4** na revisão de fonte de eventos descrita abaixo. Bindings identificam o dono, caminhos relativos e, quando disponível, o GUID do nó importado. Trilhas tipadas animam **posição, rotação, escala e morphs**. Mecanismos, objetos e hierarquias com skin usam o mesmo avaliador; não é necessário ser um jogador.
 
 O preview do Studio é temporário. Fechar ou trocar de contexto restaura a pose autorada; salvar o clipe não grava a pose de preview como transformação da cena. Um recurso novo não é atribuído automaticamente a um estado do Animator: escolha-o no estado que deve reproduzi-lo.
 
 ## Revisão de autoria direta: disponibilidade
 
-A revisão de fonte de **09–10/10/2026** acrescenta seleção de juntas no preview, ferramentas TRS contextuais, XYZ sob demanda, foco e navegação de câmera, prévia ampliada temporária, reinício e avanço por quadro também em tela baixa. Ela é uma revisão **de desenvolvimento**; não altera o APK público **0.3.0-preview.20261009** nem transforma o aceite anterior do **Dev code 28** em aceite desta interface. Nesta rodada o ADB está indisponível: evidências novas são do host/build. O contrato de clipes continua AECLIP 3 e a API de poses continua ABI 5. Números de versionCode iguais em pacotes diferentes não provam conteúdo igual.
+A revisão de fonte de **09–10/10/2026** acrescenta seleção de juntas no preview, ferramentas TRS contextuais, XYZ sob demanda, foco e navegação de câmera, prévia ampliada temporária, reinício e avanço por quadro também em tela baixa. Ela é uma revisão **de desenvolvimento**; não altera o APK público **0.3.0-preview.20261009** nem transforma o aceite anterior do **Dev code 28** em aceite desta interface. A entrega de autoria direta manteve AECLIP 3 / ABI 5; a ampliação seguinte, abaixo, usa AECLIP 4 / ABI 6. Números de versionCode iguais em pacotes diferentes não provam conteúdo igual.
+
+## Eventos e marcadores: revisão de fonte de 10/10
+
+:::caution[Desenvolvimento — AECLIP 4 / ABI 6]
+Esta ampliação exige o novo executável, SDK e atlas de ícones. Não está no APK público 0.3.0 nem recebeu aceite Android nesta rodada. A validação é do host; o ADB não foi usado por instrução do proprietário.
+:::
+
+**Evento** publica uma mensagem tipada quando a reprodução atravessa seu instante. **Marcador** é um ponto nomeado de autoria, sem callback de gameplay. Ambos pertencem ao clipe inteiro: não são canais de uma junta nem camadas adicionais. Servem também para mecanismos, hierarquias de objetos e câmeras.
+
+### Criar e editar na timeline
+
+1. Abra um clipe e toque o ícone de **Eventos**, na barra da timeline. A faixa de eventos/marcadores substitui temporariamente as chaves; Curvas ou Chaves retornam à edição anterior.
+2. Busque o instante desejado e use **+ com o raio** para evento ou **+ com o marcador** para um marco. O ponto recebe uma identidade própria, preservada ao editar e desfazer.
+3. Toque o ponto para selecioná-lo e buscar sua pose. Arraste para ajustar o tempo com snap conforme a taxa do clipe. O arraste não publica o recurso até soltar; cancelar descarta a mudança. Undo/Redo trata o gesto como uma operação.
+4. Edite **nome**, **tempo**, **código** e **valor** na faixa contextual. Código e valor têm efeito somente em eventos. O código é um inteiro entre **0 e 16777215**; o valor é um número finito de dupla precisão. O nome identifica o ponto para o autor, não invoca uma função por string.
+5. Abra **Opções** para ativar/desativar, permitir avanço/reverso, duplicar com nova identidade ou excluir. As setas anterior/próximo selecionam pontos em ordem temporal e buscam a pose correspondente.
+6. Salve e reabra. Retime, corte e inversão acompanham os pontos; inverter também troca os filtros de sentido. Bake de curvas e consolidação preservam os eventos e marcadores.
+
+![Faixa de eventos executável: ponto Trava selecionado, código 7 e payload 2,5.](/images/animation-clips/events-host.png)
+
+Captura do UI executável rasterizado no host, 853×394. A área escura superior não inclui o renderer 3D/Vulkan; a imagem comprova os controles, não o personagem, o céu ou uma execução Android.
+
+O editor seleciona um ponto por vez. Seleção múltipla, clipboard de cues e regiões delimitadas por dois marcadores não fazem parte desta entrega; o clipboard existente continua sendo de chaves.
+
+### Conectar à cena ou ao script
+
+No objeto que reproduz o clipe, acrescente uma **Conexão de evento** e escolha **Animation · Evento do clipe** ou **Animator · Evento do clipe**, conforme o consumidor. Configure o receptor e a ação já suportada pela conexão. **Código do clipe = -1** aceita qualquer código; outro valor aceita somente aquele evento. Uma alavanca pode emitir código 7 para alternar a atividade de uma luz, por exemplo. A entrega é adiada pela fila de componentes existente; o sampler não executa a ação durante a amostragem.
+
+O evento **clip_event** contém três argumentos: **tag** (Integer, código semântico), **value** (Number, payload) e **cue** (Integer, identidade local ao recurso). Os componentes Animation e Animator expõem **OnClipEvent** e **OnClipEventsLost** no SDK gerado. Um script pode escolher a ação pelo código e consumir o valor; conexões de cena continuam usando seu argumento de método configurado, sem converter automaticamente o payload em argumento.
+
+Não use a identidade cue como código global: outro clipe pode ter a mesma identidade. Use tag como contrato do seu projeto e o componente emissor para definir o contexto. Os eventos já existentes de entrada/saída de estados do Animator permanecem separados dos eventos internos de clipe.
+
+### API: autoria e consumo
+
+O comando abaixo edita o primeiro clipe do projeto em uma transação. Substitua o instante e o código pelo contrato do seu mecanismo; clipes menores que 0,5 s exigem outro instante.
+
+~~~csharp
+using Astra.Editor;
+
+public static class EventosDoMecanismo
+{
+    [EditorCommand("Adicionar evento da trava")]
+    public static void Adicionar(EditorContext editor)
+    {
+        using var draft = editor.BeginClip(editor.Clips[0]);
+        draft.PutCue(new ClipCue(0, .5f, ClipCueKind.Event, "Trava", 7, 2.5));
+        draft.PutCue(new ClipCue(0, .5f, ClipCueKind.Marker, "Contato"));
+        draft.Commit();
+    }
+}
+~~~
+
+No Behavior do mesmo objeto que possui **Animation**, a assinatura termina automaticamente ao remover o Behavior ou sair do Play. Para **Animator**, troque o tipo da fachada; payload e assinatura são iguais. Este exemplo registra o evento; não toca áudio nem presume um personagem.
+
+~~~csharp
+using Astra;
+using Astra.Components;
+
+public sealed class ReceberEventoDoClipe : Behavior
+{
+    public override void Start()
+    {
+        var animation = Object.GetComponent<Animation>()!.Value;
+        animation.OnClipEvent(this, args =>
+        {
+            if (args[0].AsInteger() == 7)
+                Scene.Log(ObjectId, "Trava: " + args[1].AsNumber());
+        });
+        animation.OnClipEventsLost(this, args =>
+            Scene.Log(ObjectId, "Eventos suprimidos: " + args[0].AsInteger()));
+    }
+}
+~~~
+
+### Reprodução, mistura e limites
+
+- Avanço usa o intervalo **(antes, depois]**; reverso usa **[depois, antes)**. Dividir uma atualização não repete o ponto na fronteira. Preview, scrub e seek não executam o trecho saltado. Um ponto em zero não dispara automaticamente ao iniciar; precisa ser atravessado.
+- Loop e PingPong atravessam as ocorrências em ordem temporal dentro de cada clipe. Na virada do PingPong o endpoint emite uma vez e seu filtro segue o sentido local de chegada. Pontos distintos em zero e duração continuam distintos mesmo quando coincidem no Loop.
+- Somente eventos habilitados, no sentido permitido e com peso efetivo positivo emitem. Cada motion ativo de uma mistura emite seus eventos; códigos iguais não são deduplicados entre clipes, estados ou camadas. Não há ordenação cronológica global entre esses consumidores.
+- Poses congeladas de interrupção e referências aditivas não avançam como clipes independentes e não geram eventos.
+- Cada avanço de um avaliador tem orçamento compartilhado de **256 eventos**. Saltos enormes contam ocorrências analiticamente, sem percorrer milhões de ciclos. **clip_events_lost(count)** informa a supressão; a fila de componentes conserva também seu diagnóstico de capacidade. Eventos críticos não devem depender de reproduzir milhares de ações em um único frame.
+
+### Compatibilidade e referências
+
+A nova revisão lê **AECLIP 1–4** e grava **4**. Versões 1/2 migram para a Base; versão 3 mantém camadas e começa sem eventos. Apps antigos não leem 4: preserve uma cópia antes de editar. Conexão de evento passa à versão 2, lendo a versão 1 com filtro de código livre. ABI 6 mantém os prefixos 1–5 e acrescenta **PutCue**, **RemoveCue** e **ClipSnapshot.Cues**; um host anterior recusa comandos novos explicitamente. O formato da tabela de funções da ABI 5 permanece, mas sua versão precisa ser respeitada.
+
+[Godot 4.5: Call Method Track](https://docs.godotengine.org/en/4.5/tutorials/animation/animation_track_types.html) fundamenta a separação entre ações temporais e preview; [Animation markers](https://docs.godotengine.org/en/4.5/classes/class_animation.html) separa pontos nomeados. O [AnimationMixer 4.5-stable](https://github.com/godotengine/godot/blob/4.5-stable/scene/animation/animation_mixer.cpp) trata métodos separadamente da mistura de valores. O [workflow de Animation Events da Unity 6.6](https://docs.unity.com/en-us/engine/6000.6/manual/animation-section/animation-mecanim/animation-clips/animation-editor-guide/script-animation-window-event) orienta a faixa temporal e propriedades contextuais; a Astra adapta isso à fila tipada e à superfície mobile existente.
 
 ## Como o braço do Kyle realmente foi produzido
 
@@ -97,7 +184,8 @@ Para uma cena já salva, escolha o modelo **Atmosfera** no Environment e ajuste 
 | Curvas / timeline / clipboard | Implementados: edição e seleção de chaves, retime, recorte, cópia/colagem, tangentes e pesos. Não é uma timeline cinematográfica multitrack de cenas. |
 | Camadas do clipe | Override/aditiva, máscara esparsa por canal, referência, pesos, ordem, Mudo/Solo, persistência e composição. Separadas das camadas do Animator. |
 | Conversão / bake | Conversões suportadas e consolidação da composição, com tolerância e relatório. Não entrega bake FK/IK/root motion. |
-| API de autoria | Criação, rascunho, inspeção, operações, amostragem, publicação e poses ABI 5. Não depende de um painel aberto para editar recursos. |
+| Eventos / marcadores | Revisão de fonte AECLIP 4: autoria, histórico, persistência, travessia temporal e entrega pela fila de componentes; sem aceite Android nesta rodada. |
+| API de autoria | Criação, rascunho, inspeção, operações, amostragem, publicação e poses ABI 5; cues na ABI 6. Não depende de um painel aberto para editar recursos. |
 | Propriedades arbitrárias | Não: o clipe suporta TRS/morphs tipados. Luz, áudio e qualquer campo arbitrário não se tornam animáveis apenas por aparecerem no Inspector. |
 | Retargeting / espelho de rig | Pendentes: matching de nomes não resolve comprimentos, repousos, orientação ou semântica corporal. |
 | IK | Não implementado neste recorte; não há promessa de solver porque o preview mostra juntas. |
@@ -340,7 +428,7 @@ Tempo é em segundos, tangentes em valor/segundo e pesos em fração do segmento
 
 Comandos são síncronos e executam na thread do editor, em Edit. Contexto, rascunhos e clipboards deixam de ser válidos após a invocação; uso tardio ou em outra thread é recusado. Existem até oito rascunhos e oito clipboards, com orçamentos separados de 262144 chaves. Cada criação/extração/Commit é uma transação própria; uma exceção posterior não desfaz publicações já concluídas. Use Undo para revertê-las.
 
-AECLIP conserva IDs e revisão; Undo restaura dados sem fazer o alocador reutilizar identidades. Snapshots são inspeção, não uma segunda fonte de verdade. A ABI de autoria 4 acrescenta conversão avançada e consolidação, mantendo os prefixos ABI 1/2/3; ABI 3 fornece camadas e SampleComposed. Hosts antigos continuam disponíveis para comandos compatíveis e recusam capacidades novas explicitamente. AECLIP 1/2 migra para uma Base única; versões antigas do app não leem AECLIP 3. Preserve backup antes de editar com a revisão nova. APK/SDK devem ser atualizados juntos.
+AECLIP conserva IDs e revisão; Undo restaura dados sem fazer o alocador reutilizar identidades. Snapshots são inspeção, não uma segunda fonte de verdade. A ABI de autoria 4 acrescenta conversão avançada e consolidação, mantendo os prefixos ABI 1/2/3; ABI 3 fornece camadas e SampleComposed, ABI 5 acrescenta poses e ABI 6 acrescenta cues. Hosts antigos continuam disponíveis para comandos compatíveis e recusam capacidades novas explicitamente. AECLIP 1/2 migra para uma Base única; AECLIP 3 contém camadas e AECLIP 4 acrescenta eventos/marcadores. Preserve backup antes de editar com a revisão nova. Executável, SDK e atlas devem ser atualizados juntos.
 
 ## Validação da autoria direta — 10/10/2026
 
@@ -367,7 +455,7 @@ No POCO F7, o APK Dev code **28** foi compilado, instalado e comparado por SHA-2
 
 Robot Kyle (49 juntas) e Viking Idle/Walk/Run (22 juntas por fonte) foram convertidos dos pacotes fornecidos para GLB com materiais e hierarquia de skin. Importação nativa, amostragem e deformação CPU passaram; os três clipes tiveram 61 amostras por fonte. Walk/Run possuem repousos diferentes do Viking base e permanecem rigs completos separados. Isso não declara retargeting entre eles. Os pacotes privados e seus arquivos não fazem parte do download público.
 
-Permanecem pendentes: aceite físico de rotação/escala/morphs e comandos SDK; outras ordens Euler; bake de FK/IK/root motion; jobs de bake com progresso/cancelamento na UI; eventos, markers, drivers e propriedades arbitrárias; cópia/espelho de rig completo; merge de reimportação e biblioteca completa dos pacotes. SourceOverride isolado não é política completa de merge. Não há equivalência completa com UMotion/FinalIK. A seleção de personagens BoZo foi autorizada posteriormente, mas nenhum personagem desse pacote entra neste recorte.
+Permanecem pendentes: aceite físico das revisões novas, de rotação/escala/morphs e comandos SDK; outras ordens Euler; bake de FK/IK/root motion; jobs de bake com progresso/cancelamento na UI; drivers e propriedades arbitrárias; cópia/espelho de rig completo; merge de reimportação e biblioteca completa dos pacotes. Eventos e marcadores estão na revisão de fonte descrita acima, com os limites explícitos daquela seção. SourceOverride isolado não é política completa de merge. Não há equivalência completa com UMotion/FinalIK. A seleção de personagens BoZo foi autorizada posteriormente, mas nenhum personagem desse pacote entra neste recorte.
 
 ## Referências e adaptação
 

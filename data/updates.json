@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-10",
   "entries": [
     {
+      "id": "2026-10-10-animation-clip-events-markers",
+      "date": "2026-10-10",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Animation Studio: eventos, marcadores e conexões de cena",
+      "summary": "Marque ações e poses na timeline de qualquer hierarquia animada; edite pela UI ou SDK e entregue eventos tipados pelo Animation e Animator.",
+      "version": "Revisão de fonte 2026-10-10 · AECLIP 4 · autoria ABI 6",
+      "availability": "development",
+      "details": [
+        "Faixas de eventos e marcadores substituem o corpo da timeline. Seleção, busca de pose, arraste com snap, cancelamento, nome/tempo/código/valor, sentido, ativação, duplicação e exclusão usam o recurso real e Undo/Redo. Dois ícones novos entram no PNG/atlas nativo.",
+        "Animation e Animator publicam clip_event(tag, value, cue) pela fila adiada existente. Conexões de cena filtram o código e reutilizam ações/métodos; scripts recebem payload tipado. Código inteiro 0..16777215, valor double finito e identidade local ao clipe.",
+        "Loop, reverso e PingPong usam intervalos sem repetir a fronteira; endpoints de PingPong seguem o sentido local de chegada. Preview/scrub/seek não executam ações. Motions com peso positivo emitem separadamente; não há deduplicação por código entre clipes.",
+        "Orçamento de 256 eventos por avanço de avaliador e contagem analítica de supressões, expostas por clip_events_lost. Retime/corte/inversão acompanham pontos, bake/consolidação os preservam. PutCue/RemoveCue/ClipSnapshot.Cues ampliam a API de autoria.",
+        "Guia acrescenta fluxo visual, conexão de uma alavanca, exemplos C# completos, limites de mistura e migração. Não altera o APK público 0.3.0-preview.20261009; seleção múltipla/clipboard de cues, IK, retargeting, drivers e bake FK/IK/root motion permanecem fora desta entrega."
+      ],
+      "validation": "Host: 42/42 cenários direcionados de animação, incluindo UI, arraste/cancelamento, histórico, draft vencido, reabertura, preservação e migração AECLIP. Animation e Animator entregaram payload tipado e conexão filtrada; peso zero não emitiu; um salto de 200 s entregou 256 eventos e diagnosticou 144 suprimidos. Integração C# com ponte nativa ABI 1–6: 1 passou, zero falhas e zero pulados. SDK Release sem erros (dois avisos CS8981 preexistentes); dois exemplos completos do guia compilaram sem erros/avisos. UI executável inspecionada em 853×394 e 655×300, incluindo seleção, opções e arraste. Capturas rasterizam controles, não o renderer 3D. Sem ADB, APK novo ou aceite Android nesta rodada.",
+      "migration": "A nova fonte lê AECLIP 1–4 e grava 4; apps anteriores não leem 4. Preserve uma cópia. Conexão de evento v2 lê v1 com código -1 (qualquer). ABI 6 mantém prefixos 1–5, sem alterar o tamanho da tabela ABI 5; hosts antigos recusam comandos novos. Atualize executável, SDK e atlas juntos. APK público inalterado.",
+      "links": [
+        {
+          "label": "Eventos, API e disponibilidade real",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animation-clips/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-09-animation-direct-preview-daylight",
       "date": "2026-10-10",
       "scopes": [
