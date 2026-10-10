@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-10",
   "entries": [
     {
+      "id": "2026-10-10-properties-drivers-unity-development",
+      "date": "2026-10-10",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Desenvolvimento: propriedades, drivers e conversão de assets",
+      "summary": "AECLIP 7 e autoria ABI 12 integram canais tipados, drivers e catálogo efetivo. Biblioteca amplia TIFF/FBX e conversões delimitadas de clipes, prefabs e controllers Unity, com aceite host registrado.",
+      "version": "Revisão de fonte 2026-10-10 · AECLIP 7 · autoria ABI 12",
+      "availability": "development",
+      "details": [
+        "Propriedades e drivers usam o recurso, consumer e journal reais. Busca, criação, gravação, remapeamento, curvas e DAG possuem controles executáveis; Aplicar o DAG publica uma operação de Undo.",
+        "SDK tipado compartilha catálogo, identidades, validação e publicação do editor. Alterar proprietário ou revisão da cena invalida o contexto do rascunho; GUIDs e objetos não passam por float.",
+        "FBX amplia hierarquia, skin linear, morphs e takes. TIFF clássico possui interpretação explícita. Fontes permanecem preservadas com receitas e dependências.",
+        "Conversão Unity textual resolve GUID/fileID exatos e produz clipes genéricos, prefabs de malha estática e controllers dentro do contrato publicado. Biblioteca oferece Instanciar, Vincular e decisões explícitas de conflito.",
+        "Humanoid/Avatar, prefab variants/patches, scripts, shaders, controllers sem equivalência, cenas Unity e PSD permanecem lacunas declaradas. As recusas não publicam metade do recurso.",
+        "Plano N01–N16 permanece em execução. Esta nota não distribui APK nem amplia o aceite Android anterior; ADB aguarda liberação ao final da implementação do plano."
+      ],
+      "validation": "Windows host: editor 55/55; biblioteca 20/20; GUI 30/30. SDK C# contra DLL nativa ABI12: 1/1, zero falhas e zero pulos; compilação gerenciada sem erros/avisos. Cenário vertical por toque inclui consumidores reais de luz/material/câmera/UI, prefab, remapeamento, reabertura, ciclo recusado e Play. Corpus: 520 FBX estáticos, 150/151 deformáveis, quatro TIFF e sete TGA; dual quaternion recusado. Capturas executáveis 655×300 inspecionadas; controles CPU, sem novo APK ou aceite Android.",
+      "migration": "AECLIP grava 7 e lê 1–7; os APKs existentes não leem os novos recursos. ABI 12 mantém prefixos anteriores e recusa operações novas em host antigo. Atualize executável, SDK e atlas juntos e preserve backup. Fontes e revisões de pacote são conservadas; conflitos externos recusam publicação.",
+      "links": [
+        {
+          "label": "Workflow e limites da revisão",
+          "url": "/pt-br/desenvolvimento/2026-10-10/autoria-e-biblioteca/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-10-timeline-intervals-materials-development",
       "date": "2026-10-10",
       "scopes": [

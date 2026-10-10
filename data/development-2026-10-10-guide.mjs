@@ -1,7 +1,7 @@
 export const developmentOctober10Guide = {
   route: 'pt-br/desenvolvimento/2026-10-10/autoria-e-biblioteca',
-  title: 'Desenvolvimento: poses, curvas, intervalos e biblioteca',
-  description: 'Comparação de curvas, autoria temporal, ciclos e poses ABI 10; biblioteca de fontes, texturas e materiais. Revisão separada dos APKs e do restante do plano N01–N16.',
+  title: 'Desenvolvimento: animação, propriedades e biblioteca',
+  description: 'Autoria temporal, propriedades e drivers ABI 12; biblioteca e conversões delimitadas de texturas, FBX e recursos Unity. Revisão separada dos APKs e do restante do plano N01–N16.',
   body: `:::caution[Revisão em desenvolvimento]
 Esta página acompanha a implementação iniciada em **10/10/2026**, na branch de desenvolvimento da engine. **Não é um novo APK** e não amplia o aceite físico da Dev code 33. O APK público continua **0.3.0-preview.20261009/code 28**. ADB e o aceite Android desta revisão aguardam a liberação do proprietário no final da implementação do plano inteiro.
 :::
@@ -10,7 +10,7 @@ Esta página acompanha a implementação iniciada em **10/10/2026**, na branch d
 
 Editar um trecho inteiro do clipe e trabalhar com eventos/marcadores em grupo pela timeline. A interface e os comandos C# usam o mesmo recurso, sampler e histórico. Os ícones novos fazem parte do atlas executável; uma imagem conceitual não é evidência de interface implementada.
 
-O plano tem **16 blocos**, o índice UMotion com **75 páginas** e **91 famílias** do atlas. Este pacote amplia partes de N01/N07/N08. Não encerra esses blocos nem anuncia equivalência com UMotion, FinalIK ou BoZo.
+O plano tem **16 blocos**, o índice UMotion com **75 páginas** e **91 famílias** do atlas. Este pacote amplia partes de N01/N02/N07/N08. Não encerra esses blocos nem anuncia equivalência com UMotion, FinalIK ou BoZo.
 
 ## Selecionar e editar vários eventos
 
@@ -40,7 +40,7 @@ Duplicar conserva as curvas autorais de cada camada; não congela o resultado co
 
 Exemplo: em um clipe de 4 s a 30 quadros/s, duplicar [0,25;1,25) no destino 3 s acrescenta **1 + 1/30 s** à duração. O quadro de separação conserva a última pose copiada e a pose antiga da fronteira. Todos os dados posteriores acompanham a inserção.
 
-Cada operação é atômica e possui um Undo. Não altera o formato **AECLIP 4**. Salve uma cópia antes de usar uma revisão nova; o APK público antigo não lê esse formato.
+Cada operação é atômica e possui um Undo. A fonte atual grava **AECLIP 7** e lê versões 1–7. A revisão anterior desta página usava AECLIP 4. Salve uma cópia antes de migrar; os APKs existentes não leem os novos recursos desta revisão.
 
 ## Fechar e repetir ciclos
 
@@ -179,6 +179,54 @@ seleção transitória e o isolamento; conjuntos salvos continuam no projeto.
 
 ![Seleção de poses, relações e conjuntos em 655×300](/assets/development-2026-10-10/pose-selection-655.png)
 
+## Propriedades: criar, gravar e reparar um canal
+
+Esta ampliação está integrada ao código e em validação conjunta. Os controles
+usam o catálogo de setters efetivos do objeto selecionado; criar uma classe ou
+persistir um tipo não autoriza uma propriedade sem consumidor.
+
+1. Abra o clipe e escolha **Editar → Propriedades → + No objeto selecionado**.
+2. Use o seletor de objeto e **Buscar propriedade**. A busca combina palavras
+   do componente e da propriedade; o catálogo inclui somente destinos elegíveis.
+3. Toque no resultado para criar o canal. Ajuste o instante pela ação em segundos
+   e edite o valor: a mudança grava uma chave no recurso, com Undo/Redo.
+4. **Curva** abre o gráfico e os campos da componente selecionada. Tempo, valor,
+   tangentes, pesos e remoção usam as mesmas curvas e identidades persistentes.
+5. Um componente removido ou com contrato substituído produz diagnóstico.
+   **Remapear** procura um destino do mesmo tipo e preserva o ID do canal.
+
+Luz usa intensidade/cor reais; câmera usa campo de visão elegível; materiais
+exigem substituição local ativa no slot; UI usa opacidade do nó de um Canvas
+válido. A prévia mantém cena e instâncias GUI privadas. Cancelar não escreve no
+documento autoral. A publicação valida o lote inteiro antes de alterar os alvos.
+
+Número, vetores, RGB linear, quaternion, bool, enum, objeto e recurso têm formatos
+distintos. Identidades de objeto/GUID não passam por float. Referências e opções
+são discretas. Nesta revisão, referências e quaternion gerais ainda não possuem
+setters de componente registrados no catálogo; sua persistência não anuncia
+autoria dessas propriedades. Rotação TRS mantém seu caminho próprio.
+
+## Drivers: do parâmetro ao resultado
+
+Em **Editar → Drivers**, **Adicionar** oferece Entrada, Constante, Somar,
+Multiplicar, Escala + offset, Clamp, Remapear e Curva em páginas de operações.
+Uma entrada pode ler tempo local, propriedade numérica ou parâmetro Float do
+Animator pelo ID e pela identidade do controlador. Selecione a saída no catálogo
+efetivo do objeto. A inspeção mostra valor ou causa da recusa.
+
+Exemplo de workflow: crie Entrada com o parâmetro de velocidade do Animator;
+adicione Escala + offset, ligue a entrada, defina escala 2 e offset 1 e escolha
+intensidade da luz como saída. Com velocidade 3, o resultado esperado é 7.
+**Aplicar** publica o grafo inteiro em uma operação de Undo; **Cancelar** descarta
+o rascunho. Um ciclo, referência ausente, overflow ou saída incompatível impede
+a publicação inteira e informa o motivo.
+
+A ordem é **scripts → composição do clipe → drivers → física**. As entradas
+observam a mesma composição anterior à publicação; saídas não alimentam outras
+entradas de propriedade no mesmo quadro. Limites: 512 operações, 256 entradas,
+128 saídas e 8.192 chaves das curvas de drivers. Desempenho sustentado no Android
+e combinações adicionais de camadas continuam no aceite N15/N16.
+
 ## SDK C#: o mesmo backend
 
 A ABI de autoria **7** acrescenta InsertTime, RemoveTime, DuplicateRange, MoveRange, CopyCues, PasteCues, TransformCues e EraseCues. A **8** anexa ConfigureClipPoseRecording, ConfigureClipPoseLocks, ResetClipPose, CopyClipPose e PasteClipPose. A **9** anexa ClipPoseTargets, seleção/relações, foco/isolamento e Save/Recall/RemoveClipPoseSelection. A **10** acrescenta ClipArrange, ArrangeSelection, CloseRange e RepeatRange. Os tamanhos dos prefixos ABI 1–9 permanecem disponíveis. O SDK recusa as operações novas em um host antigo.
@@ -208,6 +256,13 @@ public static class IntervalosDoClipe
 ~~~
 
 CopyCues recebe IDs do snapshot e devolve um ClipCueClipboard descartável. O clipboard pertence à invocação do editor e conserva double no payload. Dispose libera o handle; outra invocação, thread ou contexto não pode reutilizá-lo. Commit publica o rascunho inteiro; operações sem Commit são descartadas.
+
+A ABI **11** acrescenta regiões nomeadas e amostragem de um intervalo. A **12**
+acrescenta AnimatableProperties, AnimatorDriverParameters, BindPropertyObject,
+AddProperty, PutProperty, SampleProperty, RemapProperty e ConfigureDrivers.
+ClipSnapshot expõe canais tipados e o DAG. O rascunho de propriedades captura
+proprietário e revisão da cena; mudar o contexto exige reabri-lo. Executável,
+SDK e atlas devem acompanhar a mesma revisão; host antigo recusa as operações.
 
 ## Diagnóstico e recuperação
 
@@ -240,8 +295,9 @@ a cópia ou conflito de metadados recusa a publicação inteira.
 A importação de pasta aceita até 4096 arquivos, profundidade 8; o índice aceita
 128 pacotes e 65536 itens, limitado a 16 MiB. Esta revisão inclui texturas TGA
 RGB/RGBA/grayscale, sem compressão ou RLE, com orientação e alpha respeitados.
-As sete TGA fornecidas foram decodificadas no host. TIFF e conversores completos
-de FBX, animação, prefab, controller e shader continuam trabalhos distintos.
+As sete TGA fornecidas foram decodificadas no host. TIFF, FBX e conversores Unity
+receberam o pacote delimitado descrito abaixo, em validação conjunta. Shader
+personalizado não possui conversão equivalente automática.
 
 Texturas abrem o importador focal com prévia preparada, interpretação, limites,
 compressão e demais opções divididas em tarefas paginadas. Reimportar uma textura
@@ -273,14 +329,71 @@ esfera, caixa e plano próprios, câmera de órbita/zoom e recursos GPU separado
 da cena. Material ou textura ainda não publicados produzem diagnóstico.
 O backend de quatro samplers recusa oclusão separada sem equivalente; não
 mascara a ausência. Capturas host de controles não demonstram a imagem PBR no
-Android. Catálogo integral dos pacotes, FBX genérico e conversão completa de
-animações/controllers/prefabs continuam em implementação de N07.
+Android. A biblioteca integral e os limites restantes continuam em N07.
+
+## FBX, TIFF e recursos Unity
+
+FBX usa importação nativa de hierarquia, malha rígida, skin linear, morphs e
+takes. No importador, selecione o take e extraia um clipe editável; fontes sem
+malha podem fornecer animação para uma hierarquia compatível. Reimportação
+preserva alterações locais e mantém fonte, receita e histórico juntos.
+Não presume equivalência de constraints, scripts, shaders ou Avatar Unity.
+
+TIFF clássico RGB de 8/16 bits tem contrato de orientação e cor explícito;
+perfil não interpretado exige diagnóstico e decisão declarada. A captura focal
+mostra os texels preparados; ainda não representa uma imagem Vulkan no aparelho.
+
+Na **Biblioteca**, selecione .anim, .prefab ou .controller e use **Converter**.
+O conversor resolve GUID e fileID exatos dentro da revisão do pacote.
+
+| Fonte | Resultado delimitado | Uso no editor |
+|---|---|---|
+| .anim textual | TRS genérico, curvas e blend shapes com renderer compatível | Abrir o clipe nativo; editar; reimportar com merge por canal |
+| .prefab textual | GameObject/Transform, MeshFilter/MeshRenderer e materiais resolvidos | Instanciar o recurso nativo pela Biblioteca; criar instâncias independentes |
+| .controller textual | Parâmetros, camadas Override, estados/transições e BlendTree 1D compatíveis | Vincular ao Animator existente do objeto selecionado |
+
+**Detalhes** mostra estado, origem e diagnóstico. Se fonte e recurso local
+mudaram, a reimportação exige **Manter local** ou **Receber origem**; sem decisão,
+recusa a operação. Undo/Redo restaura recurso, receita, registro e índice juntos.
+Alteração externa conflitante também recusa publicação.
+
+![Prefab convertido e ação de instanciar na Biblioteca executável](/assets/development-2026-10-10/unity-library-655.png)
+
+Captura dos controles nativos em 655×300. O cenário usa instâncias reais,
+salva/reabre os recursos e entra em Play; a captura CPU não mostra o renderer 3D.
+O pacote Biblioteca passou em **20/20 cenários host**. O corpus original
+confirmou **520 FBX estáticos**, **150 de 151 FBX com deformação**, **4 TIFF** e
+**7 TGA**; o FBX restante usa dual quaternion e foi recusado explicitamente.
+Isso valida esse contrato de conversão, sem encerrar a biblioteca integral N07.
+
+Humanoid/Avatar, Euler ZXY sem bake declarado, animação comprimida, PPtr,
+PrefabVariant/patches, SkinnedMeshRenderer em prefab, scripts, shaders e
+componentes desconhecidos permanecem sem conversão equivalente. Controllers
+com máscaras, IK, sincronização, máquinas aninhadas ou Write Defaults desativado
+são recusados. Cenas .unity, PSD e previews gerais continuam lacunas.
+Essas recusas preservam a fonte; não fabricam um recurso parcialmente funcional.
+
+## Aceite desta revisão
+
+Editor **55/55**, Biblioteca **20/20**, GUI **30/30** e SDK C# contra DLL nativa
+ABI 12 **1/1**, sem falhas ou pulos nesses gates. O cenário vertical de
+propriedades e drivers percorre toque, consumidores reais, Undo/Redo, prefab,
+remapeamento, reabertura, recusa atômica e Play.
+
+![Edição de intensidade na superfície real de propriedades](/assets/development-2026-10-10/properties-light-655.png)
+
+![Driver de escala e offset com resultado inspecionável](/assets/development-2026-10-10/properties-driver-655.png)
+
+Capturas executáveis de controles CPU em 655×300, inspecionadas quanto a leitura
+e acesso às ações. Não representam malha renderizada por Vulkan, APK instalado
+ou aceite no aparelho. As quatro famílias têm logs e binários identificados;
+a rodada final recompilou somente o editor após suas correções.
 
 ## Plano, rede e limites de aceite
 
 N13 terá **servidor dedicado e sessão hospedada por jogador**, com autoridade do servidor nas duas modalidades. Esta é a decisão de produto registrada, não uma afirmação de implementação de rede neste pacote.
 
-Continuam abertos no plano: regiões de marcadores, ampliação de rotação com consumidor completo, propriedades/drivers, rig/retargeting, IK, movimento, exportação, biblioteca integral, SDK multirrecurso, sequências, UI componível, modelagem, física, save/replay/rede, famílias de render e aceite integrado. Os fluxos desta revisão ainda dependem do aceite final integrado e Android. Os gates host, SDK, pacote, instalação, runtime e dispositivo são registrados separadamente.
+Regiões, propriedades e drivers possuem implementação nesta revisão e os níveis de validação são descritos nesta página. Continuam abertos no plano: ampliação de rotação com consumidor completo, rig/retargeting, IK, movimento, exportação, biblioteca integral, SDK multirrecurso, sequências, UI componível, modelagem, física, save/replay/rede, famílias de render e aceite integrado. Os fluxos desta revisão ainda dependem do aceite final integrado e Android. Os gates host, SDK, pacote, instalação, runtime e dispositivo são registrados separadamente.
 
 ## Referências da decisão
 
