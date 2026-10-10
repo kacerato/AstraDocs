@@ -596,6 +596,8 @@ Pare de adicionar funções por um momento. Volte à menor cena que ainda reprod
 | Editor mostra, Play não mostra | Câmera habilitada, pose, recorte e outras câmeras | ${link('comece/primeira-cena', 'Conferência da CameraPrincipal')} |
 | Campo sumiu | Grupo recolhido, modo condicional, tipo e versão | ${link('comece/ler-o-inspector', 'Como ler campos condicionais')} |
 | Tween não gira | Girar/Ativo/Iniciar no Play e destino diferente da origem | ${link('comece/primeiro-componente', 'Tabela de configuração do tween')} |
+| Junta não se move no Animation Studio | Pose, canal TRS, camada isolada e skin real; confirme a versão instalada | [Tutorial de autoria e disponibilidade](/pt-br/snapshot-2026-10-07/sistemas/animation-clips/) |
+| Pose funciona no preview, mas não no Play | Gravar a pose e atribuir o clipe ao Animation/Animator da raiz correta | [Bindings e uso real do clipe](/pt-br/snapshot-2026-10-07/sistemas/animation-clips/) |
 | Script salvo não mudou o jogo | Publicação, instância anexada e novo Play | ${link('comece/primeiro-script-c', 'Salvar → compilar → anexar → executar')} |
 | Componente C# não aparece para adicionar | Erros de compilação, Publicado e identidade duplicada | ${link('diagnostico/erros-de-compilacao', 'Erros de compilação')} |
 | Caixa não cai / atravessa o chão | Corpo dinâmico e colisor na caixa; composição física no chão | ${link('sistemas/indice', 'Guia de física e contato')} |
@@ -690,6 +692,14 @@ Ele pode ser apenas visual. Gravidade/contato precisam da composição física e
 ## Por que o editor mostra o objeto, mas o Play fica vazio?
 
 O editor tem sua própria vista. Confira a câmera de jogo, **Usar no Play**, pose, recorte e prioridade. ${link('comece/primeira-cena', 'Monte CameraPrincipal a partir da vista')}.
+
+## O braço do robô foi animado na Astra ou veio pronto?
+
+No laboratório, Kyle chegou sem clipes. O gerador criou um clipe pela API da Astra e gravou +35° no Z local do ombro em 1 s, entre poses originais em 0/2 s. Foi autoria programática real, não gravação manual pelo touch. Os Vikings reproduzem clipes importados. O [tutorial do Animation Studio](/pt-br/snapshot-2026-10-07/sistemas/animation-clips/) ensina a reproduzir o braço visualmente e separa a revisão Dev da distribuição pública.
+
+## Não consigo mover uma junta no preview. O que conferir?
+
+Abra Pose, escolha a junta e uma propriedade TRS; use Camada isolada para os gizmos. XYZ revela os valores. Juntas exige uma skin com ossos reais, não uma malha estática. A revisão de seleção direta é de desenvolvimento e não aparece automaticamente no APK público 0.3.0. Para sobreposições, use Objetos/Hierarquia. Salvar um clipe também não o atribui sozinho a Animation/Animator.
 
 ## Onde fica UIIMG ou UiImage?
 

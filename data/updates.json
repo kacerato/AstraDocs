@@ -1,8 +1,36 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-09",
+  "updatedAt": "2026-10-10",
   "entries": [
+    {
+      "id": "2026-10-09-animation-direct-preview-daylight",
+      "date": "2026-10-10",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Autoria direta: juntas no preview e atmosfera diurna",
+      "summary": "Selecione juntas reais, crie canais explicitamente, manipule poses e amplie temporariamente a prévia; tutorial explica a origem do braço do Kyle e o caminho de autoria.",
+      "version": "Revisão de fonte 2026-10-09–10 · AECLIP 3 · autoria ABI 5",
+      "availability": "development",
+      "details": [
+        "Toque em juntas referenciadas por SkinnedMesh, overlay em raio X, seleção limitada à raiz do clipe, canais TRS reutilizados e novos canais somente por ação explícita. FK usa transforms hierárquicos; não há solver IK ou retargeting novo.",
+        "XYZ sob demanda, foco na pose avaliada, órbita/pan/zoom, pinch com dois dedos, reinício e passos de quadro em paisagem baixa. Ampliação da prévia recolhe chaves temporariamente e mantém os controles de tempo.",
+        "Céu procedural de novos ambientes e Scene View usa azuis mais claros; shader liga as metades suavemente no horizonte. Laboratório privado escolhe esse modelo explicitamente. Cenas salvas preservam cores; PhysicalAtmosphere conserva scattering e solo planetário.",
+        "Guia ensina braço do Kyle, mecanismo genérico, camadas, curvas, uso no Play e limitações. Kyle foi autorado pelo gerador via API, com pose local +35° em 1 s e repouso em 0/2 s; Vikings têm clipes importados. Ícone de juntas integrado ao PNG/atlas nativo.",
+        "Esta nota não altera o APK público 0.3.0-preview.20261009 nem anuncia biblioteca integral dos plugins, IK, retargeting, espelho, eventos/drivers ou bake de FK/IK/root motion."
+      ],
+      "validation": "Host: 39/39 cenários em quatro rodadas completas e 16/16 de ambiente; shader regenerado/SPIR-V validado; exemplo C# compilado sem erros/avisos; laboratório com quatro fontes e quatro clipes preservado/reaberto. Capturas de UI executável 853×394 e 655×300 inspecionadas; o raster de UI não prova a malha 3D nem o céu Vulkan. ADB indisponível, sem APK novo ou aceite Android nesta rodada.",
+      "migration": "AECLIP 3 e ABI 5 mantidos. Atualize executável e atlas juntos. Novos padrões de céu não sobrescrevem cores de ambientes salvos. Pacotes privados não são publicados. A prévia pública 0.3.0 permanece a distribuição atual.",
+      "links": [
+        {
+          "label": "Tutorial de autoria e estado real",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animation-clips/"
+        }
+      ]
+    },
     {
       "id": "2026-10-09-apk-preview-0-3-0",
       "date": "2026-10-09",
