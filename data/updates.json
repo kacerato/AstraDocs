@@ -4,6 +4,36 @@
   "updatedAt": "2026-10-10",
   "entries": [
     {
+      "id": "2026-10-10-timeline-intervals-materials-development",
+      "date": "2026-10-10",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Desenvolvimento: poses, curvas, ciclos e biblioteca",
+      "summary": "Comparação e normalização visual de curvas, autoria de poses e tempo pela interface e SDK ABI 10; biblioteca, texturas e materiais com reimportação reversível. Revisão separada do APK distribuído.",
+      "version": "Revisão de fonte 2026-10-10 · AECLIP 4 · autoria ABI 10",
+      "availability": "development",
+      "details": [
+        "Pose reúne gravação, Auto-key, travas, cópia/reset e seleção/conjuntos. Intervalo oferece duplicar, mover, inserir/remover tempo, fechar/repetir ciclos e alinhar/distribuir seleções. Cues em grupo usam o recurso e journal reais.",
+        "Curvas permitem até oito referências identificadas, normalização exclusivamente visual, isolamento e navegação independente de tempo/valor. Edição numérica e gestos conservam unidades autorais; Nome permanece acessível no cabeçalho.",
+        "Duplicar insere trecho mais um quadro; repetir exige fronteiras C0 fechadas e insere ciclos contíguos. Inserir/remover tempo preserva as regras documentadas de canais, cues e referências aditivas; recusas são atômicas.",
+        "Biblioteca preserva fontes, metadados, licença e revisão, com busca/filtros e conversão explícita. Material Unity Standard metálico resolve texturas por GUID .meta e usa viewer independente. Sete TGA fornecidas passaram pelo decoder; FBX, animação, shaders, prefabs e controllers completos permanecem pendentes.",
+        "Importador focal de textura mostra texels preparados e opções paginadas. Reimportar textura em uso publica bindings efetivas antes do commit; Undo/Redo e recusa do publicador restauram fonte, receita, registro, índice e conteúdo.",
+        "Plano N01–N16 continua em execução. Rede N13 terá servidor dedicado e sessão hospedada por jogador, ambos com autoridade do servidor; decisão registrada, implementação de rede ainda pendente.",
+        "Ícones novos entram no atlas nativo. ADB e aceite físico desta revisão aguardam liberação ao final do plano; APK público code 28 e Dev code 33 existentes não são substituídos por esta nota."
+      ],
+      "validation": "Host: recursos 28/28; editor 50/50; biblioteca/material/textura 12/12, incluindo sete fontes TGA originais, reimportação de textura em uso e rollback de falha. Integração C# contra DLL nativa ABI 10: 1 passou, zero falhas e zero pulados; build gerenciado sem erros/avisos. Capturas executáveis de pose, ciclos, curvas, biblioteca e importador focal inspecionadas em landscape baixo. São controles/curvas CPU e atlas de textura preparado, sem novo APK, instalação ou aceite Android.",
+      "migration": "AECLIP 4 preservado; ABI 10 mantém os prefixos 1–9. Hosts antigos recusam comandos novos. Atualize executável, SDK e atlas juntos. Guarde backup; o APK público antigo não lê AECLIP 4. Fontes preservadas, revisões de pacote isoladas e conflitos externos recusados.",
+      "links": [
+        {
+          "label": "Workflow, semântica e disponibilidade",
+          "url": "/pt-br/desenvolvimento/2026-10-10/autoria-e-biblioteca/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-10-animation-cues-android-acceptance",
       "date": "2026-10-10",
       "scopes": [

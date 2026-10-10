@@ -41,7 +41,7 @@ Esta ampliação foi aceita no **Astra Dev 0.3.1-dev.cues.20261010.1**, **code 3
 
 Captura do UI executável rasterizado no host, 853×394. A área escura superior não inclui o renderer 3D/Vulkan; a imagem comprova os controles, não o personagem, o céu ou uma execução Android.
 
-O editor seleciona um ponto por vez. Seleção múltipla, clipboard de cues e regiões delimitadas por dois marcadores não fazem parte desta entrega; o clipboard existente continua sendo de chaves.
+Na revisão ABI 6 descrita nesta seção, o editor seleciona um ponto por vez e o clipboard é de chaves. A revisão posterior ABI 7 acrescenta seleção múltipla, clipboard e edição em grupo de cues, além de intervalos sobre clipes: veja [Autoria e biblioteca em desenvolvimento — 10/10/2026](/pt-br/desenvolvimento/2026-10-10/autoria-e-biblioteca/). Essa ampliação não modifica o aceite histórico do APK ABI 6 nem anuncia regiões persistentes delimitadas por marcadores.
 
 ### Conectar à cena ou ao script
 
