@@ -20,10 +20,10 @@ O preview do Studio é temporário. Fechar ou trocar de contexto restaura a pose
 
 A revisão de fonte de **09–10/10/2026** acrescenta seleção de juntas no preview, ferramentas TRS contextuais, XYZ sob demanda, foco e navegação de câmera, prévia ampliada temporária, reinício e avanço por quadro também em tela baixa. Ela é uma revisão **de desenvolvimento**; não altera o APK público **0.3.0-preview.20261009** nem transforma o aceite anterior do **Dev code 28** em aceite desta interface. A entrega de autoria direta manteve AECLIP 3 / ABI 5; a ampliação seguinte, abaixo, usa AECLIP 4 / ABI 6. Números de versionCode iguais em pacotes diferentes não provam conteúdo igual.
 
-## Eventos e marcadores: revisão de fonte de 10/10
+## Eventos e marcadores: Dev aceita em 10/10
 
 :::caution[Desenvolvimento — AECLIP 4 / ABI 6]
-Esta ampliação exige o novo executável, SDK e atlas de ícones. Não está no APK público 0.3.0 nem recebeu aceite Android nesta rodada. A validação é do host; o ADB não foi usado por instrução do proprietário.
+Esta ampliação foi aceita no **Astra Dev 0.3.1-dev.cues.20261010.1**, **code 33**, em um POCO F7 em **10/10/2026**. Executável, SDK e atlas foram conferidos juntos. Não está no APK público **0.3.0-preview.20261009/code 28**; os dois canais permanecem separados.
 :::
 
 **Evento** publica uma mensagem tipada quando a reprodução atravessa seu instante. **Marcador** é um ponto nomeado de autoria, sem callback de gameplay. Ambos pertencem ao clipe inteiro: não são canais de uma junta nem camadas adicionais. Servem também para mecanismos, hierarquias de objetos e câmeras.
@@ -184,7 +184,7 @@ Para uma cena já salva, escolha o modelo **Atmosfera** no Environment e ajuste 
 | Curvas / timeline / clipboard | Implementados: edição e seleção de chaves, retime, recorte, cópia/colagem, tangentes e pesos. Não é uma timeline cinematográfica multitrack de cenas. |
 | Camadas do clipe | Override/aditiva, máscara esparsa por canal, referência, pesos, ordem, Mudo/Solo, persistência e composição. Separadas das camadas do Animator. |
 | Conversão / bake | Conversões suportadas e consolidação da composição, com tolerância e relatório. Não entrega bake FK/IK/root motion. |
-| Eventos / marcadores | Revisão de fonte AECLIP 4: autoria, histórico, persistência, travessia temporal e entrega pela fila de componentes; sem aceite Android nesta rodada. |
+| Eventos / marcadores | Dev code 33 / AECLIP 4: autoria por toque e SDK, histórico, persistência após encerrar/reabrir, travessia temporal e entrega real por Animation/Animator aceitas no Android. Público 0.3.0 inalterado. |
 | API de autoria | Criação, rascunho, inspeção, operações, amostragem, publicação e poses ABI 5; cues na ABI 6. Não depende de um painel aberto para editar recursos. |
 | Propriedades arbitrárias | Não: o clipe suporta TRS/morphs tipados. Luz, áudio e qualquer campo arbitrário não se tornam animáveis apenas por aparecerem no Inspector. |
 | Retargeting / espelho de rig | Pendentes: matching de nomes não resolve comprimentos, repousos, orientação ou semântica corporal. |
@@ -438,7 +438,21 @@ Ambiente: **16/16 cenários host**, incluindo perfil/arquivo/reabertura e resolu
 
 O projeto de laboratório foi regenerado e reaberto com **quatro fontes e quatro clipes autorais**, preservando origens e verificando o consumidor real. Capturas da interface executável em **853×394 e 655×300**, inclusive preview expandido e as 49 juntas de Kyle, foram inspecionadas. O raster de UI do host desenha controles e juntas projetadas; **não renderiza a malha 3D nem prova o céu Vulkan no aparelho**.
 
-ADB esteve indisponível por decisão do solicitante. Esta revisão não tem APK novo, instalação, aceite físico, medição de FPS/temperatura ou vídeo novo analisado quadro a quadro. O APK público continua **0.3.0-preview.20261009**. A evidência Android abaixo pertence às revisões anteriores explicitamente identificadas.
+A entrega inicial de fonte foi validada sem ADB. O aceite posterior de **eventos/marcadores**, em **10/10/2026**, atualizou o Astra Dev para **code 33**, sem trocar o APK público **0.3.0-preview.20261009**. Não transforma esta rodada em aceite de todas as funções anteriores: rotação/escala/morphs de autoria direta e o conjunto completo de comandos SDK conservam seus gates próprios.
+
+### Aceite Android de eventos e marcadores — Dev code 33
+
+O projeto isolado usa dois mecanismos procedurais, um com **Animation** e outro com **Animator**, reproduzindo o mesmo clipe. O IDE compilou a sonda C# e os comandos de autoria no próprio aparelho. Foram conferidos payload double, código/identidade/instância, marcadores sem callback, conexões filtradas, peso zero, reinício, pausa e reverso. Os seis checks passaram novamente depois da edição e reabertura do processo.
+
+Na interface física foram exercitados seleção, nome/código/valor, sentido, ativação, duplicação, exclusão, arraste e Undo/Redo. O ponto **ToqueAndroid** preservou código 99, valor 3,75 e opções; o SDK gravou e releu código **16777215** e valor **1e100**, sem perda de precisão. A conferência após encerrar/reabrir exigiu os seis pontos exatos, sem recriá-los.
+
+![Evento persistido no aparelho após reabrir: SDK Android evento em 0,6 s, código 16777215 e valor 1e100.](/images/animation-clips/events-android.png)
+
+Build Release e instalação conferidos por SHA-256; SDK e atlas no APK iguais aos gerados. As 13 cenas preexistentes mantiveram seus hashes. Host: **594/594 C#**, **42/42 clipes**, **36/36 regressões nativas**, **1/1 integração SDK**; Android Java: **17/17**. Nenhum teste dessas rodadas foi pulado. As famílias nativas não relacionadas não foram todas executadas.
+
+O vídeo de 16 s foi decodificado em **1.538 quadros**, todos inspecionados em **52 folhas consecutivas**, com CSV de timestamps e hashes. Há uma lacuna de captura entre PTS 2,271 e 4,265 s; não se afirma observar o que o screenrecord não gravou. Na fase de peso zero, Animation retorna à base e Animator conserva a pose resolvida; ambos deixam de emitir eventos. Não é medição de FPS sustentado, temperatura ou equivalência completa de animação.
+
+O aceite físico corresponde a um POCO F7 ARM64/Vulkan. AECLIP 4 exige a revisão nova: preserve cópia antes de editar, pois o APK público antigo não lê esse formato.
 
 ## Evidência histórica e limites
 
@@ -455,7 +469,7 @@ No POCO F7, o APK Dev code **28** foi compilado, instalado e comparado por SHA-2
 
 Robot Kyle (49 juntas) e Viking Idle/Walk/Run (22 juntas por fonte) foram convertidos dos pacotes fornecidos para GLB com materiais e hierarquia de skin. Importação nativa, amostragem e deformação CPU passaram; os três clipes tiveram 61 amostras por fonte. Walk/Run possuem repousos diferentes do Viking base e permanecem rigs completos separados. Isso não declara retargeting entre eles. Os pacotes privados e seus arquivos não fazem parte do download público.
 
-Permanecem pendentes: aceite físico das revisões novas, de rotação/escala/morphs e comandos SDK; outras ordens Euler; bake de FK/IK/root motion; jobs de bake com progresso/cancelamento na UI; drivers e propriedades arbitrárias; cópia/espelho de rig completo; merge de reimportação e biblioteca completa dos pacotes. Eventos e marcadores estão na revisão de fonte descrita acima, com os limites explícitos daquela seção. SourceOverride isolado não é política completa de merge. Não há equivalência completa com UMotion/FinalIK. A seleção de personagens BoZo foi autorizada posteriormente, mas nenhum personagem desse pacote entra neste recorte.
+Permanecem pendentes: aceite físico integral das outras revisões de autoria direta, de rotação/escala/morphs e do conjunto restante de comandos SDK; outras ordens Euler; bake de FK/IK/root motion; jobs de bake com progresso/cancelamento na UI; drivers e propriedades arbitrárias; cópia/espelho de rig completo; merge de reimportação e biblioteca completa dos pacotes. Eventos e marcadores têm aceite físico na Dev code 33 descrito acima, com os limites explícitos daquela seção. SourceOverride isolado não é política completa de merge. Não há equivalência completa com UMotion/FinalIK. A seleção de personagens BoZo foi autorizada posteriormente, mas nenhum personagem desse pacote entra neste recorte.
 
 ## Referências e adaptação
 

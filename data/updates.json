@@ -4,6 +4,33 @@
   "updatedAt": "2026-10-10",
   "entries": [
     {
+      "id": "2026-10-10-animation-cues-android-acceptance",
+      "date": "2026-10-10",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Eventos de clipe: aceite no Android e SDK pelo IDE",
+      "summary": "Astra Dev code 33 aceita autoria por toque, persistência e execução de eventos em mecanismos pelo Animation e Animator.",
+      "version": "0.3.1-dev.cues.20261010.1 · code 33 · AECLIP 4 / ABI 6",
+      "availability": "development",
+      "details": [
+        "Atualização instalada no Astra Dev, preservando 13 cenas preexistentes. APK público 0.3.0-preview.20261009/code 28 e página Download permanecem inalterados.",
+        "Na timeline: seleção, nome/código/valor, sentido, ativação, duplicação, exclusão, arraste e Undo/Redo exercitados por toque. Encerrar e reabrir conservou os seis pontos e suas opções.",
+        "Comandos compilados pelo IDE Android criaram evento com código 16777215 e double 1e100; commit e leitura após reabertura passaram. Animation e Animator entregaram payloads e conexões filtradas no Play.",
+        "Guia acrescenta captura real e distingue este aceite dos gates das outras funções. Retargeting, IK, drivers, bake FK/IK/root motion e biblioteca completa dos pacotes continuam outros blocos."
+      ],
+      "validation": "594/594 C# com nativo obrigatório; 42/42 clipes; 36/36 regressões nativas; 1/1 ponte SDK; 17/17 Java. Build Release, hash instalado e SDK/atlas conferidos. Seis checks reais no POCO F7, repetidos após autoria/reabertura: payload e isolamento de marcadores, conexões filtradas, peso zero, reinício, pausa e reverso. Vídeo: 1538 quadros inspecionados em 52 folhas, lacuna de PTS documentada; não é medição de FPS/temperatura nem matriz de dispositivos.",
+      "migration": "Dev lê AECLIP 1–4 e grava 4; o público antigo não lê 4. Faça backup. Executável, SDK e atlas devem acompanhar a mesma revisão. Instalação por atualização, sem apagar projetos. Nota histórica anterior de host preservada.",
+      "links": [
+        {
+          "label": "Fluxo, captura e aceite Android",
+          "url": "/pt-br/snapshot-2026-10-07/sistemas/animation-clips/#aceite-android-de-eventos-e-marcadores--dev-code-33"
+        }
+      ]
+    },
+    {
       "id": "2026-10-10-animation-clip-events-markers",
       "date": "2026-10-10",
       "scopes": [
