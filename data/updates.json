@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-11",
   "entries": [
     {
+      "id": "2026-10-11-editor-build-iteration-development",
+      "date": "2026-10-11",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Desenvolvimento: compilação incremental do editor",
+      "summary": "Reorganização das dependências de compilação do editor e separação dos alvos de validação para reduzir trabalho repetido durante o desenvolvimento.",
+      "version": "Revisão de fonte 2026-10-11 · ferramentas de desenvolvimento",
+      "availability": "development",
+      "details": [
+        "O build host padrão passa a compilar as bibliotecas sem incluir automaticamente todos os executáveis de testes, previews e benchmarks. Os alvos continuam disponíveis explicitamente; aether_host_checks reúne a compilação das suítes sem executá-las.",
+        "Os identificadores de controles, o estado da tela e a API de desenho passam a ter dependências separadas. Rotinas de Play, publicação de código, renderização e importação deixam de ser compiladas novamente por cada consumidor do header da sessão.",
+        "As ações da sessão e o tratamento de entrada da tela passam a arquivos próprios. Nove fixtures compartilhados entre os runners são compilados uma vez por configuração, mantendo o registro dos cenários em cada executável.",
+        "O editor usa headers pré-compilados da biblioteca padrão C++, sem colocar schemas ou estados da engine nesse cache. O comando de desenvolvimento permite escolher Editor, Preview, Tests ou AllChecks e não executa testes.",
+        "O diagnóstico também encontrou um cache de dependências danificado no Ninja 1.13.2, que descartava registros novos e repetia compilações. O comando de recuperação faz backup antes de pedir a recompactação ao próprio Ninja.",
+        "Esta revisão trata do processo de desenvolvimento. Não distribui APK, não altera formatos de projeto e não declara ganho percentual de tempo sem medição comparável."
+      ],
+      "validation": "Windows/MinGW: biblioteca do editor recompilada; comparação estática preservou os corpos de 20 métodos extraídos; o grafo gerado contém uma regra de compilação para cada um dos nove fixtures compartilhados. Cache de dependências recompactado com backup e leitura posterior sem registros inválidos. Testes executáveis e aceite Android não realizados; ganho percentual de tempo não quantificado.",
+      "migration": "Para desenvolvimento, selecione explicitamente o alvo necessário. O modo anterior de incluir todas as ferramentas no build padrão continua disponível pela opção AETHER_HOST_TOOLS_IN_ALL=ON. O PCH pode ser desligado com AETHER_EDITOR_PCH=OFF. Projetos e recursos existentes não exigem migração.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-11-animation-studio-rig-ik-transfer-development",
       "date": "2026-10-11",
       "scopes": [
