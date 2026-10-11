@@ -1,8 +1,36 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-10",
+  "updatedAt": "2026-10-11",
   "entries": [
+    {
+      "id": "2026-10-11-animation-studio-rig-ik-transfer-development",
+      "date": "2026-10-11",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Desenvolvimento: estúdio de animação, rig, IK e transferência",
+      "summary": "O editor de clipes abre como estúdio em painéis (hierarquia, viewport com esqueleto, timeline e inspector Chave/Rig/Pose). Rig autorável com limites, IK de dois ossos com direção da dobra, espelho de membro, biblioteca de poses e transferência de clipe entre personagens com repousos diferentes.",
+      "version": "Revisão de desenvolvimento 2026-10-11 · Astra Dev code 43",
+      "availability": "development",
+      "details": [
+        "Estúdio: hierarquia à esquerda sincronizada com o toque no viewport; inspector com abas Chave, Rig e Pose; timeline agrupada por osso, com filtro do osso selecionado; ferramentas em coluna compacta ao lado do viewport. O importador de modelos também deixou de ocupar a tela inteira.",
+        "Rig: captura da hierarquia real, controles com canais, espaço e limites (dobradiça e cone), pares de espelho sugeridos pelo nome ignorando sufixo numérico, publicação em Rigs/<nome>.aerig e carregamento junto com o clipe.",
+        "Pose: IK de dois ossos com alvo arrastável, direção da dobra e respeito aos limites do rig; espelhar membro para o lado oposto; salvar e aplicar poses (.aerpose) como chave; fantasma do quadro anterior e seguinte. Tudo usa o rascunho de pose com Auto-key, Gravar, Cancelar e Desfazer.",
+        "Transferência: correspondência por nome (exato e sem sufixo), avaliação pelo mesmo avaliador de retarget do runtime e gravação de um clipe novo e independente a 30 Hz no personagem de destino.",
+        "Limites declarados: transferência só de rotações e só por nome; IK e espelho gravam na camada Base; biblioteca sem miniatura; fantasma com passo fixo de 0,1 s. Não declara paridade com UMotion, Animation Rigging ou FinalIK."
+      ],
+      "validation": "Windows host: editor de animação 60/60 cenários, incluindo aceites por toque de estúdio, espelho, filtro/fantasma/biblioteca e transferência Raposa→Lobo com repousos distintos; rig 2/2. Android: Astra Dev instalada no aparelho do proprietário e exercitada com o personagem Fox (27 juntas): estúdio, captura do rig, 7 pares sugeridos, IK levantando a pata, espelho de membro, fantasma e filtro. Não é um APK público.",
+      "migration": "Novos recursos de projeto: .aerig (rig), .aerpose (pose). Tipos de registro rig, rig_pose e retarget_profile; APKs anteriores ignoram esses recursos. Clipes transferidos são AECLIP comuns. Atualize o executável Dev e mantenha backup dos projetos.",
+      "links": [
+        {
+          "label": "Estúdio de animação · desenvolvimento",
+          "url": "/pt-br/desenvolvimento/2026-10-11/estudio-de-animacao/"
+        }
+      ]
+    },
     {
       "id": "2026-10-10-properties-drivers-unity-development",
       "date": "2026-10-10",
