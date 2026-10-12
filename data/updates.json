@@ -4,6 +4,37 @@
   "updatedAt": "2026-10-11",
   "entries": [
     {
+      "id": "2026-10-11-ik-constraints-development",
+      "date": "2026-10-11",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Desenvolvimento: IK, grounder e constraints (N04)",
+      "summary": "Família de IK como componentes reais (dois ossos, cadeia CCD/FABRIK, Look At, Aim, limites, apoio do pé, grounder do corpo, dedos, offset, torção) e ferramentas do estúdio: assistente de IK, fixar ponta e seguir pai.",
+      "version": "Revisão de fonte 2026-10-11 · Astra Dev code 47 (não público)",
+      "availability": "development",
+      "details": [
+        "Dez componentes em Adicionar componente → Lógica → IK, com inspector, persistência, ícone no viewport, execução em Play e API C# gerada.",
+        "Ordem fixa por quadro: animação, constraints, grounder, membros e pés, mira, olhar, dedos, torção, limites; peso parte da pose do quadro.",
+        "Estúdio: aba IK com assistente por nomes (bípede e quadrúpede, um Desfazer), IK permanente, fixar ponta gravando chaves FK a 30 Hz e seguir pai (Child-Of gravado).",
+        "Guia: /pt-br/desenvolvimento/2026-10-11/ik-e-constraints/."
+      ],
+      "validation": "Windows/MinGW: aether_tests 1554/1554, runtime de animação 48/48, editor de clipes 61/61, GUI 126/126. Aparelho (Astra Dev code 47): assistente criou Grounder do corpo no Fox e Play executou sem falha. Fixar ponta tem erro residual de ~1 cm em braço de 1 m.",
+      "migration": "Nenhuma; componentes novos são opcionais e cenas antigas abrem sem mudança. Sem APK público novo.",
+      "links": [
+        {
+          "label": "Guia de IK e constraints",
+          "url": "/pt-br/desenvolvimento/2026-10-11/ik-e-constraints/"
+        },
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-11-editor-build-iteration-development",
       "date": "2026-10-11",
       "scopes": [
