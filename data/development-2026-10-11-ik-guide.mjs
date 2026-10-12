@@ -37,11 +37,11 @@ Revisão de **11/10/2026** na branch de desenvolvimento, instalada no aparelho d
 4. **Fixar ponta no intervalo:** a ponta fica parada no mundo enquanto o corpo se move, gravada como chaves FK a 30 Hz (usa o intervalo da timeline ou o clipe inteiro).
 5. **Seguir pai (Child-Of):** **Definir como pai** num osso/objeto, depois selecione outro e toque **Seguir pai** — ele acompanha mantendo a distância, gravado em chaves.
 
-## Limites conhecidos
+## Atualizado em 12/10/2026
 
-- Fixar ponta: erro residual medido de cerca de 1 cm num braço de 1 m no fim do intervalo.
-- Ordem entre IKs é fixa (documentada acima); não há prioridade configurável por componente.
-- Assistente depende de nomes reconhecíveis; hierarquias sem nomes usam a criação manual.
-- Full Body Biped, FABRIK Root, sistema de interação, reação a impacto, recuo e VRIK ficam para os próximos pacotes.
+- **Fixar ponta** reavalia o clipe gravado e corrige quadro a quadro (até 3 passes); o resumo mostra o desvio máximo. Com o membro alcançável, o desvio medido fica abaixo de 2 mm.
+- **Prioridade** nos IKs de dois ossos, de cadeia, Look At e Aim decide a ordem dentro de cada etapa.
+- **Assistente de IK** também lê esqueletos sem nomes pela estrutura.
+- Corpo inteiro com tronco, FABRIK em árvore, Corpo por alvos (VRIK), interação e reações estão no guia [Efeitos de IK e interação](/pt-br/desenvolvimento/2026-10-12/ik-efeitos-e-interacao/).
 `,
 };

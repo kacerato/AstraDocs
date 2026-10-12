@@ -4,6 +4,38 @@
   "updatedAt": "2026-10-12",
   "entries": [
     {
+      "id": "2026-10-12-ik-no-limits-development",
+      "date": "2026-10-12",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Desenvolvimento: IK sem pendências — árvore FABRIK, corpo por alvos, prioridade e assistente por estrutura",
+      "summary": "Fecha os limites do N04: FABRIK em árvore, Corpo por alvos (VRIK), corpo inteiro com tronco e membros longos, interação com braços longos e corpos físicos, golpe por conexão, prioridade entre IKs, assistente sem nomes e fixar ponta com correção.",
+      "version": "Revisão de fonte 2026-10-12 · Astra Dev code 49 (não público)",
+      "availability": "development",
+      "details": [
+        "FABRIK em árvore: até quatro cadeias com raiz comum; a raiz se desloca para todas alcançarem, contida por Fixar raiz.",
+        "Corpo por alvos (VRIK): cabeça e mãos seguem quaisquer objetos; pelve acompanha, peito curva, cabeça copia a rotação do alvo.",
+        "IK de corpo inteiro ganha Peito (curva do tronco) e Ossos por membro (2 a 8); Sistema de interação ganha Ossos do braço e carrega objetos com corpo físico (cinemático enquanto na mão).",
+        "Reação a impacto ganha Frente do osso e o método Golpear de frente, disponível nas Conexões de evento.",
+        "Prioridade nos IKs de dois ossos, de cadeia, Look At e Aim; assistente de IK lê esqueletos sem nomes pela estrutura; Fixar ponta reavalia e corrige o clipe gravado."
+      ],
+      "validation": "Windows/MinGW: aether_tests 1555/1555, runtime de animação 64/64, editor de clipes 62/62, GUI 126/126. Aparelho (Astra Dev code 49): Corpo por alvos (VRIK) encontrado pela busca, criado no Fox com inspector em abas e Play sem falha. Carregar corpo físico validado no host com mover simulado.",
+      "migration": "Cenas antigas abrem com Prioridade 0, Ossos do braço 2, Frente do osso +Z e sem Peito no corpo inteiro (comportamento anterior). Componentes regravados na versão nova.",
+      "links": [
+        {
+          "label": "Guia de efeitos de IK",
+          "url": "/pt-br/desenvolvimento/2026-10-12/ik-efeitos-e-interacao/"
+        },
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-12-ik-effects-development",
       "date": "2026-10-12",
       "scopes": [
