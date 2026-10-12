@@ -4,6 +4,38 @@
   "updatedAt": "2026-10-12",
   "entries": [
     {
+      "id": "2026-10-12-root-motion-development",
+      "date": "2026-10-12",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Desenvolvimento: root motion (N05) e fechamento do N04",
+      "summary": "Componente Root motion: o passo do osso raiz anda com o personagem pelo Personagem, corpo físico ou transformação; cartão no estúdio. Fixar ponta com um único Desfazer e carregar objeto com física real.",
+      "version": "Revisão de fonte 2026-10-12 · Astra Dev code 50 (não público)",
+      "availability": "development",
+      "details": [
+        "Root motion em Adicionar componente → Animação e no cartão da aba IK do estúdio (quadril pelo nome ou pela estrutura).",
+        "Rotas: Personagem (posiciona e gira), corpo dinâmico (velocidade no plano) e transformação; osso fica no lugar; laço do clipe sem tranco.",
+        "Eixos (plano, vertical, giro), peso e limites de laço configuráveis; API C# RootMotion.",
+        "Fixar ponta registra as correções como um único Desfazer; carregar objeto com corpo físico validado contra a física real.",
+        "Guia: /pt-br/desenvolvimento/2026-10-12/root-motion/."
+      ],
+      "validation": "Windows/MinGW: runtime de animação 69/69, editor de clipes 63/63. Aparelho (Astra Dev code 50): cartão Root motion criou o componente no Fox com b_Hip_01 e Play sem falha; deslocamento validado no host (o clipe do Fox é no lugar).",
+      "migration": "Nenhuma; componente opcional.",
+      "links": [
+        {
+          "label": "Guia de root motion",
+          "url": "/pt-br/desenvolvimento/2026-10-12/root-motion/"
+        },
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-12-ik-no-limits-development",
       "date": "2026-10-12",
       "scopes": [
