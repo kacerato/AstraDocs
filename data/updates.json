@@ -1,8 +1,39 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-12",
   "entries": [
+    {
+      "id": "2026-10-12-ik-effects-development",
+      "date": "2026-10-12",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Desenvolvimento: efeitos de IK, interação e corpo inteiro (N04 pacote C)",
+      "summary": "Dez componentes novos na família IK: reação a impacto, recuo, inércia, amplificador, inclinação do corpo, poser de mão, evitar penetração, sistema e objeto de interação e IK de corpo inteiro.",
+      "version": "Revisão de fonte 2026-10-12 · Astra Dev code 48 (não público)",
+      "availability": "development",
+      "details": [
+        "Componentes em Adicionar componente → Lógica → IK, com ícones novos, persistência, API C# e execução em Play.",
+        "Interação: start/stop por script, eventos Alcançou e Soltou também nas Conexões de evento; pegar ao alcançar passa o objeto para a mão.",
+        "Recuo disparável por Conexão de evento; reação a impacto responde a colisões sólidas.",
+        "Guia: /pt-br/desenvolvimento/2026-10-12/ik-efeitos-e-interacao/."
+      ],
+      "validation": "Windows/MinGW: runtime de animação 58/58 (10 cenários novos), editor de clipes 61/61, GUI 126/126, aether_tests 1551/1554 com 3 falhas intermitentes de gravação de arquivo não relacionadas. Aparelho (code 48): Inércia criada pela busca e Play sem falha; interação, recuo e golpe validados só no host.",
+      "migration": "Nenhuma; componentes opcionais. Corpo inteiro move só a pelve; FABRIK Root e VRIK não implementados.",
+      "links": [
+        {
+          "label": "Guia de efeitos de IK",
+          "url": "/pt-br/desenvolvimento/2026-10-12/ik-efeitos-e-interacao/"
+        },
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-11-ik-constraints-development",
       "date": "2026-10-11",

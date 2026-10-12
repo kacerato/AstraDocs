@@ -41,6 +41,7 @@ export default defineConfig({
       { label: 'Autoria e biblioteca · desenvolvimento', link: '/pt-br/desenvolvimento/2026-10-10/autoria-e-biblioteca/' },
       { label: 'Estúdio de animação · desenvolvimento', link: '/pt-br/desenvolvimento/2026-10-11/estudio-de-animacao/' },
       { label: 'IK e constraints · desenvolvimento', link: '/pt-br/desenvolvimento/2026-10-11/ik-e-constraints/' },
+      { label: 'Efeitos de IK e interação · desenvolvimento', link: '/pt-br/desenvolvimento/2026-10-12/ik-efeitos-e-interacao/' },
       section('Comece aqui', 'comece'),
       section('Manual do editor', 'editor'),
       section('Conceitos', 'conceitos'),
