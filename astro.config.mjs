@@ -43,6 +43,8 @@ export default defineConfig({
       { label: 'IK e constraints · desenvolvimento', link: '/pt-br/desenvolvimento/2026-10-11/ik-e-constraints/' },
       { label: 'Efeitos de IK e interação · desenvolvimento', link: '/pt-br/desenvolvimento/2026-10-12/ik-efeitos-e-interacao/' },
       { label: 'Root motion · desenvolvimento', link: '/pt-br/desenvolvimento/2026-10-12/root-motion/' },
+      { label: 'Locomoção e aparência · desenvolvimento', link: '/pt-br/desenvolvimento/2026-10-12/locomocao-e-aparencia/' },
+      { label: 'Bake e exportação · desenvolvimento', link: '/pt-br/desenvolvimento/2026-10-12/bake-e-exportacao/' },
       section('Comece aqui', 'comece'),
       section('Manual do editor', 'editor'),
       section('Conceitos', 'conceitos'),

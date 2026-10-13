@@ -1,8 +1,45 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-12",
+  "updatedAt": "2026-10-13",
   "entries": [
+    {
+      "id": "2026-10-13-n05-n06-development",
+      "date": "2026-10-13",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Desenvolvimento: locomoção e aparência (N05) e bake/exportação (N06)",
+      "summary": "Personagem com aceleração, frenagem, controle no ar, voo, nado, dirigir e agachar; root motion pelo motor com colisão; trava de pé; encaixe de acessórios; bake da pose final e exportação GLB com prova de reimportação.",
+      "version": "Revisão de fonte 2026-10-13 · Astra Dev code 54 (não público)",
+      "availability": "development",
+      "details": [
+        "Personagem: aceleração, frenagem, controle no ar, modos Voo, Nado na água, Dirigir; comandos Agachar (com teto), Subir/descer e Na água.",
+        "Root motion pede velocidade ao motor: a colisão decide o realizado; resíduo e bloqueio viram diagnóstico.",
+        "Apoio do pé com trava contra deslize; componente Encaixe prende acessórios ao osso depois do IK.",
+        "Bake da pose final (IK, constraints, root motion) em clipe novo, com progresso, cancelamento e verificação sem solvers.",
+        "Exportar GLB do esqueleto e da animação com relatório de perdas e reimportação comparada; FBX não oferecido.",
+        "Guias: /pt-br/desenvolvimento/2026-10-12/locomocao-e-aparencia/ e /pt-br/desenvolvimento/2026-10-12/bake-e-exportacao/."
+      ],
+      "validation": "Windows/MinGW: aether_tests 1557/1557, runtime de animação 77/77, editor de clipes 64/64, GUI 126/126. Aparelho (Astra Dev code 51–54): Exportar GLB do Fox com reimportação a 240 Hz em 0,36 mm / 0,056° (7200 amostras). O bake no aparelho revelou canais constantes não gravados e relatório em unidades do modelo; corrigidos e verificados no PC com o projeto real do aparelho (240 Hz, 0,06% do tamanho). Repetição do bake e locomoção no aparelho pendentes da próxima liberação do ADB.",
+      "migration": "Cenas antigas abrem com resposta instantânea, controle no ar total e modo Solo; Apoio do pé sem trava. Componentes regravados em versão nova.",
+      "links": [
+        {
+          "label": "Locomoção e aparência",
+          "url": "/pt-br/desenvolvimento/2026-10-12/locomocao-e-aparencia/"
+        },
+        {
+          "label": "Bake e exportação",
+          "url": "/pt-br/desenvolvimento/2026-10-12/bake-e-exportacao/"
+        },
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-12-root-motion-development",
       "date": "2026-10-12",
