@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-13",
   "entries": [
     {
+      "id": "2026-10-13-umotion-pro-ik-plano-rotativo-ordens-euler",
+      "date": "2026-10-13",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Projetos UMotion Pro, IK de plano rotativo, Filho de animado e ordens Euler",
+      "summary": "Importa um projeto UMotion Pro como rig editável, com curvas originais, IK de plano rotativo e Filho de com pai animado. As trilhas Euler ganham ordem e referencial. Também corrige o acúmulo de erro do IK em loop e o enquadramento de personagens importados.",
+      "version": "Revisão de fonte 2026-10-13 · Astra Dev code 64 (não público)",
+      "availability": "development",
+      "details": [
+        "Biblioteca: um projeto UMotion (.asset) aparece como clipe. Com a raiz do personagem selecionada, abrir o item cria os clipes, os alvos de IK, o IK de plano rotativo, o Filho de, as camadas e os eventos.",
+        "IK de dois ossos e IK de cadeia: solver Plano rotativo, com referência (repouso ou animação), ângulo do plano, rotação do polo, peso e rotação do alvo. Os números de IK são animáveis.",
+        "Filho de: troca de pai animada, sem mudar a hierarquia, aplicada antes e depois do IK.",
+        "Trilhas Euler: ordem XYZ, XZY, YXZ, YZX, ZXY ou ZYX e um referencial fixo. O bake troca a ordem preservando a orientação. Clipes passam ao formato AECLIP 8.",
+        "IK e Filho de não acumulam mais erro de um quadro para o outro (a caixa congelava e os braços saltavam a partir do segundo ciclo).",
+        "Enquadrar um personagem com armadura em escala 0,01 deixa a câmera a ~5 m, não mais a ~300 m."
+      ],
+      "validation": "Host: aether_tests 1563/1563, runtime 78/78, editor de clipes 69/69, recursos de clipe 33/33, GUI 126/126. Robot Kyle com o PickUp do UMotion: repouso com erro de 0,00004%; a caixa a até 9 mm da curva exportada pelo UMotion, passo por quadro a até 2,5 mm e 8 ciclos com 0,1 mm de diferença. Aparelho: Astra Dev code 64, vídeo de 42 s (13 ciclos) com o ciclo 12 igual ao 1.",
+      "migration": "Clipes salvos por esta revisão (AECLIP 8) não abrem no APK público 0.3.0-preview.20261009. Clipes antigos abrem como Euler XYZ sem referencial.",
+      "links": [
+        {
+          "label": "UMotion, plano rotativo, Filho de e ordens Euler",
+          "url": "/pt-br/desenvolvimento/2026-10-13/umotion-ik-plano-rotativo-filho-de/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-13-apoio-do-pe-rigs-importados",
       "date": "2026-10-13",
       "scopes": [
