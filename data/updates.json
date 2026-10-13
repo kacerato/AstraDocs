@@ -4,6 +4,32 @@
   "updatedAt": "2026-10-13",
   "entries": [
     {
+      "id": "2026-10-13-apoio-do-pe-rigs-importados",
+      "date": "2026-10-13",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Correção: carregar e apoio do pé em personagens importados",
+      "summary": "No Robot Kyle o tronco esticava e os pés giravam ao agachar para pegar a caixa. Corrigido no runtime para qualquer rig.",
+      "version": "Revisão de fonte 2026-10-13 · Astra Dev code 61 (não público)",
+      "availability": "development",
+      "details": [
+        "Agachar desce o ancestral comum de pelve e peito (rigs em que quadril e peito são irmãos).",
+        "Alinhar à superfície inclina o pé só o quanto o chão se inclina; não usa mais o eixo local do osso.",
+        "Ao adicionar Apoio do pé, o Desvio do pé recebe a altura do osso no repouso; antes o tornozelo descia ao chão.",
+        "Joelho dobra no plano da frente do personagem quando a perna está reta no repouso."
+      ],
+      "validation": "Host: Kyle agacha 22,5 cm com tronco sem esticar (0,0 mm), tornozelo parado e joelho a 1,1 cm do plano; aether_tests 1558/1558, editor de clipes 65/65, runtime 77/77, GUI 126/126. Captura no aparelho pendente.",
+      "migration": "Apoio do pé existente mantém o Desvio salvo; em cenas antigas com Desvio 0, ajuste o Desvio do pé para a altura do tornozelo.",
+      "links": [
+        {
+          "label": "Modelos de cena e carregar",
+          "url": "/pt-br/desenvolvimento/2026-10-13/modelos-de-cena-e-carregar/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-13-modelos-de-cena-carregar",
       "date": "2026-10-13",
       "scopes": [
