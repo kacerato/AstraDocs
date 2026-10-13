@@ -4,6 +4,39 @@
   "updatedAt": "2026-10-13",
   "entries": [
     {
+      "id": "2026-10-13-modelos-de-cena-carregar",
+      "date": "2026-10-13",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Desenvolvimento: modelos de cena de animação, joystick do Play e carregar com as duas mãos",
+      "summary": "Sete modelos de cena com componentes reais; o joystick do Play move o Personagem seguido pela câmera; a interação ganha pegada com as duas mãos, ponto de carregar, agachar e inclinar; componentes de corpo preenchem os ossos humanoides pelo nome.",
+      "version": "Revisão de fonte 2026-10-13 · Astra Dev code 60 (não público)",
+      "availability": "development",
+      "details": [
+        "Criar objeto → Básicos → Modelo de cena: cartões paginados com ícone, família e contagem de objetos, componentes e vistas; um Desfazer remove o modelo.",
+        "Play do editor: joystick flutuante desenhado e Saltar para o Personagem da câmera seguidora, sem precisar selecioná-lo.",
+        "Objeto interagível: Pegada da 2ª mão, Ponto de carregar e Tempo para levantar. Sistema de interação: Segunda mão ao iniciar, Pelve (Agachar até) e Peito (Inclinar o tronco). Evento novo Levantou.",
+        "Ao adicionar Sistema de interação, IK de corpo inteiro ou Grounder do corpo a um humanoide, pelve, peito, mãos e pés são preenchidos pelos nomes dos ossos (Kyle, Mixamo, Blender, Astra).",
+        "Correção: o apoio da pelve no grounder deixou de oscilar entre quadros; o objeto carregado não salta mais quando a raiz do personagem não está na origem.",
+        "Guia: /pt-br/desenvolvimento/2026-10-13/modelos-de-cena-e-carregar/."
+      ],
+      "validation": "Windows/MinGW: aether_tests 1558/1558, runtime de animação 77/77, editor de clipes 65/65, GUI 126/126, bulk 4/4. Aparelho (Astra Dev code 57–59): joystick e câmera seguidora no Personagem jogável; manequim agacha, pega a caixa com as duas mãos e a carrega; Robot Kyle carregando a caixa (a rodada inicial revelou o salto da caixa, corrigido no code 59). Play do projeto só com o Kyle no aparelho pendente.",
+      "migration": "Cenas antigas abrem com Objeto interagível de uma pegada e Sistema de interação sem segunda mão, pelve ou peito; componentes regravados em versão nova (2 e 4).",
+      "links": [
+        {
+          "label": "Modelos de cena e carregar",
+          "url": "/pt-br/desenvolvimento/2026-10-13/modelos-de-cena-e-carregar/"
+        },
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-13-n05-n06-development",
       "date": "2026-10-13",
       "scopes": [
