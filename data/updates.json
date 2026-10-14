@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-13",
   "entries": [
     {
+      "id": "2026-10-13-fluxo-umotion-pelo-editor",
+      "date": "2026-10-13",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "fix",
+      "title": "Fluxo pelo editor: pacote UMotion, Kyle FBX texturizado, Aplicar e câmera alinhada",
+      "summary": "A cena do PickUp agora é construída inteira pela interface, da importação do pacote ao Play. Corrige a importação do FBX original do Kyle (skin, texturas, animação embutida, histórico) e simplifica criar projeto, aplicar UMotion e posicionar a câmera.",
+      "version": "Revisão de fonte 2026-10-13 · Astra Dev code 69 (não público)",
+      "availability": "development",
+      "details": [
+        "FBX: skin dual quaternion deformado em mistura linear como na Unity; texturas de cor e normal ligadas a partir do pacote; raiz sem nome recebe o nome do arquivo; FBX texturizado deixa de ser recusado pelo histórico.",
+        "Preparo de modelo no Android não manda mais FBX para o leitor de glTF (mensagem 'JSON do glTF mal formado').",
+        "Biblioteca: projetos UMotion reconhecidos no Android, com a ação Aplicar; sem seleção, vão para o único personagem da cena; scripts de pacotes ficam fora da compilação do projeto.",
+        "UMotion: animações do personagem que tocavam sozinhas (take do FBX) são pausadas ao aplicar; IK guarda o zero do plano e o desvio da rotação do alvo (Maintain Target Offset).",
+        "Interface: 'NOVO PROJETO' em português, teclado sem tela cheia com Concluído criando o projeto, 'Alinhar com a vista' no menu de ações de qualquer objeto, tela acesa com o app aberto."
+      ],
+      "validation": "Aparelho (Astra Dev code 68 e 69): cena criada do zero pela interface e gravada em vídeo: projeto novo, pasta do pacote importada, Kyle FBX texturizado na cena, PickUp aplicado, chão e câmera, Play. Host: Kyle a partir do FBX original com a caixa a 8,6 mm da curva do UMotion e 8 ciclos sem deriva; suítes do host na revisão do commit.",
+      "migration": "Componentes de IK de dois ossos e de cadeia passam à versão 4; cenas anteriores abrem com zero do plano e desvio do alvo zerados (comportamento anterior). Modelos FBX já importados mantêm o nome e o material antigos até serem reimportados.",
+      "links": [
+        {
+          "label": "Fluxo completo pelo editor",
+          "url": "/pt-br/desenvolvimento/2026-10-13/umotion-ik-plano-rotativo-filho-de/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-13-umotion-pro-ik-plano-rotativo-ordens-euler",
       "date": "2026-10-13",
       "scopes": [
