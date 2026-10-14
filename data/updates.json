@@ -4,6 +4,33 @@
   "updatedAt": "2026-10-14",
   "entries": [
     {
+      "id": "2026-10-14-terreno-voxel-host",
+      "date": "2026-10-14",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Terreno e voxel: geração, pincéis, chunks e receita editável",
+      "summary": "Revisão de desenvolvimento com três modos de terreno, quatro materiais, edição e colisão; validada no host, sem novo APK.",
+      "version": "Desenvolvimento 2026-10-14 · branch codex/terrain-voxel-generator",
+      "availability": "development",
+      "details": [
+        "Criar: menu de criação → Terreno e voxel → Gerar e aplicar. Esculpir, Camadas e Gerir organizam os controles; telas pequenas paginam conforme a altura.",
+        "Altura, voxel suave e blocos; seed, pincéis, caminhos interpolados, chunks de 16 células e colisores triangulares. GLB guarda texturas e receita; Undo/Redo e reabertura recuperam a revisão.",
+        "Texturas fornecidas foram adaptadas para 256 px e quatro ícones integrados ao atlas. Referências: Digger, MicroSplat, Path Painter e documentação oficial Unity/Godot; implementação C++ própria.",
+        "Mundo finito, geração completa a cada edição, sem streaming ou limpeza automática de revisões. O guia registra limites e diferenças em relação aos plugins."
+      ],
+      "validation": "Suíte nativa específica no Windows: geometria, importação GLB, edição, limites, cancelamento, publicação, persistência e raycast Jolt. Capturas da UI nativa por rasterização de software; sem validação Android/Vulkan no aparelho.",
+      "migration": "Sem migração das cenas existentes. Novos terrenos usam GLB com receita e objetos comuns; salve a cena e preserve os recursos de Terrenos.",
+      "links": [
+        {
+          "label": "Guia de desenvolvimento: terreno e voxel",
+          "href": "/pt-br/desenvolvimento/2026-10-14/terreno-voxel/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-14-inspector-coluna-no-aparelho",
       "date": "2026-10-14",
       "scopes": [
