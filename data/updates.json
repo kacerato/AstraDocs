@@ -4,6 +4,26 @@
   "updatedAt": "2026-10-14",
   "entries": [
     {
+      "id": "2026-10-14-inspector-coluna-no-aparelho",
+      "date": "2026-10-14",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Inspector em coluna validado no aparelho: linhas de contexto rolam e clipes com ícones",
+      "summary": "A coluna do Inspector foi conferida no telefone com o Robot Kyle e ganhou dois ajustes: as linhas de contexto do objeto rolam junto com os cartões e a lista de clipes usa ícones.",
+      "version": "Revisão de fonte 2026-10-14 (commit f23455ee) · Astra Dev code 74 (não público)",
+      "availability": "development",
+      "details": [
+        "Prefab, Rig articulado e fonte importada (ex.: Robot Kyle.fbx) agora fazem parte da coluna e saem de cena ao rolar, liberando a altura toda para os cartões. Nos seletores e na janela de um componente só elas continuam no topo.",
+        "A lista de clipes da Animação mostra subir, descer e remover com os ícones do atlas; antes apareciam os caracteres ^ v x porque a fonte não tem setas.",
+        "Esta nota completa a do Inspector em coluna (code 73), cuja captura no aparelho estava pendente."
+      ],
+      "validation": "Aparelho (code 73 e 74), projeto Kyle Tutorial: coluna com Transformação, Objeto, Animação e Grounder do corpo; arraste vertical rola acompanhando o dedo; primeiro toque no cabeçalho dá o foco, o segundo recolhe; subseção Clipes recolhe e reabre; linhas de contexto saem ao rolar; ícones dos clipes. Host: suíte do editor 1566/1566 e GUI 126/126.",
+      "migration": "Sem mudança de cena nem de formato.",
+      "links": []
+    },
+    {
       "id": "2026-10-14-inspector-em-coluna",
       "date": "2026-10-14",
       "scopes": [
