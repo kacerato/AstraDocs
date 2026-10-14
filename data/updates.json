@@ -31,6 +31,53 @@
       ]
     },
     {
+      "id": "2026-10-14-clipes-humanoid-da-unity",
+      "date": "2026-10-14",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Clipes Humanoid da Unity convertidos para o personagem pelo Avatar",
+      "summary": "Um .anim Humanoid (curvas de músculo do Mecanim) agora vira trilhas de rotação dos ossos humanos e posição do quadril do personagem selecionado, usando o Avatar descrito no .meta do modelo.",
+      "version": "Revisão de fonte 2026-10-14 (commits f39042d9 e 4f2df40f) · Astra Dev code 77 (não público)",
+      "availability": "development",
+      "details": [
+        "Uso: selecione o personagem com Avatar Humanoid (ex.: Robot Kyle), abra Biblioteca de pacotes e toque Converter no clipe. Sem personagem selecionado, a conversão pede que ele seja escolhido antes.",
+        "A conversão lê humanDescription (osso → nome humano) e a pose em T do skeleton no .meta do modelo, monta a pose de referência a partir dos músculos (pré/pós-rotações, sinais e limites padrão) e redireciona a diferença global para a pose em T do personagem. Ossos sem nome humano ficam no bind.",
+        "RootT/RootQ (centro de massa) viram posição e orientação do quadril. Metas de IK (LeftFootT etc.), MotionT e TDOF ficam de fora e aparecem nas notas da conversão.",
+        "Modelos FBX importados usam o espelho em X; prefabs convertidos continuam com o espelho em Z. WrapMode só é recusado em clipe legado; pesos de tangente passam por componente.",
+        "Nó animado que não existe sob o personagem (ex.: Root/Cube do PickUp num Kyle sem a caixa) agora fica de fora no preview, como na Unity e no Play, e o estúdio avisa “Fora do personagem, ignorado como na Unity”. Antes o preview recusava o clipe inteiro e o estúdio não abria.",
+        "Referências: Unity 6000.0 Manual, Muscle & Settings (https://docs.unity3d.com/6000.0/Documentation/Manual/MuscleDefinitions.html); reconstrução do HumanPoseHandler no ShaderMotion (lox9973) e no Unidot Importer (https://github.com/V-Sekai/unidot_importer, Apache-2.0); perfil humanoide da Godot 4.3 (SkeletonProfileHumanoid, MIT). Créditos no repositório da engine em native/third_party/unity_humanoid.",
+        "Limite conhecido: a Unity não publica essa conversão e a reconstrução não é idêntica. No PickUp do UMotion sobre o Kyle, a caixa fica em média a 13,5 cm da mão mais próxima entre 0,7 e 2,2 s (pior 34 cm, melhor 3 cm)."
+      ],
+      "validation": "Host: cenários Humanoid 4/4, incluindo o Kyle com o pacote real do UMotion (pés no chão, cabeça acima do quadril, caixa perto das mãos dentro do limite medido); materiais/Unity 24/24, estúdio de animação 71/71, editor 1569/1569, GUI 126/126; APK 77 compilado e instalado. Aparelho: no code 76 a conversão do PickUp concluiu e o preview recusou Root/Cube, o que levou à correção do code 77; a reprodução do PickUp no Kyle com o code 77 ainda não foi conferida no aparelho.",
+      "migration": "Sem mudança de cena nem de formato. Clipes Humanoid recusados antes podem ser convertidos de novo pela Biblioteca.",
+      "links": []
+    },
+    {
+      "id": "2026-10-14-interface-universal-menu-de-contexto",
+      "date": "2026-10-14",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Interface universal: menu de contexto, barra superior só com ícones e linhas compactas na Hierarquia",
+      "summary": "Criar e agir sobre objetos passa por um único menu de contexto com categorias e submenus; a barra superior virou grupos de ícones e as linhas da Hierarquia ganharam seta de expandir e caixa de ativo.",
+      "version": "Revisão de fonte 2026-10-14 (commit 7260c583) · Astra Dev code 75–77 (não público)",
+      "availability": "development",
+      "details": [
+        "O + da Hierarquia abre Criar com categorias (Básicos, Geometria, Física, Luzes, Gameplay, Áudio, Física 2D, Navegação), cada uma num submenu com voltar e fechar, além de Importar modelo e Todas as receitas. O destino (na raiz ou como filho) fica no próprio menu.",
+        "Toque longo numa linha seleciona o objeto e abre as ações dele: Criar filho, Duplicar, Renomear, Enquadrar na vista, Mover acima/abaixo, Mudar pai, Mover para a raiz, Abrir em janela e Excluir. O ⋮ abre o mesmo menu.",
+        "Barra superior: à esquerda menu, salvar, desfazer e refazer; no centro Play com pausa, passo e velocidade; à direita busca, diagnóstico, ajustes e pós-processamento.",
+        "Linhas da Hierarquia: seta de expandir, caixa de ativo com desfazer e objeto inativo esmaecido. Modelos importados abrem recolhidos.",
+        "Estúdio de animação: régua de tempo com arrasto para buscar e lista de ossos com rolagem por arrasto; o Play só fica disponível quando há preview.",
+        "Referências de fluxo: Unity 6000.0 Manual, Hierarchy window (menu de contexto e Create) e Godot 4.3, Scene dock (Add Child Node); adaptado ao toque, sem copiar a aparência."
+      ],
+      "validation": "Aparelho (code 76), projeto Kyle Tutorial: barra superior em ícones, linhas com seta e caixa de ativo, Kyle recolhido; + abre Criar, Básicos abre submenu com voltar e X fecha; toque longo em Mesa seleciona e abre as ações; Enquadrar na vista centraliza o Kyle inteiro. Régua e lista de ossos do estúdio não foram conferidas no aparelho (o estúdio não abriu com o PickUp no code 76). Host: editor 1569/1569, GUI 126/126, estúdio 71/71.",
+      "migration": "Sem mudança de cena nem de formato. O antigo menu de entidade e o toque longo que abria o Inspector em janela foram substituídos pelo menu de contexto.",
+      "links": []
+    },
+    {
       "id": "2026-10-14-inspector-coluna-no-aparelho",
       "date": "2026-10-14",
       "scopes": [
