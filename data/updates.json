@@ -1,8 +1,51 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-13",
+  "updatedAt": "2026-10-14",
   "entries": [
+    {
+      "id": "2026-10-14-inspector-em-coluna",
+      "date": "2026-10-14",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Inspector em coluna rolável: cartões empilhados, subseções e rolagem pelo dedo",
+      "summary": "O Inspector do objeto deixa de paginar cartões e propriedades. Todos os componentes ficam numa coluna única, vários abertos ao mesmo tempo, como o painel Properties do ITsMagic e o Inspector da Unity.",
+      "version": "Revisão de fonte 2026-10-14 (commit d76f05fc) · Astra Dev code 73 (não público)",
+      "availability": "development",
+      "details": [
+        "Cada cartão tem ícone, caixa de ativo antes do nome, seta, lupa de busca e ⋮; o primeiro toque no cabeçalho põe o foco no componente (gizmo e busca), o segundo dobra o cartão. A dobra vale por tipo de componente, como o foldout da Unity.",
+        "Os grupos de propriedades viram subseções recolhíveis dentro do cartão, todas abertas até o autor fechar, no lugar das abas.",
+        "Arrastar na vertical em qualquer ponto da coluna rola, inclusive sobre campos; o arraste horizontal de valor da Transformação continua. Segurar no cabeçalho e arrastar reordena componentes, com a coluna andando junto perto da borda.",
+        "Adicionar componente fica no fim da coluna e no + da faixa Inspeção/Componentes; não há mais rodapé fixo nem setas de página entre cartões. A janela do Inspector focado rola do mesmo jeito.",
+        "Referências estudadas: Unity 6000.0 Manual › Inspector window (https://docs.unity3d.com/6000.0/Documentation/Manual/UsingTheInspector.html) e Godot 4.3 › Inspector dock (https://docs.godotengine.org/en/4.3/tutorials/editor/inspector_dock.html); o layout segue as capturas do ITsMagic enviadas pelo proprietário."
+      ],
+      "validation": "Host: suíte do editor 1566/1566 e GUI 126/126, com o cenário novo session_inspector_column_stacks_cards_scrolls_and_folds_by_type (coluna, rolagem sem Undo, dobra por tipo e subseções). Captura do host rasterizada com aether_gui_preview. Aparelho: code 73 instalado; captura da tela real ainda pendente.",
+      "migration": "Sem mudança de cena nem de formato. A dobra de cartões e subseções é estado do editor e começa aberta.",
+      "links": []
+    },
+    {
+      "id": "2026-10-14-autoria-pickup-pelo-editor",
+      "date": "2026-10-14",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Pegar e erguer feito só no editor: corpo cinemático segue a animação e IK do estúdio grava o alvo",
+      "summary": "A cena de pegar a caixa pode ser autorada inteira no estúdio de animação, sem importar a animação pronta, e toca igual no Play.",
+      "version": "Revisão de fonte 2026-10-14 (commit 3ad5f89b) · Astra Dev code 71 (não público)",
+      "availability": "development",
+      "details": [
+        "Corpo físico cinemático acompanha a transformação animada a cada passo, e scripts continuam podendo movê-lo.",
+        "No estúdio, tocar no osso sobe até o efetor do IK e a seleção do Alvo IK vai para a mão; aplicar a pose grava chave de translação no alvo do IK de dois ossos.",
+        "Seguir pai avalia restrições e IK a 60 Hz a partir do tempo atual; um clipe novo passa a tocar no próprio objeto.",
+        "Geometria volta a ficar disponível depois do seletor de criação."
+      ],
+      "validation": "Host: cenário animation_studio_pickup_scene_authored_in_the_editor_plays_the_same e runtime_kinematic_body_follows_animated_transform_and_scripts_still_move_it. Aparelho (code 71): cena montada pela interface e gravada em vídeo, caixa presa ao punho em loop.",
+      "migration": "Sem mudança de formato de cena.",
+      "links": []
+    },
     {
       "id": "2026-10-13-fluxo-umotion-pelo-editor",
       "date": "2026-10-13",
