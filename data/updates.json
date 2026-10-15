@@ -4,6 +4,27 @@
   "updatedAt": "2026-10-15",
   "entries": [
     {
+      "id": "2026-10-15-estudio-v2-no-aparelho",
+      "date": "2026-10-15",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Estúdio v2 conferido no aparelho: enquadramento pelos ossos e campos sem ruído de ponto flutuante",
+      "summary": "Com o ADB de volta, o fluxo Animar → osso → chave por canal → campo → arrasto com auto-key foi conferido no celular; duas falhas vistas nas capturas foram corrigidas: a abertura cortava a cabeça do personagem e o campo numérico mostrava -4.69e-08 em vez de 0.",
+      "version": "Revisão de fonte 2026-10-15 (commits 5acdf468 e ef01c9a0) · Astra Dev code 85 (não público)",
+      "availability": "development",
+      "details": [
+        "Abrir o estúdio enquadra o personagem inteiro pelos ossos do preview, com a mesma distância do foco de um osso; a câmera definida explicitamente antes do primeiro layout vence o enquadramento.",
+        "Campos de pose e propriedade mostram seis algarismos e levam ruído de ponto flutuante a 0; códigos de evento continuam com todos os dígitos.",
+        "Conferido no aparelho (projeto Kyle – Carregar caixa gerado no host, pois os dados do app haviam sido recriados): Animar abre posando; botão de chave cria canal e chave; campo X = 25° inclina o tronco; girar o Neck pelo anel grava a chave ao soltar; Importar universal e Biblioteca abrem.",
+        "Encontrado e ainda aberto: nesse projeto gerado no host a malha do Kyle não é desenhada no estúdio (só mesa, caixa e ossos), enquanto na cena e no Kyle Tutorial importado pelo app ela aparece. Próximo passo: importar o GLB pelo próprio app e comparar."
+      ],
+      "validation": "Host: estúdio 71/71, editor 1569/1569. Aparelho: code 84 (campo numérico) e code 85 (enquadramento), capturas v84/v85.",
+      "migration": "Sem mudança de formato.",
+      "links": []
+    },
+    {
       "id": "2026-10-15-estudio-v2-biblioteca-gerenciador",
       "date": "2026-10-15",
       "scopes": [
