@@ -4,6 +4,27 @@
   "updatedAt": "2026-10-15",
   "entries": [
     {
+      "id": "2026-10-15-criar-personagem-receitas-de-ik",
+      "date": "2026-10-15",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Criar › Personagem: olhar, mirar, mãos ao alvo, pés no chão, corpo inteiro e carregar caixa em um toque",
+      "summary": "Revisão dos plugins pelo filtro \"só entra o que tem fluxo completo no editor\": os 30 componentes de IK já existiam, mas só eram montáveis osso a osso pelo Inspector ou pelo assistente escondido no estúdio. O menu Criar ganha a categoria Personagem, com receitas que montam IK e alvos sobre o personagem selecionado.",
+      "version": "Revisão de fonte 2026-10-15 (commit 4753848a) · Astra Dev code 88 (não público)",
+      "availability": "development",
+      "details": [
+        "Personagem da seleção: o ancestral que carrega animação, Animator ou um sistema de corpo, ou o objeto logo abaixo da raiz com esqueleto; sem seleção, o único esqueleto da cena. Sem personagem, a categoria aparece desligada.",
+        "Olhar para alvo cria o LookAt na cabeça com um alvo 2 m à frente; Mirar com as mãos cria o Aim em cada mão com alvo 1,5 m no eixo da mão; Mãos ao alvo cria IK de dois ossos com o alvo onde a mão está; Pés no chão cria Apoio do pé por pé e o Grounder com a pelve; Corpo inteiro liga pelve, peito e até quatro pontas, cada uma com alvo; Carregar caixa monta mesa, caixa com pegadas e sistema de interação numa pasta ao lado do personagem.",
+        "Ossos reconhecidos pelo nome (inglês e português) ou pela estrutura do esqueleto, como no assistente do estúdio; cada receita é um único passo de Desfazer e nada fica pela metade se um componente falhar.",
+        "Fora desta rodada, pelo mesmo filtro: BoZo (exige modelo e runtime modular), VRIK (exige rastreamento XR), exibição de ossos e editar em Play do UMotion (cosmético/avançado), galeria própria do POLYGON (o fluxo já é Importar › Pasta de pacote → Biblioteca › Modelos → Na cena)."
+      ],
+      "validation": "Host: estúdio 73/73 (cenário novo: resolução do personagem, seis receitas, uma por passo de Desfazer, recusa do Carregar caixa sem braços humanoides, caminho real + da Hierarquia → Personagem → Olhar para alvo), editor 1571/1571, GUI 126/126. Aparelho (code 88): com o Robot Kyle selecionado, + da Hierarquia → Personagem lista as seis receitas (captura v88_personagem); Olhar para alvo criou \"Olhar · Head\" sob o personagem e a cena foi salva (v88_olhar2). A linha \"Na raiz / Em…\" ainda aparecia nesse submenu no code 88 e foi retirada no commit.",
+      "migration": "Sem mudança de formato.",
+      "links": []
+    },
+    {
       "id": "2026-10-15-timeline-chaves-mestras-menu-da-chave-pinca",
       "date": "2026-10-15",
       "scopes": [
