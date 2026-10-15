@@ -4,6 +4,27 @@
   "updatedAt": "2026-10-15",
   "entries": [
     {
+      "id": "2026-10-15-timeline-chaves-mestras-menu-da-chave-pinca",
+      "date": "2026-10-15",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Timeline do estúdio: chaves-mestras na régua, menu da chave por toque longo e zoom por pinça",
+      "summary": "Segundo bloco do estúdio v2: a régua ganha a linha de chaves-mestras (um losango por quadro com chave em qualquer trilha), o toque longo numa chave abre o menu de contexto da chave e a pinça na timeline faz zoom da régua. Também fechado o caso da malha do Kyle ausente no projeto gerado no host: era a cópia sem a pasta .astra, não o editor.",
+      "version": "Revisão de fonte 2026-10-15 (commit f3e3b3d0) · Astra Dev code 87 (não público)",
+      "availability": "development",
+      "details": [
+        "Chaves-mestras (UMotion, Unity Animation window): a metade de baixo da régua mostra um losango por quadro que tem chave em qualquer trilha da camada. Tocar seleciona o quadro inteiro (todas as componentes) e leva o cursor até ele; arrastar move todas as chaves do quadro juntas, com um único passo de Desfazer; tocar onde não há chave vale como scrub.",
+        "Menu da chave (clique direito do Unity/UMotion): o toque longo numa chave da timeline abre o menu de contexto no ponto tocado com Tempo, Valor, Tangente, Curva/Dopesheet, Copiar, Recortar e Excluir — as mesmas ações do clipe, sem cartão de texto. Com um quadro inteiro selecionado, Tempo e Valor ficam desligados.",
+        "Pinça na timeline: dois dedos sobre a régua ou o dopesheet mudam o intervalo visível em torno do ponto médio dos dedos, cancelando o arrasto que estivesse em curso; o dedo que sobra não faz scrub nem arrasta chave até ser levantado. O intervalo fica entre um quadro e a duração do clipe.",
+        "Malha ausente no projeto gerado no host (nota anterior): a cópia para o aparelho não levou a pasta .astra (registro assets.astra e cache imports/<guid>.nodes); sem o registro o modelo referenciado pela cena não resolve e o app recriou o registro só com o clipe. Enviada a pasta, cena e estúdio desenham o robô. Fica a lacuna de produto: um projeto copiado sem .astra perde as malhas em silêncio; a Biblioteca passará a acusar origem sem registro."
+      ],
+      "validation": "Host: estúdio 72/72 (novo cenário cobre quadro inteiro, arrasto com Desfazer único, menu por toque longo, pinça sem editar chaves), editor 1570/1570, GUI 126/126. Aparelho (code 86/87): tocar a chave-mestra a 1,917 s seleciona o quadro inteiro, acende o losango e leva o cursor (captura v87_master); o toque longo na chave a 0 s abre o menu da chave (v87_keymenu); a pinça foi conferida só no host, porque o ADB não gera dois dedos. Malha do Kyle conferida na cena e no estúdio após enviar a pasta .astra (v86_scene2, v86_studio2).",
+      "migration": "Sem mudança de formato.",
+      "links": []
+    },
+    {
       "id": "2026-10-15-estudio-v2-no-aparelho",
       "date": "2026-10-15",
       "scopes": [
