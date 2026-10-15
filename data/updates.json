@@ -1,8 +1,36 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-14",
+  "updatedAt": "2026-10-15",
   "entries": [
+    {
+      "id": "2026-10-15-terreno-voxel-apk-dev",
+      "date": "2026-10-15",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno e voxel: APK Astra Dev gerado e auditado",
+      "summary": "APK ARM64 de desenvolvimento gerado para o terreno e voxel, com conteúdo e assinatura auditados. Sem aceite de execução no aparelho ou substituição do download público.",
+      "version": "Astra Dev 0.3.1-dev.terrain.20261014 · code 75 · pacote dev.aether.editor.u07 · fonte f3abcbc",
+      "availability": "development",
+      "details": [
+        "Uso: menu de criação → Terreno e voxel → Gerar e aplicar. As abas Esculpir, Camadas e Gerir organizam edição, materiais e gerenciamento; o guia registra os modos e limites implementados.",
+        "Corrigido o build Android: removidos a dependência do módulo :export-core, ausente no projeto configurado, e o callback onProjectExport, que não tinha interface nem Activity correspondente no shell. A exportação de jogos em APK permanece sem validação.",
+        "O empacotamento inclui a licença fornecida e o manifesto de procedência das quatro texturas de terreno em assets/licenses/terrain, junto ao atlas atualizado da interface.",
+        "Artefato destinado ao canal de desenvolvimento Astra Dev. O download público do Astra permanece na versão distribuída; esta revisão não tem aceite de execução no aparelho.",
+        "Artefato de 108.753.809 bytes. SHA-256: db04b34304e4feb3f0557829f086aa4810725f497181aa65c4408dfadb0b627c. A fonte desta revisão está na branch de terreno; não houve merge dessa implementação na main da engine."
+      ],
+      "validation": "assembleRelease concluído. Manifesto final: dev.aether.editor.u07, code 75, versão 0.3.1-dev.terrain.20261014. apksigner v2, aapt, ZIP CRC e zipalign aprovados. Núcleo de terreno, quatro texturas, atlas e DLLs atuais presentes; validation layer ausente. Certificado SHA-256: 68a37f8803e5f27155676328e8dc97385b41930bd878ad4168b1c962026599be. Alinhamento ELF: engine, OpenSSL e libc++ usam 16.384 bytes; libhostfxr e seis bibliotecas .NET usam 4.096 bytes, portanto não há compatibilidade integral com páginas de 16 KB. Sem instalação, captura, interação ou aceite Android em aparelho nesta entrega.",
+      "migration": "Sem migração adicional de cenas nesta etapa de empacotamento. A assinatura deste APK difere da assinatura Dev documentada anteriormente; não está garantida a atualização sobre a instalação existente. O code 75 também não é superior a revisões Dev posteriores de outras linhas de trabalho. Preserve os projetos e confira assinatura e versão antes de instalar; esta entrega não inclui remoção do app ou dos dados.",
+      "links": [
+        {
+          "label": "Guia de desenvolvimento: terreno e voxel",
+          "url": "/pt-br/desenvolvimento/2026-10-14/terreno-voxel/"
+        }
+      ]
+    },
     {
       "id": "2026-10-14-terreno-voxel-host",
       "date": "2026-10-14",
