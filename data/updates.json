@@ -4,6 +4,7 @@
   "updatedAt": "2026-10-15",
   "entries": [
     {
+<<<<<<< HEAD
       "id": "2026-10-15-terreno-voxel-apk-dev",
       "date": "2026-10-15",
       "scopes": [
@@ -30,6 +31,51 @@
           "url": "/pt-br/desenvolvimento/2026-10-14/terreno-voxel/"
         }
       ]
+=======
+      "id": "2026-10-15-interacao-pivo-gatilho-olhar",
+      "date": "2026-10-15",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Interação completa: Pivô de pegada, Gatilho de interação, olhar durante a interação e limite de torção no cone",
+      "summary": "O bloco de interação (Final IK 2.2) fecha com três capacidades novas: o objeto gira sobre um pivô para a pegada encarar a mão, uma faixa à frente do objeto dispara a interação quando o personagem entra nela, e a cabeça olha a pegada enquanto a mão vai até ela. O Limite de rotação em cone passa a expor a torção mínima e máxima.",
+      "version": "Revisão de fonte 2026-10-15 (commit 774b436c) · Astra Dev code 81 (não público)",
+      "availability": "development",
+      "details": [
+        "Pivô de pegada (astra.ik.interaction_grip): no objeto que gira; Pegada aponta o nó de pegada descendente (ou a pegada do Objeto interagível). Modo Torção e balanço gira só em volta do eixo escolhido (peso da torção) e opcionalmente em qualquer eixo (peso do balanço); modo Rotação completa faz a pegada copiar a orientação da mão. Girar uma vez aplica no início da interação; desligado, acompanha a mão o tempo todo. Objetos simétricos (caneca, alavanca) podem ser pegos de qualquer lado.",
+        "Gatilho de interação (astra.ik.interaction_trigger): faixa a partir do objeto (raio, ângulo máximo, deslocamento lateral e à frente, giro da direção, Em volta do objeto para anel, Cima fixo). Personagem com Sistema de interação dentro dela gera o evento Entrou no gatilho; com Automático, a interação começa sozinha com Mão ao iniciar, Segunda mão ou As duas; Saiu do gatilho ao deixar a faixa. O método Interagir pelo gatilho começa a do gatilho mais próximo em que o personagem está (para o botão de ação do jogo).",
+        "Sistema de interação: campo Olhar com (objeto com Look At, em geral a cabeça), Entrada do olhar e Giro do olhar. Enquanto a mão vai até a pegada, o Look At olha a pegada com peso que sobe; ao soltar, desce e a cabeça volta. Um Look At sem alvo próprio espera a interação em vez de registrar alvo ausente; com alvo, mistura os dois pelo peso.",
+        "Limite de rotação: no tipo Cone, Mínimo e Máximo passam a aparecer e limitam a torção em volta do eixo (equivalente ao RotationLimitAngle do Final IK, cone + torção). A matemática já existia; só a interface escondia os campos.",
+        "Ícones novos no atlas: component/interaction-grip e component/interaction-trigger, com as primitivas do acervo IK.",
+        "Referências oficiais: Unity XR Interaction Toolkit 3.0, XR Grab Interactable (attach transform, match attach rotation) e XR Direct Interactor (seleção por proximidade); Godot 4.3, LookAtModifier3D. Final IK 2.2 (InteractionTarget, InteractionTrigger, InteractionLookAt) foi estudado como conjunto funcional, não copiado.",
+        "Pesquisados e não implementados: limites poligonal e por spline (RotationLimitPolygonal/Spline) e a faixa de câmera do gatilho (CameraPosition), que depende de raio da câmera do jogador."
+      ],
+      "validation": "Host: cenários IK novos — pivô gira a pegada para a mão (cosseno > 0,95) e não persegue com Girar uma vez; gatilho emite Entrou e Interagir pelo gatilho leva a mão até a alavanca, fora da faixa nada dispara; olhar vira a cabeça ao alcançar e volta ao soltar. Suítes: animação 81/81 (3 cenários novos), editor 1569/1569, GUI 126/126, Unity 24/24; suíte gerenciada 523/523 com as fachadas C# novas; APK 81 compilado e instalado. Aparelho: code 79, Kyle Tutorial — Gatilho de interação aparece na busca de Adicionar componente com o ícone novo, ficha com grupos Faixa e Gatilho (raio, ângulo, deslocamentos, giro, Em volta do objeto, Cima fixo, Automático) e desfazer remove; a interação em Play com gatilho, pivô e olhar ainda não foi montada no aparelho.",
+      "migration": "Sistema de interação passa para a versão 5 (campos de olhar); cenas antigas carregam com Olhar com vazio. Sem outra mudança de formato.",
+      "links": []
+    },
+    {
+      "id": "2026-10-14-menu-cena-e-biblioteca-universais",
+      "date": "2026-10-14",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Menu Cena no menu de contexto universal, Biblioteca em coluna rolável e estúdio abrindo enquadrado",
+      "summary": "O menu Cena (espaços de trabalho) virou um nível do menu de contexto, com ícones e sem janela modal; a Biblioteca de pacotes trocou as páginas por uma coluna que rola pelo dedo; o estúdio de animação abre com o personagem enquadrado.",
+      "version": "Revisão de fonte 2026-10-15 (commits 632a217f e 51c32d49) · Astra Dev code 81 (não público)",
+      "availability": "development",
+      "details": [
+        "Menu Cena: o botão de menu da barra superior abre o mesmo menu de contexto da Hierarquia, ancorado no botão, com Voltar à edição, Recursos importados, Biblioteca de pacotes, Ambiente da cena, Configurações do projeto, Interface (UI + ImGui) e Layout dos painéis, cada item com ícone; o item do espaço atual fica desabilitado. Tocar fora fecha. Abre em qualquer espaço de trabalho, inclusive no Play.",
+        "Biblioteca de pacotes: a lista de itens e o texto de diagnóstico rolam pelo arrasto vertical, como a coluna do Inspector; os botões de página anterior/próxima saíram e o rodapé mostra só a contagem, o pacote e a busca. Só as linhas visíveis recebem toque.",
+        "Estúdio de animação: ao abrir um clipe, a vista enquadra o personagem dono do clipe, em vez de manter a câmera da cena onde estava (o Kyle aparecia como um ponto).",
+        "Referências de fluxo: Unity 6000.0 Manual, Window menu e Project window (rolagem contínua); Godot 4.3, FileSystem dock; adaptado ao toque, sem copiar a aparência."
+      ],
+      "validation": "Aparelho (code 79), projeto Kyle Tutorial: botão de menu abre o menu Cena como menu de contexto com ícones, \"Voltar à edição\" desabilitado no espaço atual; Biblioteca de pacotes rola pelo arrasto, rodapé com contagem e pacote; estúdio abre com o Kyle visível e centrado (code 78), ainda pequeno na vista — ressalva registrada. Host: editor 1569/1569, GUI 126/126, Unity 24/24, animação 81/81; suíte gerenciada 523/523.",
+      "migration": "Sem mudança de cena nem de formato. O antigo menu Cena modal foi removido; o estado de página da Biblioteca deixou de existir.",
+      "links": []
+>>>>>>> bbbb4c4 (Update notes: universal Scene menu and Library column (code 81), interaction block with grip pivot, trigger and look-at (code 81))
     },
     {
       "id": "2026-10-14-terreno-voxel-host",
