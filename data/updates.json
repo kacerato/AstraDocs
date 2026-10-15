@@ -4,27 +4,6 @@
   "updatedAt": "2026-10-15",
   "entries": [
     {
-      "id": "2026-10-14-menu-cena-e-biblioteca-universais",
-      "date": "2026-10-14",
-      "scopes": [
-        "app"
-      ],
-      "kind": "improvement",
-      "title": "Menu Cena no menu de contexto universal, Biblioteca em coluna rolável e estúdio abrindo enquadrado",
-      "summary": "O menu Cena (espaços de trabalho) virou um nível do menu de contexto, com ícones e sem janela modal; a Biblioteca de pacotes trocou as páginas por uma coluna que rola pelo dedo; o estúdio de animação abre com o personagem enquadrado.",
-      "version": "Revisão de fonte 2026-10-15 (commits 632a217f e 51c32d49) · Astra Dev code 81 (não público)",
-      "availability": "development",
-      "details": [
-        "Menu Cena: o botão de menu da barra superior abre o mesmo menu de contexto da Hierarquia, ancorado no botão, com Voltar à edição, Recursos importados, Biblioteca de pacotes, Ambiente da cena, Configurações do projeto, Interface (UI + ImGui) e Layout dos painéis, cada item com ícone; o item do espaço atual fica desabilitado. Tocar fora fecha. Abre em qualquer espaço de trabalho, inclusive no Play.",
-        "Biblioteca de pacotes: a lista de itens e o texto de diagnóstico rolam pelo arrasto vertical, como a coluna do Inspector; os botões de página anterior/próxima saíram e o rodapé mostra só a contagem, o pacote e a busca. Só as linhas visíveis recebem toque.",
-        "Estúdio de animação: ao abrir um clipe, a vista enquadra o personagem dono do clipe, em vez de manter a câmera da cena onde estava (o Kyle aparecia como um ponto).",
-        "Referências de fluxo: Unity 6000.0 Manual, Window menu e Project window (rolagem contínua); Godot 4.3, FileSystem dock; adaptado ao toque, sem copiar a aparência."
-      ],
-      "validation": "Aparelho (code 79), projeto Kyle Tutorial: botão de menu abre o menu Cena como menu de contexto com ícones, \"Voltar à edição\" desabilitado no espaço atual; Biblioteca de pacotes rola pelo arrasto, rodapé com contagem e pacote; estúdio abre com o Kyle visível e centrado (code 78), ainda pequeno na vista — ressalva registrada. Host: editor 1569/1569, GUI 126/126, Unity 24/24, animação 81/81; suíte gerenciada 523/523.",
-      "migration": "Sem mudança de cena nem de formato. O antigo menu Cena modal foi removido; o estado de página da Biblioteca deixou de existir.",
-      "links": []
-    },
-    {
       "id": "2026-10-15-interacao-pivo-gatilho-olhar",
       "date": "2026-10-15",
       "scopes": [
@@ -75,6 +54,27 @@
           "url": "/pt-br/desenvolvimento/2026-10-14/terreno-voxel/"
         }
       ]
+    },
+    {
+      "id": "2026-10-14-menu-cena-e-biblioteca-universais",
+      "date": "2026-10-14",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Menu Cena no menu de contexto universal, Biblioteca em coluna rolável e estúdio abrindo enquadrado",
+      "summary": "O menu Cena (espaços de trabalho) virou um nível do menu de contexto, com ícones e sem janela modal; a Biblioteca de pacotes trocou as páginas por uma coluna que rola pelo dedo; o estúdio de animação abre com o personagem enquadrado.",
+      "version": "Revisão de fonte 2026-10-15 (commits 632a217f e 51c32d49) · Astra Dev code 81 (não público)",
+      "availability": "development",
+      "details": [
+        "Menu Cena: o botão de menu da barra superior abre o mesmo menu de contexto da Hierarquia, ancorado no botão, com Voltar à edição, Recursos importados, Biblioteca de pacotes, Ambiente da cena, Configurações do projeto, Interface (UI + ImGui) e Layout dos painéis, cada item com ícone; o item do espaço atual fica desabilitado. Tocar fora fecha. Abre em qualquer espaço de trabalho, inclusive no Play.",
+        "Biblioteca de pacotes: a lista de itens e o texto de diagnóstico rolam pelo arrasto vertical, como a coluna do Inspector; os botões de página anterior/próxima saíram e o rodapé mostra só a contagem, o pacote e a busca. Só as linhas visíveis recebem toque.",
+        "Estúdio de animação: ao abrir um clipe, a vista enquadra o personagem dono do clipe, em vez de manter a câmera da cena onde estava (o Kyle aparecia como um ponto).",
+        "Referências de fluxo: Unity 6000.0 Manual, Window menu e Project window (rolagem contínua); Godot 4.3, FileSystem dock; adaptado ao toque, sem copiar a aparência."
+      ],
+      "validation": "Aparelho (code 79), projeto Kyle Tutorial: botão de menu abre o menu Cena como menu de contexto com ícones, \"Voltar à edição\" desabilitado no espaço atual; Biblioteca de pacotes rola pelo arrasto, rodapé com contagem e pacote; estúdio abre com o Kyle visível e centrado (code 78), ainda pequeno na vista — ressalva registrada. Host: editor 1569/1569, GUI 126/126, Unity 24/24, animação 81/81; suíte gerenciada 523/523.",
+      "migration": "Sem mudança de cena nem de formato. O antigo menu Cena modal foi removido; o estado de página da Biblioteca deixou de existir.",
+      "links": []
     },
     {
       "id": "2026-10-14-terreno-voxel-host",
