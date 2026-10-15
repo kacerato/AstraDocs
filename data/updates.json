@@ -4,6 +4,30 @@
   "updatedAt": "2026-10-15",
   "entries": [
     {
+      "id": "2026-10-15-estudio-v2-biblioteca-gerenciador",
+      "date": "2026-10-15",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Estúdio de animação v2 e Biblioteca como gerenciador: posar é o padrão, chave por canal, importar universal",
+      "summary": "Depois da revisão do proprietário (montar uma animação era difícil e a Biblioteca não tinha coerência), o estúdio abre posando com auto-key, o painel do osso mostra posição/rotação/escala com botão de chave por canal, as ferramentas viram grade de ícones e o resto vai para o menu ⋮; a Biblioteca ganha trilho de tipos, cartões com selo e painel de detalhe, e um botão Importar universal entra na barra superior.",
+      "version": "Revisão de fonte 2026-10-15 (commits 902d28dc e 41216ee1) · Astra Dev code 82 (não público)",
+      "availability": "development",
+      "details": [
+        "Estúdio: ao abrir um clipe (largura de estúdio), posar já está ligado com auto-key — tocar um osso, arrastar o gizmo e soltar grava a chave. O painel da direita mostra o osso tocado com Posição, Rotação e Escala (X, Y, Z editáveis) e um botão de chave por canal: cheio = chave neste tempo, contorno = canal animado, apagado = sem canal (tocar cria o canal e grava). Abaixo, ferramentas em grade de ícones: Auto-key, Espelhar, Copiar, Colar, Repouso, Fantasma, Ossos, IK, Fixar, Camada, Seleção, Guardar pose; a biblioteca de poses como botões.",
+        "Menu ⋮ do estúdio (menu de contexto universal): Posar/Parar, Novo clipe (quaternion e 2 s, sem formulário), Novo · Euler, Novo · progressivo, Renomear, Duração, Camadas, Curvas, Eventos e marcadores, Rig, Assistente de IK, IK permanente, Root motion, Bake, Exportar GLB. As abas Chave/Rig/Pose/IK saíram; o Rig abre no lugar do painel com botão de voltar.",
+        "Entrada: o menu de contexto do objeto ganha Animar — abre o primeiro clipe do componente Animação do próprio objeto ou cria um e já o toca nele. A árvore de ossos marca com um ponto os ossos que têm trilha na camada atual. Os textos de estado (\"Toque um osso\", \"Toque uma chave…\", \"Camada vazia…\") foram removidos; o chip sobre o gizmo só mostra o nome do osso ou um aviso real.",
+        "Biblioteca: trilho de tipos com contagem (Todos, Modelos, Clipes, Materiais…), cartões com ícone do tipo, pacote e selo de estado (pronto ✓, a converter ⤓, aviso ⚠), e painel de detalhe com ações em ícone (Abrir, Instanciar, Vincular, Reimportar; Manter local/Receber origem em conflito) e o diagnóstico em chips. Lista e detalhe rolam pelo dedo. Em superfície estreita o detalhe ocupa o lugar dos cartões e os tipos ficam no filtro cíclico.",
+        "Importar universal: botão na barra superior (qualquer espaço de autoria) abre o menu com Modelo (GLB, FBX), Pasta de pacote, Textura, Ambiente (HDRI) e Áudio — os mesmos pedidos que os painéis levantavam em quatro lugares diferentes. O botão \"Importar pasta\" da Biblioteca e os rótulos Converter/Diagnóstico saíram.",
+        "Preview no host: modos studio-kyle (Robot Kyle real, estúdio aberto pelo fluxo Animar) e library-umotion (pacote UMotion real) capturam as telas sem aparelho.",
+        "Referências de fluxo: UMotion Pro 1.29 (Pose Editor, Animation › Auto Key, Channels, Dopesheet), Unity 6000.0 Animation window (gravação) e Godot 4.3 (chave ao lado da propriedade no Inspector; FileSystem dock). Lógica adaptada ao toque, sem copiar aparência."
+      ],
+      "validation": "Host: estúdio 71/71 (testes ajustados ao fluxo novo: Euler/progressivo e Nome pelo menu ⋮, aba Pose removida), editor 1569/1569, GUI 126/126, Unity 24/24; capturas do preview em docs/planos/ui-universal/estudio-v2 (estúdio aberto, osso selecionado, menu ⋮, Biblioteca, detalhe, menu Importar). Aparelho: não validado — ADB desligado por decisão do proprietário até a revisão deste fluxo; o APK 82 foi compilado para essa validação.",
+      "migration": "Sem mudança de cena nem de formato. Quem usava as abas do estúdio encontra o mesmo no painel do osso e no menu ⋮; quem importava pasta pela Biblioteca usa o botão Importar da barra.",
+      "links": []
+    },
+    {
       "id": "2026-10-15-interacao-pivo-gatilho-olhar",
       "date": "2026-10-15",
       "scopes": [
