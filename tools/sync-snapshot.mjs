@@ -6,7 +6,8 @@ import { spawnSync } from 'node:child_process';
 // Extract only public contracts. The isolated private source and executable stay
 // under ignored evidence/, never under data/ or public/.
 const engine=process.argv[2], version=process.argv[3];
-if(!engine || !/^snapshot-\d{4}-\d{2}-\d{2}$/.test(version||'')) throw Error('Usage: npm run sync:snapshot -- <engine Git checkout> snapshot-YYYY-MM-DD');
+// Sufixo de letra: segunda release no mesmo dia (snapshot-2026-10-16b); cada release tem a sua rota.
+if(!engine || !/^snapshot-\d{4}-\d{2}-\d{2}[a-z]?$/.test(version||'')) throw Error('Usage: npm run sync:snapshot -- <engine Git checkout> snapshot-YYYY-MM-DD[b]');
 const release=JSON.parse(fs.readFileSync('data/release.json','utf8'));
 const commit=release.source.baselineCommit;
 if(!/^[a-f0-9]{40}$/.test(commit) || release.source.localChangesIncluded) throw Error('A release with local source changes requires separately recorded provenance.');

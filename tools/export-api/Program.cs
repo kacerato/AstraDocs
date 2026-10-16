@@ -78,7 +78,7 @@ var types = Types(compilation.Assembly.GlobalNamespace).Where(t => PublicType(t)
             }).ToArray()
     }).ToArray();
 var snapshot = Environment.GetEnvironmentVariable("ASTRA_DOCS_SNAPSHOT") ?? "snapshot-2026-10-06";
-if (!Regex.IsMatch(snapshot, "^snapshot-\\d{4}-\\d{2}-\\d{2}$")) throw new ArgumentException("Invalid snapshot version");
+if (!Regex.IsMatch(snapshot, "^snapshot-\\d{4}-\\d{2}-\\d{2}[a-z]?$")) throw new ArgumentException("Invalid snapshot version");
 var output = new { format = 1, engineGeneration = "astra-current", version = snapshot, language = "C#", assembly = "Astra.Scripting", extraction = "Roslyn/MSBuild semantic compilation", runtimeVerified = false, platformEvidence = Array.Empty<string>(), types };
 Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(args[1]))!);
 await File.WriteAllTextAsync(args[1], JsonSerializer.Serialize(output, new JsonSerializerOptions { WriteIndented = true }));

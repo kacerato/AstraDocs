@@ -1,5 +1,45 @@
 import { link } from './workflow-guide-tools.mjs';
 export const releasePages = [{
+  route:'versoes/preview-0-3-2', title:'Astra 0.3.2: Animator 2D e camadas sincronizadas, Play sem solavancos, pacotes POLYGON e BoZo',
+  description:'Como usar os modos 2D e as camadas sincronizadas do Animator, o que mudou no Play do carregar e no IK de dois ossos, a conversão Humanoid mais fiel e a importação de pacotes POLYGON e BoZo incluídos no APK 0.3.2.',
+  options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-16',appRelease:'0.3.2-preview.20261016',runtimeVerified:true,prev:false,next:false}},
+  body:`
+## Versão e recorte
+
+Este capítulo acompanha o **APK 0.3.2-preview.20261016, versionCode 30**, gerado da main no commit **cddc7a45**, sem alterações locais. [Download](/download/).
+
+A atualização instala por cima da Astra 0.3.1 com a mesma chave e preserva os projetos. O [catálogo de 16/10 (APK 0.3.2)](/pt-br/snapshot-2026-10-16b/componentes/) continua valendo: nenhum componente novo entrou nesta prévia, só campos e comportamento.
+
+## Animator: Modo 2D e Sincronizar com
+
+**Caminho:** Inspector do Animator → **Abrir grafo do Animator** → estado → **Mistura 2D**. A linha **Modo 2D** alterna Triangulação (o comportamento anterior), Direcional simples, Direcional livre e Cartesiano livre, como os modos 2D da Unity; os dois modos livres usam bandas de gradiente em coordenadas polares ou cartesianas.
+
+**Camadas:** a partir da segunda camada, **Sincronizar com** escolhe a camada de origem. A camada passa a espelhar máquinas, estados e transições da origem (ids próprios, referências remapeadas) e guarda as próprias motions por estado; peso, máscara e composição continuam da própria camada. Editar a estrutura na cópia é recusado com aviso na barra de estado: edite na origem e a cópia acompanha. Arquivo do Animator na versão 6; recurso \`.aeanimator\` na versão 4.
+
+## Play: carregar e IK de dois ossos
+
+- O **Sistema de interação** não deixa mais a pelve cair e voltar num quadro quando a mão animada cruza a borda do alcance: o agachamento cai em rampa entre 80% e 100% do alcance horizontal e o corpo move no máximo 2 m/s. Inclinação e agachamento medem o braço na pose animada do quadro.
+- **Dois ossos sem polo:** com a cadeia quase reta, o lado da dobra vem do repouso no referencial do osso raiz; a pose animada continua mandando quando dobra de verdade.
+- Receitas de **Criar › Personagem** aplicadas num projeto ficam nele até serem removidas; três solvers no mesmo punho por cima de um clipe é o que faz a animação "quebrar". Remova sobras pelo menu do objeto.
+
+## Clipes Humanoid da Unity
+
+A conversão músculos → ossos encaixa a orientação do Avatar no eixo, coloca o quadril pelo centro de massa medido no esqueleto do próprio personagem e normaliza o corpo pela pose em T. Contra o projeto UMotion original do Kyle, o erro médio das mãos cai de 15–16 cm para 6,7–7,2 cm e o dos pés de 29 cm para 7 cm; resta ≈5 cm de deslocamento vertical constante. Clipes com **Bake Into Pose** deixam de ser recusados e o **Offset** de rotação da raiz é aplicado ao corpo; Loop Pose, Mirror, Level e Cycle Offset continuam recusados com aviso.
+
+## Pacotes POLYGON e BoZo
+
+**Caminho:** **Importar** (barra superior) → **Pasta de pacote** → escolha a pasta no seletor do Android. A Biblioteca abre no pacote com o trilho de tipos.
+
+- **POLYGON Icons (Synty):** o FBX cita o PSD do atlas, que o pacote não traz; o editor usa a primeira imagem exportada com o mesmo radical (\`…_01_A.png\`) e o ícone entra texturizado com **Na cena**.
+- **BoZo 2.2:** \`BodyRig.fbx\` tem skin com mais de quatro influências: na aba **Perfil** (página 3/3) troque "Recusar perda" por "Reduzir a 4" e toque **Preparar** antes de **Na cena**. Com o BodyRig selecionado, acione \`BMAC_M_Idle.anim\` na Biblioteca: o clipe Humanoid converte e abre no estúdio. Roupas modulares, shaders estilizados e expressões ficam fora desta prévia.
+
+## Limites desta prévia
+
+- **Exportar APK** continua experimental.
+- Blend Tree aninhada e Sync timing do Animator não entram; a conversão Humanoid mantém ≈5 cm de deslocamento vertical constante.
+- Sem garantia para todo aparelho ou cena; sem medição sustentada de desempenho; páginas de memória de 16 KB não suportadas.
+`
+}, {
   route:'versoes/preview-0-3-1', title:'Astra 0.3.1: estúdio de animação v2, Criar › Personagem e Biblioteca como gerenciador',
   description:'Como usar o estúdio v2 (posar por padrão, chave por canal, chaves-mestras), as receitas de Criar › Personagem, o Importar universal e a Biblioteca incluídos no APK 0.3.1.',
   options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-16',appRelease:'0.3.1-preview.20261016',runtimeVerified:true,prev:false,next:false}},

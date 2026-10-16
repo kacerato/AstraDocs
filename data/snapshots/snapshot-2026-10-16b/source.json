@@ -1,0 +1,18 @@
+{
+  "version": "snapshot-2026-10-16b",
+  "reviewedAt": "2026-10-16",
+  "releaseVersion": "0.3.2-preview.20261016",
+  "versionCode": 30,
+  "sourceCommit": "cddc7a4599ae434e32e8aeca39f7eb4a98b32799",
+  "extraction": "Compiled native descriptors; Roslyn/MSBuild semantic compilation; generated facade mapping",
+  "runtimeVerified": false,
+  "componentTypes": 95,
+  "componentProperties": 1403,
+  "apiTypes": 414,
+  "apiMembers": 4638,
+  "sha256": {
+    "components.json": "110f476025c8197ddeb6e9db56eb5a7879d133b9668ecea829407e42268cd54a",
+    "api.json": "65dce2670b62ed2b560071bdf3a3c16379e8a48e52f265aeb2f3b8725aa03221",
+    "component-member-map.json": "ea1366c6231a1dfcdc76f702d2cf181687c6e57585a72ac253e0d3d3a4b7e4b2"
+  }
+}

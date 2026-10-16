@@ -7,8 +7,8 @@ const labels = { 'source-reviewed': 'Conferido em fonte', 'semantic-reference': 
 const sections: Record<string,string> = { comece:'Comece aqui', editor:'Manual do editor', conceitos:'Conceitos', componentes:'Componentes', api:'API C#', sistemas:'Sistemas', receitas:'Receitas', exemplos:'Exemplos', desempenho:'Desempenho', diagnostico:'Diagnóstico', versoes:'Versões', ia:'Para IA' };
 const area = id.split('/')[2];
 const taskIndex = ['comece', 'editor', 'conceitos', 'sistemas'].includes(area) ? `/pt-br/snapshot-2026-10-06/${area}/indice/` : undefined;
-const current = ['snapshot-2026-10-07','snapshot-2026-10-09','snapshot-2026-10-16'].includes(entry.data.version);
-const currentDate = entry.data.version === 'snapshot-2026-10-16' ? '16 out. 2026' : entry.data.version === 'snapshot-2026-10-09' ? '09 out. 2026' : '07 out. 2026';
+const current = ['snapshot-2026-10-07','snapshot-2026-10-09','snapshot-2026-10-16','snapshot-2026-10-16b'].includes(entry.data.version);
+const currentDate = entry.data.version === 'snapshot-2026-10-16b' ? '16 out. 2026 (APK 0.3.2)' : entry.data.version === 'snapshot-2026-10-16' ? '16 out. 2026' : entry.data.version === 'snapshot-2026-10-09' ? '09 out. 2026' : '07 out. 2026';
 ---
 {!home && <>
   <nav class="astra-breadcrumb" aria-label="Caminho da página"><a href="/">Docs</a><span aria-hidden="true">/</span>{taskIndex ? <a href={taskIndex}>{sections[area]}</a> : <span>{sections[area] || 'Documentação'}</span>}</nav>

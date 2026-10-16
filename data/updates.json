@@ -4,6 +4,49 @@
   "updatedAt": "2026-10-16",
   "entries": [
     {
+      "id": "2026-10-16-apk-preview-0-3-2",
+      "date": "2026-10-16",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "APK 0.3.2 publicado: Animator 2D e camadas sincronizadas, Play sem solavancos, pacotes POLYGON e BoZo",
+      "summary": "A prévia pública ganha os modos 2D e as camadas sincronizadas do Animator, o Play do carregar sem a pelve oscilar e sem o cotovelo virar, a conversão Humanoid mais fiel à Unity e a importação dos pacotes POLYGON Icons (texturizado) e BoZo 2.2 (rig Humanoid com o idle no estúdio). Atualiza a 0.3.1 sem apagar projetos.",
+      "version": "0.3.2-preview.20261016 · versionCode 30 · commit cddc7a45",
+      "releaseVersion": "0.3.2-preview.20261016",
+      "versionCode": 30,
+      "availability": "distributed",
+      "details": [
+        "Baixe em Download ou na Release pública do GitHub; o APK usa a mesma chave das prévias e instala por cima da 0.3.1 (versionCode 29 → 30), preservando os projetos.",
+        "Animator: Modo 2D (Triangulação, Direcional simples, Direcional livre, Cartesiano livre) no estado de Mistura 2D e Sincronizar com na camada; arquivo do Animator v6, .aeanimator v4.",
+        "Play: Sistema de interação com agachamento em rampa e corpo a no máximo 2 m/s; inclinação e agachamento medem o braço na pose animada; dois ossos sem polo mantém o lado do cotovelo do repouso.",
+        "Clipes Humanoid: orientação do Avatar encaixada no eixo, quadril pelo centro de massa do esqueleto, corpo normalizado pela pose em T; Bake Into Pose aceito e Offset de rotação aplicado.",
+        "Pacotes: FBX que cita o PSD do atlas usa a primeira imagem exportada com o mesmo radical (POLYGON texturizado); BoZo BodyRig com redução a quatro influências pelo Perfil e BMAC_M_Idle convertido no estúdio.",
+        "Capítulo Versões › Astra 0.3.2 com os caminhos de cada função; catálogo snapshot-2026-10-16b extraído do commit do APK (os campos novos do Animator entram nele)."
+      ],
+      "validation": "Pacote: assinatura V2 com o certificado cfbd4391…, badging dev.aether.editor versionCode 30, SHA-256 769f5bb5…; biblioteca nativa idêntica à do Astra Dev code 96 (2102da62…). Host: nativa 1572/1572, GUI 126/126, estúdio 73/73, runtime de animação 84/84, Unity 24/24. Aparelho (POCO F7, Android 16): atualização 29 → 30 com firstInstallTime de 07/10 e os quatro projetos preservados; Animator (code 93), Play do carregar (code 95), POLYGON e BoZo (code 96) conferidos no canal de desenvolvimento com a mesma biblioteca nativa (docs/validacao/animator-2026-10-16, ik-continuidade-2026-10-16, pacotes-2026-10-16).",
+      "migration": "Instale por cima da 0.3.1; projetos ficam. Cenas e controllers salvos nesta versão (Animator v6, .aeanimator v4) não abrem em versões anteriores. Projetos com sobras das receitas de Personagem continuam com elas: remova pelo menu do objeto.",
+      "links": [
+        {
+          "label": "Baixar Astra 0.3.2",
+          "url": "/download/"
+        },
+        {
+          "label": "O que mudou e como usar",
+          "url": "/pt-br/snapshot-2026-10-06/versoes/preview-0-3-2/"
+        },
+        {
+          "label": "Catálogo do APK 0.3.2",
+          "url": "/pt-br/snapshot-2026-10-16b/componentes/"
+        },
+        {
+          "label": "Release pública no GitHub",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.16-r2"
+        }
+      ]
+    },
+    {
       "id": "2026-10-16-pacotes-polygon-e-bozo-no-aparelho",
       "date": "2026-10-16",
       "scopes": [
