@@ -4,6 +4,50 @@
   "updatedAt": "2026-10-16",
   "entries": [
     {
+      "id": "2026-10-16-play-carregar-sem-solavancos-ik-dois-ossos-estavel",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Play: carregar sem solavancos e IK de dois ossos sem virar o cotovelo",
+      "summary": "O Sistema de interação deixava a pelve cair 27 cm num quadro e voltar no seguinte quando a mão animada cruzava a borda do alcance, e o IK de dois ossos sem polo trocava o lado do cotovelo com o braço quase reto (giros de 130–160° num quadro). Os três defeitos foram medidos no projeto do Kyle do aparelho e corrigidos.",
+      "version": "Revisão de fonte 2026-10-16 (commit 1d1b79cf) · Astra Dev code 95 (não público)",
+      "availability": "development",
+      "details": [
+        "Agachar (Sistema de interação): o pedido de descer a pelve cai em rampa entre 80% e 100% do alcance horizontal, em vez de ligar e desligar na borda, e o corpo desce ou sobe a no máximo 2 m/s (3,3 cm por quadro a 60 Hz).",
+        "Inclinar e agachar medem o braço na pose animada do quadro, não com o IK do quadro anterior; é a mesma regra que o apoio do pé já seguia.",
+        "Dois ossos sem polo: a dobra vem do repouso no referencial do osso raiz quando a cadeia está quase reta, como o bend normal do LimbIK do Final IK 2.2 e o hint opcional do TwoBoneIKConstraint do Animation Rigging da Unity; a pose animada continua mandando quando dobra de verdade.",
+        "Diagnóstico novo no host: aether_ui_preview play-project abre um projeto real (puxado do aparelho), toca o clipe no Play e mede o maior giro de cada osso entre quadros, com retirada seletiva de componentes de IK para isolar a causa.",
+        "Atenção a projetos de teste: receitas de Criar › Personagem (Olhar, Mirar, Mãos ao alvo, Pés no chão) ficam no projeto até serem removidas; três solvers no mesmo punho por cima de um clipe é o que produz a animação \"quebrada\". Remova as sobras pelo menu do objeto."
+      ],
+      "validation": "Host: aether_tests 1572/1572, aether_animation_runtime_tests 84/84 (dois cenários novos: agachar sem passo maior que 3,3 cm por quadro; dois ossos sem polo mantém o lado do repouso), GUI 126/126, estúdio 73/73, Unity 24/24. Projeto do aparelho no host: saltos > 20° num quadro de 9 para 2 (só a volta do loop do clipe) e de 6 para 1 com a montagem de Carregar como desenhada. Aparelho: Astra Dev code 95 no projeto KyleRevisao, 16 capturas em rajada durante o Play com o Kyle segurando a caixa sem bobbing nem salto de cotovelo (docs/validacao/ik-continuidade-2026-10-16).",
+      "migration": "Sem migração de arquivos. Projetos que guardam sobras das receitas de Personagem continuam com elas: exclua os objetos Olhar ·, Alvo IK · e Mira · e os componentes de IK dos ossos pelo menu do objeto.",
+      "links": []
+    },
+    {
+      "id": "2026-10-16-importar-anim-humanoid-quadril-e-corpo-como-na-unity",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Importar .anim Humanoid: quadril e orientação do corpo como na Unity",
+      "summary": "A conversão de clipes Humanoid (músculos → ossos) colocava o quadril 19 cm atrás e 5 cm abaixo do lugar e inclinava o corpo 6,8°. Com a orientação do Avatar encaixada no eixo, o centro de massa medido no esqueleto do próprio personagem e o corpo normalizado pela pose em T, o erro médio das mãos contra o projeto UMotion original cai de 15–16 cm para 6,7–7,2 cm e o dos pés de 29 cm para 7 cm.",
+      "version": "Revisão de fonte 2026-10-16 (commit 1d1b79cf) · Astra Dev code 95 (não público)",
+      "availability": "development",
+      "details": [
+        "Orientação do corpo como AvatarComputeOrientation da Unity (UnityCsReference, AvatarSetupTool.cs): quando o lado do tronco está num eixo, o cima é encaixado no eixo mais próximo. Sem isso, ombros atrás dos quadris (Robot Kyle) inclinavam o referencial de RootT/RootQ.",
+        "RootT é o centro de massa: o quadril vai onde a média das posições dos ossos humanos, pesada pelas massas padrão da Unity e medida no esqueleto do alvo nesta pose, coincide com RootT.",
+        "RootQ é relativo à pose em T: o referencial do corpo da referência é normalizado pelo repouso, sem o pitch constante de 6,8°.",
+        "Verdade de referência no teste: o projeto PickUpAnimation.asset do UMotion Pro 1.29 importado no mesmo Kyle e tocado em Play (FK + IK + Filho de), comparado quadro a quadro com o .anim Humanoid exportado dele.",
+        "Resta um deslocamento vertical constante de ≈5 cm (o modelo do centro de massa ainda não bate com o da Unity) e erro angular de 18–23° no antebraço e no punho nos trechos guiados por IK."
+      ],
+      "validation": "Host: aether_unity_material_tests 24/24 com AE_UMOTION_EXAMPLES (Humanoid vs UMotion em 180 quadros: mão esquerda média 7,2 cm, direita 6,7 cm, pés 7,2 cm, cabeça 5,9 cm; limites novos de 10 cm na média e 15 cm no pior quadro), aether_tests 1572/1572. Sem validação visual no aparelho nesta revisão.",
+      "migration": "Clipes Humanoid já convertidos não mudam; reimporte o .anim para receber a conversão nova.",
+      "links": []
+    },
+    {
       "id": "2026-10-16-animator-modos-2d-e-camadas-sincronizadas",
       "date": "2026-10-16",
       "scopes": [
