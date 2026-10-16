@@ -4,6 +4,51 @@
   "updatedAt": "2026-10-16",
   "entries": [
     {
+      "id": "2026-10-16-apk-preview-0-3-1",
+      "date": "2026-10-16",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "APK 0.3.1 publicado: estúdio de animação v2, Criar › Personagem e Biblioteca como gerenciador",
+      "summary": "A prévia pública ganha o estúdio v2 (posar por padrão, chave por canal, chaves-mestras, menu da chave, pinça), as receitas de Criar › Personagem (olhar, mirar, mãos, pés, corpo inteiro, carregar caixa), o Importar universal e a Biblioteca com trilho de tipos e malhas do projeto. Atualiza a 0.3.0 sem apagar projetos.",
+      "version": "0.3.1-preview.20261016 · versionCode 29 · commit 02744aa9",
+      "releaseVersion": "0.3.1-preview.20261016",
+      "versionCode": 29,
+      "availability": "distributed",
+      "details": [
+        "Baixe em Download ou na Release pública do GitHub; o APK usa a mesma chave das prévias e instala por cima da 0.3.0 (versionCode 28 → 29), preservando os projetos.",
+        "Estúdio v2: Animar no menu do objeto; painel do osso com Posição/Rotação/Escala e botão de chave por canal; grade de ferramentas; chaves-mestras na régua; menu da chave por toque longo; pinça para zoom; menu ⋮ com Novo clipe, Renomear, Duração, Camadas, Curvas, Eventos, Rig, Assistente de IK, IK permanente, Root motion, Bake e Exportar GLB.",
+        "Criar › Personagem: Olhar para alvo, Mirar com as mãos, Mãos ao alvo, Pés no chão, Corpo inteiro e Carregar caixa sobre o personagem selecionado, com alvos à frente dele e um Desfazer por receita.",
+        "Importar universal na barra (modelo, pasta de pacote, textura, HDRI, áudio); Biblioteca com trilho de tipos, cartões com selo e detalhe; Malhas do projeto no trilho Projeto; aviso de origem sem registro.",
+        "Interface universal (menu Cena como menu de contexto, barra de ícones, Inspector em coluna), bloco de interação do Final IK e clipes Humanoid da Unity convertidos pelo Avatar.",
+        "Correções: enquadramento do estúdio pelos ossos, campos numéricos sem ruído, alvos de Olhar/Mirar na frente do personagem, fechar o Rig devolve o painel do osso, receitas não tomam os próprios alvos por ossos.",
+        "Experimental: o botão Exportar APK dos projetos entra sem o fluxo de chave e exportação concluído no aparelho.",
+        "Docs: catálogo de 16/10 extraído do commit do APK, capítulo Astra 0.3.1 e notas de desenvolvimento de 10 a 16/10 marcadas como disponíveis no público."
+      ],
+      "validation": "Build e assinatura verificados (certificado cfbd4391…, SHA-256 do APK b8897fab…, igual ao asset publicado; biblioteca nativa 419711ae… idêntica ao Astra Dev code 92). POCO F7/Android 16: atualização sem desinstalar (28 → 29, instalação original preservada), 4 projetos preservados, projeto U07 aberto e executado dentro do pacote público. Astra Dev codes 87–92: bateria completa do estúdio pela interface, Criar › Personagem, Biblioteca e Play do carregar (docs/validacao/estudio-v2-2026-10-16). Host: nativa 1571/1571, GUI 126/126, estúdio 73/73.",
+      "migration": "Tipos novos desde a 0.3.0: astra.ik.interaction_grip e astra.ik.interaction_trigger; Sistema de interação na versão 5. Cenas com eles podem não abrir na 0.3.0: guarde uma cópia antes de testar. Alvos de Olhar/Mirar criados em builds de desenvolvimento anteriores continuam onde foram colocados.",
+      "links": [
+        {
+          "label": "Baixar Astra 0.3.1",
+          "url": "/download/"
+        },
+        {
+          "label": "O que mudou e como usar",
+          "url": "/pt-br/snapshot-2026-10-06/versoes/preview-0-3-1/"
+        },
+        {
+          "label": "Catálogo do APK 0.3.1",
+          "url": "/pt-br/snapshot-2026-10-16/componentes/"
+        },
+        {
+          "label": "Release pública no GitHub",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.16"
+        }
+      ]
+    },
+    {
       "id": "2026-10-16-receitas-nao-tomam-alvos-por-ossos-code-92",
       "date": "2026-10-16",
       "scopes": [

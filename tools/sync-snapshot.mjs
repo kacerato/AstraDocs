@@ -30,6 +30,9 @@ run('tar',['-xf',archive,'-C',privateDir]);
 const executable=path.join(privateDir,process.platform==='win32'?'export-components.exe':'export-components');
 run(process.env.CXX||'g++',['-std=c++20','-O1','-ffunction-sections','-fdata-sections','-Wl,--gc-sections','-I',path.join(privateDir,'native'),'tools/export-components.cpp',path.join(privateDir,'native/resources/asset_registry.cpp'),path.join(privateDir,'native/scene/collision_recipe.cpp'),'-o',executable]);
 fs.writeFileSync(`${output}/components.json`,run(executable,[]));
+// Since 13/10 the scripting project references Roslyn (Microsoft.CodeAnalysis.CSharp);
+// MSBuildWorkspace does not restore, so the archived project is restored first.
+run('dotnet',['restore',path.join(privateDir,'managed/Astra.Scripting/Astra.Scripting.csproj')],{env:{...process.env,DOTNET_CLI_TELEMETRY_OPTOUT:'1'}});
 run('dotnet',['run','--project','tools/export-api','--',path.join(privateDir,'managed/Astra.Scripting/Astra.Scripting.csproj'),`${output}/api.json`],{env:{...process.env,ASTRA_DOCS_SNAPSHOT:version}});
 run(process.execPath,['tools/sync-member-map.mjs',privateDir,`${output}/component-member-map.json`]);
 // Git stores these JSON contracts with LF; hash the same bytes on Windows/CI.

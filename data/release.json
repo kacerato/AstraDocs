@@ -1,18 +1,18 @@
 {
-  "version": "0.3.0-preview.20261009",
-  "versionCode": 28,
+  "version": "0.3.1-preview.20261016",
+  "versionCode": 29,
   "package": "dev.aether.editor",
-  "date": "2026-10-09",
-  "dateLabel": "9 de outubro de 2026",
+  "date": "2026-10-16",
+  "dateLabel": "16 de outubro de 2026",
   "channel": "preview",
-  "filename": "Astra-0.3.0-preview.20261009-android-arm64.apk",
-  "sizeLabel": "100,2 MiB",
-  "bytes": 105052608,
-  "sha256": "85d1c7667dc19e5a92f9c8420f399d32da4e4c6d7bfdf145535bc105f92fff54",
+  "filename": "Astra-0.3.1-preview.20261016-android-arm64.apk",
+  "sizeLabel": "109,2 MiB",
+  "bytes": 114511451,
+  "sha256": "b8897fab84ae37065a45d5512a532e42c903c27b5c2c24b70b70cacceba5a4fa",
   "certificateSha256": "cfbd4391d3d9f63f91901dbc22886ec6544de503d7e599543c39a68facd4ef6b",
-  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.09-j/Astra-0.3.0-preview.20261009-android-arm64.apk",
-  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.09-j",
-  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.09-j/SHA256SUMS.txt",
+  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.16/Astra-0.3.1-preview.20261016-android-arm64.apk",
+  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.16",
+  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.16/SHA256SUMS.txt",
   "requirements": {
     "minSdk": 26,
     "android": "8.0+",
@@ -24,13 +24,13 @@
   "signatureVerified": true,
   "deviceRuntimeVerified": true,
   "source": {
-    "baselineCommit": "a868c8ac518a774c867a7703482391c37df3990a",
+    "baselineCommit": "02744aa9e037f6e4fb519dd38b797aab409d52cc",
     "localChangesIncluded": false,
-    "snapshotDate": "2026-10-09",
-    "nativeLibrarySha256": "cdb8411a9a985000d1363fad789b55e0a2f343f41b720b09c4267c1c7e355c6c",
+    "snapshotDate": "2026-10-16",
+    "nativeLibrarySha256": "419711aee2a413b0ec1f5007ef01f1d9fc85bf2959fac64f9e8519336de2d92b",
     "versionOverrides": {
-      "versionCode": 28,
-      "versionName": "0.3.0-preview.20261009"
+      "versionCode": 29,
+      "versionName": "0.3.1-preview.20261016"
     }
   },
   "bundledProjects": {
@@ -42,28 +42,28 @@
     "device": "POCO F7 / 25053PC47G",
     "os": "Android 16",
     "publicPackage": [
-      "update with existing certificate (versionCode 12 → 28, first install time preserved)",
-      "user project files preserved",
-      "navigation acceptance 7/7 PASS inside the public package (bake through the editor UI, then Play)"
+      "update with existing certificate (versionCode 28 → 29, first install time preserved)",
+      "user project files preserved (4 projects)",
+      "U07 Laboratório de Controle opened and played inside the public package (character, fox, joystick, HUD)"
     ],
     "developmentPackage": {
       "package": "dev.aether.editor.u07",
       "sameNativeLibraryAsPublicPackage": true,
       "acceptances": [
-        "navigation 7/7 PASS, cold reopen with baked .navmesh (code 27)",
-        "Animation Studio clips, bake, layers and consolidation (codes 19–23, reports in docs/validacao)",
-        "Animator controllers, additive layers and nested machines (codes 14–16)"
+        "full Animation Studio run through the UI on code 90 (docs/validacao/estudio-v2-2026-10-16)",
+        "Criar › Personagem recipes and Library Projeto rail on codes 88-92",
+        "look-at target in front of the character and Rig close fix checked on codes 91/92"
       ]
     },
     "host": {
-      "nativeSuite": "1527/1527",
-      "managedSuite": "523/0 (71 skipped)"
+      "nativeSuite": "1571/1571 · GUI 126/126 · studio 73/73",
+      "managedSuite": "not rerun for this release"
     },
     "limits": [
       "not a universal device compatibility guarantee",
       "no sustained FPS/thermal measurement",
-      "navigation links and moving obstacles validated on host only",
-      "Animation Studio without FK/IK/root motion bake, events or retargeting"
+      "APK export flow (Exportar APK) ships as experimental: key creation, backup and export via the system file picker were not completed end to end on the device",
+      "BoZo modular characters, POLYGON gallery and 2D directional blend trees are not in this preview"
     ]
   }
 }

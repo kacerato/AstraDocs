@@ -30,13 +30,13 @@ import { navigationGuide } from '../data/navigation-guide.mjs';
 const root = path.resolve('src/content/docs');
 let version = 'snapshot-2026-10-06';
 const legacyVersion = version;
-const currentVersion = 'snapshot-2026-10-09';
+const currentVersion = 'snapshot-2026-10-16';
 // Recortes versionados do catálogo (07/10 = APK 0.2.3, 09/10 = APK 0.3.0); 06/10 é o arquivo.
-const versionedSnapshots = ['snapshot-2026-10-07',currentVersion];
+const versionedSnapshots = ['snapshot-2026-10-07','snapshot-2026-10-09',currentVersion];
 const isCurrent = () => versionedSnapshots.includes(version);
 const isLatest = () => version === currentVersion;
 const snapshotSources = {};
-const snapshotNotes = {'snapshot-2026-10-07':'versoes/preview-0-2-3','snapshot-2026-10-09':'versoes/preview-0-3-0'};
+const snapshotNotes = {'snapshot-2026-10-07':'versoes/preview-0-2-3','snapshot-2026-10-09':'versoes/preview-0-3-0','snapshot-2026-10-16':'versoes/preview-0-3-1'};
 const dayMonth = v => `${v.slice(17,19)}/${v.slice(14,16)}`;
 const componentGuide = c => isCurrent() ? currentComponentGuide(c) : archivedComponentGuide(c);
 const propertyUsage = (c,p) => isCurrent() ? currentPropertyUsage(c,p) : archivedPropertyUsage(c,p);

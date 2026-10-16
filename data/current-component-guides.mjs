@@ -1,4 +1,5 @@
 import { componentGuide, propertyUsage, familyFor } from './component-guides.mjs';
+import { ikGuides, ikPropertyUsage } from './current-ik-guides.mjs';
 
 // Editorial guidance reviewed against the source of APK 0.2.3 (af1d9981).
 // Keep this separate so the archived 06/10 reference does not acquire newer claims.
@@ -11,6 +12,7 @@ const control = '/pt-br/snapshot-2026-10-07/sistemas/posse-de-controle/';
 const navigation = '/pt-br/snapshot-2026-10-09/sistemas/navegacao/';
 const release030 = '/pt-br/snapshot-2026-10-06/versoes/preview-0-3-0/';
 const guides = {
+  ...ikGuides,
   'astra.navigation.surface': {
     purpose:'Assa a malha de navegação a partir dos colisores estáticos da cena e a carrega no Play. Agentes só andam onde existe malha assada.',
     use:'Crie pela folha Criar → Navegação → Superfície ou adicione a um objeto vazio. Ajuste as medidas do agente (raio, altura, degrau, inclinação) e toque **Assar** na Inspeção. O resultado vira o recurso Navegação/<nome>.navmesh do projeto.',
@@ -302,6 +304,7 @@ const navigationUsage = {
   },
 };
 export function currentPropertyUsage(c,p) {
+  { const ik = ikPropertyUsage(c,p); if (ik) return ik; }
   if (navigationUsage[c.typeId]?.[p.id]) return navigationUsage[c.typeId][p.id];
   if(c.typeId === 'astra.physics.shapecast' && p.id === 'shape') return 'Escolhe Esfera, Caixa, Cápsula ou Cilindro para a varredura. Configure somente as dimensões relevantes da forma; isso não cria um collider persistente.';
   if (c.typeId === 'astra.audio.echo' && p.id === 'delay') return 'Intervalo entre repetições, em milissegundos. 300 ms = .3 s; não é a espera inicial de um tween.';
