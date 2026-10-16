@@ -1,8 +1,29 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-15",
+  "updatedAt": "2026-10-16",
   "entries": [
+    {
+      "id": "2026-10-16-bateria-do-estudio-no-aparelho-olhar-e-rig",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Bateria completa do estúdio pela interface no celular: alvo do Olhar na frente do personagem e painel do Rig que fecha de volta ao osso",
+      "summary": "Todo o fluxo do estúdio v2 foi percorrido por toque no celular (Animar, osso, chave por campo, auto-key, Play, menu ⋮ inteiro, grade de ferramentas, Criar › Personagem, Biblioteca no trilho Projeto). Dois defeitos saíram da bateria e foram corrigidos: o alvo de Olhar/Mirar nascia ao lado do personagem (torcia o tronco no Play) e fechar o Rig pelo × deixava o painel vazio.",
+      "version": "Revisão de fonte 2026-10-16 (commit 49677fd3) · Astra Dev code 91 (não público)",
+      "availability": "development",
+      "details": [
+        "Olhar para alvo e Mirar com as mãos: o alvo passa a nascer na frente do personagem (perpendicular à linha dos ombros; sem braços pelo nome, o +Z do objeto) e o eixo do osso que olha ou mira é escolhido automaticamente como o que mais se alinha com essa frente. Antes, o alvo seguia o +Z do osso da cabeça, que no Robot Kyle aponta para o lado, e o LookAt girava cabeça e coluna para lá durante o Play.",
+        "Fechar a folha de Rig pelo × devolve o painel do osso; antes ficava a aba Rig vazia até tocar a seta de voltar.",
+        "Bateria no celular (code 90, projeto Kyle – Carregar caixa): Malhas do projeto abre a Biblioteca no trilho Projeto com os 7 cartões; Play mantém a caixa no ponto de carregar por 40 s; chave por campo numérico com auto-key; Play do estúdio; Camadas, Curvas, Eventos (+ Evento), Rig, Assistente de IK, Root motion, Bake da pose final, Exportar GLB, Novo clipe, Renomear, Duração; IK permanente recusa ponta que já tem IK; Seleção, Copiar/Colar, IK e Fixar com os avisos certos. Relatório em docs/validacao/estudio-v2-2026-10-16.",
+        "Não reproduzido: a caixa atravessando a mesa no reinício do carregar (40 s no celular e 20 s no host com a caixa parada no ponto de carregar)."
+      ],
+      "validation": "Host: editor 1571/1571, GUI 126/126, estúdio 73/73 (o cenário das receitas passa a conferir que o alvo do Olhar nasce 2 m à frente da cabeça pela frente do personagem). Aparelho: bateria inteira no code 90 (capturas v90_*). As duas correções estão no code 91, compilado e assinado; a conferência delas no celular ficou pendente porque o aparelho saiu da depuração sem fio no fechamento desta nota.",
+      "migration": "Sem mudança de formato. Alvos de Olhar/Mirar criados antes continuam onde foram colocados; recrie a receita para o alvo nascer à frente.",
+      "links": []
+    },
     {
       "id": "2026-10-15-biblioteca-malhas-do-projeto-e-origem-sem-registro",
       "date": "2026-10-15",
