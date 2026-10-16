@@ -4,6 +4,27 @@
   "updatedAt": "2026-10-16",
   "entries": [
     {
+      "id": "2026-10-16-animator-modos-2d-e-camadas-sincronizadas",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Animator: modos de mistura 2D da Unity e camadas sincronizadas",
+      "summary": "O estado de Mistura 2D ganha o campo Modo 2D (Triangulação, Direcional simples, Direcional livre, Cartesiano livre) e uma camada pode Sincronizar com outra: copia máquinas, estados e transições da origem e guarda as suas próprias motions por estado. Arquivo do Animator na versão 6; recurso .aeanimator na versão 4.",
+      "version": "Revisão de fonte 2026-10-16 (commit 2b443b35) · Astra Dev code 93 (não público)",
+      "availability": "development",
+      "details": [
+        "Modo 2D no painel do estado (Mistura 2D): Triangulação é o comportamento anterior (BlendSpace2D da Godot 4.3); Direcional simples escolhe as duas direções vizinhas e mistura o clipe do centro pela magnitude; Direcional livre e Cartesiano livre usam a interpolação por bandas de gradiente em coordenadas polares ou cartesianas, como os modos 2D da Unity 6000.0 (Blend Trees › 2D blending).",
+        "Sincronizar com, no painel da camada (a partir da segunda camada): a camada passa a espelhar máquinas, estados e transições da origem com ids próprios e referências remapeadas; cada estado da cópia guarda as suas motions (nascem iguais às da origem), e peso, máscara, composição e referência continuam da própria camada. Editar a estrutura na cópia é recusado com aviso; edite na origem e a cópia acompanha. Uma camada sincronizada não serve de origem.",
+        "Arquivo: Animator na versão 6 (modo 2D e vínculos de sincronização num bloco no fim, legível pelas versões anteriores sem ele); recurso .aeanimator na versão 4 (grafo 6). Arquivos antigos abrem como antes.",
+        "Fora desta rodada: Blend Tree aninhada e Sync timing."
+      ],
+      "validation": "Host: editor 1572/1572 (cenários de mistura cobrem os quatro modos sobre a mesma cruz de cinco clipes e o arquivo v6; cenário novo de camada sincronizada cobre cópia, remapeamento, motions próprias, acompanhamento da origem, arquivo e recusa de origem sincronizada), GUI 126/126, estúdio 73/73. Aparelho: Astra Dev code 93 no projeto Kyle: Animator criado por Criar › Gameplay; no estado em Mistura 2D a linha Modo 2D alterna Triangulação → Direcional simples → Direcional livre → Cartesiano livre; camada nova com Sincronizar com · Base passa a mostrar o estado da Base, e +Estado nela é recusado com aviso na barra de estado (capturas em docs/validacao/animator-2026-10-16).",
+      "migration": "Animator v6 e .aeanimator v4: cenas e controllers salvos nesta revisão não abrem em revisões anteriores; guarde uma cópia antes de testar. Estados 2D existentes continuam em Triangulação.",
+      "links": []
+    },
+    {
       "id": "2026-10-16-apk-preview-0-3-1",
       "date": "2026-10-16",
       "scopes": [
