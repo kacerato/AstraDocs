@@ -4,6 +4,26 @@
   "updatedAt": "2026-10-16",
   "entries": [
     {
+      "id": "2026-10-16-receitas-nao-tomam-alvos-por-ossos-code-92",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Receitas de Personagem não tomam os próprios alvos por ossos; correções do Olhar e do Rig conferidas no celular",
+      "summary": "Rodar \"Olhar para alvo\" pela segunda vez tomava o alvo \"Olhar · Head\" por cabeça (o nome contém head) e criava um LookAt no próprio alvo; os alvos de IK das mãos seriam tomados por mãos do mesmo jeito. Alvos criados pelas receitas ficam fora da detecção. As correções do code 91 foram conferidas no celular.",
+      "version": "Revisão de fonte 2026-10-16 (commit 2bfa48b4) · Astra Dev code 92 (não público)",
+      "availability": "development",
+      "details": [
+        "Objetos nomeados pelas receitas (Olhar ·, Mira ·, Alvo IK ·, Alvo ·) são ignorados tanto na detecção por nome quanto na detecção pela estrutura do esqueleto; repetir uma receita responde \"Já montado neste personagem\" sem criar nada.",
+        "Conferido no celular (code 91/92, projeto Kyle – Carregar caixa): fechar o Rig pelo × devolve o painel do osso; com o alvo do Olhar à frente o Kyle fica ereto olhando para a frente no Play; Mirar com as mãos cria Mira · Left_Wrist e Mira · Right_Wrist à frente das mãos e, no Play, as mãos apontam para eles enquanto seguram a caixa.",
+        "Limpeza feita pela própria interface: o alvo extraviado saiu pelo menu do componente › Remover e o alvo antigo foi levado para a frente pelos campos de posição do Inspector."
+      ],
+      "validation": "Host: editor 1571/1571, GUI 126/126, estúdio 73/73 (cenário das receitas passa a repetir o Olhar e a exigir que nenhum alvo vire osso). Aparelho: capturas v91_rig_fechado, v92_mirar2, v92_play e v92_play2 em docs/validacao/estudio-v2-2026-10-16.",
+      "migration": "Sem mudança de formato. Projetos que já tenham um LookAt num objeto de alvo (criado pelo defeito) podem removê-lo pelo menu do componente.",
+      "links": []
+    },
+    {
       "id": "2026-10-16-bateria-do-estudio-no-aparelho-olhar-e-rig",
       "date": "2026-10-16",
       "scopes": [
