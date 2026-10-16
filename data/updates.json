@@ -1,8 +1,72 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-15",
+  "updatedAt": "2026-10-16",
   "entries": [
+    {
+      "id": "2026-10-16-terreno-bloco1-caminhos-pinceis",
+      "date": "2026-10-16",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno em desenvolvimento: pincéis 3D, curvas e caminhos persistidos",
+      "summary": "Primeiro bloco da auditoria em implementação: propriedades volumétricas, caminhos editáveis, curvas independentes e atualização de geometria por regiões. Os 71 itens e o primeiro bloco ainda não estão concluídos.",
+      "version": "Branch de terreno · 279d174 · 2026-10-16",
+      "availability": "development",
+      "details": [
+        "Uso: Terreno → Pincel para forma 3D/precisão; Traçado para caminhos com pontos persistidos, Perfil para pista/acostamento/rampa e Materiais para a curva independente de pintura. Aplicar confirma; Salvar cena persiste a cena.",
+        "Pincel: dimensões XYZ e vínculo, orientação, cubo arredondado, inversão, opacidade alvo/acumulativa, profundidade, trava de altura, raio dos filtros e restauração separada de geometria/pesos. Cursor e operador compartilham a forma.",
+        "Caminhos: criar, selecionar, mover, inserir/remover pontos, duplicar/excluir, segmentos retos/curvos e caps. Modo de seguir superfície ou alturas XYZ dos pontos, incluindo pontos intermediários. Perfis com todos os nós editáveis; crista/vala não altera a curva de opacidade.",
+        "Desempenho: chunks não afetados podem ser reutilizados; pintura filtra operações por chunk. GLB e prévia do pincel compartilham vértices idênticos sem remover triângulos nem alterar normais, UVs ou pesos. Publicação Vulkan por intervalos preserva buffers do mesmo tamanho; mudanças de tamanho continuam usando substituição integral.",
+        "Assets preparados: 82 entradas de materiais/configurações e 146 texturas únicas com fontes originais. PNGs originais utilizáveis são referenciados diretamente, sem cópias convertidas redundantes. Miniaturas não reduzem a qualidade do material. Oito referências de máscaras permanecem ausentes e declaradas.",
+        "Limites abertos: integração da biblioteca no renderer, PBR/height blend/noises/clusters completos, mapas independentes, terrenos vizinhos, LOD, integração altura–volume e histórico por deltas/coleta de revisões. A preparação de assets não significa implementação de M01–M08. Sem novo APK público.",
+        "Docs: guias de desenvolvimento recebem identificação própria, sem usar a versão do APK público como rótulo da revisão em andamento."
+      ],
+      "validation": "Host Windows: 48/48 cenários integrados de terreno, com propriedades, migração, caminhos, composição de cruzamentos, toque roteado, cancelamento, reedição, geometria e colisão. UI nativa capturada por rasterização de software em 655×300 e 1280×720; não representa renderização 3D Android. Transferências reais Vulkan na NVIDIA RTX 3050: 4/4 cenários de cópia parcial/readback, rejeição de lote inválido e sincronização; teste controlado de 12 bytes enviados em buffers de 1.052.672 bytes, sem promessa de fluidez no aparelho. Seis testes de interpretação de canais do catálogo passaram. ADB suspenso; sem validação Android desta revisão.",
+      "migration": "Novas receitas AETERRAIN5 persistem o modo de altura dos pontos. Receitas 1–4 continuam legíveis; versão 4 conserva seguir superfície. Editores antigos não reabrem novas receitas para autoria. Preserve revisões ao alternar versões. Aplicar não substitui Salvar cena; sem migração automática entre pacotes.",
+      "links": [
+        {
+          "label": "Guia de desenvolvimento: caminhos, pincéis e limites",
+          "url": "/pt-br/desenvolvimento/2026-10-16/terreno-caminhos/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-15-terreno-voxel-reedicao-base-solida",
+      "date": "2026-10-15",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno: reedição, prévia ao arrastar e pintura com camadas suaves",
+      "summary": "Revisão de desenvolvimento com base sólida, espaço de autoria exclusivo, prévia temporária do pincel, novas operações e superfície triplanar. Host 33/33; aceite desta revisão no aparelho pendente. Auditoria dos três pacotes concluída como inventário, implementação completa ainda em andamento.",
+      "version": "Revisão de fonte 8713229 · Astra Terreno code 85 (teste separado, não público) · 2026-10-15",
+      "availability": "development",
+      "details": [
+        "Uso: Criar → Geometria → Terreno e voxel. Após aplicar, selecione raiz/chunk/anexo e use Editar terreno no Inspector. Forma, Esculpir, Pintar e Gerir organizam o trabalho; a área de autoria libera espaço do viewport.",
+        "Base sólida fecha relevo, laterais e fundo, com espessura de 0,1–512 unidades. Novos terrenos começam com base; receitas antigas conservam a estrutura anterior.",
+        "Selecionar ferramenta ou camada ativa a escultura. Prévia mostra geometria durante o gesto sem alterar documento, arquivo, recursos ou histórico. Soltar confirma uma revisão e um Undo; cancelar restaura a anterior. Navegação e transformação não disputam o gesto com o pincel.",
+        "Cursor de influência, quatro formas conforme operador, núcleo rígido, rotação, proporção, espaçamento e alvo acima do dedo. Ruído, terraços, restauração, aguçamento e buracos têm consumidores reais. Sliders distinguem ajuste horizontal de rolagem vertical.",
+        "Pintura com quatro pesos por vértice, miniaturas reais, mistura triplanar e variação macro de escala/cor. SPIR-V das quatro variantes foi gerado e validado. PBR por camada, height blend e outros módulos MicroSplat ainda não estão implementados.",
+        "Auditoria: 753 arquivos de conteúdo, 11 módulos MicroSplat fornecidos e 33 famílias de capacidades. Digger, MicroSplat e Path Painter não têm port completo. Revisão estudou 60 quadros consecutivos de demonstração oficial Unity, além de amostragens dos vídeos.",
+        "Limites: mundo finito, 4.096 amostras de pincel, 200 mil triângulos; geração integral e republicação gráfica agregada. Revisões finais são retidas, sem limpeza automática; orçamento CPU contabilizado de 128 MiB e 4.096 draws não limita toda a RAM/GPU/disco."
+      ],
+      "validation": "Host Windows: 33/33 cenários integrados aprovados, com prévia sucessiva antes de soltar, cancelamento sem alterações persistidas, novos operadores/formas, buracos fechados, pesos e bindings sRGB, UI/rolagem, ausência de gizmos, reedição, migração, Undo/Redo, orçamento e colisão Jolt. Capturas da UI nativa por rasterização de software. APK anterior 78 foi instalado e teve reedição/arraste/pintura exercitados; isso não certifica a nova prévia, layout ou shader. Pacote de teste separado dev.aether.editor.terrain; instalação, aparência, desempenho e conforto desta revisão são verificações próprias, ainda pendentes neste registro. A Astra Dev existente não é substituída por este pacote.",
+      "migration": "AETERRAIN1/2 continuam legíveis e mantêm aparência legada até ativar a mistura. Novas gravações AETERRAIN3 persistem estrutura, parâmetros/formas do pincel, grupo de gesto, mistura e variação. Editores anteriores não reabrem a nova receita para autoria; preserve cenas/revisões para retorno. Aplicar não substitui Salvar cena. Sem conversão global automática nem limpeza de fontes antigas. O pacote Astra Terreno mantém um diretório próprio de projetos; não migra nem modifica automaticamente os projetos da Astra Dev.",
+      "links": [
+        {
+          "label": "Guia de desenvolvimento: prévia, escultura, materiais e auditoria",
+          "url": "/pt-br/desenvolvimento/2026-10-15/terreno-voxel/"
+        },
+        {
+          "label": "Entrega inicial de terreno e voxel",
+          "url": "/pt-br/desenvolvimento/2026-10-14/terreno-voxel/"
+        }
+      ]
+    },
     {
       "id": "2026-10-15-timeline-chaves-mestras-menu-da-chave-pinca",
       "date": "2026-10-15",
