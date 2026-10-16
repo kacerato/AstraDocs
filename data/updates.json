@@ -4,6 +4,27 @@
   "updatedAt": "2026-10-15",
   "entries": [
     {
+      "id": "2026-10-15-biblioteca-malhas-do-projeto-e-origem-sem-registro",
+      "date": "2026-10-15",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Biblioteca: malhas do projeto no trilho Projeto e aviso de origem sem registro",
+      "summary": "O espaço \"Recursos importados\" (uma lista de texto \"Adicionar malha N\") foi absorvido pela Biblioteca: as malhas do projeto viram cartões no trilho Projeto, com \"Na cena\" no cartão. Modelos que a cena referencia sem registro em .astra ganham um cartão de aviso com diagnóstico, para o problema aparecer onde o modelo deveria estar.",
+      "version": "Revisão de fonte 2026-10-15 (commit 9b8a4f69) · Astra Dev code 90 (não público)",
+      "availability": "development",
+      "details": [
+        "Trilho Projeto na Biblioteca, com contagem: um cartão por malha do projeto (nome do pacote carregado), selo pronto e o botão \"Na cena\" no canto do cartão e no painel de detalhe. Tocar coloca a malha no ponto focado da vista; arrastar para a cena ou para um pai na Hierarquia continua funcionando pelo mesmo caminho.",
+        "O item do menu Cena passa de \"Recursos importados\" para \"Malhas do projeto\" e abre a Biblioteca já no trilho Projeto. A lista de texto com paginação \"Anterior / Próxima\" deixa de existir.",
+        "Origem sem registro: para cada raiz importada cuja origem não está em .astra/assets.astra (o caso do projeto copiado sem a pasta .astra, visto no aparelho em 15/10), a Biblioteca mostra um cartão de aviso no trilho Projeto com o diagnóstico em chips (registro sem o modelo, identidade referenciada, o que fazer) e a ação Importar modelo.",
+        "Busca da Biblioteca filtra também as malhas do projeto; o filtro por pacote esconde o trilho Projeto, que não pertence a pacote nenhum."
+      ],
+      "validation": "Host: editor 1571/1571 (cenário de malhas do projeto passa a conferir que Malhas do projeto abre a Biblioteca no trilho Projeto, que a malha é um cartão e que o arrasto e o toque continuam criando a instância), GUI 126/126, estúdio 73/73. Aparelho: pendente. O code 90 está compilado e assinado, mas o aparelho estava dormindo no fechamento desta nota; a conferência da Biblioteca no trilho Projeto no celular entra em nota própria.",
+      "migration": "Sem mudança de formato.",
+      "links": []
+    },
+    {
       "id": "2026-10-15-criar-personagem-receitas-de-ik",
       "date": "2026-10-15",
       "scopes": [
