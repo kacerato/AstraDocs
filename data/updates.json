@@ -4,6 +4,27 @@
   "updatedAt": "2026-10-16",
   "entries": [
     {
+      "id": "2026-10-16-pacotes-polygon-e-bozo-no-aparelho",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Pacotes POLYGON (Synty) e BoZo 2.2: modelos texturizados e clipe Humanoid no estúdio",
+      "summary": "Importar › Pasta de pacote leva o POLYGON Icons e o rig Humanoid do BoZo à Biblioteca e à cena. O FBX que cita o PSD do atlas passa a usar a primeira imagem exportada com o mesmo radical; o clipe Humanoid com Bake Into Pose deixa de ser recusado e o Offset de rotação da raiz é aplicado ao corpo.",
+      "version": "Revisão de fonte 2026-10-16 (commits 0d032510 e cddc7a45) · Astra Dev code 96 (não público)",
+      "availability": "development",
+      "details": [
+        "Texturas de FBX (aparelho): quando o modelo cita uma fonte de trabalho que o pacote não traz (PolygonIcons_Texture_01.psd), a primeira imagem exportada com o mesmo radical é usada (…_01_A.png). Os ícones do POLYGON entram com as cores do atlas; antes ficavam só com os fatores do material.",
+        "Clipes .anim da Unity: Root Transform › Bake Into Pose (orientação, posição Y, posição XZ) não recusa mais o clipe, porque a conversão escreve sempre a pose inteira; Root Transform Rotation › Offset gira o corpo do clipe Humanoid como a Unity gira a raiz. Loop Pose, Mirror, Level e Cycle Offset continuam recusados com aviso (Unity 6000.0, Animation Clip › Root Transform).",
+        "BoZo 2.2: BodyRig.fbx (Avatar Humanoid de 52 ossos, skin com mais de quatro influências reduzida por autorização no Perfil 3/3) entra na cena com 2,08 m, e BMAC_M_Idle.anim converte e abre no estúdio com 92 ossos e 3,77 s. Roupas modulares, shaders estilizados e expressões ficam fora desta rodada.",
+        "Diagnóstico no host: aether_ui_preview import-models <pasta> importa cada FBX/GLB de uma pasta e relata aceito/recusado; o .unitypackage é extraído por script (o editor ainda não o abre direto)."
+      ],
+      "validation": "Host: POLYGON 12/12 FBX aceitos; cenário unity_humanoid_bozo (AE_BOZO_PACK) com pés a 3 cm do chão e cabeça 58 cm acima do quadril; aether_tests 1572/1572, estúdio 73/73, Unity 24/24. Aparelho: Astra Dev code 95→96, projeto novo Pacotes: POLYGON com 6 modelos e 16 texturas na Biblioteca, ícone Alarm texturizado na cena (code 96); BoZo com BodyRig na cena e o idle convertido e tocado no estúdio em quatro capturas (docs/validacao/pacotes-2026-10-16).",
+      "migration": "Modelos já importados não mudam: importe um modelo novo do pacote (ou reimporte a fonte) para receber a textura pelo radical. Clipes .anim antes recusados por Bake Into Pose passam a converter ao acionar o clipe na Biblioteca.",
+      "links": []
+    },
+    {
       "id": "2026-10-16-play-carregar-sem-solavancos-ik-dois-ossos-estavel",
       "date": "2026-10-16",
       "scopes": [
