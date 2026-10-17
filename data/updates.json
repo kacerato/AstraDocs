@@ -4,6 +4,32 @@
   "updatedAt": "2026-10-17",
   "entries": [
     {
+      "id": "2026-10-17-terreno-capacidade-gpu-host",
+      "date": "2026-10-17",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Terreno em desenvolvimento: reaproveitamento de buffers ao mudar a geometria",
+      "summary": "Pequenas expansões e reduções podem manter os buffers Vulkan existentes. Vértices e índices são substituídos de forma independente, com reserva limitada de memória. Revisão local; não está no APK público.",
+      "version": "Revisão local 6d4be31d · codex/terrain-voxel-generator",
+      "availability": "development",
+      "details": [
+        "Uso: comportamento interno da publicação de geometria durante a autoria; não há nova configuração no editor. Uma alteração que caiba na capacidade existente envia apenas as faixas diferentes e a região nova.",
+        "A reserva é de 25%, com mínimo de 4 KiB e máximo de 8 MiB por buffer. Reduções que deixem mais de 8 MiB ociosos compactam a alocação. Se a reserva opcional não couber, o allocator tenta o tamanho exato; falha da geometria necessária recusa a publicação.",
+        "Regiões reativadas depois de uma redução sempre recebem os dados atuais. Picking, desenhos e colisão continuam seguindo o tamanho lógico, sem acessar a reserva não inicializada.",
+        "O D07 continua parcial: faltam alocações estáveis por chunk e sincronização/culling localizados. A espera global do renderer permanece, e inserções intermediárias ainda podem deslocar a parte seguinte da biblioteca. Os cinco plugins e os 71 itens do plano não estão concluídos."
+      ],
+      "validation": "Host: 6/6 cenários, incluindo dois em Vulkan real na Intel UHD Graphics com leitura de volta, identidade do buffer preservada, crescimento/redução/regrowth e recusa de lote inválido sem modificar os bytes anteriores. Unidade do consumidor Android passou checagem de compilação ARM64 com NDK 27.1 e warnings como erros. Complemento da revisão anterior: 3/3 cenários passaram com o importador GLB real, incluindo LOD recuperado da receita. Não houve execução da sessão Android, benchmark de fluidez, novo APK ou ADB.",
+      "migration": "Sem alteração de formato nesta revisão. A migração AETERRAIN6 da nota anterior permanece: leitores antigos não aceitam receitas 6. APK público inalterado.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-17-terreno-lod-autoral-host",
       "date": "2026-10-17",
       "scopes": [
