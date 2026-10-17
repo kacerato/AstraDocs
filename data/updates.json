@@ -4,6 +4,30 @@
   "updatedAt": "2026-10-17",
   "entries": [
     {
+      "id": "2026-10-17-terreno-espacamento-traco-host",
+      "date": "2026-10-17",
+      "scopes": ["app"],
+      "kind": "fix",
+      "title": "Terreno em desenvolvimento: espaçamento do pincel preservado nas curvas",
+      "summary": "O pincel passa a acumular a distância percorrida ao longo do traço. Subdividir a mesma trajetória em mais eventos preserva a distribuição dos carimbos, inclusive nas curvas curtas. Revisão local; não está no APK público.",
+      "version": "Revisão local c9a5337d · codex/terrain-voxel-generator",
+      "availability": "development",
+      "details": [
+        "Uso: ao arrastar um pincel de terreno, o espaçamento escolhido é mantido durante o gesto. Ferramentas volumétricas consideram os três eixos; ferramentas de superfície consideram o deslocamento horizontal.",
+        "A distância que sobra entre dois carimbos segue para o próximo segmento. O algoritmo anterior media uma linha direta desde o último carimbo e podia cortar curvas curtas. Parar o dedo não acrescenta carimbos; perder contato com o terreno interrompe a continuidade.",
+        "Ao atingir o limite de amostras, o gesto inteiro é descartado e sua prévia é removida. A cena comprometida permanece preservada.",
+        "A garantia cobre subdivisões da mesma polilinha recebida. Ela não recupera pontos ausentes do dispositivo e não representa aplicação baseada em tempo ou pressão. D01, o primeiro bloco e o plano integral dos cinco plugins continuam abertos."
+      ],
+      "validation": "Host: 2/2 cenários direcionados passaram. Comparação de trajetórias com 32 vezes mais eventos, incluindo densidade real de Dig/Add nos modos Accumulate e Target após salvar/reabrir. Também foram conferidos curvas curtas, contato parado, movimento vertical, lacunas e orçamento de amostras. A unidade consumidora do editor passou checagem sintática ARM64 com NDK 27.1 e warnings como erros. Build incremental com um job; sem execução interativa no aparelho, ADB, novo APK ou medição de FPS.",
+      "migration": "Sem alteração de formato. Receitas existentes mantêm os carimbos salvos; a correção afeta novos gestos. O APK público permanece inalterado.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-17-terreno-capacidade-gpu-host",
       "date": "2026-10-17",
       "scopes": [
