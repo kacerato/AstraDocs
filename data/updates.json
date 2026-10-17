@@ -4,9 +4,36 @@
   "updatedAt": "2026-10-17",
   "entries": [
     {
+      "id": "2026-10-17-edicao-multipla-adicionar-componente",
+      "date": "2026-10-17",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Edição múltipla: adicionar componente não apaga mais os outros objetos",
+      "summary": "Com vários objetos selecionados, Adicionar componente passa a acrescentar o componente em todos e a manter o que cada um já tinha. Antes, os objetos além do ativo perdiam todos os componentes, inclusive a malha e o vínculo com o modelo importado. Revisão local; não está no APK público.",
+      "version": "Revisão local 4345fa50 · Astra Dev 0.3.0-dev.97 (code 97)",
+      "availability": "development",
+      "details": [
+        "Uso: Hierarquia › Selecionar vários › Filhos seleciona as peças de um modelo importado; Adicionar componente › Física 3D › Colisor 3D entra em todas num único Desfazer.",
+        "O Colisor acrescentado em cada objeto é ajustado à malha desse próprio objeto. Em seguida, trocar Forma para Malha e escolher o Corpo proprietário vale para toda a seleção.",
+        "Cenário de uso que expôs o defeito: dar colisão a um cenário importado (29 peças) e ligar todas a um único Corpo físico estático no objeto raiz."
+      ],
+      "validation": "Host: cenário multi_selection_add_component_keeps_existing_components e os dois cenários de edição múltipla existentes passaram (3/3). Aparelho (Astra Dev 97): 29 malhas de um cenário importado receberam Colisor de malha vinculado ao corpo da raiz; malhas e vínculos preservados no arquivo salvo; personagem em Play andou, olhou, pulou e foi bloqueado pelas paredes. Sem medição de desempenho.",
+      "migration": "Sem alteração de formato. Cenas salvas com a versão anterior depois de uma adição em lote podem ter objetos sem componentes; use Desfazer antes de fechar ou reimporte o modelo. O APK público permanece inalterado.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-17-terreno-espacamento-traco-host",
       "date": "2026-10-17",
-      "scopes": ["app"],
+      "scopes": [
+        "app"
+      ],
       "kind": "fix",
       "title": "Terreno em desenvolvimento: espaçamento do pincel preservado nas curvas",
       "summary": "O pincel passa a acumular a distância percorrida ao longo do traço. Subdividir a mesma trajetória em mais eventos preserva a distribuição dos carimbos, inclusive nas curvas curtas. Revisão local; não está no APK público.",
