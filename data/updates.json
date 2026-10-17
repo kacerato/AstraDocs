@@ -1,8 +1,34 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-17",
   "entries": [
+    {
+      "id": "2026-10-17-terreno-lod-autoral-host",
+      "date": "2026-10-17",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Terreno em desenvolvimento: LOD autoral e reconstrução regional de caminhos",
+      "summary": "A branch de terreno passa a salvar a configuração de LOD e reaplicá-la na importação. Edições de caminhos reutilizam os chunks distantes. Esta revisão local não está no APK público e não conclui os cinco pacotes de terreno.",
+      "version": "Revisão local 638e1a9a · codex/terrain-voxel-generator",
+      "availability": "development",
+      "details": [
+        "Uso previsto nesta revisão: Terreno → Forma → Detalhes → Detalhe à distância; escolha de um a quatro níveis e erro máximo por chunk. Um nível desliga a geração. Aplicar configura o terreno; a prévia de escultura mantém o nível original.",
+        "A simplificação conserva bordas dos chunks e considera normais e pesos das camadas para preservar caminhos pintados. A colisão permanece na malha original; a seleção visual usa o orçamento de erro em pixels existente.",
+        "Mover pontos, trocar materiais, reordenar, desativar ou apagar caminhos invalida as regiões antigas e novas da malha. O campo dos caminhos ainda é recalculado integralmente; a atualização GPU com mudança de tamanho continua pendente.",
+        "O bloco inicial e o plano integral dos cinco pacotes continuam abertos. Materiais PBR e efeitos de terreno, vegetação, grafo procedural, interface altura-volume, vizinhança e outras integrações ainda precisam de implementação e aceitação."
+      ],
+      "validation": "Host: 23/23 cenários do núcleo antes da ampliação da métrica de atributos; cenário direcionado de LOD 1/1 depois dessa ampliação. Importador e ação de editor passaram compilação sintática. Superfície executável conferida em 1280×720 e 655×300, com acesso aos controles. A sessão integrada, a reabertura completa no editor e as transições no renderer final ainda não foram validadas nesta rodada. Sem ADB, novo APK ou teste em aparelho.",
+      "migration": "A receita nova usa AETERRAIN6. O leitor mantém versões 1–5; versões antigas da engine não leem receitas 6. Revisão apenas de desenvolvimento: preserve os projetos originais antes de experimentá-la. O APK público e seu catálogo permanecem inalterados.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-16-apk-preview-0-3-2",
       "date": "2026-10-16",
