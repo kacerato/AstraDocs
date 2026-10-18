@@ -1,8 +1,36 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-17",
+  "updatedAt": "2026-10-18",
   "entries": [
+    {
+      "id": "2026-10-18-telemetria-desempenho-recepcao",
+      "date": "2026-10-18",
+      "scopes": [
+        "docs",
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Telemetria de desempenho: recepção dos dados no site",
+      "summary": "O site passa a ter o ponto de recepção da telemetria de desempenho opcional do app Astra: janelas agregadas de quadros (FPS, tempo de quadro, CPU, GPU, resolução e estado térmico) e o pedido de apagar os dados de uma instalação. O envio pelo app ainda não existe; nenhum APK coleta ou envia dados.",
+      "version": "Site astraengine.com.br · app: revisão local fda3cb77 (formato da janela, sem envio)",
+      "availability": "development",
+      "details": [
+        "Endereço: POST /api/telemetry/ingest/ com lotes astra.telemetry.batch/1 (até 120 janelas e 20 eventos, 256 KB) ou astra.telemetry.delete/1 para apagar uma instalação e tudo o que ela enviou.",
+        "Sem dado pessoal: identificador de instalação aleatório e apagável, modelo do aparelho, GPU, versão do app e números de quadro. Nenhuma tabela é acessível de fora; só a função grava.",
+        "Lote inválido é recusado inteiro; reenvio da mesma janela não duplica; limite de 2.000 janelas por instalação por hora.",
+        "Retenção: tarefa diária apaga janelas e eventos com mais de 180 dias.",
+        "Uso previsto: comparar FPS e tempos por GPU, nível de qualidade, cena e versão para orientar o trabalho de desempenho em aparelhos fracos."
+      ],
+      "validation": "Local: validação do lote e respostas HTTP (10/10) e gravação, idempotência, agregado por GPU, retenção, limite por hora e remoção em cascata contra Postgres em memória (10/10). Banco de produção ainda não ligado; até lá a recepção responde 503. Sem teste ponta a ponta com o app.",
+      "migration": "Nada a migrar. O envio só existirá quando o app ganhar a tela de consentimento; até lá nada é coletado.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-17-edicao-multipla-adicionar-componente",
       "date": "2026-10-17",
