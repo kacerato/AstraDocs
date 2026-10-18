@@ -75,8 +75,19 @@ on conflict (key) do update set value = excluded.value;
 let client = null;
 let schemaReady = false;
 
+// A integração Neon da Vercel aceita prefixo escolhido no painel (ex.: STORAGE_URL);
+// sem o nome padrão, usa a primeira variável cujo valor é uma URL Postgres.
+function connectionString() {
+  if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
+  if (process.env.POSTGRES_URL) return process.env.POSTGRES_URL;
+  const names = Object.keys(process.env).filter((name) => /^postgres(ql)?:\/\//.test(process.env[name] ?? "")).sort();
+  const preferred = names.find((name) => /DATABASE_URL$|POSTGRES_URL$/.test(name)) ??
+                    names.find((name) => !/UNPOOLED|NON_POOLING/.test(name)) ?? names[0];
+  return preferred ? process.env[preferred] : null;
+}
+
 export function database() {
-  const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  const url = connectionString();
   if (!url) return null;
   if (!client) client = neon(url);
   return client;
