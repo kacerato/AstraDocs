@@ -12,6 +12,8 @@ Novos terrenos começam **planos**, com base sólida, tamanho de 64 m e 64 célu
 
 Em **Forma → Relevo**, escolha **Colinas**, **Montanhas** ou **Ilha** quando quiser uma base procedural. Isso não substitui os geradores e a composição natural ainda pendentes no plano. Terrenos salvos preservam seus parâmetros anteriores.
 
+A revisão 109 aplica os mesmos padrões suaves ao iniciar o app e reabrir um terreno existente. Os ajustes pessoais do pincel ainda são transitórios: não confunda a receita do relevo, que é salva, com as preferências da ferramenta entre sessões.
+
 Em **Pincel**, Elevar/Baixar identificam a força como **Altura por amostra (m)**. O slider facilita escolher forças baixas, sem retirar valores altos nem a entrada numérica. Para colinas amplas, combine raio maior, núcleo suave e várias passadas graduais; use **Suavizar** para refinar transições. Um raio pequeno em malha pouco densa ainda pode produzir facetas.
 
 Referência: [Unity 6000.0 — Raise or Lower Terrain](https://docs.unity.com/en-us/engine/6000.0/manual/creating-environments/script-terrain/terrain-tools/terrain-raise-lower-terrain). Raio e intensidade controlam a escala e a força do relevo; os valores iniciais da Astra são próprios, adaptados ao toque.

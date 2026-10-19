@@ -4,6 +4,25 @@
   "updatedAt": "2026-10-19",
   "entries": [
     {
+      "id": "2026-10-19-terreno-pincel-reinicio",
+      "date": "2026-10-19",
+      "scopes": ["app", "docs"],
+      "kind": "fix",
+      "title": "Terreno: pincel suave também ao reiniciar o editor",
+      "summary": "A validação no Android confirmou a criação plana e a elevação gradual, mas revelou que reabrir o app restaurava os valores antigos do pincel. A inicialização agora usa raio de 8 m e altura de 0,25 m por amostra também ao editar terrenos existentes.",
+      "version": "Astra Terreno 0.3.1-dev.terrain.20261019.4 · code 109 · AETERRAIN6",
+      "availability": "development",
+      "details": [
+        "Uso: selecione o terreno na hierarquia e toque Editar terreno. O relevo salvo permanece; o pincel inicia com os padrões suaves da revisão atual.",
+        "No APK 108, a criação plana, a prévia texturizada durante o gesto, Desfazer/Refazer e salvar/reabrir foram exercitados no POCO F7. Um projeto de teste foi reaberto com 33 operações e o relevo preservado.",
+        "A correção trata os valores iniciais de uma sessão nova. Não adiciona persistência das preferências pessoais do pincel entre sessões.",
+        "A repetição dos materiais e a necessidade de rolar até os controles inferiores continuam como pontos de melhoria. Não é aceite global da qualidade visual ou conclusão dos plugins."
+      ],
+      "validation": "59/59 cenários host passaram, incluindo os padrões de uma sessão nova. APK ARM64 109 compilado, auditado e instalado por atualização no POCO F7. Ao abrir o projeto salvo e tocar Editar terreno, a captura real confirmou raio 8, altura por amostra 0,25 e receita carregada. Sem FATAL EXCEPTION/Fatal signal nos logs capturados. O fluxo completo de criação, gesto, Desfazer/Refazer e salvar/reabrir foi exercitado no 108; no 109 foi repetida a verificação específica de inicialização e reedição.",
+      "migration": "Sem alteração de formato, textura ou operações já salvas. O APK público permanece inalterado; esta é uma revisão de desenvolvimento.",
+      "links": [{"label": "Guia da revisão de terreno", "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"}]
+    },
+    {
       "id": "2026-10-19-terreno-plano-pincel-suave",
       "date": "2026-10-19",
       "scopes": [
