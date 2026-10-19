@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-18",
   "entries": [
     {
+      "id": "2026-10-18-telemetria-desempenho-app",
+      "date": "2026-10-18",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Telemetria de desempenho opcional no editor",
+      "summary": "O editor pode, se você permitir, registrar o desempenho em médias de 10 s e enviá-lo para orientar o trabalho de FPS em aparelhos fracos. A escolha aparece na primeira abertura e fica em Configurações. Revisão local; não está no APK público.",
+      "version": "Revisão local bdd976fd",
+      "availability": "development",
+      "details": [
+        "Uso: na primeira abertura, escolha Compartilhar ou Agora não. Depois, Configurações › Telemetria de desempenho liga, desliga, envia agora ou apaga os dados.",
+        "Enviado: FPS, tempo de quadro, CPU e GPU (quando medida), resolução, temperatura, draws e triângulos, mais modelo do aparelho, GPU, memória, tela, versão do app e nível de qualidade.",
+        "Nunca sai do aparelho: nomes, arquivos e conteúdo de projetos, conta, localização e identificadores do aparelho. A identidade é um código aleatório da instalação.",
+        "As janelas ficam numa fila no aparelho (até 1 MB por sessão) e saem quando você volta à lista de projetos. Sem rede, ficam para depois.",
+        "Apagar meus dados remove a fila local e tudo o que esta instalação enviou ao servidor, e troca o código aleatório.",
+        "Jogos exportados não têm telemetria: o exportador remove a permissão de internet e recusa o APK se ela sobrar."
+      ],
+      "validation": "Host: gravador de janelas 5/5 (aquecimento, numeração, reinício ao trocar de modo). JVM: fila e lotes 4/4 (lotes de 120, envelope com GPU e níveis, falha de rede preserva o resto, lote recusado é descartado, limpeza). Biblioteca arm64 compilada. Sem teste no aparelho, sem captura da tela de Configurações e sem export de teste.",
+      "migration": "Nada a migrar. Nada é coletado sem a escolha explícita; quem não escolher continua sem coleta.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-18-telemetria-desempenho-banco-ligado",
       "date": "2026-10-18",
       "scopes": [
