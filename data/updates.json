@@ -4,9 +4,39 @@
   "updatedAt": "2026-10-19",
   "entries": [
     {
+      "id": "2026-10-19-ceu-sol-lua-estrelas",
+      "date": "2026-10-19",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Céu: sol com brilho de verdade, lua com fase e estrelas à noite",
+      "summary": "O sol do céu procedural e do físico deixa de ser um círculo chapado: ganha borda mais escura e quente e uma auréola que o pós espalha. Chegam uma lua iluminada pelo sol, cuja fase sai da posição real dos dois, e estrelas que aparecem quando o sol se põe. Revisão local; não está no APK público.",
+      "version": "Revisão local 6c8ad306 · Astra Dev 0.3.0-dev.107-ceu (code 107)",
+      "availability": "development",
+      "details": [
+        "Uso: Ambiente › Sol e lua. Auréola do sol, fase da lua (0 nova, 0,5 cheia), diâmetro e brilho da lua e brilho das estrelas. Zero desliga cada um.",
+        "A lua acompanha o sol: na cheia fica oposta a ele, então mover o sol (a luz direcional) move a lua junto.",
+        "As estrelas só aparecem com o sol abaixo do horizonte e com o céu escuro; perto do horizonte enfraquecem.",
+        "Também pela API C#: Environment.SunGlare, MoonPhase, MoonSize, MoonIntensity e StarIntensity.",
+        "Cenas existentes recebem os valores novos ao abrir: o céu delas passa a ter auréola, lua e estrelas."
+      ],
+      "validation": "Host: testes de ambiente 30/30 (validação, migração de cenas e perfis antigos, mistura de volumes). Aparelho POCO F7: sol capturado antes e depois de calibrar a auréola na Vila. Lua e estrelas ainda sem captura no aparelho.",
+      "migration": "Cena salva antes (Environment v13) abre com os padrões novos de sol, lua e estrelas. Para o visual antigo, zere Auréola do sol, Brilho da lua e Brilho das estrelas.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-19-terreno-pincel-reinicio",
       "date": "2026-10-19",
-      "scopes": ["app", "docs"],
+      "scopes": [
+        "app",
+        "docs"
+      ],
       "kind": "fix",
       "title": "Terreno: pincel suave também ao reiniciar o editor",
       "summary": "A validação no Android confirmou a criação plana e a elevação gradual, mas revelou que reabrir o app restaurava os valores antigos do pincel. A inicialização agora usa raio de 8 m e altura de 0,25 m por amostra também ao editar terrenos existentes.",
@@ -20,7 +50,12 @@
       ],
       "validation": "59/59 cenários host passaram, incluindo os padrões de uma sessão nova. APK ARM64 109 compilado, auditado e instalado por atualização no POCO F7. Ao abrir o projeto salvo e tocar Editar terreno, a captura real confirmou raio 8, altura por amostra 0,25 e receita carregada. Sem FATAL EXCEPTION/Fatal signal nos logs capturados. O fluxo completo de criação, gesto, Desfazer/Refazer e salvar/reabrir foi exercitado no 108; no 109 foi repetida a verificação específica de inicialização e reedição.",
       "migration": "Sem alteração de formato, textura ou operações já salvas. O APK público permanece inalterado; esta é uma revisão de desenvolvimento.",
-      "links": [{"label": "Guia da revisão de terreno", "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"}]
+      "links": [
+        {
+          "label": "Guia da revisão de terreno",
+          "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"
+        }
+      ]
     },
     {
       "id": "2026-10-19-terreno-plano-pincel-suave",
@@ -53,7 +88,10 @@
     {
       "id": "2026-10-19-terreno-aplicar-previa",
       "date": "2026-10-19",
-      "scopes": ["app", "docs"],
+      "scopes": [
+        "app",
+        "docs"
+      ],
       "kind": "fix",
       "title": "Terreno: aplicação reaproveita a geometria da prévia",
       "summary": "Aplicar reutiliza a malha pronta quando a receita coincide; com alterações, usa a atualização regional disponível. A prévia também reaproveita as texturas existentes, corrigindo o terreno branco durante o gesto em um projeto com histórico extenso. Revisão de desenvolvimento, sem mudança no APK público.",
@@ -69,13 +107,19 @@
       "validation": "58/58 cenários host passaram: aplicação síncrona/assíncrona, prévia de um toque confirmada sem remalhar, atualização regional com vértices, normais, UVs e pesos idênticos à reconstrução completa, histórico e persistência. Um arrasto pode acrescentar a amostra da ponta ao soltar e requerer atualização. APK ARM64 compilado e instalado por atualização via ADB no POCO F7; assinatura, identidade e conteúdo conferidos. Após desbloqueio: elevação com cursor e textura durante o gesto, aplicação, desfazer/refazer e reabertura conferidos no POCO F7. O projeto antigo reproduziu esgotamento de descritores: a revisão 107 preservou as texturas visíveis na prévia e eliminou quatro publicações duplicadas. Persistem o teto de memória ao aplicar nesse histórico extenso e um descritor já excedido pela biblioteca original. Não é aceite completo do gerenciamento, das transições LOD ou de desempenho. Sem certificação de compatibilidade ELF de 16 KB.",
       "migration": "Sem mudança de formato nesta correção: AETERRAIN6. Salvar cena continua necessário. Receitas 1–5 seguem legíveis; versões anteriores não reeditam receita 6. APK público inalterado.",
       "links": [
-        {"label": "Guia da revisão integrada", "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"}
+        {
+          "label": "Guia da revisão integrada",
+          "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"
+        }
       ]
     },
     {
       "id": "2026-10-19-terreno-integracao-lod-pincel",
       "date": "2026-10-19",
-      "scopes": ["app", "docs"],
+      "scopes": [
+        "app",
+        "docs"
+      ],
       "kind": "improvement",
       "title": "Terreno: integração do LOD autoral e continuidade do pincel",
       "summary": "A revisão de terreno integra o trabalho de 17/10 às alterações recentes do editor. O guia explica LOD autoral, espaçamento por distância percorrida e migração da receita. Primeiro bloco e plano completo ainda em implementação; sem APK novo distribuído.",
@@ -91,7 +135,10 @@
       "validation": "Windows: 56/56 cenários integrados passaram. Inclui comparação de 1, 8 e 32 eventos de toque com carimbos e campo final em altura/volume; LOD na publicação de geometria, Undo/Redo e salvar/reabrir; controles de LOD em layouts de 655 e 1280 pixels. Contratos de materiais: 6/6. Extração seletiva: 2/2. Não somar rodadas antigas à contagem. Sem ADB, validação visual do renderer Android ou medição de desempenho no aparelho nesta retomada.",
       "migration": "AETERRAIN6 salva a política de LOD. Receitas 1–5 continuam legíveis; editores anteriores não reeditam a receita 6. Preserve uma revisão compatível antes de alternar versões. Nenhuma migração do APK público nesta revisão.",
       "links": [
-        {"label": "Guia da revisão integrada", "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"}
+        {
+          "label": "Guia da revisão integrada",
+          "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"
+        }
       ]
     },
     {
