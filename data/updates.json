@@ -1,8 +1,35 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-18",
+  "updatedAt": "2026-10-19",
   "entries": [
+    {
+      "id": "2026-10-19-gradacao-de-cor-e-perfis-prontos",
+      "date": "2026-10-19",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Gradação de cor por LUT e sete visuais prontos no Ambiente",
+      "summary": "O Ambiente ganha a aba Cor: sete visuais prontos em cartões com prévia (Neutro, Cinemático, Dia quente, Entardecer, Noite azul, Tempestade e Fantasia) e um Ajuste fino recolhido. A gradação vira uma tabela de cor montada só quando muda e custa uma leitura por pixel. Revisão local; não está no APK público.",
+      "version": "Revisão local 7e54f141 · Astra Dev 0.3.0-dev.105-g2lut (code 105)",
+      "availability": "development",
+      "details": [
+        "Uso: selecione o objeto com Ambiente, abra a seção Cor e toque num cartão. O cartão escolhido fica marcado; Desfazer volta ao anterior.",
+        "Um visual troca só o pós-processamento (tonemap, brilho, vinheta, grão, contraste, saturação e gradação). Céu, neblina, exposição e oclusão continuam os da cena.",
+        "Ajuste fino: temperatura, matiz, vibração, lift, gama e ganho, sombras, médios e realces (cor e brilho de cada um) e o início e o fim das faixas. O contador ao lado mostra quantos controles saíram do neutro; mexer em qualquer um marca o cartão Personalizado.",
+        "API C#: Environment.GradingTemperature, GradingTint, GradingVibrance, GradingLift, GradingGamma e GradingGain (e as cores), GradingShadows, GradingMidtones e GradingHighlights (e as cores) e as quatro faixas.",
+        "Ainda não incluído: mixer de canais, curvas e importação de arquivos .cube. Os visuais prontos não aparecem no seletor de perfis do projeto."
+      ],
+      "validation": "Host: 10 cenários (Neutro pela tabela até 0,85/255; tabela x cálculo até 3,2/255; luminância sempre crescente; limites; migração; mistura de volumes) e suíte gerenciada com 523 testes. POCO F7 com Astra Dev 104 e 105, projetos preservados: os sete visuais aplicados na Vila Astra e capturados; Neutro pela tabela igual à imagem anterior em 99,997% dos pixels parados (até 3/255); custo medido em A/B/B/A dentro do ruído (+0,09 ms no mesmo clock, com o pós em 8,8 ms a 2772x1280). Não testado: aparelhos de nível C e a prévia da Camera com volumes diferentes.",
+      "migration": "Cenas e perfis de ambiente antigos abrem com a gradação neutra e a mesma imagem. Ao salvar, o Ambiente passa para a versão 13 e o perfil para a 9; versões anteriores do app não abrem esses arquivos.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-18-telemetria-desempenho-validada-aparelho",
       "date": "2026-10-18",
