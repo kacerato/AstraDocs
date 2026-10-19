@@ -4,6 +4,28 @@
   "updatedAt": "2026-10-19",
   "entries": [
     {
+      "id": "2026-10-19-terreno-aplicar-previa",
+      "date": "2026-10-19",
+      "scopes": ["app", "docs"],
+      "kind": "fix",
+      "title": "Terreno: aplicação reaproveita a geometria da prévia",
+      "summary": "Aplicar reutiliza a malha pronta quando a receita coincide; com alterações, usa a atualização regional disponível. A prévia também reaproveita as texturas existentes, corrigindo o terreno branco durante o gesto em um projeto com histórico extenso. Revisão de desenvolvimento, sem mudança no APK público.",
+      "version": "Astra Terreno 0.3.1-dev.terrain.20261019.2 · code 107 · AETERRAIN6",
+      "availability": "development",
+      "details": [
+        "Uso: esculpa normalmente e solte o toque, ou toque Aplicar. Uma prévia completa da mesma receita pode ser confirmada sem repetir a geração do campo e da malha.",
+        "Se a receita mudou, a geração recebe a revisão anterior e reconstrói as regiões necessárias quando compatíveis. Mudanças estruturais continuam podendo exigir reconstrução completa.",
+        "A publicação ainda codifica e importa o GLB e atualiza o conjunto de geometria. Esta revisão não conclui a arena por chunk, a sincronização localizada nem o primeiro bloco do plano.",
+        "Assets e resolução originais preservados. Nenhum controle de qualidade foi removido e nenhuma simplificação adicional foi imposta.",
+        "A integração Android também conecta o módulo existente de exportação ao app e a ação Exportar APK à tela de exportação do projeto."
+      ],
+      "validation": "58/58 cenários host passaram: aplicação síncrona/assíncrona, prévia de um toque confirmada sem remalhar, atualização regional com vértices, normais, UVs e pesos idênticos à reconstrução completa, histórico e persistência. Um arrasto pode acrescentar a amostra da ponta ao soltar e requerer atualização. APK ARM64 compilado e instalado por atualização via ADB no POCO F7; assinatura, identidade e conteúdo conferidos. Após desbloqueio: elevação com cursor e textura durante o gesto, aplicação, desfazer/refazer e reabertura conferidos no POCO F7. O projeto antigo reproduziu esgotamento de descritores: a revisão 107 preservou as texturas visíveis na prévia e eliminou quatro publicações duplicadas. Persistem o teto de memória ao aplicar nesse histórico extenso e um descritor já excedido pela biblioteca original. Não é aceite completo do gerenciamento, das transições LOD ou de desempenho. Sem certificação de compatibilidade ELF de 16 KB.",
+      "migration": "Sem mudança de formato nesta correção: AETERRAIN6. Salvar cena continua necessário. Receitas 1–5 seguem legíveis; versões anteriores não reeditam receita 6. APK público inalterado.",
+      "links": [
+        {"label": "Guia da revisão integrada", "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"}
+      ]
+    },
+    {
       "id": "2026-10-19-terreno-integracao-lod-pincel",
       "date": "2026-10-19",
       "scopes": ["app", "docs"],

@@ -3,7 +3,7 @@ export const developmentOctober19TerrainGuide = {
   title: 'Desenvolvimento: LOD autoral e continuidade do pincel',
   description: 'Como configurar o detalhe do terreno à distância, preservar a edição e entender os limites da revisão integrada.',
   body: `:::caution[Revisão de desenvolvimento]
-Esta revisão integra o trabalho de terreno de 17/10 às alterações recentes do editor. O primeiro bloco e os 71 itens do plano continuam incompletos. Não há APK novo distribuído por esta página nem validação Android desta integração.
+Esta revisão integra o trabalho de terreno de 17/10 às alterações recentes do editor. O primeiro bloco e os 71 itens do plano continuam incompletos. Não há APK novo distribuído por esta página. A revisão de desenvolvimento 107 foi instalada no POCO F7; o alcance dos testes e as limitações estão em Atualizações.
 :::
 
 ## Detalhe à distância
@@ -27,6 +27,18 @@ Buffers podem conservar uma reserva limitada ao crescer ou diminuir. O crescimen
 As fontes da biblioteca permanecem na resolução original; miniaturas são recursos separados. O catálogo preparado ainda não está ligado ao PBR completo do terreno. Seleção extensível, normal, altura, misturas, ruídos e clusters continuam obrigatórios no plano. O material atual de quatro albedos não representa a conclusão dessas capacidades.
 
 ## Migração
+
+### Aplicar a prévia: correção posterior de 19/10
+
+Ao soltar o pincel ou tocar **Aplicar**, uma prévia completa da mesma receita pode ser compartilhada com a aplicação, sem gerar novamente o campo e a malha. Se houve alteração, a geração recebe o resultado anterior e reutiliza chunks compatíveis. Alterações estruturais podem continuar exigindo reconstrução completa. Nenhum asset ou propriedade foi reduzido para obter esse reaproveitamento.
+
+A prévia reutiliza também os vínculos de textura da fonte, sem publicar cópias adicionais das imagens. Isso evita que o gesto sozinho esgote os descritores em projetos com histórico extenso. O limite global de texturas e o crescimento das revisões ainda exigem trabalho no gerenciamento.
+
+Exportação/importação GLB e publicação agregada ainda têm custo. Essa correção não conclui a arena por chunk nem a sincronização localizada. O estado de validação desta correção está na nota **Terreno: aplicação reaproveita a geometria da prévia**, em [Atualizações](/atualizacoes/).
+
+Referência do trabalho de atualização de geometria: [Unity 6000.0 — Mesh.SetVertexBufferData](https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Mesh.SetVertexBufferData.html). O cache de aplicação é implementação própria da Astra, sem alegação sobre o algoritmo interno da Unity.
+
+### Compatibilidade de receitas
 
 Receitas novas usam **AETERRAIN6**, que salva a política de LOD. Receitas 1–5 continuam legíveis. Editores anteriores não aceitam a receita 6 para reedição: preserve uma revisão compatível antes de alternar versões. As páginas de [15/10](/pt-br/desenvolvimento/2026-10-15/terreno-voxel/) e [16/10](/pt-br/desenvolvimento/2026-10-16/terreno-caminhos/) são registros das revisões anteriores.
 
