@@ -4,6 +4,32 @@
   "updatedAt": "2026-10-18",
   "entries": [
     {
+      "id": "2026-10-18-telemetria-desempenho-validada-aparelho",
+      "date": "2026-10-18",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Telemetria de desempenho validada no aparelho; Configurações ajustada",
+      "summary": "A telemetria opcional foi testada de ponta a ponta num POCO F7 com o Astra Dev: a coleta liga só depois da escolha, as janelas de edição e de Play chegam ao servidor e Apagar dados esvazia o servidor. A tela de Configurações foi corrigida a partir das capturas. Revisão local; não está no APK público.",
+      "version": "Revisão local 632e44f4 · Astra Dev 0.3.0-dev.103-gt (code 103)",
+      "availability": "development",
+      "details": [
+        "Configurações › Telemetria de desempenho: Enviar agora e Apagar dados ficam lado a lado; o estado da fila não é mais cortado.",
+        "O botão de apagar passa a se chamar Apagar dados e pede um segundo toque em Confirmar.",
+        "No pedido da primeira abertura, a escolha fica só nos botões Agora não e Compartilhar.",
+        "O último envio aparece como agora há pouco no primeiro minuto."
+      ],
+      "validation": "POCO F7, Astra Dev 101 a 103 instalado por atualização, projetos preservados. Sponza no editor e em Play: 10 janelas gravadas (6 de edição, 4 de Play) com modelo, GPU Adreno 825 e nível A; cerca de 60 FPS e GPU de 10,8 a 14,4 ms. Apagar dados deixou o servidor sem instalações, sessões e janelas. Um jogo exportado com esse APK como modelo saiu só com a permissão de vibração. Não testado no aparelho: envio sem rede e o limite de 1 MB.",
+      "migration": "Nada a migrar.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-18-telemetria-desempenho-app",
       "date": "2026-10-18",
       "scopes": [
