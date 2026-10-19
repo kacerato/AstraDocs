@@ -6,6 +6,16 @@ export const developmentOctober19TerrainGuide = {
 Esta revisão integra o trabalho de terreno de 17/10 às alterações recentes do editor. O primeiro bloco e os 71 itens do plano continuam incompletos. Não há APK novo distribuído por esta página. A revisão de desenvolvimento 107 foi instalada no POCO F7; o alcance dos testes e as limitações estão em Atualizações.
 :::
 
+## Começar plano e construir o relevo
+
+Novos terrenos começam **planos**, com base sólida, tamanho de 64 m e 64 células por lado (1 m por célula). O pincel inicial usa raio de 8 m, força de 0,25 por amostra e borda suave. A influência se distribui por mais vértices e permite levantar o relevo gradualmente. Aumentar a resolução tem custo; o controle **Células por lado** permanece disponível.
+
+Em **Forma → Relevo**, escolha **Colinas**, **Montanhas** ou **Ilha** quando quiser uma base procedural. Isso não substitui os geradores e a composição natural ainda pendentes no plano. Terrenos salvos preservam seus parâmetros anteriores.
+
+Em **Pincel**, Elevar/Baixar identificam a força como **Altura por amostra (m)**. O slider facilita escolher forças baixas, sem retirar valores altos nem a entrada numérica. Para colinas amplas, combine raio maior, núcleo suave e várias passadas graduais; use **Suavizar** para refinar transições. Um raio pequeno em malha pouco densa ainda pode produzir facetas.
+
+Referência: [Unity 6000.0 — Raise or Lower Terrain](https://docs.unity.com/en-us/engine/6000.0/manual/creating-environments/script-terrain/terrain-tools/terrain-raise-lower-terrain). Raio e intensidade controlam a escala e a força do relevo; os valores iniciais da Astra são próprios, adaptados ao toque.
+
 ## Detalhe à distância
 
 Abra **Forma → Detalhes → Detalhe à distância**. **Níveis** aceita de 1 a 4: um nível mantém apenas a geometria original; os demais habilitam versões reduzidas para renderização. **Erro máx. (%)** controla a tolerância da simplificação e fica desabilitado com apenas um nível. A seleção por distância utiliza o orçamento em pixels de Qualidade.

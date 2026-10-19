@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-19",
   "entries": [
     {
+      "id": "2026-10-19-terreno-plano-pincel-suave",
+      "date": "2026-10-19",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno: base plana e escultura inicial mais suave",
+      "summary": "Novos terrenos começam planos, com células de 1 m no tamanho inicial de 64 m. O pincel inicial fica mais largo e gradual; o controle de força ganha precisão nos valores baixos. Presets e propriedades continuam disponíveis.",
+      "version": "Astra Terreno 0.3.1-dev.terrain.20261019.3 · code 108 · AETERRAIN6",
+      "availability": "development",
+      "details": [
+        "Uso: Criar → Geometria → Terreno e voxel. O relevo inicial é plano, com base sólida e 64 células por lado. Em Forma → Relevo continuam disponíveis Plano, Colinas, Montanhas e Ilha.",
+        "Ao iniciar um terreno novo, o pincel começa com raio de 8 m, força de 0,25 por amostra, borda suave e espaçamento de 20% do raio. A amostragem por distância e o gesto como unidade de Desfazer permanecem.",
+        "Elevar/Baixar mostram Altura por amostra (m). A régua de força usa mais espaço para valores baixos, mantendo o intervalo de 0,05 a 8; a entrada numérica conserva seus limites anteriores.",
+        "A malha inicial passa de células de 2 m para 1 m. Isso aumenta o detalhe e também o custo; Células por lado continua ajustável. Nenhuma textura foi reduzida.",
+        "Esta revisão ajusta o início da autoria. Não conclui erosão, materiais/PBR extensíveis, composição natural, gerenciamento do histórico ou paridade com os plugins."
+      ],
+      "validation": "59/59 cenários integrados host passaram, incluindo base plana, elevação central suave, ombro distribuído, exterior intocado e reabertura preservando o preset de montanhas. APK ARM64 108 compilado e auditado. Captura da UI executável em software conferida em 1280 px, com raio 8 e altura 0,25 legíveis. Validação visual de terreno no Android pendente de disponibilidade do aparelho; não é aceite de aparência no aparelho.",
+      "migration": "Sem mudança de formato. Terrenos salvos mantêm amplitude, resolução e operações. Os novos padrões se aplicam ao criar outro terreno; isso reinicia as preferências transitórias do pincel. APK público inalterado.",
+      "links": [
+        {
+          "label": "Guia da revisão de terreno",
+          "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-19-terreno-aplicar-previa",
       "date": "2026-10-19",
       "scopes": ["app", "docs"],
