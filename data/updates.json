@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-19",
   "entries": [
     {
+      "id": "2026-10-19-dia-e-noite-como-na-unity",
+      "date": "2026-10-19",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Dia e noite como na Unity: a hora gira o sol e o céu calcula a cor pelo ângulo dele",
+      "summary": "Novo componente Hora do dia na luz direcional: ele gira o objeto do sol de verdade, no editor e no Play, como um script de ciclo de dia da Unity. O céu procedural passa a ser o modelo de espalhamento do Skybox/Procedural da Unity, então meio-dia azul, poente avermelhado e noite com estrelas saem do mesmo cálculo; a luz ambiente e a neblina vêm do próprio céu. Revisão local; não está no APK público.",
+      "version": "Revisão local e097da3a · Astra Dev 0.3.0-dev.114-unity-poente (code 114)",
+      "availability": "development",
+      "details": [
+        "Uso: + › Luzes › Sol com dia e noite cria uma luz direcional com o componente Hora do dia. Em uma direcional existente: Adicionar componente › Hora do dia. Campos: Hora (0 a 24), Duração do dia em minutos (0 deixa a hora parada), Latitude, Dia do ano e Norte.",
+        "O sol continua sendo a luz direcional: a rotação do transform muda com a hora e aparece no gizmo e no Inspector. Cor e intensidade seguem a altura do sol (luz quente e rasante no fim da tarde; apagada abaixo do horizonte). A fase da lua sai do dia do ano.",
+        "Céu procedural (Ambiente › Céu Atmosfera): Tom do céu, Chão, espessura e exposição, como o Skybox/Procedural da Unity. A luz ambiente é tirada do próprio céu no ângulo atual do sol (Environment Lighting Source: Skybox).",
+        "Céu físico: neblina e ambiente acompanham a irradiância do próprio céu físico, então a cena escurece junto com o céu no poente e à noite. As estrelas só acendem depois do pôr do sol, ao longo do crepúsculo civil.",
+        "Com duas direcionais na cena, o céu usa a que tem Hora do dia.",
+        "API C#: struct TimeOfDay na fachada gerada (Enabled, Hour, DayLengthMinutes, Latitude, DayOfYear, NorthDegrees).",
+        "Ainda falta: exposição automática (o zênite do poente fica muito escuro com exposição fixa), luz da lua, nuvens e clima. O viewport de edição só mostra o céu com o modo de efeitos."
+      ],
+      "validation": "Host: 36 cenários do ambiente (posição do sol, cor e intensidade, avanço da hora, céu procedural com zênite azul ao meio-dia e escuro à noite, rotação do transform igual à de um script de ciclo) e 3 de preferência do sol com hora. POCO F7 com Astra Dev 113 e 114, Vila Astra em Play com câmera fixa: noite às 22 h escura e com estrelas; poente às 17,4 h com horizonte avermelhado e sem estrelas; meio-dia com céu azul e sombras curtas. Rotação conferida no Inspector (10 h: X 41,6, Y −37,9). Não testado no aparelho: Duração do dia maior que zero com o tempo correndo.",
+      "migration": "O ambiente da cena passa para a versão 15 ao salvar: o antigo Zênite vira Tom do céu com 0,5 neutro, como na Unity, e o Horizonte deixa de aparecer. Céus procedurais antigos mudam de aparência; versões anteriores do app não abrem cenas salvas nesta. Cenas sem Hora do dia continuam com o sol parado onde estava.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-19-materiais-unity-suavidade-e-relatorio",
       "date": "2026-10-19",
       "scopes": [
