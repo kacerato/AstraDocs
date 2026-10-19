@@ -1,8 +1,462 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-19",
   "entries": [
+    {
+      "id": "2026-10-19-gradacao-de-cor-e-perfis-prontos",
+      "date": "2026-10-19",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Gradação de cor por LUT e sete visuais prontos no Ambiente",
+      "summary": "O Ambiente ganha a aba Cor: sete visuais prontos em cartões com prévia (Neutro, Cinemático, Dia quente, Entardecer, Noite azul, Tempestade e Fantasia) e um Ajuste fino recolhido. A gradação vira uma tabela de cor montada só quando muda e custa uma leitura por pixel. Revisão local; não está no APK público.",
+      "version": "Revisão local 7e54f141 · Astra Dev 0.3.0-dev.105-g2lut (code 105)",
+      "availability": "development",
+      "details": [
+        "Uso: selecione o objeto com Ambiente, abra a seção Cor e toque num cartão. O cartão escolhido fica marcado; Desfazer volta ao anterior.",
+        "Um visual troca só o pós-processamento (tonemap, brilho, vinheta, grão, contraste, saturação e gradação). Céu, neblina, exposição e oclusão continuam os da cena.",
+        "Ajuste fino: temperatura, matiz, vibração, lift, gama e ganho, sombras, médios e realces (cor e brilho de cada um) e o início e o fim das faixas. O contador ao lado mostra quantos controles saíram do neutro; mexer em qualquer um marca o cartão Personalizado.",
+        "API C#: Environment.GradingTemperature, GradingTint, GradingVibrance, GradingLift, GradingGamma e GradingGain (e as cores), GradingShadows, GradingMidtones e GradingHighlights (e as cores) e as quatro faixas.",
+        "Ainda não incluído: mixer de canais, curvas e importação de arquivos .cube. Os visuais prontos não aparecem no seletor de perfis do projeto."
+      ],
+      "validation": "Host: 10 cenários (Neutro pela tabela até 0,85/255; tabela x cálculo até 3,2/255; luminância sempre crescente; limites; migração; mistura de volumes) e suíte gerenciada com 523 testes. POCO F7 com Astra Dev 104 e 105, projetos preservados: os sete visuais aplicados na Vila Astra e capturados; Neutro pela tabela igual à imagem anterior em 99,997% dos pixels parados (até 3/255); custo medido em A/B/B/A dentro do ruído (+0,09 ms no mesmo clock, com o pós em 8,8 ms a 2772x1280). Não testado: aparelhos de nível C e a prévia da Camera com volumes diferentes.",
+      "migration": "Cenas e perfis de ambiente antigos abrem com a gradação neutra e a mesma imagem. Ao salvar, o Ambiente passa para a versão 13 e o perfil para a 9; versões anteriores do app não abrem esses arquivos.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-18-telemetria-desempenho-validada-aparelho",
+      "date": "2026-10-18",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Telemetria de desempenho validada no aparelho; Configurações ajustada",
+      "summary": "A telemetria opcional foi testada de ponta a ponta num POCO F7 com o Astra Dev: a coleta liga só depois da escolha, as janelas de edição e de Play chegam ao servidor e Apagar dados esvazia o servidor. A tela de Configurações foi corrigida a partir das capturas. Revisão local; não está no APK público.",
+      "version": "Revisão local 632e44f4 · Astra Dev 0.3.0-dev.103-gt (code 103)",
+      "availability": "development",
+      "details": [
+        "Configurações › Telemetria de desempenho: Enviar agora e Apagar dados ficam lado a lado; o estado da fila não é mais cortado.",
+        "O botão de apagar passa a se chamar Apagar dados e pede um segundo toque em Confirmar.",
+        "No pedido da primeira abertura, a escolha fica só nos botões Agora não e Compartilhar.",
+        "O último envio aparece como agora há pouco no primeiro minuto."
+      ],
+      "validation": "POCO F7, Astra Dev 101 a 103 instalado por atualização, projetos preservados. Sponza no editor e em Play: 10 janelas gravadas (6 de edição, 4 de Play) com modelo, GPU Adreno 825 e nível A; cerca de 60 FPS e GPU de 10,8 a 14,4 ms. Apagar dados deixou o servidor sem instalações, sessões e janelas. Um jogo exportado com esse APK como modelo saiu só com a permissão de vibração. Não testado no aparelho: envio sem rede e o limite de 1 MB.",
+      "migration": "Nada a migrar.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-18-telemetria-desempenho-app",
+      "date": "2026-10-18",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Telemetria de desempenho opcional no editor",
+      "summary": "O editor pode, se você permitir, registrar o desempenho em médias de 10 s e enviá-lo para orientar o trabalho de FPS em aparelhos fracos. A escolha aparece na primeira abertura e fica em Configurações. Revisão local; não está no APK público.",
+      "version": "Revisão local bdd976fd",
+      "availability": "development",
+      "details": [
+        "Uso: na primeira abertura, escolha Compartilhar ou Agora não. Depois, Configurações › Telemetria de desempenho liga, desliga, envia agora ou apaga os dados.",
+        "Enviado: FPS, tempo de quadro, CPU e GPU (quando medida), resolução, temperatura, draws e triângulos, mais modelo do aparelho, GPU, memória, tela, versão do app e nível de qualidade.",
+        "Nunca sai do aparelho: nomes, arquivos e conteúdo de projetos, conta, localização e identificadores do aparelho. A identidade é um código aleatório da instalação.",
+        "As janelas ficam numa fila no aparelho (até 1 MB por sessão) e saem quando você volta à lista de projetos. Sem rede, ficam para depois.",
+        "Apagar meus dados remove a fila local e tudo o que esta instalação enviou ao servidor, e troca o código aleatório.",
+        "Jogos exportados não têm telemetria: o exportador remove a permissão de internet e recusa o APK se ela sobrar."
+      ],
+      "validation": "Host: gravador de janelas 5/5 (aquecimento, numeração, reinício ao trocar de modo). JVM: fila e lotes 4/4 (lotes de 120, envelope com GPU e níveis, falha de rede preserva o resto, lote recusado é descartado, limpeza). Biblioteca arm64 compilada. Sem teste no aparelho, sem captura da tela de Configurações e sem export de teste.",
+      "migration": "Nada a migrar. Nada é coletado sem a escolha explícita; quem não escolher continua sem coleta.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-18-telemetria-desempenho-banco-ligado",
+      "date": "2026-10-18",
+      "scopes": [
+        "docs",
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Telemetria de desempenho: recepção ligada ao banco",
+      "summary": "A recepção da telemetria em astraengine.com.br/api/telemetry/ingest/ passa a gravar de fato. O site só repassa o lote para uma função no Neon, ao lado do banco, que valida, grava e aplica a retenção. Corrige o estado da nota anterior, em que a recepção respondia 503 sem banco. O app ainda não envia nada.",
+      "version": "Site astraengine.com.br · banco Neon astra-telemetry (us-east-1) · app: revisão local, sem envio",
+      "availability": "development",
+      "details": [
+        "O endereço e o formato não mudam: POST /api/telemetry/ingest/ com astra.telemetry.batch/1 ou astra.telemetry.delete/1.",
+        "O site não guarda nem lê dados; repassa o corpo e devolve a resposta da função. Nenhuma credencial de banco fica no site ou no app.",
+        "Retenção de 180 dias por gatilho diário no próprio Neon; o cron da Vercel foi removido.",
+        "Apagar uma instalação remove sessões, janelas e eventos dela em cascata."
+      ],
+      "validation": "Local: 12/12 cenários da função contra Postgres em memória e repasse do site (405, 400, 413). Produção, direto na função: lote de teste aceito (2 janelas), reenvio sem duplicar (0), remoção da instalação de teste (1) e segunda remoção vazia (0); tabelas conferidas vazias depois do teste. Sem envio pelo app.",
+      "migration": "Nada a migrar. O lote de teste foi apagado; o banco começa vazio.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-18-telemetria-desempenho-recepcao",
+      "date": "2026-10-18",
+      "scopes": [
+        "docs",
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Telemetria de desempenho: recepção dos dados no site",
+      "summary": "O site passa a ter o ponto de recepção da telemetria de desempenho opcional do app Astra: janelas agregadas de quadros (FPS, tempo de quadro, CPU, GPU, resolução e estado térmico) e o pedido de apagar os dados de uma instalação. O envio pelo app ainda não existe; nenhum APK coleta ou envia dados.",
+      "version": "Site astraengine.com.br · app: revisão local fda3cb77 (formato da janela, sem envio)",
+      "availability": "development",
+      "details": [
+        "Endereço: POST /api/telemetry/ingest/ com lotes astra.telemetry.batch/1 (até 120 janelas e 20 eventos, 256 KB) ou astra.telemetry.delete/1 para apagar uma instalação e tudo o que ela enviou.",
+        "Sem dado pessoal: identificador de instalação aleatório e apagável, modelo do aparelho, GPU, versão do app e números de quadro. Nenhuma tabela é acessível de fora; só a função grava.",
+        "Lote inválido é recusado inteiro; reenvio da mesma janela não duplica; limite de 2.000 janelas por instalação por hora.",
+        "Retenção: tarefa diária apaga janelas e eventos com mais de 180 dias.",
+        "Uso previsto: comparar FPS e tempos por GPU, nível de qualidade, cena e versão para orientar o trabalho de desempenho em aparelhos fracos."
+      ],
+      "validation": "Local: validação do lote e respostas HTTP (10/10) e gravação, idempotência, agregado por GPU, retenção, limite por hora e remoção em cascata contra Postgres em memória (10/10). Banco de produção ainda não ligado; até lá a recepção responde 503. Sem teste ponta a ponta com o app.",
+      "migration": "Nada a migrar. O envio só existirá quando o app ganhar a tela de consentimento; até lá nada é coletado.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-17-edicao-multipla-adicionar-componente",
+      "date": "2026-10-17",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Edição múltipla: adicionar componente não apaga mais os outros objetos",
+      "summary": "Com vários objetos selecionados, Adicionar componente passa a acrescentar o componente em todos e a manter o que cada um já tinha. Antes, os objetos além do ativo perdiam todos os componentes, inclusive a malha e o vínculo com o modelo importado. Revisão local; não está no APK público.",
+      "version": "Revisão local 4345fa50 · Astra Dev 0.3.0-dev.97 (code 97)",
+      "availability": "development",
+      "details": [
+        "Uso: Hierarquia › Selecionar vários › Filhos seleciona as peças de um modelo importado; Adicionar componente › Física 3D › Colisor 3D entra em todas num único Desfazer.",
+        "O Colisor acrescentado em cada objeto é ajustado à malha desse próprio objeto. Em seguida, trocar Forma para Malha e escolher o Corpo proprietário vale para toda a seleção.",
+        "Cenário de uso que expôs o defeito: dar colisão a um cenário importado (29 peças) e ligar todas a um único Corpo físico estático no objeto raiz."
+      ],
+      "validation": "Host: cenário multi_selection_add_component_keeps_existing_components e os dois cenários de edição múltipla existentes passaram (3/3). Aparelho (Astra Dev 97): 29 malhas de um cenário importado receberam Colisor de malha vinculado ao corpo da raiz; malhas e vínculos preservados no arquivo salvo; personagem em Play andou, olhou, pulou e foi bloqueado pelas paredes. Sem medição de desempenho.",
+      "migration": "Sem alteração de formato. Cenas salvas com a versão anterior depois de uma adição em lote podem ter objetos sem componentes; use Desfazer antes de fechar ou reimporte o modelo. O APK público permanece inalterado.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-17-terreno-espacamento-traco-host",
+      "date": "2026-10-17",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Terreno em desenvolvimento: espaçamento do pincel preservado nas curvas",
+      "summary": "O pincel passa a acumular a distância percorrida ao longo do traço. Subdividir a mesma trajetória em mais eventos preserva a distribuição dos carimbos, inclusive nas curvas curtas. Revisão local; não está no APK público.",
+      "version": "Revisão local c9a5337d · codex/terrain-voxel-generator",
+      "availability": "development",
+      "details": [
+        "Uso: ao arrastar um pincel de terreno, o espaçamento escolhido é mantido durante o gesto. Ferramentas volumétricas consideram os três eixos; ferramentas de superfície consideram o deslocamento horizontal.",
+        "A distância que sobra entre dois carimbos segue para o próximo segmento. O algoritmo anterior media uma linha direta desde o último carimbo e podia cortar curvas curtas. Parar o dedo não acrescenta carimbos; perder contato com o terreno interrompe a continuidade.",
+        "Ao atingir o limite de amostras, o gesto inteiro é descartado e sua prévia é removida. A cena comprometida permanece preservada.",
+        "A garantia cobre subdivisões da mesma polilinha recebida. Ela não recupera pontos ausentes do dispositivo e não representa aplicação baseada em tempo ou pressão. D01, o primeiro bloco e o plano integral dos cinco plugins continuam abertos."
+      ],
+      "validation": "Host: 2/2 cenários direcionados passaram. Comparação de trajetórias com 32 vezes mais eventos, incluindo densidade real de Dig/Add nos modos Accumulate e Target após salvar/reabrir. Também foram conferidos curvas curtas, contato parado, movimento vertical, lacunas e orçamento de amostras. A unidade consumidora do editor passou checagem sintática ARM64 com NDK 27.1 e warnings como erros. Build incremental com um job; sem execução interativa no aparelho, ADB, novo APK ou medição de FPS.",
+      "migration": "Sem alteração de formato. Receitas existentes mantêm os carimbos salvos; a correção afeta novos gestos. O APK público permanece inalterado.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-17-terreno-capacidade-gpu-host",
+      "date": "2026-10-17",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Terreno em desenvolvimento: reaproveitamento de buffers ao mudar a geometria",
+      "summary": "Pequenas expansões e reduções podem manter os buffers Vulkan existentes. Vértices e índices são substituídos de forma independente, com reserva limitada de memória. Revisão local; não está no APK público.",
+      "version": "Revisão local 6d4be31d · codex/terrain-voxel-generator",
+      "availability": "development",
+      "details": [
+        "Uso: comportamento interno da publicação de geometria durante a autoria; não há nova configuração no editor. Uma alteração que caiba na capacidade existente envia apenas as faixas diferentes e a região nova.",
+        "A reserva é de 25%, com mínimo de 4 KiB e máximo de 8 MiB por buffer. Reduções que deixem mais de 8 MiB ociosos compactam a alocação. Se a reserva opcional não couber, o allocator tenta o tamanho exato; falha da geometria necessária recusa a publicação.",
+        "Regiões reativadas depois de uma redução sempre recebem os dados atuais. Picking, desenhos e colisão continuam seguindo o tamanho lógico, sem acessar a reserva não inicializada.",
+        "O D07 continua parcial: faltam alocações estáveis por chunk e sincronização/culling localizados. A espera global do renderer permanece, e inserções intermediárias ainda podem deslocar a parte seguinte da biblioteca. Os cinco plugins e os 71 itens do plano não estão concluídos."
+      ],
+      "validation": "Host: 6/6 cenários, incluindo dois em Vulkan real na Intel UHD Graphics com leitura de volta, identidade do buffer preservada, crescimento/redução/regrowth e recusa de lote inválido sem modificar os bytes anteriores. Unidade do consumidor Android passou checagem de compilação ARM64 com NDK 27.1 e warnings como erros. Complemento da revisão anterior: 3/3 cenários passaram com o importador GLB real, incluindo LOD recuperado da receita. Não houve execução da sessão Android, benchmark de fluidez, novo APK ou ADB.",
+      "migration": "Sem alteração de formato nesta revisão. A migração AETERRAIN6 da nota anterior permanece: leitores antigos não aceitam receitas 6. APK público inalterado.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-17-terreno-lod-autoral-host",
+      "date": "2026-10-17",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Terreno em desenvolvimento: LOD autoral e reconstrução regional de caminhos",
+      "summary": "A branch de terreno passa a salvar a configuração de LOD e reaplicá-la na importação. Edições de caminhos reutilizam os chunks distantes. Esta revisão local não está no APK público e não conclui os cinco pacotes de terreno.",
+      "version": "Revisão local 638e1a9a · codex/terrain-voxel-generator",
+      "availability": "development",
+      "details": [
+        "Uso previsto nesta revisão: Terreno → Forma → Detalhes → Detalhe à distância; escolha de um a quatro níveis e erro máximo por chunk. Um nível desliga a geração. Aplicar configura o terreno; a prévia de escultura mantém o nível original.",
+        "A simplificação conserva bordas dos chunks e considera normais e pesos das camadas para preservar caminhos pintados. A colisão permanece na malha original; a seleção visual usa o orçamento de erro em pixels existente.",
+        "Mover pontos, trocar materiais, reordenar, desativar ou apagar caminhos invalida as regiões antigas e novas da malha. O campo dos caminhos ainda é recalculado integralmente; a atualização GPU com mudança de tamanho continua pendente.",
+        "O bloco inicial e o plano integral dos cinco pacotes continuam abertos. Materiais PBR e efeitos de terreno, vegetação, grafo procedural, interface altura-volume, vizinhança e outras integrações ainda precisam de implementação e aceitação."
+      ],
+      "validation": "Host: 23/23 cenários do núcleo antes da ampliação da métrica de atributos; cenário direcionado de LOD 1/1 depois dessa ampliação. Importador e ação de editor passaram compilação sintática. Superfície executável conferida em 1280×720 e 655×300, com acesso aos controles. A sessão integrada, a reabertura completa no editor e as transições no renderer final ainda não foram validadas nesta rodada. Sem ADB, novo APK ou teste em aparelho.",
+      "migration": "A receita nova usa AETERRAIN6. O leitor mantém versões 1–5; versões antigas da engine não leem receitas 6. Revisão apenas de desenvolvimento: preserve os projetos originais antes de experimentá-la. O APK público e seu catálogo permanecem inalterados.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-16-apk-preview-0-3-2",
+      "date": "2026-10-16",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "APK 0.3.2 publicado: Animator 2D e camadas sincronizadas, Play sem solavancos, pacotes POLYGON e BoZo",
+      "summary": "A prévia pública ganha os modos 2D e as camadas sincronizadas do Animator, o Play do carregar sem a pelve oscilar e sem o cotovelo virar, a conversão Humanoid mais fiel à Unity e a importação dos pacotes POLYGON Icons (texturizado) e BoZo 2.2 (rig Humanoid com o idle no estúdio). Atualiza a 0.3.1 sem apagar projetos.",
+      "version": "0.3.2-preview.20261016 · versionCode 30 · commit cddc7a45",
+      "releaseVersion": "0.3.2-preview.20261016",
+      "versionCode": 30,
+      "availability": "distributed",
+      "details": [
+        "Baixe em Download ou na Release pública do GitHub; o APK usa a mesma chave das prévias e instala por cima da 0.3.1 (versionCode 29 → 30), preservando os projetos.",
+        "Animator: Modo 2D (Triangulação, Direcional simples, Direcional livre, Cartesiano livre) no estado de Mistura 2D e Sincronizar com na camada; arquivo do Animator v6, .aeanimator v4.",
+        "Play: Sistema de interação com agachamento em rampa e corpo a no máximo 2 m/s; inclinação e agachamento medem o braço na pose animada; dois ossos sem polo mantém o lado do cotovelo do repouso.",
+        "Clipes Humanoid: orientação do Avatar encaixada no eixo, quadril pelo centro de massa do esqueleto, corpo normalizado pela pose em T; Bake Into Pose aceito e Offset de rotação aplicado.",
+        "Pacotes: FBX que cita o PSD do atlas usa a primeira imagem exportada com o mesmo radical (POLYGON texturizado); BoZo BodyRig com redução a quatro influências pelo Perfil e BMAC_M_Idle convertido no estúdio.",
+        "Capítulo Versões › Astra 0.3.2 com os caminhos de cada função; catálogo snapshot-2026-10-16b extraído do commit do APK (os campos novos do Animator entram nele)."
+      ],
+      "validation": "Pacote: assinatura V2 com o certificado cfbd4391…, badging dev.aether.editor versionCode 30, SHA-256 769f5bb5…; biblioteca nativa idêntica à do Astra Dev code 96 (2102da62…). Host: nativa 1572/1572, GUI 126/126, estúdio 73/73, runtime de animação 84/84, Unity 24/24. Aparelho (POCO F7, Android 16): atualização 29 → 30 com firstInstallTime de 07/10 e os quatro projetos preservados; Animator (code 93), Play do carregar (code 95), POLYGON e BoZo (code 96) conferidos no canal de desenvolvimento com a mesma biblioteca nativa (docs/validacao/animator-2026-10-16, ik-continuidade-2026-10-16, pacotes-2026-10-16).",
+      "migration": "Instale por cima da 0.3.1; projetos ficam. Cenas e controllers salvos nesta versão (Animator v6, .aeanimator v4) não abrem em versões anteriores. Projetos com sobras das receitas de Personagem continuam com elas: remova pelo menu do objeto.",
+      "links": [
+        {
+          "label": "Baixar Astra 0.3.2",
+          "url": "/download/"
+        },
+        {
+          "label": "O que mudou e como usar",
+          "url": "/pt-br/snapshot-2026-10-06/versoes/preview-0-3-2/"
+        },
+        {
+          "label": "Catálogo do APK 0.3.2",
+          "url": "/pt-br/snapshot-2026-10-16b/componentes/"
+        },
+        {
+          "label": "Release pública no GitHub",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.16-r2"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-16-pacotes-polygon-e-bozo-no-aparelho",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Pacotes POLYGON (Synty) e BoZo 2.2: modelos texturizados e clipe Humanoid no estúdio",
+      "summary": "Importar › Pasta de pacote leva o POLYGON Icons e o rig Humanoid do BoZo à Biblioteca e à cena. O FBX que cita o PSD do atlas passa a usar a primeira imagem exportada com o mesmo radical; o clipe Humanoid com Bake Into Pose deixa de ser recusado e o Offset de rotação da raiz é aplicado ao corpo.",
+      "version": "Revisão de fonte 2026-10-16 (commits 0d032510 e cddc7a45) · Astra Dev code 96 (não público)",
+      "availability": "development",
+      "details": [
+        "Texturas de FBX (aparelho): quando o modelo cita uma fonte de trabalho que o pacote não traz (PolygonIcons_Texture_01.psd), a primeira imagem exportada com o mesmo radical é usada (…_01_A.png). Os ícones do POLYGON entram com as cores do atlas; antes ficavam só com os fatores do material.",
+        "Clipes .anim da Unity: Root Transform › Bake Into Pose (orientação, posição Y, posição XZ) não recusa mais o clipe, porque a conversão escreve sempre a pose inteira; Root Transform Rotation › Offset gira o corpo do clipe Humanoid como a Unity gira a raiz. Loop Pose, Mirror, Level e Cycle Offset continuam recusados com aviso (Unity 6000.0, Animation Clip › Root Transform).",
+        "BoZo 2.2: BodyRig.fbx (Avatar Humanoid de 52 ossos, skin com mais de quatro influências reduzida por autorização no Perfil 3/3) entra na cena com 2,08 m, e BMAC_M_Idle.anim converte e abre no estúdio com 92 ossos e 3,77 s. Roupas modulares, shaders estilizados e expressões ficam fora desta rodada.",
+        "Diagnóstico no host: aether_ui_preview import-models <pasta> importa cada FBX/GLB de uma pasta e relata aceito/recusado; o .unitypackage é extraído por script (o editor ainda não o abre direto)."
+      ],
+      "validation": "Host: POLYGON 12/12 FBX aceitos; cenário unity_humanoid_bozo (AE_BOZO_PACK) com pés a 3 cm do chão e cabeça 58 cm acima do quadril; aether_tests 1572/1572, estúdio 73/73, Unity 24/24. Aparelho: Astra Dev code 95→96, projeto novo Pacotes: POLYGON com 6 modelos e 16 texturas na Biblioteca, ícone Alarm texturizado na cena (code 96); BoZo com BodyRig na cena e o idle convertido e tocado no estúdio em quatro capturas (docs/validacao/pacotes-2026-10-16).",
+      "migration": "Modelos já importados não mudam: importe um modelo novo do pacote (ou reimporte a fonte) para receber a textura pelo radical. Clipes .anim antes recusados por Bake Into Pose passam a converter ao acionar o clipe na Biblioteca.",
+      "links": []
+    },
+    {
+      "id": "2026-10-16-play-carregar-sem-solavancos-ik-dois-ossos-estavel",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Play: carregar sem solavancos e IK de dois ossos sem virar o cotovelo",
+      "summary": "O Sistema de interação deixava a pelve cair 27 cm num quadro e voltar no seguinte quando a mão animada cruzava a borda do alcance, e o IK de dois ossos sem polo trocava o lado do cotovelo com o braço quase reto (giros de 130–160° num quadro). Os três defeitos foram medidos no projeto do Kyle do aparelho e corrigidos.",
+      "version": "Revisão de fonte 2026-10-16 (commit 1d1b79cf) · Astra Dev code 95 (não público)",
+      "availability": "development",
+      "details": [
+        "Agachar (Sistema de interação): o pedido de descer a pelve cai em rampa entre 80% e 100% do alcance horizontal, em vez de ligar e desligar na borda, e o corpo desce ou sobe a no máximo 2 m/s (3,3 cm por quadro a 60 Hz).",
+        "Inclinar e agachar medem o braço na pose animada do quadro, não com o IK do quadro anterior; é a mesma regra que o apoio do pé já seguia.",
+        "Dois ossos sem polo: a dobra vem do repouso no referencial do osso raiz quando a cadeia está quase reta, como o bend normal do LimbIK do Final IK 2.2 e o hint opcional do TwoBoneIKConstraint do Animation Rigging da Unity; a pose animada continua mandando quando dobra de verdade.",
+        "Diagnóstico novo no host: aether_ui_preview play-project abre um projeto real (puxado do aparelho), toca o clipe no Play e mede o maior giro de cada osso entre quadros, com retirada seletiva de componentes de IK para isolar a causa.",
+        "Atenção a projetos de teste: receitas de Criar › Personagem (Olhar, Mirar, Mãos ao alvo, Pés no chão) ficam no projeto até serem removidas; três solvers no mesmo punho por cima de um clipe é o que produz a animação \"quebrada\". Remova as sobras pelo menu do objeto."
+      ],
+      "validation": "Host: aether_tests 1572/1572, aether_animation_runtime_tests 84/84 (dois cenários novos: agachar sem passo maior que 3,3 cm por quadro; dois ossos sem polo mantém o lado do repouso), GUI 126/126, estúdio 73/73, Unity 24/24. Projeto do aparelho no host: saltos > 20° num quadro de 9 para 2 (só a volta do loop do clipe) e de 6 para 1 com a montagem de Carregar como desenhada. Aparelho: Astra Dev code 95 no projeto KyleRevisao, 16 capturas em rajada durante o Play com o Kyle segurando a caixa sem bobbing nem salto de cotovelo (docs/validacao/ik-continuidade-2026-10-16).",
+      "migration": "Sem migração de arquivos. Projetos que guardam sobras das receitas de Personagem continuam com elas: exclua os objetos Olhar ·, Alvo IK · e Mira · e os componentes de IK dos ossos pelo menu do objeto.",
+      "links": []
+    },
+    {
+      "id": "2026-10-16-importar-anim-humanoid-quadril-e-corpo-como-na-unity",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Importar .anim Humanoid: quadril e orientação do corpo como na Unity",
+      "summary": "A conversão de clipes Humanoid (músculos → ossos) colocava o quadril 19 cm atrás e 5 cm abaixo do lugar e inclinava o corpo 6,8°. Com a orientação do Avatar encaixada no eixo, o centro de massa medido no esqueleto do próprio personagem e o corpo normalizado pela pose em T, o erro médio das mãos contra o projeto UMotion original cai de 15–16 cm para 6,7–7,2 cm e o dos pés de 29 cm para 7 cm.",
+      "version": "Revisão de fonte 2026-10-16 (commit 1d1b79cf) · Astra Dev code 95 (não público)",
+      "availability": "development",
+      "details": [
+        "Orientação do corpo como AvatarComputeOrientation da Unity (UnityCsReference, AvatarSetupTool.cs): quando o lado do tronco está num eixo, o cima é encaixado no eixo mais próximo. Sem isso, ombros atrás dos quadris (Robot Kyle) inclinavam o referencial de RootT/RootQ.",
+        "RootT é o centro de massa: o quadril vai onde a média das posições dos ossos humanos, pesada pelas massas padrão da Unity e medida no esqueleto do alvo nesta pose, coincide com RootT.",
+        "RootQ é relativo à pose em T: o referencial do corpo da referência é normalizado pelo repouso, sem o pitch constante de 6,8°.",
+        "Verdade de referência no teste: o projeto PickUpAnimation.asset do UMotion Pro 1.29 importado no mesmo Kyle e tocado em Play (FK + IK + Filho de), comparado quadro a quadro com o .anim Humanoid exportado dele.",
+        "Resta um deslocamento vertical constante de ≈5 cm (o modelo do centro de massa ainda não bate com o da Unity) e erro angular de 18–23° no antebraço e no punho nos trechos guiados por IK."
+      ],
+      "validation": "Host: aether_unity_material_tests 24/24 com AE_UMOTION_EXAMPLES (Humanoid vs UMotion em 180 quadros: mão esquerda média 7,2 cm, direita 6,7 cm, pés 7,2 cm, cabeça 5,9 cm; limites novos de 10 cm na média e 15 cm no pior quadro), aether_tests 1572/1572. Sem validação visual no aparelho nesta revisão.",
+      "migration": "Clipes Humanoid já convertidos não mudam; reimporte o .anim para receber a conversão nova.",
+      "links": []
+    },
+    {
+      "id": "2026-10-16-animator-modos-2d-e-camadas-sincronizadas",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Animator: modos de mistura 2D da Unity e camadas sincronizadas",
+      "summary": "O estado de Mistura 2D ganha o campo Modo 2D (Triangulação, Direcional simples, Direcional livre, Cartesiano livre) e uma camada pode Sincronizar com outra: copia máquinas, estados e transições da origem e guarda as suas próprias motions por estado. Arquivo do Animator na versão 6; recurso .aeanimator na versão 4.",
+      "version": "Revisão de fonte 2026-10-16 (commit 2b443b35) · Astra Dev code 93 (não público)",
+      "availability": "development",
+      "details": [
+        "Modo 2D no painel do estado (Mistura 2D): Triangulação é o comportamento anterior (BlendSpace2D da Godot 4.3); Direcional simples escolhe as duas direções vizinhas e mistura o clipe do centro pela magnitude; Direcional livre e Cartesiano livre usam a interpolação por bandas de gradiente em coordenadas polares ou cartesianas, como os modos 2D da Unity 6000.0 (Blend Trees › 2D blending).",
+        "Sincronizar com, no painel da camada (a partir da segunda camada): a camada passa a espelhar máquinas, estados e transições da origem com ids próprios e referências remapeadas; cada estado da cópia guarda as suas motions (nascem iguais às da origem), e peso, máscara, composição e referência continuam da própria camada. Editar a estrutura na cópia é recusado com aviso; edite na origem e a cópia acompanha. Uma camada sincronizada não serve de origem.",
+        "Arquivo: Animator na versão 6 (modo 2D e vínculos de sincronização num bloco no fim, legível pelas versões anteriores sem ele); recurso .aeanimator na versão 4 (grafo 6). Arquivos antigos abrem como antes.",
+        "Fora desta rodada: Blend Tree aninhada e Sync timing."
+      ],
+      "validation": "Host: editor 1572/1572 (cenários de mistura cobrem os quatro modos sobre a mesma cruz de cinco clipes e o arquivo v6; cenário novo de camada sincronizada cobre cópia, remapeamento, motions próprias, acompanhamento da origem, arquivo e recusa de origem sincronizada), GUI 126/126, estúdio 73/73. Aparelho: Astra Dev code 93 no projeto Kyle: Animator criado por Criar › Gameplay; no estado em Mistura 2D a linha Modo 2D alterna Triangulação → Direcional simples → Direcional livre → Cartesiano livre; camada nova com Sincronizar com · Base passa a mostrar o estado da Base, e +Estado nela é recusado com aviso na barra de estado (capturas em docs/validacao/animator-2026-10-16).",
+      "migration": "Animator v6 e .aeanimator v4: cenas e controllers salvos nesta revisão não abrem em revisões anteriores; guarde uma cópia antes de testar. Estados 2D existentes continuam em Triangulação.",
+      "links": []
+    },
+    {
+      "id": "2026-10-16-apk-preview-0-3-1",
+      "date": "2026-10-16",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "APK 0.3.1 publicado: estúdio de animação v2, Criar › Personagem e Biblioteca como gerenciador",
+      "summary": "A prévia pública ganha o estúdio v2 (posar por padrão, chave por canal, chaves-mestras, menu da chave, pinça), as receitas de Criar › Personagem (olhar, mirar, mãos, pés, corpo inteiro, carregar caixa), o Importar universal e a Biblioteca com trilho de tipos e malhas do projeto. Atualiza a 0.3.0 sem apagar projetos.",
+      "version": "0.3.1-preview.20261016 · versionCode 29 · commit 02744aa9",
+      "releaseVersion": "0.3.1-preview.20261016",
+      "versionCode": 29,
+      "availability": "distributed",
+      "details": [
+        "Baixe em Download ou na Release pública do GitHub; o APK usa a mesma chave das prévias e instala por cima da 0.3.0 (versionCode 28 → 29), preservando os projetos.",
+        "Estúdio v2: Animar no menu do objeto; painel do osso com Posição/Rotação/Escala e botão de chave por canal; grade de ferramentas; chaves-mestras na régua; menu da chave por toque longo; pinça para zoom; menu ⋮ com Novo clipe, Renomear, Duração, Camadas, Curvas, Eventos, Rig, Assistente de IK, IK permanente, Root motion, Bake e Exportar GLB.",
+        "Criar › Personagem: Olhar para alvo, Mirar com as mãos, Mãos ao alvo, Pés no chão, Corpo inteiro e Carregar caixa sobre o personagem selecionado, com alvos à frente dele e um Desfazer por receita.",
+        "Importar universal na barra (modelo, pasta de pacote, textura, HDRI, áudio); Biblioteca com trilho de tipos, cartões com selo e detalhe; Malhas do projeto no trilho Projeto; aviso de origem sem registro.",
+        "Interface universal (menu Cena como menu de contexto, barra de ícones, Inspector em coluna), bloco de interação do Final IK e clipes Humanoid da Unity convertidos pelo Avatar.",
+        "Correções: enquadramento do estúdio pelos ossos, campos numéricos sem ruído, alvos de Olhar/Mirar na frente do personagem, fechar o Rig devolve o painel do osso, receitas não tomam os próprios alvos por ossos.",
+        "Experimental: o botão Exportar APK dos projetos entra sem o fluxo de chave e exportação concluído no aparelho.",
+        "Docs: catálogo de 16/10 extraído do commit do APK, capítulo Astra 0.3.1 e notas de desenvolvimento de 10 a 16/10 marcadas como disponíveis no público."
+      ],
+      "validation": "Build e assinatura verificados (certificado cfbd4391…, SHA-256 do APK b8897fab…, igual ao asset publicado; biblioteca nativa 419711ae… idêntica ao Astra Dev code 92). POCO F7/Android 16: atualização sem desinstalar (28 → 29, instalação original preservada), 4 projetos preservados, projeto U07 aberto e executado dentro do pacote público. Astra Dev codes 87–92: bateria completa do estúdio pela interface, Criar › Personagem, Biblioteca e Play do carregar (docs/validacao/estudio-v2-2026-10-16). Host: nativa 1571/1571, GUI 126/126, estúdio 73/73.",
+      "migration": "Tipos novos desde a 0.3.0: astra.ik.interaction_grip e astra.ik.interaction_trigger; Sistema de interação na versão 5. Cenas com eles podem não abrir na 0.3.0: guarde uma cópia antes de testar. Alvos de Olhar/Mirar criados em builds de desenvolvimento anteriores continuam onde foram colocados.",
+      "links": [
+        {
+          "label": "Baixar Astra 0.3.1",
+          "url": "/download/"
+        },
+        {
+          "label": "O que mudou e como usar",
+          "url": "/pt-br/snapshot-2026-10-06/versoes/preview-0-3-1/"
+        },
+        {
+          "label": "Catálogo do APK 0.3.1",
+          "url": "/pt-br/snapshot-2026-10-16/componentes/"
+        },
+        {
+          "label": "Release pública no GitHub",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.16"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-16-receitas-nao-tomam-alvos-por-ossos-code-92",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Receitas de Personagem não tomam os próprios alvos por ossos; correções do Olhar e do Rig conferidas no celular",
+      "summary": "Rodar \"Olhar para alvo\" pela segunda vez tomava o alvo \"Olhar · Head\" por cabeça (o nome contém head) e criava um LookAt no próprio alvo; os alvos de IK das mãos seriam tomados por mãos do mesmo jeito. Alvos criados pelas receitas ficam fora da detecção. As correções do code 91 foram conferidas no celular.",
+      "version": "Revisão de fonte 2026-10-16 (commit 2bfa48b4) · Astra Dev code 92 (não público)",
+      "availability": "development",
+      "details": [
+        "Objetos nomeados pelas receitas (Olhar ·, Mira ·, Alvo IK ·, Alvo ·) são ignorados tanto na detecção por nome quanto na detecção pela estrutura do esqueleto; repetir uma receita responde \"Já montado neste personagem\" sem criar nada.",
+        "Conferido no celular (code 91/92, projeto Kyle – Carregar caixa): fechar o Rig pelo × devolve o painel do osso; com o alvo do Olhar à frente o Kyle fica ereto olhando para a frente no Play; Mirar com as mãos cria Mira · Left_Wrist e Mira · Right_Wrist à frente das mãos e, no Play, as mãos apontam para eles enquanto seguram a caixa.",
+        "Limpeza feita pela própria interface: o alvo extraviado saiu pelo menu do componente › Remover e o alvo antigo foi levado para a frente pelos campos de posição do Inspector."
+      ],
+      "validation": "Host: editor 1571/1571, GUI 126/126, estúdio 73/73 (cenário das receitas passa a repetir o Olhar e a exigir que nenhum alvo vire osso). Aparelho: capturas v91_rig_fechado, v92_mirar2, v92_play e v92_play2 em docs/validacao/estudio-v2-2026-10-16.",
+      "migration": "Sem mudança de formato. Projetos que já tenham um LookAt num objeto de alvo (criado pelo defeito) podem removê-lo pelo menu do componente.",
+      "links": []
+    },
+    {
+      "id": "2026-10-16-bateria-do-estudio-no-aparelho-olhar-e-rig",
+      "date": "2026-10-16",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Bateria completa do estúdio pela interface no celular: alvo do Olhar na frente do personagem e painel do Rig que fecha de volta ao osso",
+      "summary": "Todo o fluxo do estúdio v2 foi percorrido por toque no celular (Animar, osso, chave por campo, auto-key, Play, menu ⋮ inteiro, grade de ferramentas, Criar › Personagem, Biblioteca no trilho Projeto). Dois defeitos saíram da bateria e foram corrigidos: o alvo de Olhar/Mirar nascia ao lado do personagem (torcia o tronco no Play) e fechar o Rig pelo × deixava o painel vazio.",
+      "version": "Revisão de fonte 2026-10-16 (commit 49677fd3) · Astra Dev code 91 (não público)",
+      "availability": "development",
+      "details": [
+        "Olhar para alvo e Mirar com as mãos: o alvo passa a nascer na frente do personagem (perpendicular à linha dos ombros; sem braços pelo nome, o +Z do objeto) e o eixo do osso que olha ou mira é escolhido automaticamente como o que mais se alinha com essa frente. Antes, o alvo seguia o +Z do osso da cabeça, que no Robot Kyle aponta para o lado, e o LookAt girava cabeça e coluna para lá durante o Play.",
+        "Fechar a folha de Rig pelo × devolve o painel do osso; antes ficava a aba Rig vazia até tocar a seta de voltar.",
+        "Bateria no celular (code 90, projeto Kyle – Carregar caixa): Malhas do projeto abre a Biblioteca no trilho Projeto com os 7 cartões; Play mantém a caixa no ponto de carregar por 40 s; chave por campo numérico com auto-key; Play do estúdio; Camadas, Curvas, Eventos (+ Evento), Rig, Assistente de IK, Root motion, Bake da pose final, Exportar GLB, Novo clipe, Renomear, Duração; IK permanente recusa ponta que já tem IK; Seleção, Copiar/Colar, IK e Fixar com os avisos certos. Relatório em docs/validacao/estudio-v2-2026-10-16.",
+        "Não reproduzido: a caixa atravessando a mesa no reinício do carregar (40 s no celular e 20 s no host com a caixa parada no ponto de carregar)."
+      ],
+      "validation": "Host: editor 1571/1571, GUI 126/126, estúdio 73/73 (o cenário das receitas passa a conferir que o alvo do Olhar nasce 2 m à frente da cabeça pela frente do personagem). Aparelho: bateria inteira no code 90 (capturas v90_*). As duas correções estão no code 91, compilado e assinado; a conferência delas no celular ficou pendente porque o aparelho saiu da depuração sem fio no fechamento desta nota.",
+      "migration": "Sem mudança de formato. Alvos de Olhar/Mirar criados antes continuam onde foram colocados; recrie a receita para o alvo nascer à frente.",
+      "links": []
+    },
     {
       "id": "2026-10-16-terreno-bloco1-caminhos-pinceis",
       "date": "2026-10-16",
@@ -34,38 +488,46 @@
       ]
     },
     {
-      "id": "2026-10-15-terreno-voxel-reedicao-base-solida",
+      "id": "2026-10-15-biblioteca-malhas-do-projeto-e-origem-sem-registro",
       "date": "2026-10-15",
       "scopes": [
-        "app",
-        "docs"
+        "app"
       ],
       "kind": "improvement",
-      "title": "Terreno: reedição, prévia ao arrastar e pintura com camadas suaves",
-      "summary": "Revisão de desenvolvimento com base sólida, espaço de autoria exclusivo, prévia temporária do pincel, novas operações e superfície triplanar. Host 33/33; aceite desta revisão no aparelho pendente. Auditoria dos três pacotes concluída como inventário, implementação completa ainda em andamento.",
-      "version": "Revisão de fonte 8713229 · Astra Terreno code 85 (teste separado, não público) · 2026-10-15",
+      "title": "Biblioteca: malhas do projeto no trilho Projeto e aviso de origem sem registro",
+      "summary": "O espaço \"Recursos importados\" (uma lista de texto \"Adicionar malha N\") foi absorvido pela Biblioteca: as malhas do projeto viram cartões no trilho Projeto, com \"Na cena\" no cartão. Modelos que a cena referencia sem registro em .astra ganham um cartão de aviso com diagnóstico, para o problema aparecer onde o modelo deveria estar.",
+      "version": "Revisão de fonte 2026-10-15 (commit 9b8a4f69) · Astra Dev code 90 (não público)",
       "availability": "development",
       "details": [
-        "Uso: Criar → Geometria → Terreno e voxel. Após aplicar, selecione raiz/chunk/anexo e use Editar terreno no Inspector. Forma, Esculpir, Pintar e Gerir organizam o trabalho; a área de autoria libera espaço do viewport.",
-        "Base sólida fecha relevo, laterais e fundo, com espessura de 0,1–512 unidades. Novos terrenos começam com base; receitas antigas conservam a estrutura anterior.",
-        "Selecionar ferramenta ou camada ativa a escultura. Prévia mostra geometria durante o gesto sem alterar documento, arquivo, recursos ou histórico. Soltar confirma uma revisão e um Undo; cancelar restaura a anterior. Navegação e transformação não disputam o gesto com o pincel.",
-        "Cursor de influência, quatro formas conforme operador, núcleo rígido, rotação, proporção, espaçamento e alvo acima do dedo. Ruído, terraços, restauração, aguçamento e buracos têm consumidores reais. Sliders distinguem ajuste horizontal de rolagem vertical.",
-        "Pintura com quatro pesos por vértice, miniaturas reais, mistura triplanar e variação macro de escala/cor. SPIR-V das quatro variantes foi gerado e validado. PBR por camada, height blend e outros módulos MicroSplat ainda não estão implementados.",
-        "Auditoria: 753 arquivos de conteúdo, 11 módulos MicroSplat fornecidos e 33 famílias de capacidades. Digger, MicroSplat e Path Painter não têm port completo. Revisão estudou 60 quadros consecutivos de demonstração oficial Unity, além de amostragens dos vídeos.",
-        "Limites: mundo finito, 4.096 amostras de pincel, 200 mil triângulos; geração integral e republicação gráfica agregada. Revisões finais são retidas, sem limpeza automática; orçamento CPU contabilizado de 128 MiB e 4.096 draws não limita toda a RAM/GPU/disco."
+        "Trilho Projeto na Biblioteca, com contagem: um cartão por malha do projeto (nome do pacote carregado), selo pronto e o botão \"Na cena\" no canto do cartão e no painel de detalhe. Tocar coloca a malha no ponto focado da vista; arrastar para a cena ou para um pai na Hierarquia continua funcionando pelo mesmo caminho.",
+        "O item do menu Cena passa de \"Recursos importados\" para \"Malhas do projeto\" e abre a Biblioteca já no trilho Projeto. A lista de texto com paginação \"Anterior / Próxima\" deixa de existir.",
+        "Origem sem registro: para cada raiz importada cuja origem não está em .astra/assets.astra (o caso do projeto copiado sem a pasta .astra, visto no aparelho em 15/10), a Biblioteca mostra um cartão de aviso no trilho Projeto com o diagnóstico em chips (registro sem o modelo, identidade referenciada, o que fazer) e a ação Importar modelo.",
+        "Busca da Biblioteca filtra também as malhas do projeto; o filtro por pacote esconde o trilho Projeto, que não pertence a pacote nenhum."
       ],
-      "validation": "Host Windows: 33/33 cenários integrados aprovados, com prévia sucessiva antes de soltar, cancelamento sem alterações persistidas, novos operadores/formas, buracos fechados, pesos e bindings sRGB, UI/rolagem, ausência de gizmos, reedição, migração, Undo/Redo, orçamento e colisão Jolt. Capturas da UI nativa por rasterização de software. APK anterior 78 foi instalado e teve reedição/arraste/pintura exercitados; isso não certifica a nova prévia, layout ou shader. Pacote de teste separado dev.aether.editor.terrain; instalação, aparência, desempenho e conforto desta revisão são verificações próprias, ainda pendentes neste registro. A Astra Dev existente não é substituída por este pacote.",
-      "migration": "AETERRAIN1/2 continuam legíveis e mantêm aparência legada até ativar a mistura. Novas gravações AETERRAIN3 persistem estrutura, parâmetros/formas do pincel, grupo de gesto, mistura e variação. Editores anteriores não reabrem a nova receita para autoria; preserve cenas/revisões para retorno. Aplicar não substitui Salvar cena. Sem conversão global automática nem limpeza de fontes antigas. O pacote Astra Terreno mantém um diretório próprio de projetos; não migra nem modifica automaticamente os projetos da Astra Dev.",
-      "links": [
-        {
-          "label": "Guia de desenvolvimento: prévia, escultura, materiais e auditoria",
-          "url": "/pt-br/desenvolvimento/2026-10-15/terreno-voxel/"
-        },
-        {
-          "label": "Entrega inicial de terreno e voxel",
-          "url": "/pt-br/desenvolvimento/2026-10-14/terreno-voxel/"
-        }
-      ]
+      "validation": "Host: editor 1571/1571 (cenário de malhas do projeto passa a conferir que Malhas do projeto abre a Biblioteca no trilho Projeto, que a malha é um cartão e que o arrasto e o toque continuam criando a instância), GUI 126/126, estúdio 73/73. Aparelho: pendente. O code 90 está compilado e assinado, mas o aparelho estava dormindo no fechamento desta nota; a conferência da Biblioteca no trilho Projeto no celular entra em nota própria.",
+      "migration": "Sem mudança de formato.",
+      "links": []
+    },
+    {
+      "id": "2026-10-15-criar-personagem-receitas-de-ik",
+      "date": "2026-10-15",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Criar › Personagem: olhar, mirar, mãos ao alvo, pés no chão, corpo inteiro e carregar caixa em um toque",
+      "summary": "Revisão dos plugins pelo filtro \"só entra o que tem fluxo completo no editor\": os 30 componentes de IK já existiam, mas só eram montáveis osso a osso pelo Inspector ou pelo assistente escondido no estúdio. O menu Criar ganha a categoria Personagem, com receitas que montam IK e alvos sobre o personagem selecionado.",
+      "version": "Revisão de fonte 2026-10-15 (commit 4753848a) · Astra Dev code 88 (não público)",
+      "availability": "development",
+      "details": [
+        "Personagem da seleção: o ancestral que carrega animação, Animator ou um sistema de corpo, ou o objeto logo abaixo da raiz com esqueleto; sem seleção, o único esqueleto da cena. Sem personagem, a categoria aparece desligada.",
+        "Olhar para alvo cria o LookAt na cabeça com um alvo 2 m à frente; Mirar com as mãos cria o Aim em cada mão com alvo 1,5 m no eixo da mão; Mãos ao alvo cria IK de dois ossos com o alvo onde a mão está; Pés no chão cria Apoio do pé por pé e o Grounder com a pelve; Corpo inteiro liga pelve, peito e até quatro pontas, cada uma com alvo; Carregar caixa monta mesa, caixa com pegadas e sistema de interação numa pasta ao lado do personagem.",
+        "Ossos reconhecidos pelo nome (inglês e português) ou pela estrutura do esqueleto, como no assistente do estúdio; cada receita é um único passo de Desfazer e nada fica pela metade se um componente falhar.",
+        "Fora desta rodada, pelo mesmo filtro: BoZo (exige modelo e runtime modular), VRIK (exige rastreamento XR), exibição de ossos e editar em Play do UMotion (cosmético/avançado), galeria própria do POLYGON (o fluxo já é Importar › Pasta de pacote → Biblioteca › Modelos → Na cena)."
+      ],
+      "validation": "Host: estúdio 73/73 (cenário novo: resolução do personagem, seis receitas, uma por passo de Desfazer, recusa do Carregar caixa sem braços humanoides, caminho real + da Hierarquia → Personagem → Olhar para alvo), editor 1571/1571, GUI 126/126. Aparelho (code 88): com o Robot Kyle selecionado, + da Hierarquia → Personagem lista as seis receitas (captura v88_personagem); Olhar para alvo criou \"Olhar · Head\" sob o personagem e a cena foi salva (v88_olhar2). A linha \"Na raiz / Em…\" ainda aparecia nesse submenu no code 88 e foi retirada no commit.",
+      "migration": "Sem mudança de formato.",
+      "links": []
     },
     {
       "id": "2026-10-15-timeline-chaves-mestras-menu-da-chave-pinca",
@@ -181,6 +643,40 @@
       "links": [
         {
           "label": "Guia de desenvolvimento: terreno e voxel",
+          "url": "/pt-br/desenvolvimento/2026-10-14/terreno-voxel/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-15-terreno-voxel-reedicao-base-solida",
+      "date": "2026-10-15",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno: reedição, prévia ao arrastar e pintura com camadas suaves",
+      "summary": "Revisão de desenvolvimento com base sólida, espaço de autoria exclusivo, prévia temporária do pincel, novas operações e superfície triplanar. Host 33/33; aceite desta revisão no aparelho pendente. Auditoria dos três pacotes concluída como inventário, implementação completa ainda em andamento.",
+      "version": "Revisão de fonte 8713229 · Astra Terreno code 85 (teste separado, não público) · 2026-10-15",
+      "availability": "development",
+      "details": [
+        "Uso: Criar → Geometria → Terreno e voxel. Após aplicar, selecione raiz/chunk/anexo e use Editar terreno no Inspector. Forma, Esculpir, Pintar e Gerir organizam o trabalho; a área de autoria libera espaço do viewport.",
+        "Base sólida fecha relevo, laterais e fundo, com espessura de 0,1–512 unidades. Novos terrenos começam com base; receitas antigas conservam a estrutura anterior.",
+        "Selecionar ferramenta ou camada ativa a escultura. Prévia mostra geometria durante o gesto sem alterar documento, arquivo, recursos ou histórico. Soltar confirma uma revisão e um Undo; cancelar restaura a anterior. Navegação e transformação não disputam o gesto com o pincel.",
+        "Cursor de influência, quatro formas conforme operador, núcleo rígido, rotação, proporção, espaçamento e alvo acima do dedo. Ruído, terraços, restauração, aguçamento e buracos têm consumidores reais. Sliders distinguem ajuste horizontal de rolagem vertical.",
+        "Pintura com quatro pesos por vértice, miniaturas reais, mistura triplanar e variação macro de escala/cor. SPIR-V das quatro variantes foi gerado e validado. PBR por camada, height blend e outros módulos MicroSplat ainda não estão implementados.",
+        "Auditoria: 753 arquivos de conteúdo, 11 módulos MicroSplat fornecidos e 33 famílias de capacidades. Digger, MicroSplat e Path Painter não têm port completo. Revisão estudou 60 quadros consecutivos de demonstração oficial Unity, além de amostragens dos vídeos.",
+        "Limites: mundo finito, 4.096 amostras de pincel, 200 mil triângulos; geração integral e republicação gráfica agregada. Revisões finais são retidas, sem limpeza automática; orçamento CPU contabilizado de 128 MiB e 4.096 draws não limita toda a RAM/GPU/disco."
+      ],
+      "validation": "Host Windows: 33/33 cenários integrados aprovados, com prévia sucessiva antes de soltar, cancelamento sem alterações persistidas, novos operadores/formas, buracos fechados, pesos e bindings sRGB, UI/rolagem, ausência de gizmos, reedição, migração, Undo/Redo, orçamento e colisão Jolt. Capturas da UI nativa por rasterização de software. APK anterior 78 foi instalado e teve reedição/arraste/pintura exercitados; isso não certifica a nova prévia, layout ou shader. Pacote de teste separado dev.aether.editor.terrain; instalação, aparência, desempenho e conforto desta revisão são verificações próprias, ainda pendentes neste registro. A Astra Dev existente não é substituída por este pacote.",
+      "migration": "AETERRAIN1/2 continuam legíveis e mantêm aparência legada até ativar a mistura. Novas gravações AETERRAIN3 persistem estrutura, parâmetros/formas do pincel, grupo de gesto, mistura e variação. Editores anteriores não reabrem a nova receita para autoria; preserve cenas/revisões para retorno. Aplicar não substitui Salvar cena. Sem conversão global automática nem limpeza de fontes antigas. O pacote Astra Terreno mantém um diretório próprio de projetos; não migra nem modifica automaticamente os projetos da Astra Dev.",
+      "links": [
+        {
+          "label": "Guia de desenvolvimento: prévia, escultura, materiais e auditoria",
+          "url": "/pt-br/desenvolvimento/2026-10-15/terreno-voxel/"
+        },
+        {
+          "label": "Entrega inicial de terreno e voxel",
           "url": "/pt-br/desenvolvimento/2026-10-14/terreno-voxel/"
         }
       ]

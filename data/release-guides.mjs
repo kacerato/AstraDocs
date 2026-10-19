@@ -1,5 +1,95 @@
 import { link } from './workflow-guide-tools.mjs';
 export const releasePages = [{
+  route:'versoes/preview-0-3-2', title:'Astra 0.3.2: Animator 2D e camadas sincronizadas, Play sem solavancos, pacotes POLYGON e BoZo',
+  description:'Como usar os modos 2D e as camadas sincronizadas do Animator, o que mudou no Play do carregar e no IK de dois ossos, a conversão Humanoid mais fiel e a importação de pacotes POLYGON e BoZo incluídos no APK 0.3.2.',
+  options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-16',appRelease:'0.3.2-preview.20261016',runtimeVerified:true,prev:false,next:false}},
+  body:`
+## Versão e recorte
+
+Este capítulo acompanha o **APK 0.3.2-preview.20261016, versionCode 30**, gerado da main no commit **cddc7a45**, sem alterações locais. [Download](/download/).
+
+A atualização instala por cima da Astra 0.3.1 com a mesma chave e preserva os projetos. O [catálogo de 16/10 (APK 0.3.2)](/pt-br/snapshot-2026-10-16b/componentes/) continua valendo: nenhum componente novo entrou nesta prévia, só campos e comportamento.
+
+## Animator: Modo 2D e Sincronizar com
+
+**Caminho:** Inspector do Animator → **Abrir grafo do Animator** → estado → **Mistura 2D**. A linha **Modo 2D** alterna Triangulação (o comportamento anterior), Direcional simples, Direcional livre e Cartesiano livre, como os modos 2D da Unity; os dois modos livres usam bandas de gradiente em coordenadas polares ou cartesianas.
+
+**Camadas:** a partir da segunda camada, **Sincronizar com** escolhe a camada de origem. A camada passa a espelhar máquinas, estados e transições da origem (ids próprios, referências remapeadas) e guarda as próprias motions por estado; peso, máscara e composição continuam da própria camada. Editar a estrutura na cópia é recusado com aviso na barra de estado: edite na origem e a cópia acompanha. Arquivo do Animator na versão 6; recurso \`.aeanimator\` na versão 4.
+
+## Play: carregar e IK de dois ossos
+
+- O **Sistema de interação** não deixa mais a pelve cair e voltar num quadro quando a mão animada cruza a borda do alcance: o agachamento cai em rampa entre 80% e 100% do alcance horizontal e o corpo move no máximo 2 m/s. Inclinação e agachamento medem o braço na pose animada do quadro.
+- **Dois ossos sem polo:** com a cadeia quase reta, o lado da dobra vem do repouso no referencial do osso raiz; a pose animada continua mandando quando dobra de verdade.
+- Receitas de **Criar › Personagem** aplicadas num projeto ficam nele até serem removidas; três solvers no mesmo punho por cima de um clipe é o que faz a animação "quebrar". Remova sobras pelo menu do objeto.
+
+## Clipes Humanoid da Unity
+
+A conversão músculos → ossos encaixa a orientação do Avatar no eixo, coloca o quadril pelo centro de massa medido no esqueleto do próprio personagem e normaliza o corpo pela pose em T. Contra o projeto UMotion original do Kyle, o erro médio das mãos cai de 15–16 cm para 6,7–7,2 cm e o dos pés de 29 cm para 7 cm; resta ≈5 cm de deslocamento vertical constante. Clipes com **Bake Into Pose** deixam de ser recusados e o **Offset** de rotação da raiz é aplicado ao corpo; Loop Pose, Mirror, Level e Cycle Offset continuam recusados com aviso.
+
+## Pacotes POLYGON e BoZo
+
+**Caminho:** **Importar** (barra superior) → **Pasta de pacote** → escolha a pasta no seletor do Android. A Biblioteca abre no pacote com o trilho de tipos.
+
+- **POLYGON Icons (Synty):** o FBX cita o PSD do atlas, que o pacote não traz; o editor usa a primeira imagem exportada com o mesmo radical (\`…_01_A.png\`) e o ícone entra texturizado com **Na cena**.
+- **BoZo 2.2:** \`BodyRig.fbx\` tem skin com mais de quatro influências: na aba **Perfil** (página 3/3) troque "Recusar perda" por "Reduzir a 4" e toque **Preparar** antes de **Na cena**. Com o BodyRig selecionado, acione \`BMAC_M_Idle.anim\` na Biblioteca: o clipe Humanoid converte e abre no estúdio. Roupas modulares, shaders estilizados e expressões ficam fora desta prévia.
+
+## Limites desta prévia
+
+- **Exportar APK** continua experimental.
+- Blend Tree aninhada e Sync timing do Animator não entram; a conversão Humanoid mantém ≈5 cm de deslocamento vertical constante.
+- Sem garantia para todo aparelho ou cena; sem medição sustentada de desempenho; páginas de memória de 16 KB não suportadas.
+`
+}, {
+  route:'versoes/preview-0-3-1', title:'Astra 0.3.1: estúdio de animação v2, Criar › Personagem e Biblioteca como gerenciador',
+  description:'Como usar o estúdio v2 (posar por padrão, chave por canal, chaves-mestras), as receitas de Criar › Personagem, o Importar universal e a Biblioteca incluídos no APK 0.3.1.',
+  options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-16',appRelease:'0.3.1-preview.20261016',runtimeVerified:true,prev:false,next:false}},
+  body:`
+## Versão e recorte
+
+Este capítulo acompanha o **APK 0.3.1-preview.20261016, versionCode 29**, gerado da main no commit **02744aa9**, sem alterações locais. [Download](/download/).
+
+A atualização instala por cima da Astra 0.3.0 com a mesma chave e preserva os projetos. O [catálogo de 16/10](/pt-br/snapshot-2026-10-16/componentes/) acompanha este APK; os recortes de 09/10, 07/10 e 06/10 continuam publicados.
+
+## Estúdio de animação v2
+
+**Caminho:** menu do objeto (⋮ na Hierarquia ou toque longo) → **Animar**. O estúdio abre posando, com auto-key ligado e o personagem enquadrado.
+
+- **Painel do osso (direita):** Posição, Rotação e Escala com X, Y, Z editáveis e um botão de chave por canal (cheio = chave neste tempo; contorno = canal animado; apagado = sem canal, tocar cria o canal e grava). Abaixo, a grade de ferramentas: Auto-key, Espelhar, Copiar, Colar, Repouso, Fantasma, Ossos, IK, Fixar, Camada, Seleção, Guardar pose.
+- **Timeline:** a metade de baixo da régua é a linha de chaves-mestras — um losango por quadro com chave em qualquer trilha. Tocar seleciona o quadro inteiro e leva o cursor; arrastar move todas as chaves do quadro com um único Desfazer; tocar onde não há chave vale como scrub. Toque longo numa chave abre o menu da chave (Tempo, Valor, Tangente, Curva, Copiar, Recortar, Excluir). Pinça faz zoom da régua.
+- **Menu ⋮ do estúdio:** Parar de posar, Novo clipe (quaternion, Euler ou progressivo), Renomear, Duração, Camadas, Curvas, Eventos e marcadores, Rig, Assistente de IK, IK permanente nesta ponta, Root motion, Bake da pose final, Exportar GLB.
+- **Campos numéricos:** tocar um valor abre o teclado; o valor confirmado grava a chave quando o auto-key está ligado.
+
+## Criar › Personagem
+
+**Caminho:** **+** da Hierarquia (ou menu Criar) → **Personagem**, com um personagem selecionado (ou o único esqueleto da cena). Cada receita cria componentes e alvos de uma vez e é um único Desfazer:
+
+- **Olhar para alvo:** LookAt na cabeça com um alvo 2 m à frente do personagem.
+- **Mirar com as mãos:** Aim em cada mão com um alvo 1,5 m à frente.
+- **Mãos ao alvo:** IK de dois ossos em cada mão, com o alvo onde ela está.
+- **Pés no chão:** Apoio do pé por pé e Grounder com a pelve.
+- **Corpo inteiro:** pelve, peito e até quatro pontas com alvos.
+- **Carregar caixa:** mesa, caixa com pegadas e sistema de interação; dê Play.
+
+Os ossos são reconhecidos pelo nome (inglês e português) ou pela estrutura do esqueleto; alvos criados pelas receitas nunca são tomados por ossos. Uma receita já aplicada responde "Já montado neste personagem".
+
+## Importar universal e Biblioteca
+
+- O botão **Importar** da barra superior abre o menu com Modelo (GLB, FBX), Pasta de pacote, Textura, Ambiente (HDRI) e Áudio.
+- **Cena → Biblioteca de pacotes:** trilho de tipos com contagem, cartões com selo (pronto, a converter, aviso) e painel de detalhe com Abrir, Instanciar, Vincular e Reimportar. **Cena → Malhas do projeto** abre a Biblioteca no trilho **Projeto**, com "Na cena" no cartão. Um modelo que a cena referencia sem registro em \`.astra/assets.astra\` aparece como cartão de aviso com o diagnóstico.
+
+## Interface universal e Final IK
+
+- Menu **Cena** como menu de contexto, barra superior só de ícones, Inspector em coluna rolável de cartões.
+- Bloco de interação do Final IK: pegada com pivô, gatilho de interação (eventos \`entered\` e \`left\`), olhar enquanto alcança e limite de torção no cone.
+- Clipes Humanoid da Unity convertidos para rotações de ossos pelo Avatar do modelo.
+
+## Limites desta prévia
+
+- **Exportar APK** (botão nos projetos) chega como experimental: identidade, chave e exportação pelo seletor de arquivos do sistema não foram concluídos de ponta a ponta no aparelho.
+- BoZo (personagens modulares), galeria POLYGON e Blend 2D direcional do Animator ficam para prévias seguintes.
+- Sem garantia para todo aparelho ou cena; sem medição sustentada de desempenho; páginas de memória de 16 KB não suportadas.
+`
+}, {
   route:'versoes/preview-0-3-0', title:'Astra 0.3.0: navegação, Animation Studio e Animator ampliado',
   description:'Como usar a navegação nova (malha, agentes, obstáculos e links), o Animation Studio e as ampliações do Animator incluídos no APK 0.3.0.',
   options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-09',appRelease:'0.3.0-preview.20261009',runtimeVerified:true,prev:false,next:false}},

@@ -6,7 +6,8 @@ import { spawnSync } from 'node:child_process';
 // Extract only public contracts. The isolated private source and executable stay
 // under ignored evidence/, never under data/ or public/.
 const engine=process.argv[2], version=process.argv[3];
-if(!engine || !/^snapshot-\d{4}-\d{2}-\d{2}$/.test(version||'')) throw Error('Usage: npm run sync:snapshot -- <engine Git checkout> snapshot-YYYY-MM-DD');
+// Sufixo de letra: segunda release no mesmo dia (snapshot-2026-10-16b); cada release tem a sua rota.
+if(!engine || !/^snapshot-\d{4}-\d{2}-\d{2}[a-z]?$/.test(version||'')) throw Error('Usage: npm run sync:snapshot -- <engine Git checkout> snapshot-YYYY-MM-DD[b]');
 const release=JSON.parse(fs.readFileSync('data/release.json','utf8'));
 const commit=release.source.baselineCommit;
 if(!/^[a-f0-9]{40}$/.test(commit) || release.source.localChangesIncluded) throw Error('A release with local source changes requires separately recorded provenance.');
@@ -30,6 +31,9 @@ run('tar',['-xf',archive,'-C',privateDir]);
 const executable=path.join(privateDir,process.platform==='win32'?'export-components.exe':'export-components');
 run(process.env.CXX||'g++',['-std=c++20','-O1','-ffunction-sections','-fdata-sections','-Wl,--gc-sections','-I',path.join(privateDir,'native'),'tools/export-components.cpp',path.join(privateDir,'native/resources/asset_registry.cpp'),path.join(privateDir,'native/scene/collision_recipe.cpp'),'-o',executable]);
 fs.writeFileSync(`${output}/components.json`,run(executable,[]));
+// Since 13/10 the scripting project references Roslyn (Microsoft.CodeAnalysis.CSharp);
+// MSBuildWorkspace does not restore, so the archived project is restored first.
+run('dotnet',['restore',path.join(privateDir,'managed/Astra.Scripting/Astra.Scripting.csproj')],{env:{...process.env,DOTNET_CLI_TELEMETRY_OPTOUT:'1'}});
 run('dotnet',['run','--project','tools/export-api','--',path.join(privateDir,'managed/Astra.Scripting/Astra.Scripting.csproj'),`${output}/api.json`],{env:{...process.env,ASTRA_DOCS_SNAPSHOT:version}});
 run(process.execPath,['tools/sync-member-map.mjs',privateDir,`${output}/component-member-map.json`]);
 // Git stores these JSON contracts with LF; hash the same bytes on Windows/CI.
