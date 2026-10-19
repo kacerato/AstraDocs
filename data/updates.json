@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-19",
   "entries": [
     {
+      "id": "2026-10-19-materiais-unity-suavidade-e-relatorio",
+      "date": "2026-10-19",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Materiais Unity: suavidade vira rugosidade de verdade e cada pacote mostra um relatório",
+      "summary": "O conversor do Standard da Unity passa a ler o mapa metálico/suavidade e a suavidade no alfa do albedo em vez de recusar o material ou deixá-lo com rugosidade 0,5 uniforme, uma das causas do aspecto \"tudo brilha\". Ao importar uma pasta de pacote, a Biblioteca mostra quantos materiais converteram por completo, quantos com aproximação e quantos ficaram sem conversão. Revisão local; não está no APK público.",
+      "version": "Revisão local e93b5ed1 · Astra Dev 0.3.0-dev.108-g3amat (code 108)",
+      "availability": "development",
+      "details": [
+        "Uso: Importar › Pasta de pacote. O cartão Materiais Unity aparece no topo da Biblioteca com três blocos (Completos, Aproximados, Sem conversão); tocar num bloco filtra a lista por ele e tocar de novo mostra tudo. O detalhe de cada material lista o motivo da aproximação ou da recusa.",
+        "Material com _METALLICGLOSSMAP: metálico no canal R e suavidade no A do mapa, vezes Smoothness Scale. Com Smoothness Source = Albedo Alpha, a suavidade sai do alfa da textura de cor e esse alfa deixa de ser transparência, como na Unity.",
+        "Inspector do material, cartão Canais: nova linha Origem da rugosidade (Rugosidade no canal, Suavidade no canal (1 - canal), Suavidade no alfa da cor base). Com suavidade, o número Rugosidade vale como 1 - escala da suavidade.",
+        "Specular Highlights e Reflections desligados juntos viram especular 0 para não metais; só um desligado converte com aproximação declarada. O valor Metallic da Unity é convertido de sRGB para linear, como a Unity faz em projetos lineares, então metais parciais ficam menos metálicos que antes.",
+        "API C#: MaterialRoughnessSource e MaterialSlot.RoughnessSource; na fachada gerada, MeshRenderer GetChannelsRoughnessSource e SetChannelsRoughnessSource.",
+        "Ainda sem conversão: Detail (_DETAIL_MULX2), Parallax, alfa premultiplicado, alfa da cor fora do modo opaco e o shader Specular setup. TIFF com compressão LZW ainda não abre na Astra: o material que depende dela é recusado."
+      ],
+      "validation": "Host: 28 cenários do importador (mapa metal/suavidade, suavidade no albedo, opções de forward, migração, cartão de auditoria com toque) e suíte gerenciada com 523 testes; APK arm64 compilado. POCO F7 com Astra Dev 108 e projetos preservados: recorte real do pacote MapMagic 2 (Demo) importado como pasta, relatório 2 completos, 0 aproximados, 1 sem conversão; Stones.mat convertido e aplicado numa esfera, com a leitura correta da suavidade tirando o brilho uniforme (luminância média 104 contra 113 com a leitura errada). As TIFF LZW do pacote foram convertidas para PNG sem perda para esse teste. Não testado no aparelho: um material com aproximação.",
+      "migration": "Cenas e materiais antigos abrem iguais (origem da rugosidade herdada). Ao salvar, o componente de malha passa para a versão 10 e o material do projeto para a 7; versões anteriores do app não abrem esses arquivos. Pacotes catalogados antes guardam a classificação antiga: reimporte a pasta para ver o relatório novo. Materiais Unity já convertidos não mudam sozinhos; reconverta para aplicar o metálico linear e a suavidade.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-19-ceu-sol-lua-estrelas",
       "date": "2026-10-19",
       "scopes": [
