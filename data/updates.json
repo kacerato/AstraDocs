@@ -4,6 +4,33 @@
   "updatedAt": "2026-10-18",
   "entries": [
     {
+      "id": "2026-10-18-telemetria-desempenho-banco-ligado",
+      "date": "2026-10-18",
+      "scopes": [
+        "docs",
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Telemetria de desempenho: recepção ligada ao banco",
+      "summary": "A recepção da telemetria em astraengine.com.br/api/telemetry/ingest/ passa a gravar de fato. O site só repassa o lote para uma função no Neon, ao lado do banco, que valida, grava e aplica a retenção. Corrige o estado da nota anterior, em que a recepção respondia 503 sem banco. O app ainda não envia nada.",
+      "version": "Site astraengine.com.br · banco Neon astra-telemetry (us-east-1) · app: revisão local, sem envio",
+      "availability": "development",
+      "details": [
+        "O endereço e o formato não mudam: POST /api/telemetry/ingest/ com astra.telemetry.batch/1 ou astra.telemetry.delete/1.",
+        "O site não guarda nem lê dados; repassa o corpo e devolve a resposta da função. Nenhuma credencial de banco fica no site ou no app.",
+        "Retenção de 180 dias por gatilho diário no próprio Neon; o cron da Vercel foi removido.",
+        "Apagar uma instalação remove sessões, janelas e eventos dela em cascata."
+      ],
+      "validation": "Local: 12/12 cenários da função contra Postgres em memória e repasse do site (405, 400, 413). Produção, direto na função: lote de teste aceito (2 janelas), reenvio sem duplicar (0), remoção da instalação de teste (1) e segunda remoção vazia (0); tabelas conferidas vazias depois do teste. Sem envio pelo app.",
+      "migration": "Nada a migrar. O lote de teste foi apagado; o banco começa vazio.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-18-telemetria-desempenho-recepcao",
       "date": "2026-10-18",
       "scopes": [

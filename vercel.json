@@ -4,7 +4,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "trailingSlash": true,
-  "crons": [{"path":"/api/telemetry/retention/","schedule":"17 4 * * *"}],
   "redirects": [
     {"source":"/docs/:path*/","destination":"/pt-br/snapshot-2026-10-06/:path*/","permanent":true},
     {"source":"/pt-br/atual/:path*/","destination":"/pt-br/snapshot-2026-10-06/:path*/","permanent":false},
