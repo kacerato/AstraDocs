@@ -4,6 +4,28 @@
   "updatedAt": "2026-10-19",
   "entries": [
     {
+      "id": "2026-10-19-terreno-integracao-lod-pincel",
+      "date": "2026-10-19",
+      "scopes": ["app", "docs"],
+      "kind": "improvement",
+      "title": "Terreno: integração do LOD autoral e continuidade do pincel",
+      "summary": "A revisão de terreno integra o trabalho de 17/10 às alterações recentes do editor. O guia explica LOD autoral, espaçamento por distância percorrida e migração da receita. Primeiro bloco e plano completo ainda em implementação; sem APK novo distribuído.",
+      "version": "Branch de terreno · integração 10d09abb · AETERRAIN6",
+      "availability": "development",
+      "details": [
+        "Uso: Forma → Detalhes → Detalhe à distância. Um nível desativa a simplificação; dois a quatro habilitam níveis reduzidos. Erro máx. (%) controla a tolerância, com bordas protegidas e colisão na geometria original.",
+        "Aplicar gera os níveis; Salvar cena preserva os objetos. A receita recupera a política na reabertura. A prévia de escultura mantém a malha original.",
+        "O pincel acumula comprimento entre eventos e interrompe a continuidade ao perder a superfície. Subdividir a mesma linha não deve adicionar exposição. Posições não informadas pelo dispositivo não são reconstruídas.",
+        "A reserva limitada de buffers reduz realocações sem reduzir geometria. Não equivale a arena por chunk nem a sincronização totalmente localizada.",
+        "Assets originais preservados. A biblioteca de materiais/PBR, mapas independentes, interface altura-volume, vizinhança e checkpoints/GC continuam pendentes. Os guias de 15/10 e 16/10 são históricos."
+      ],
+      "validation": "Windows: 56/56 cenários integrados passaram. Inclui comparação de 1, 8 e 32 eventos de toque com carimbos e campo final em altura/volume; LOD na publicação de geometria, Undo/Redo e salvar/reabrir; controles de LOD em layouts de 655 e 1280 pixels. Contratos de materiais: 6/6. Extração seletiva: 2/2. Não somar rodadas antigas à contagem. Sem ADB, validação visual do renderer Android ou medição de desempenho no aparelho nesta retomada.",
+      "migration": "AETERRAIN6 salva a política de LOD. Receitas 1–5 continuam legíveis; editores anteriores não reeditam a receita 6. Preserve uma revisão compatível antes de alternar versões. Nenhuma migração do APK público nesta revisão.",
+      "links": [
+        {"label": "Guia da revisão integrada", "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"}
+      ]
+    },
+    {
       "id": "2026-10-19-gradacao-de-cor-e-perfis-prontos",
       "date": "2026-10-19",
       "scopes": [
