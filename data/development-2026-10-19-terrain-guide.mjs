@@ -18,6 +18,12 @@ Em **Pincel**, Elevar/Baixar identificam a força como **Altura por amostra (m)*
 
 Referência: [Unity 6000.0 — Raise or Lower Terrain](https://docs.unity.com/en-us/engine/6000.0/manual/creating-environments/script-terrain/terrain-tools/terrain-raise-lower-terrain). Raio e intensidade controlam a escala e a força do relevo; os valores iniciais da Astra são próprios, adaptados ao toque.
 
+## Ajustar com barras deslizantes
+
+Raio e força ficam no início de **Pincel → Ferramentas**. Arraste horizontalmente para ajustar, ou verticalmente para rolar. O valor continua visível e abre a entrada exata ao toque. A escala de força favorece os valores baixos; a entrada exata mantém os limites anteriores quando você precisa ultrapassar a faixa prática da barra.
+
+Estrutura, relevo, pintura, dimensões e orientação do pincel, LOD e os parâmetros contínuos de caminhos também oferecem barras. Semente e coordenadas continuam numéricas. Resolução e níveis avançam em passos válidos; no volume, a régua considera o teto de amostras da combinação atual. O erro de LOD só fica disponível com mais de um nível.
+
 ## Detalhe à distância
 
 Abra **Forma → Detalhes → Detalhe à distância**. **Níveis** aceita de 1 a 4: um nível mantém apenas a geometria original; os demais habilitam versões reduzidas para renderização. **Erro máx. (%)** controla a tolerância da simplificação e fica desabilitado com apenas um nível. A seleção por distância utiliza o orçamento em pixels de Qualidade.
@@ -37,6 +43,14 @@ Essa regra não reconstrói posições que o aparelho deixou de informar e não 
 Buffers podem conservar uma reserva limitada ao crescer ou diminuir. O crescimento envia a região nova e as faixas alteradas; uma região reativada é enviada novamente. Isso preserva a qualidade da geometria e não significa arena por chunk nem sincronização totalmente localizada.
 
 As fontes da biblioteca permanecem na resolução original; miniaturas são recursos separados. O catálogo preparado ainda não está ligado ao PBR completo do terreno. Seleção extensível, normal, altura, misturas, ruídos e clusters continuam obrigatórios no plano. O material atual de quatro albedos não representa a conclusão dessas capacidades.
+
+### Compartilhamento entre revisões
+
+Revisões com texturas idênticas podem compartilhar os pixels decodificados e seus mips, sem alterar os arquivos originais. Na publicação, materiais são remapeados para compartilhar o slot da textura quando formato, sampler, cor e política de streaming coincidem. Isso reduz a duplicação que cresce a cada aplicação. Desfazer, Refazer e as identidades das fontes permanecem independentes.
+
+Políticas de streaming diferentes continuam separadas. Texturas com níveis superiores guardados em arquivo também permanecem separadas nesta etapa: duas caudas iguais não garantem que os níveis originais sejam iguais. O orçamento de Qualidade continua independente desta melhoria. Ainda faltam checkpoints/deltas de geometria e gestão dos arquivos do histórico; os limites da biblioteca continuam aplicáveis.
+
+Referência de arquitetura: [Unity 6000.0 — Avoiding asset duplication](https://docs.unity3d.com/6000.0/Documentation/Manual/assets-avoid-duplication.html). A Astra usa implementação própria de compartilhamento imutável; não se trata de integração com AssetBundles. A validação desta revisão está registrada em [Atualizações](/atualizacoes/).
 
 ## Migração
 

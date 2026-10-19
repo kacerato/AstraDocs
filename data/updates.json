@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-19",
   "entries": [
     {
+      "id": "2026-10-19-terreno-sliders-texturas-compartilhadas",
+      "date": "2026-10-19",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno: sliders e texturas compartilhadas entre revisões",
+      "summary": "Ajustes contínuos passam a usar barras deslizantes, com raio e força no início do painel. Revisões com as mesmas texturas passam a compartilhar pixels e slots de publicação, preservando resolução e histórico.",
+      "version": "Astra Terreno 0.3.1-dev.terrain.20261019.5 (code 110) · teste privado",
+      "availability": "development",
+      "details": [
+        "Uso: arraste a barra para ajustar; toque no valor para entrada precisa. Sementes e coordenadas mantêm entrada numérica. Arrastar verticalmente rola o painel.",
+        "Estrutura, relevo, pincel, pintura, LOD e parâmetros contínuos de caminhos usam sliders. Resolução e níveis seguem passos inteiros; o limite volumétrico é considerado na régua de resolução.",
+        "Pixels idênticos, com o mesmo formato, cor e sampler, podem compartilhar armazenamento imutável entre importações e caches completos. A publicação remapeia materiais para compartilhar slots da GPU quando a política de streaming também coincide.",
+        "Prioridades de streaming diferentes preservam residências separadas. Texturas parcialmente residentes em arquivo continuam separadas; igualdade apenas da cauda de mips não prova igualdade do conteúdo completo.",
+        "Nenhuma textura ou mip é reduzido por esta deduplicação. As opções existentes de Qualidade continuam controlando o orçamento e a residência. Revisões, cenas e arquivos do histórico não são apagados.",
+        "Esta melhoria não conclui checkpoints/deltas da geometria, coleta de arquivos, PBR extensível nem o primeiro bloco do plano. Os limites da biblioteca permanecem."
+      ],
+      "validation": "Host: 64/64 cenários de terreno e 18/18 de publicação de texturas passaram. APK 110 auditado e instalado no POCO F7. Toque: resolução 64→96, intensidade por slider e entrada precisa, prévia ao esculpir, Undo/Redo e reabertura preservando nove amostras e LOD 3. No mesmo projeto antigo com 795 operações, a biblioteca contabilizada caiu de 127,27 para 43,25 MiB, sem editar suas revisões. Sem FATAL EXCEPTION/Fatal signal nos logs do roteiro. Isso não mede toda a memória do processo, nem certifica todos os pincéis, materiais ou transições de LOD.",
+      "migration": "Sem mudança no formato AETERRAIN6, nos assets originais ou nas operações salvas. APK público inalterado.",
+      "links": [
+        {
+          "label": "Guia da revisão de terreno",
+          "url": "/pt-br/desenvolvimento/2026-10-19/terreno-integracao/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-19-dia-e-noite-como-na-unity",
       "date": "2026-10-19",
       "scopes": [
