@@ -4,6 +4,37 @@
   "updatedAt": "2026-10-20",
   "entries": [
     {
+      "id": "2026-10-20-luz-e-mesh-renderer-como-na-unity",
+      "date": "2026-10-20",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Luz e Mesh Renderer como na Unity: sombra do sol na Luz, várias direcionais, máscaras e Projetar sombras por objeto",
+      "summary": "A Luz passa a funcionar como o componente Light da Unity: a sombra do sol é configurada na própria Luz, uma segunda direcional ilumina sem apagar a primeira, há Máscara de culling e Camadas de renderização, o cone do spot usa a abertura total e a cor é a do seletor (sRGB). O Mesh Renderer ganha a aba Iluminação com Projetar e Receber sombras. Uma nova Iluminação da cena escolhe qual direcional é o sol. Revisão local; não está no APK público.",
+      "version": "Revisão local 99b955e2 · Astra Dev 0.3.0-dev.135-luz-renderer (code 135)",
+      "availability": "development",
+      "details": [
+        "Uso — sombra do sol: selecione a luz direcional › Inspector › Luz › Sombra. Tipo de sombra (Sem sombra, Sombra dura, Sombra suave), Força da sombra, Desvio e Desvio na normal. Cascatas, distância e resolução continuam no perfil do aparelho, que é o teto, como o URP Asset.",
+        "Várias direcionais: a mais brilhante (ou a escolhida como Fonte do sol) é o sol, com cascatas e disco no céu; as outras viram luzes adicionais sem sombra, para lua ou preenchimento. O quadro aceita até 16 luzes adicionais (8 no perfil C, 12 no B) e cada objeto soma até 8, as que mais o iluminam.",
+        "Fonte do sol: + › Luzes › Iluminação da cena cria o componente com o campo Fonte do sol. Vazio mantém a regra automática (a direcional mais brilhante, com a Hora do dia na frente).",
+        "Renderização da Luz: Máscara de culling (camadas de objeto do projeto) e Camadas de renderização (8). O seletor marca várias, com Nada e Tudo, e mostra só as camadas que têm nome. O Mesh Renderer tem as Camadas de renderização correspondentes; a luz só ilumina quem tem uma camada em comum.",
+        "Spot: Ângulo do spot e Ângulo interno do spot são a abertura total (padrão 30° e 21,8°, como a Unity). Cor da Luz em sRGB, o mesmo número do seletor.",
+        "Mesh Renderer › aba Iluminação: Projetar sombras (Desligado, Ligado, Dupla face, Só sombra) e Receber sombras; em Configurações adicionais, Camadas de renderização. O interruptor Projetar sombra do objeto saiu: a sombra é do renderer.",
+        "Padrões únicos: Luz direcional e Sol com dia e noite nascem iguais (unidade relativa, intensidade 3, sombra suave); pontual e spot com 1000 lúmens.",
+        "API C#: Light.SpotAngle, InnerSpotAngle, ShadowMode, ShadowStrength, ShadowBias, ShadowNormalBias, CullingMask e RenderingLayers ([Flags]); MeshRenderer.CastShadows, ReceiveShadows e RenderingLayerMask; LightingSettings.SunSource.",
+        "Ainda falta: Modo Misto/Assado da luz e as Sondas de luz/reflexão do Mesh Renderer ficam gravados no arquivo, mas só viram campos quando existir bake e sondas. Cookie e luz de Área continuam pendentes."
+      ],
+      "validation": "Host: 65/65 na família de iluminação (migração das cenas antigas, padrões, Fonte do sol, cor linear, máscaras, limite por objeto, Mesh Renderer v11) e suíte nativa 1594/1594. POCO F7 com Astra Dev 126 e 135, Vila Astra em Play com câmera fixa: cena antiga aberta igual, sol com sombra dura, força 0,4 e sem sombra, duas direcionais (a segunda azulada ilumina o lado escuro das casas), casas sem projetar sombra com poste e bancos ainda projetando, Só sombra ao vivo no editor, seletores de Projetar sombras, Camadas de renderização e Máscara de culling. Não testado no aparelho: Fonte do sol escolhida no Inspector, uma máscara recusando um objeto e mais de 8 lâmpadas sobre o mesmo objeto.",
+      "migration": "A Luz passa para a versão 4 e o Mesh Renderer para a 11 ao salvar. Cenas antigas abrem com a mesma aparência: o sol ganha sombra suave (o que já tinha), meio-ângulos viram abertura total, a cor linear vira o número sRGB equivalente e as opções Projetar/Receber sombra do objeto passam ao Mesh Renderer. Versões anteriores do app não abrem cenas salvas nesta.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-20-terreno-estratos-mapas-globais",
       "date": "2026-10-20",
       "scopes": [
