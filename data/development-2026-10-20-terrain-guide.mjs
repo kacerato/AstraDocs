@@ -8,6 +8,10 @@ Esta página acompanha a branch de terreno de 20/10. Estas mudanças ainda não 
 
 ## Resolução do mapa de pintura
 
+:::note[Continuação da implementação]
+A [revisão de pintura por fragmento](/pt-br/desenvolvimento/2026-10-20/terreno-pintura-gpu/) acrescenta o consumidor GPU e descreve o comportamento posterior. As limitações abaixo registram o estágio anterior desta entrega.
+:::
+
 Em **Forma → Detalhes → Células do mapa de pintura**, a barra escolhe de 8 a 512 células, em passos de oito. Toque no valor para entrada precisa. **0** conserva a avaliação legada. O controle aparece no relevo; a pintura volumétrica continua considerando paredes e tetos em três dimensões.
 
 A resolução da malha continua no controle **Células por lado**. Mudar a resolução da pintura reexecuta os traços e caminhos originais, preservando a autoria. Diminuir e aumentar a resolução não substitui os traços por uma imagem degradada. Os mapas têm limites de memória e cancelamento cooperativo; a resolução máxima continua sendo uma escolha explícita.

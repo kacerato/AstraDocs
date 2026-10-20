@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-20",
   "entries": [
     {
+      "id": "2026-10-20-terreno-pintura-por-fragmento",
+      "date": "2026-10-20",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno: pintura fina independente da triangulação",
+      "summary": "A revisão local liga o mapa de pintura ao shader, à prévia e à persistência, permitindo marcas dentro dos triângulos sem aumentar a malha.",
+      "version": "Branch de terreno · 47b4cd6b · sem APK novo",
+      "availability": "development",
+      "details": [
+        "Uso: Forma → Detalhes → Células do mapa de pintura. Barra de 8–512 em passos de oito, com entrada precisa. Terrenos novos começam com 128; os antigos preservam a configuração. 0 mantém o modo legado.",
+        "Amostragem por fragmento recebe o mapa de controle independentemente da malha. Laterais e fundo conservam os pesos próprios; voxels mantêm a pintura volumétrica.",
+        "Prévia publica a imagem calculada durante o gesto e cancelar restaura a revisão aplicada. Aplicar reutiliza o build concluído, sem gerar novamente o campo para exportar.",
+        "PNG de controle linear e lossless, sem compressão ASTC nem redução de resolução por perfil de albedo. Pesos autorais permanecem reexecutáveis; quantização conserva a soma por texel. Falta de orçamento gera recusa explícita.",
+        "Importação, cache, histórico e publicação remapeiam o controle junto com os albedos. Sem bindless ou sem descritor disponível, a avaliação por vértice é o fallback e não oferece pintura fina.",
+        "Assets originais preservados. Catálogo extensível/PBR, ruídos, clusters, vegetação independente e UI completa de camadas continuam pendentes; primeiro bloco e plano de 71 itens seguem abertos."
+      ],
+      "validation": "Host: 96/96 cenários integrados do editor e 18/18 de publicação de texturas passaram. Oito modos offscreen na GPU NVIDIA RTX 3050 passaram com os includes GLSL e o publicador de material reais: faixa entre vértices, bordas, transformação UV, faces fechadas e fallback. Painel de produção conferido em 1280×720 e 655×300. Dois testes condicionais de symlink não executaram suas asserções por falta de privilégio no Windows. 14/14 unidades Android ARM64 passaram na compilação sintática; isso não comprova ligação de APK ou runtime. Sem APK novo ou ADB.",
+      "migration": "AETERRAIN7 permanece. GLBs de relevo com mapa independente usam superfície v2 e cache derivado com seção opcional de controle; revisão do importador 8 regenera derivados antigos. Preserve fontes e .astra/terrain-history. Reabrir não altera configurações antigas automaticamente. Não há APK novo nem validação Android por ADB nesta revisão.",
+      "links": [
+        {
+          "label": "Pintura por fragmento na revisão local",
+          "url": "/pt-br/desenvolvimento/2026-10-20/terreno-pintura-gpu/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-20-terreno-mapas-recuperacao-catalogo",
       "date": "2026-10-20",
       "scopes": [
