@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-20",
   "entries": [
     {
+      "id": "2026-10-20-terreno-neve-qualidade-busca",
+      "date": "2026-10-20",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno: neve, qualidade autoral e busca do catálogo",
+      "summary": "A revisão de desenvolvimento integra neve Simple/Rich, canais GA e máscaras, iluminação fina, resolução por mapa e descoberta de fontes.",
+      "version": "Branch de terreno · neve e qualidade em 20/10 · sem APK novo",
+      "availability": "development",
+      "details": [
+        "Uso: Pintar → Neve para preparar as fontes originais e escolher Simples/Rica, quantidade, direção, altura e participação. Barras mantêm entrada precisa. Faixa medida é uma ação explícita com geometria correspondente; defaults altos não são alterados silenciosamente.",
+        "Materiais conservam cor/altura, normal GA, smoothness/AO separados, noise, resampling/stochastic/triplanar, cristais/idade, borda molhada/porosidade, rim, glitter e transmissão fina. Máscara R máximo/G mínimo usa sampler Clamp real, inclusive nos mips. A normal permite RGB/RG/GA explícitos; o preset é GA e trocar a imagem conserva os fatores e o formato autorado.",
+        "Qualidade Original por padrão; teto 4096/2048/1024/512/256 por terreno e herança/Original/override por mapa. Fontes ficam intactas; streaming e pedidos manuais respeitam o limite. Falta de orçamento recusa a publicação sem reduzir a qualidade escondido. Pico CPU de decode é distinto de residência GPU.",
+        "Busca com estado próprio, filtros por papel/pacote, paginação e identidade coerentes na biblioteca/PBR/ruído/variantes/Geo/Global/neve; consultas do Asset Browser não são reutilizadas. Seletores de normal novos iniciam com filtro Normal; a escolha explícita Todos permanece disponível e é lembrada por contexto.",
+        "Quatro TGA originais e PNGs integrais sem perda entram no catálogo, agora com 82 materiais e 152 texturas. Três ícones novos e miniaturas reais de todas as fontes no atlas mantêm os 481 IDs publicados anteriores. O atlas cresce para conservar resolução; nenhum original é reduzido.",
+        "Plano integral aberto: quatro canais pintados atuais, controladores sem autoridade real, interação completa com poças/água, tracks, tesselação, vegetação, grafos e outras capacidades continuam pendentes. Transmissão fina não é o SSS com blur do HDRP."
+      ],
+      "validation": "158/158 cenários integrados do editor e 72/72 Core passaram: fontes reais, barras/entrada precisa, aplicação, reabertura/salvamento, migração V1/V2/V3 e recusa de V3 sem domínio. RGB/RG/GA persistem, chegam aos descritores e sobrevivem à troca de fonte/aplicação/reabertura. 238 modos offscreen passaram na GPU NVIDIA RTX 3050 com shader/tabela reais; não representam qualidade natural de uma cena ou desempenho Android. Os 36 cenários integrados de publicação de texturas e 11 testes focados de residência passaram. UI conferida em 130 capturas base e 28 capturas novas/revisadas em 655×300 e 1280×720, incluindo fontes/formatos, sliders e estados sem fonte. 21/21 unidades Android ARM64 passaram na compilação sintática, com repetição das quatro unidades afetadas pela revisão final. 44 shaders validados. Quatro testes Geo/atlas/miniaturas e um de assets de neve preservam bytes/pixels/IDs e idempotência. Sem APK novo, link Android, teste de toque ou medição de memória/desempenho no aparelho.",
+      "migration": "Superfícies novas usam AETERRAINSURFACE3, preservando corpo legado e extensão V2. V1/V2 recebem Snow Off e Original/herança. Receitas continuam AETERRAIN8. Cache derivado revisão 11 será regenerado; preserve fontes e histórico. Atualizar código ou site não altera APK instalado; código antigo não deve editar os novos dados.",
+      "links": [
+        {
+          "label": "Neve, qualidade das texturas e busca",
+          "url": "/pt-br/desenvolvimento/2026-10-20/terreno-neve-qualidade-busca/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-20-luz-e-mesh-renderer-como-na-unity",
       "date": "2026-10-20",
       "scopes": [
