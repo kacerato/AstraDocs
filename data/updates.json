@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-20",
   "entries": [
     {
+      "id": "2026-10-20-terreno-mapas-recuperacao-catalogo",
+      "date": "2026-10-20",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno: mapas autorais, recuperação de receitas e integração do catálogo",
+      "summary": "A revisão local separa a resolução autoral da pintura, preserva checkpoints e deltas da receita e acrescenta contratos para vizinhos e materiais do catálogo original.",
+      "version": "Branch de terreno · revisão local de 20/10 · sem APK novo",
+      "availability": "development",
+      "details": [
+        "Uso na revisão local: Forma → Detalhes → Células do mapa de pintura. Barra com passos de oito e entrada precisa; 0 conserva a avaliação legada. Mudar a resolução reexecuta a autoria original.",
+        "O mapa autoral é independente da triangulação; o shader atual ainda interpola pesos de vértice. Pintura fina por fragmento e mapas independentes de vegetação continuam pendentes.",
+        "Ao aplicar, checkpoints e deltas exatos da receita são preservados em .astra/terrain-history. Um GLB ausente, truncado ou divergente pode recuperar a receita validada e ser reconstruído explicitamente ao aplicar. Copie essa pasta junto com o projeto.",
+        "Backend de vizinhos trata identidades de grupo/camada, altura mundial e cantos compartilhados. Criação de grupos e publicação conjunta pelo editor ainda não estão integradas.",
+        "Contratos persistidos de materiais incluem canais PBR e remapeamentos, projeção, ruídos, anti-tile, resampling e clusters. O adaptador conserva os 82 materiais/146 texturas e o JSON original; propriedades não suportadas geram diagnóstico. Isso ainda não é consumo completo no shader nem seleção visual de todos os assets.",
+        "Nenhum pixel foi reduzido ou recomprimido nesta revisão. Deltas de geometria, GC global de revisões, vegetação, grafos e demais pendências do plano continuam abertos."
+      ],
+      "validation": "90/90 cenários integrados no host passaram, incluindo recuperação/reconstrução, reabertura, sliders, mapas regionais, vizinhos e conversão das 82 entradas do catálogo. Capturas executáveis em 1280×720 e 655×300 conferidas. Dez unidades passaram na compilação sintática Android ARM64; isso não equivale a APK ligado/instalado. Dois testes condicionais de symlinks não executaram as asserções porque o Windows negou o privilégio. Sem uso de ADB nesta revisão.",
+      "migration": "AETERRAIN7 acrescenta a resolução da pintura e conserva leitores 1–6. Editores anteriores exigem revisão compatível para reedição. Preserve .astra/terrain-history e as fontes GLB. APK público e APK 110 anteriores não recebem estas mudanças automaticamente.",
+      "links": [
+        {
+          "label": "Guia da revisão de 20/10",
+          "url": "/pt-br/desenvolvimento/2026-10-20/terreno-mapas-recuperacao/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-20-nuvens-cloud-layer-como-na-unity",
       "date": "2026-10-20",
       "scopes": [
