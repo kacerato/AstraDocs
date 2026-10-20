@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-20",
   "entries": [
     {
+      "id": "2026-10-20-exposicao-automatica-como-na-unity",
+      "date": "2026-10-20",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Exposição automática como o Exposure do HDRP, e uma caixa de override por efeito no Ambiente",
+      "summary": "O Ambiente ganha a Exposição no modelo da Unity (HDRP): modos Fixa, Automática e Automática por histograma, medição da luminância da câmera em EV100 na GPU, adaptação do olho e limites para a noite não virar dia. Como no Default Volume Profile do HDRP, um Ambiente novo já nasce em Automática. Cada efeito de pós (Exposição, Tonemapping, Bloom, Vinheta, Ajustes de cor, Cor, Grão, Oclusão) e também Neblina, Luz indireta e Nuvens passam a ter a própria caixa de override no cabeçalho da seção. Revisão local; não está no APK público.",
+      "version": "Revisão local b59cdb55 · Astra Dev 0.3.0-dev.119-exposicao (code 119)",
+      "availability": "development",
+      "details": [
+        "Uso: selecione o objeto com o Ambiente e abra a seção Exposição. Modo Fixa usa Exposição fixa (EV100, maior escurece) e Compensação. Nos modos automáticos aparecem Medição (Média, Pontual ou Peso no centro), Adaptação (Imediata ou Progressiva, com velocidades Escuro para claro 3 e Claro para escuro 1), Cinza médio alvo (12,5%, 14% ou 18%), Compensação e Limite mínimo/máximo; o histograma mostra ainda os percentuais (40 a 90%).",
+        "Padrões da Unity: Automática, Peso no centro, Progressiva, 3/1, 40–90%, cinza 12,5%, compensação 0. Os limites mudam: os −1/14 do HDRP supõem sol de 100.000 lux; na Vila o meio-dia mede ~0 EV100, o poente ~−2,7 e a noite ~−4,7, então a Astra usa −2/10.",
+        "Volume como na Unity: a caixa no cabeçalho de cada seção decide se este Ambiente sobrescreve aquele efeito; desmarcada, a seção mostra Herdado e o valor vem do volume de prioridade menor ou do padrão do mundo.",
+        "No editor a exposição acompanha na hora quando você muda a hora do dia; no Play ela se adapta como o olho. O logcat mostra a linha [AutoExposure] a cada 2 s com o EV100 medido e o adaptado.",
+        "API C#: Environment.ExposureMode, ExposureMetering, ExposureAdaptation, ExposureTargetMidGreyChoice, ExposureCompensation, ExposureLimitMin/Max, ExposureHistogramLow/High, ExposureSpeedDarkToLight/LightToDark, ExposureFixed e Override* por efeito. Saíram AutoExposure, AutoExposureCenterWeighted, AutoExposure*Ev/Percent/Speed* e ExposureEv.",
+        "Ainda falta: modos Curve Mapping e Physical Camera, máscaras de medição, caixa por propriedade (hoje é por seção) e a mesma exposição no caminho sem pós dedicado."
+      ],
+      "validation": "Host: aether_tests 1596/1596 e autoria de ambiente 46/46, com testes novos de padrões do HDRP, EV100, adaptação exponencial, herança de override e migração das cenas v15/v16 e perfis v10/v11. POCO F7 com Astra Dev 118 e 119 na Vila Astra (Play, câmera fixa): poente às 17,4 h de −2,66 para −2,00 EV100 (antes, com exposição fixa, o zênite ficava preto), meio-dia em 0,01 EV100, noite às 22 h segura em −2,00; a vista de edição acompanha a troca de hora no 119. Não testado no aparelho: Automática por histograma, Medição Pontual/Média, Adaptação Imediata e volume local com Exposição desmarcada (só no host).",
+      "migration": "O Ambiente passa à versão 17 e o perfil de ambiente à 12 ao salvar. Cena com exposição fixa abre como Fixa com o mesmo resultado (EV100 = −EV antigo − log2 1,2); cena com a exposição automática antiga vira Automática por histograma com limites, percentuais e velocidades convertidos. A caixa antiga Sobrescrever pós vale para todas as caixas novas. Versões anteriores do app não abrem cenas salvas nesta.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-20-terreno-pintura-por-fragmento",
       "date": "2026-10-20",
       "scopes": [
