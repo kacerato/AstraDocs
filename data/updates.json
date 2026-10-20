@@ -1,8 +1,37 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-19",
+  "updatedAt": "2026-10-20",
   "entries": [
+    {
+      "id": "2026-10-20-nuvens-cloud-layer-como-na-unity",
+      "date": "2026-10-20",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Nuvens como o Cloud Layer da Unity: cobertura, vento e sombra no chão pelo sol",
+      "summary": "O Ambiente ganha a seção Nuvens, no modelo do override Cloud Layer do HDRP: uma camada de nuvens iluminada pelo sol, que anda com o vento e projeta a própria sombra na cena. Funciona com o céu procedural, o físico e o HDRI, e reage à Hora do dia. Revisão local; não está no APK público.",
+      "version": "Revisão local 1d6cc947 · Astra Dev 0.3.0-dev.117-nuvens (code 117)",
+      "availability": "development",
+      "details": [
+        "Uso: selecione o objeto do Ambiente › Inspector › seção Nuvens › ligue Nuvens. Campos: Opacidade, Cobertura (0 céu limpo, 1 encoberto), Cirros, Altitude, Tamanho, Tom, Compensação de exposição, Direção e Velocidade do vento (km/h), Densidade, Luz do céu, Projetar sombras e Força da sombra.",
+        "Como na Unity, as nuvens têm override próprio no volume (Sobrescrever nuvens), separado do céu. + › Luzes › Volume de nuvens cria um volume global acima do Ambiente da cena que só mexe nas nuvens; o céu, a neblina e o pós continuam os da cena.",
+        "A sombra das nuvens é o mesmo desenho do céu projetado pela direção do sol a partir da Altitude, e anda com o vento. Com o céu encoberto, a luz ambiente perde o azul e fica cinza.",
+        "O sol continua sendo a luz direcional: com Hora do dia, as nuvens ficam brancas ao meio-dia e acesas de laranja por baixo no poente.",
+        "API C#: Environment.Clouds, CloudCoverage, CloudCirrus, CloudAltitude, CloudTint, CloudWindOrientation, CloudWindSpeed, CloudShadows e os demais campos da seção.",
+        "Custo medido no POCO F7 a 2772×1280: cerca de +0,7 ms de GPU por quadro.",
+        "Ainda falta: chuva, neve e relâmpago (dependem do sistema de partículas, que ainda não entrou nesta base), mapa de nuvens importado, segunda camada e nuvens volumétricas. O viewport de edição só mostra o céu com o modo de efeitos."
+      ],
+      "validation": "Host: 7 cenários novos (mapa repetível, cobertura de limpo a encoberto, vento e sombra enviados à GPU, Ambiente v16 e perfil v11 com migração, mistura só do override de nuvens, receita Volume de nuvens); 43/43 do ambiente e 1593/1593 da suíte nativa. POCO F7 com Astra Dev 116 e 117, Vila Astra em Play com câmera fixa: meio-dia com cúmulos e sombra, poente às 16,9 h com nuvens alaranjadas, céu nublado com sombras suavizadas; seção Nuvens conferida no Inspector. Custo: 4 rodadas intercaladas com e sem nuvens. Não testado no aparelho: Volume de nuvens criado pelo menu e perfil de ambiente compartilhado.",
+      "migration": "O Ambiente passa para a versão 16 e o perfil de ambiente para a 11 ao salvar. Cenas e perfis antigos abrem sem nuvens, com o mesmo céu de antes; versões anteriores do app não abrem cenas salvas nesta.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-19-terreno-sliders-texturas-compartilhadas",
       "date": "2026-10-19",
