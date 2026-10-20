@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-20",
   "entries": [
     {
+      "id": "2026-10-20-terreno-fx-umidade-pocas",
+      "date": "2026-10-20",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno: pintura FX independente, umidade e poças",
+      "summary": "Autoria RGBA independente, preview durante o gesto, cursor sobre o relevo e controles por barras com material molhado real.",
+      "version": "Branch de terreno 78ff1825 · FX estático · sem APK novo",
+      "availability": "development",
+      "details": [
+        "Uso: Pintar → Pintura FX; criar mapa, selecionar canal e modo. R umidade/G poça/B correnteza/A lava são quantidades independentes. A revisão visual publicada integra R/G; B/A permanecem autorados para os próximos consumidores, ainda sem entrega integral.",
+        "Alvo, raio, fluxo, falloff, dureza, opacidade, forma, proporção, rotação e inclinação usam propriedades reais com barras e precisão. O contorno acompanha o relevo. Editar/Pintar/Transformar são exclusivos; câmera cancela o gesto. Pintura vertical no mapa continua disponível e a rolagem usa regiões próprias.",
+        "Umidade oferece mínimo/máximo, altura mundial com onda, início/fim da transição por distância e força perto/longe. Poça usa altura do material, contraste e máximo. Porosidade global/por camada compartilha o valor canônico da neve; clearing combina coberturas por máximo, sem um efeito zero apagar o outro.",
+        "Preview recebe pixels transitórios antes de soltar; confirmação, cancelamento, undo/redo e Apply/reabrir conservam autoria. Reabertura limpa apenas estado transitório e devolve acesso à Pintura. O rodapé aplicado oferece Pintar FX/Navegar; Prévia não é confundida com Aplicado. Ficar parado evita copiar/serializar FX ou abrir jobs novos.",
+        "256/512/1024/2048 na criação, orçamento96/192/256 MiB explícito da sessão; a estimativa agregada recusa 2048 nos dois primeiros. Sem redução oculta ou corte do histórico. Snapshot original RGBA8 linear Clamp com um nível, RLE somente quando menor. Quatro ícones vetoriais reais mantêm636 IDs publicados; atlas640, masters 384 px/células 96 px; fontes originais intactas.",
+        "Plano integral aberto: chuva/ripples, raycast de exposição, autoridades globais, streams/lava completos, dinâmica, emissores/colisores, importação/substituição/rebase FX, tracks e demais capacidades conservam seu próprio aceite. Quatro canais PBR pintados continuam o limite visual atual, mesmo com 32 camadas autoradas."
+      ],
+      "validation": "213/213 cenários integrados do editor e 103/103 Core passaram.252 modos offscreen na GPU RTX 3050 e 11/11 do pipeline GLB/cache passaram, incluindo 2048² integral.26/26 unidades Android ARM64 passaram na compilação sintática e 1/1 visual foi repetida após o ajuste final; 44 shaders validados. 42 capturas finais da UI executável em 655×300/1280×720, incluindo seleção/publicação de materiais e Aplicado, foram conferidas. O teste com 64 quadros reais parados e seed2048 não produziu novos encodes/snapshots/jobs; não mede RSS. Sem link Android/APK novo, teste de toque, render de cena grande ou medição de desempenho no aparelho.",
+      "migration": "Superfícies novas AETERRAINSURFACE4 conservam corpo e extensões V2/V3; receitas AETERRAIN9 conservam FX como dono autoral único. Leitores atuais preservam versões anteriores e inicializam efeitos novos neutros/desligados. Cache derivado revisão 12 será regenerado; preserve fontes e histórico. Cena guarda referências sem duplicar bitmap. Código antigo não deve editar os novos formatos. Atualizar site ou código não altera o APK instalado.",
+      "links": [
+        {
+          "label": "Pintura FX, umidade e poças",
+          "url": "/pt-br/desenvolvimento/2026-10-20/terreno-fx-umidade-pocas/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-20-terreno-neve-qualidade-busca",
       "date": "2026-10-20",
       "scopes": [
