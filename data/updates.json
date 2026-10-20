@@ -4,6 +4,36 @@
   "updatedAt": "2026-10-20",
   "entries": [
     {
+      "id": "2026-10-20-terreno-catalogo-materiais-pbr",
+      "date": "2026-10-20",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno: catálogo original, miniaturas e materiais PBR por camada",
+      "summary": "A revisão local conecta seleção, mapas PBR, barras de propriedades, originais e reabertura; o seletor passa a mostrar miniaturas reais.",
+      "version": "Branch de terreno · materiais PBR de 20/10 · sem APK novo",
+      "availability": "development",
+      "details": [
+        "Uso: Pintar → Biblioteca para escolher um dos 82 materiais e substituir somente o canal selecionado. Quatro canais ficam em uma faixa compacta; Biblioteca/Camada/Mapas/Pincel compartilham uma linha. Ajustes contínuos usam barras com entrada precisa.",
+        "Cor, normal RGB/RG, altura, oclusão ambiente, rugosidade, metálico e emissão possuem consumidores no shader, com canais, fatores e remapeamentos próprios. Projeção UV/local/mundial usa escala e deslocamento em metros e rotação em graus; mistura por altura oferece contraste, largura, influência e qualidade.",
+        "As 82 miniaturas entram no atlas real do editor, regenerado junto com seu enum: 479 entradas. O alfa empacotado do albedo é ignorado somente na prévia derivada da UI. Originais e texturas do terreno permanecem intactos.",
+        "Catálogo e 146 texturas runtime originais entram na preparação de assets Android, incluindo 109 PNGs referenciados na pasta sources. PSDs não entram no APK. O auditor passa a exigir igualdade de bytes e hashes desses arquivos em distribuições futuras.",
+        "Reaplicar uma fonte existente republica a biblioteca canônica antes de resolver os slots dos chunks, evitando resíduos de prévia temporária. Propriedades e PNGs acompanham histórico e reabertura; mudanças de parâmetros reutilizam pixels preparados quando referências e espaços de cor não mudam.",
+        "PNGs têm estrutura e CRC conferidos antes de importar, exportar e guardar no cache. Falta de orçamento recusa publicação com diagnóstico, preservando qualidade e estado aplicado. Não existe redução automática desses mapas pelo streaming.",
+        "Contrato conserva até 32 camadas; pintura e shader atuais usam quatro. Ruídos avançados, anti-tile, resampling, clusters, estratos, composição global, neve, vegetação, grafos e demais itens continuam abertos. Busca/filtros da proposta visual ainda não foram implementados. Nenhuma paridade completa de plugins é anunciada."
+      ],
+      "validation": "102/102 cenários integrados do editor passaram, incluindo seleção por toque, rolagem sobre barras sem editar valores, Undo/Redo do PBR visível e reabertura em sessão nova sem o catálogo externo. Trinta modos offscreen passaram na GPU NVIDIA RTX 3050 usando serialização, tabela e GLSL de produção. Todos os shaders embutidos foram regenerados e validados. Painel executável conferido em 1280×720 e 655×300, com as miniaturas reais. Hashes, CRC e dimensões das 146 texturas conferidos. 16/16 unidades Android ARM64 passaram na compilação sintática; isso não prova link ou execução do APK. Duas asserções condicionais de symlink não executaram por falta de privilégio no Windows. Nenhum APK novo, distribuição ou ADB nesta revisão.",
+      "migration": "Receita AETERRAIN8 com leitores 1–8, superfície GLB v3 e cache derivado revisão 9. Os PNGs originais necessários seguem na fonte GLB; preserve fontes e .astra/terrain-history. Abra em revisão compatível. APKs anteriores não recebem o novo renderer ou atlas automaticamente.",
+      "links": [
+        {
+          "label": "Catálogo e materiais PBR na revisão local",
+          "url": "/pt-br/desenvolvimento/2026-10-20/terreno-materiais-pbr/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-20-exposicao-automatica-como-na-unity",
       "date": "2026-10-20",
       "scopes": [
