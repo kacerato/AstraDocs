@@ -4,6 +4,37 @@
   "updatedAt": "2026-10-20",
   "entries": [
     {
+      "id": "2026-10-20-terreno-estratos-mapas-globais",
+      "date": "2026-10-20",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Terreno: estratos, curvas e mapas globais com domínio próprio",
+      "summary": "A revisão de desenvolvimento integra estratos com fontes originais e quatro mapas globais, com barras, canais explícitos e influências por camada.",
+      "version": "Branch de terreno · estratos e mapas globais em 20/10 · sem APK novo",
+      "availability": "development",
+      "details": [
+        "Uso: Pintar → Estratos ou Mapas globais. O painel de estratos inclui fontes, mistura, escala vertical em metros, offset, quatro alturas e influências por camada. As barras mantêm entrada precisa.",
+        "Curva com gráfico, seleção de chaves, tangentes, pesos e transformação do eixo. Tempos negativos e externos a0..1 persistem sem truncamento; curvas vazias/uma chave têm valores zero/constante. O gráfico destaca o intervalo avaliado pelo material e permite seleção exata por índice.",
+        "Tint, normal, SAOM e emissão possuem fontes, forças, fades lineares, transformação UV e participação próprias. A escala global permite espelhamento e zero. O domínio representa o terreno inteiro e independe da repetição das camadas.",
+        "SAOM usa canais e remapeamentos explícitos: R smoothness convertido em rugosidade, G AO, B metálico e A máscara por padrão. Fontes compatíveis compartilham amostragem; normais têm RGB/RG e mistura reorientada ou Crossfade.",
+        "Dois PNGs originais Geo1×256 foram incorporados sem reduzir resolução nem modificar os82 materiais e146 texturas anteriores. O catálogo passa a148 texturas. Ícones de estratos e domínio global entraram no atlas sem alterar os479 IDs anteriores.",
+        "Abertura direta em terreno legado prepara apenas o rascunho. Controles sem consumidor real ficam ocultos/inativos e rejeitam edição precisa; emissão usa RGB e intensidade própria, sem alfa fictício.",
+        "Navegação compacta também revisa Ruído, mapas PBR, variantes e biblioteca: Voltar retorna à pintura, seleção de camada conserva o contexto, e a página de texturas não vaza para a biblioteca de materiais. Curva vazia oferece a primeira chave; mapas sem fonte indicam a escolha antes da ativação.",
+        "Neve está em preparação de contrato/assets, sem consumidor/UI nesta revisão. Quatro fontes TGA foram conferidas em staging com PNGs integrais sem perda; isso não anuncia neve implementada. O plano dos71 itens continua aberto."
+      ],
+      "validation": "132/132 cenários integrados do editor e 64/64 Core passaram: fontes reais, barras/entrada precisa, curvas assinadas/vazias/uma chave, importação e reabertura, domínio GLB/cache e tabela mista M05–M10. As 33 regressões de curvas de animação passaram sem alterar sua política anterior. 199 modos offscreen passaram na GPU NVIDIA RTX 3050 usando o shader real, incluindo os pixels do par Geo original; essa cena pequena não representa desempenho Android. UI executável conferida em 82 capturas de 41 estados em 655×300 e 1280×720, com gráficos/sliders e estados sem fonte na abertura. 17/17 unidades Android ARM64 passaram na compilação sintática; 44 shaders embutidos validados. Três testes de assets/atlas e um de preparação de neve passaram: originais íntegros, ícones antigos estáveis, idempotência sem regravação e conflito sem publicação parcial. Sem APK novo, link Android, teste de toque ou medição de memória/desempenho no aparelho.",
+      "migration": "Superfícies novas usam AETERRAINSURFACE2 com corpo legado e extensão versionada; o leitor aceita v1 com módulos novos desligados. Receitas continuam AETERRAIN8 e GLB de superfíciev3 recebe domínio explícito. Cache derivado revisão10 será regenerado. Preserve fontes e histórico; código antigo não deve editar superfíciesv2. O APK instalado não recebe mudanças ao atualizar o código ou o site.",
+      "links": [
+        {
+          "label": "Estratos, curvas e mapas globais na revisão de desenvolvimento",
+          "url": "/pt-br/desenvolvimento/2026-10-20/terreno-estratos-mapas-globais/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-20-terreno-ruido-variantes-transicoes",
       "date": "2026-10-20",
       "scopes": [
