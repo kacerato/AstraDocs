@@ -4,6 +4,37 @@
   "updatedAt": "2026-10-21",
   "entries": [
     {
+      "id": "2026-10-21-sondas-de-reflexo-e-de-luz-como-na-unity",
+      "date": "2026-10-21",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Sonda de reflexo e Grupo de sondas de luz como na Unity",
+      "summary": "Dois componentes novos de luz indireta. A Sonda de reflexo captura o cômodo num cubemap (assado no aparelho ou em tempo real) e os objetos metálicos refletem a sala certa, com projeção na caixa e mistura entre duas sondas. O Grupo de sondas de luz guarda a luz em pontos editáveis no viewport, e os objetos dinâmicos são iluminados pelo tetraedro em que estão. O Mesh Renderer ganha a seção Sondas. É uma revisão local e ainda não está no APK público.",
+      "version": "Revisão local 2f22b93a · Astra Dev 0.3.0-dev.1500-sondas (code 1500)",
+      "availability": "development",
+      "details": [
+        "Uso: + › Luzes › Sonda de reflexo. Ajuste a caixa pelas alças até as paredes, ligue Projeção na caixa num interior e toque em Assar: o recurso vai para Iluminação/<nome>.aeprobe. Tipo Tempo real recaptura Ao iniciar, Todo quadro ou Por script, com Fatiamento no tempo.",
+        "Inspector da sonda, na ordem da Unity: Tipo, Atualização, Fatiamento no tempo, Importância, Intensidade, Projeção na caixa, Distância de mistura, Tamanho e Deslocamento da caixa, Resolução (16 a 256), HDR, Fundo, Máscara de culling, Plano próximo e distante.",
+        "Cada objeto mistura as duas sondas de maior Importância que contêm o centro dele (empate: a menor caixa) e cai no reflexo do céu fora delas. Só objetos Static entram na captura assada.",
+        "Uso: + › Luzes › Grupo de sondas de luz cria 8 sondas num cubo. Editar sondas: anterior/próxima, Adicionar, Duplicar, Apagar, posição por eixo, toque no viewport seleciona e as alças movem. Mostrar arestas desenha os tetraedros.",
+        "Assar sondas captura cada ponto (sol, céu e um rebote simples), guarda SH L2 em Iluminação/<grupo>.aelightprobes e liga o recurso. Remover anéis tira os lóbulos negativos atrás de luz forte.",
+        "Mesh Renderer › Sondas: Sondas de luz (Desligado, Misturar sondas) e Sondas de reflexo (Desligado, Misturar sondas, Misturar sondas e céu, Simples). Como na Unity, objetos Static não usam as sondas de luz.",
+        "API C#: Astra.Components.ReflectionProbe (com RenderProbe()) e LightProbeGroup; o evento de conexão \"Sonda de reflexo: capturar agora\".",
+        "Custo medido no POCO F7 a 2772×1280 (Sponza, 111 desenhos com reflexo e 32 com SH): cerca de +0,6 ms de GPU por quadro; CPU das sondas 0,02 a 0,05 ms; assar uma sonda de reflexo 0,1 s e 50 sondas de luz 1,3 s.",
+        "Ainda não existe: lightmaps e GI assada, sonda Custom, Light Probe Proxy Volume, Anchor Override e Adaptive Probe Volumes. A captura usa as sombras da câmera principal."
+      ],
+      "validation": "Host: família de sondas 21/21 (SH contra integral numérica, Delaunay, caminhada, mistura, box projection, recursos e cena inteira pelo leitor); suíte nativa 1621/1621. POCO F7, APK 1500, Sponza: bake das duas sondas de reflexo e de 50 sondas de luz, Play com e sem recurso na mesma câmera, medição de 600 quadros de cada lado e pranchas lado a lado com frames de vídeos da Unity (Brackeys, GD Blueprint, Gamified). Diferença da Unity: o reflexo puxa mais para o azul e é menos nítido, e o rebote de cor é mais fraco.",
+      "migration": "Componentes novos, e nenhuma cena muda sozinha. As escolhas de Sondas do Mesh Renderer já eram gravadas e agora têm efeito: objetos importados da Unity com Blend Probes passam a usar as sondas quando a cena tiver alguma. Dois tipos de recurso novos (.aeprobe, .aelightprobes).",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-21-clima-chuva-neve-e-modulos-de-particulas",
       "date": "2026-10-21",
       "scopes": [
