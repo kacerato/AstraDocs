@@ -4,6 +4,38 @@
   "updatedAt": "2026-10-21",
   "entries": [
     {
+      "id": "2026-10-21-material-como-na-unity-urp",
+      "date": "2026-10-21",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Material como na Unity: Shader, Smoothness, altura, detalhe, verniz e modos de mistura",
+      "summary": "O material do projeto ganha o campo Shader da URP (Lit, Complex Lit, Simple Lit, Unlit, Particles Lit e Particles Unlit) e um Inspector que mostra só o que cada shader usa. Smoothness substitui a rugosidade na tela, e chegam Height Map, Detail Inputs, Clear Coat, workflow Specular, Surface Type com Blending Mode, Render Face e Sorting Priority. O importador passa a aceitar paralaxe, detalhe e alfa premultiplicado. Revisão local; não está no APK público.",
+      "version": "Revisão local 3d171d79 · Astra Dev 0.3.0-dev.187-pk9-materiais (code 187)",
+      "availability": "development",
+      "details": [
+        "Uso: toque num arquivo .material em Arquivos. No topo fica o cartão Shader; toque para escolher entre os seis. Abaixo vêm as seções Opções de superfície, Entradas de superfície, Detalhe, Partícula e Avançado, com o nome da Unity sob cada campo.",
+        "Suavidade (Smoothness) vai de 0 a 1, com Origem no alfa do mapa, no alfa da cor base ou na rugosidade glTF. O arquivo continua guardando rugosidade, então nada precisa ser convertido.",
+        "Height Map faz a paralaxe da URP (altura no canal G). Detail Inputs tem Máscara (A), Mapa base ×2 com Visibilidade, Normal de detalhe com Força, Repetição, Deslocamento e UV 0/1.",
+        "Complex Lit acrescenta o Verniz (Clear Coat): máscara, suavidade e mapa (R máscara, G suavidade). O verniz responde ao sol e ao reflexo do ambiente.",
+        "Fluxo Metálico ou Especular: no especular, o mapa do binding 2 é o Specular Map (RGB) e há Cor especular. O Simple Lit usa Blinn-Phong e não reflete o ambiente.",
+        "Tipo de superfície Opaco ou Transparente; Mistura Alfa, Premultiplicado, Aditivo ou Multiplicar; Preservar brilho; Faces Frente, Trás ou Ambas; Recorte alfa também no transparente; Prioridade de ordenação de -50 a 50.",
+        "Avançado: Brilho das luzes (Specular Highlights) e Reflexos do ambiente podem ser desligados. As Forward Rendering Options do Standard agora convertem sem aproximação.",
+        "Importador Unity: aceita _PARALLAXMAP, _DETAIL_MULX2 e _ALPHAPREMULTIPLY_ON, e lê os shaders URP Lit, Simple Lit, Unlit, Particles Lit/Unlit e o Standard (Specular setup).",
+        "API C#: MaterialSlot.Smoothness e MaterialSides.Back.",
+        "Ainda falta: o modo Multiplicar está errado no aparelho (o objeto clareia em vez de escurecer) e segue em diagnóstico. Soft Particles e Flip-Book ficam para o PK-10. Altura e detalhe exigem descritores bindless. O verniz não reage a luzes adicionais. O custo no aparelho ainda não foi medido de forma válida."
+      ],
+      "validation": "Host: 34/34 na família de materiais Unity (formato v8 e migração, flags e extensão do shader, campos por shader, importador Standard/URP, Inspector por toque) e 1601/1601 na suíte nativa; suíte gerenciada 523/523. POCO F7 com Astra Dev 186/187, projeto gerado no host e Play com câmera fixa: Inspector com a lista de shaders e troca para Simple Lit ao vivo; grade Metálico × Suavidade em esferas e cubos; tijolo com normal, altura e detalhe; vidro com Preserve Specular, aditivo e verniz. Prancha lado a lado com frames de vídeos da Unity. A comparação mostrou um ponto preto no brilho de suavidade 1 (estouro de fp16), já corrigido. Multiplicar ainda falha no aparelho.",
+      "migration": "MaterialAsset passa para a versão 8 ao salvar. Materiais antigos abrem como Lit e mantêm a aparência: o transparente antigo continua com alfa reto (Preservar brilho desligado). O Mesh Renderer aceita Só a face de trás. Versões anteriores do app não abrem materiais salvos nesta.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-21-tonemapping-ajustes-de-cor-e-bloom-como-na-unity",
       "date": "2026-10-21",
       "scopes": [
