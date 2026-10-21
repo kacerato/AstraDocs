@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-21",
   "entries": [
     {
+      "id": "2026-10-21-camera-como-na-unity",
+      "date": "2026-10-21",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Câmera como na Unity: fundo, Culling Mask, Viewport Rect, câmera física e tela dividida",
+      "summary": "O Inspector da Câmera segue o da Camera da URP no Unity 6: Lente, Renderização, Ambiente e Saída. Dá para trocar o céu por uma cor sólida, escolher as camadas que cada câmera desenha, dividir a tela entre duas câmeras por prioridade e usar uma câmera física com distância focal, sensor e Gate Fit. Revisão local; não está no APK público.",
+      "version": "Revisão local c58131fd · Astra Dev 0.3.0-dev.500-camera (code 500)",
+      "availability": "development",
+      "details": [
+        "Uso: selecione o objeto com Câmera › Inspector. Lente: Projeção, Campo vertical, Próximo/Distante e Câmera física (Distância focal, Sensor largura/altura e Ajuste do sensor: Vertical, Horizontal, Preencher, Sobrevarredura ou Nenhum). Com a câmera física, o campo de visão sai da focal e do sensor; ao ligá-la, a focal nasce do campo atual.",
+        "Renderização: Pós-processamento, Renderizar sombras, Camadas visíveis (Culling Mask pelas camadas de objeto do projeto, com Nada e Tudo), Antisserrilhado (Do projeto, Nenhum ou FXAA) e Prioridade.",
+        "Ambiente: Fundo (Céu, Cor sólida ou Não inicializado), Cor de fundo e Volumes. Saída: Usar no Play, HDR e Viewport em duas linhas (X/Y e Tamanho L/A, a partir do canto inferior esquerdo, como o Viewport Rect).",
+        "Várias câmeras na tela desenham da menor para a maior prioridade; uma câmera de tela inteira que limpa o fundo esconde as de baixo. A tag MainCamera agora existe em todo projeto e marca a câmera do jogo (entrada, raios de tela), como Camera.main.",
+        "Objeto fora da Culling Mask some da câmera junto com a sombra. HDR desligado tonaliza no próprio shader, sem valores acima de 1 para bloom e exposição.",
+        "API C#: Camera.BackgroundType, BackgroundColor, CullingMask (CullingMaskOption), ViewportX/Y/Width/Height, PostProcessing, RenderShadows, Hdr, Antialiasing, PhysicalCamera, FocalLength, SensorWidth/SensorHeight e GateFit. ScreenPointToRay e WorldToScreenPoint respeitam o retângulo da câmera.",
+        "Ainda falta: até duas câmeras visíveis ao mesmo tempo, e a de cima sai sem sombras e sem TAA; Overlay (Camera Stack), Target Texture e MSAA não existem e não têm campo; deslocamento de lente, abertura, ISO e obturador da câmera física também não."
+      ],
+      "validation": "Host: 9 cenários novos de câmera (migração v3→v4, ida e volta v4, Gate Fit, máscara por camada, pilha por prioridade, MainCamera, Viewport, contratos) e 24/24 do alvo de câmera; 1610/1610 da suíte nativa e 523 da gerenciada. POCO F7, Vila Astra em Play com Astra Dev 131, 400 e 500: fundo de cor sólida, casas na camada Casas escondidas pela Culling Mask, câmera física 85 mm e 14 mm, tela dividida com a câmera do jogador (MainCamera) e uma câmera alta; Inspector, seletor de camadas e Viewport conferidos. Pranchas lado a lado com frames de vídeo da Unity. Não testado no aparelho: HDR desligado, Antisserrilhado por câmera, Gate Fit Preencher/Sobrevarredura/Nenhum e Não inicializado.",
+      "migration": "A Câmera passa para a versão 4 ao salvar. Cenas antigas abrem com céu, todas as camadas, tela inteira e pós, sombras e HDR ligados, com o mesmo quadro de antes; versões anteriores do app não abrem cenas salvas nesta. Catálogos de tags que já declaravam MainCamera continuam abrindo.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-21-sondas-de-reflexo-e-de-luz-como-na-unity",
       "date": "2026-10-21",
       "scopes": [
