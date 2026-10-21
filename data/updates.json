@@ -1,8 +1,36 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-10-21",
   "entries": [
+    {
+      "id": "2026-10-21-tonemapping-ajustes-de-cor-e-bloom-como-na-unity",
+      "date": "2026-10-21",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Tonemapping Nenhum/Neutro/ACES, Ajustes de cor e Bloom completos como os overrides da Unity",
+      "summary": "O pós do Ambiente ganha mais três peças do Volume da Unity: a curva de Tonemapping com as opções do URP/HDRP (Nenhum, Neutro e ACES, mais AgX), os Ajustes de cor com Pós-exposição, Filtro de cor e Giro de matiz, e o Bloom com Espalhamento, Tom e Brilho máximo. Valores que não se misturam (modo, curva, chaves) passam a trocar assim que um volume começa a influenciar, como na Unity. Revisão local; não está no APK público.",
+      "version": "Revisão local 5635a124 · Astra Dev 0.3.0-dev.170-pos-unity (code 170)",
+      "availability": "development",
+      "details": [
+        "Uso: no Ambiente, seção Tonemapping › Tonemapping escolhe Nenhum, Neutro, ACES ou AgX. O Neutro é a mesma curva NeutralTonemap da Unity; Nenhum corta os altos sem curva.",
+        "Ajustes de cor: Contraste e Saturação continuam; entram Pós-exposição (EV somado depois da exposição e fora da medição automática), Filtro de cor (multiplica a imagem antes da curva) e Giro de matiz (−180° a 180°).",
+        "Bloom: Espalhamento (0 a 1; 0,7 é o padrão da Unity), Tom do bloom e Brilho máximo (corta pixels mais claros antes do bloom; padrão 65472).",
+        "Volume: modo, curva e chaves trocam assim que o volume influencia (t > 0), como o VolumeParameter da Unity; antes trocavam só a partir da metade da mistura.",
+        "API C#: Environment.ToneMapper com opções Nenhum, Neutro, ACES e AgX; PostExposure, ColorFilter (R/G/B), HueShift, BloomScatter, BloomTint (R/G/B) e BloomClamp.",
+        "Ainda falta: caixa de override por propriedade com Tudo/Nenhum (hoje é por seção), Profundidade de campo, Desfoque de movimento, Aberração cromática e Distorção de lente."
+      ],
+      "validation": "Host: aether_tests 1606/1606 e autoria de ambiente 48/48, com testes novos do menu e da migração Reinhard → Neutro, dos campos novos na cena e no perfil, da mistura por override e da troca em t > 0. O build Android do merge com a base compilou (APK 170). POCO F7 com Astra Dev 170 na Vila Astra: menu do Tonemapping na ordem da Unity, Neutro × Nenhum na vista de edição e Giro de matiz agindo na hora. Não testado no aparelho: Espalhamento acima de zero, Tom e Brilho máximo do bloom, Pós-exposição e Filtro de cor.",
+      "migration": "O Ambiente continua na versão 17 e o perfil na 12, agora com os campos novos. Cenas com Reinhard abrem com Neutro; cenas antigas abrem sem filtro nem giro de matiz e com Espalhamento 0, o mesmo raio de bloom de antes. Ambientes novos usam o Espalhamento 0,7 da Unity.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-20-terreno-fx-umidade-pocas",
       "date": "2026-10-20",
