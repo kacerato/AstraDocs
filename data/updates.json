@@ -4,6 +4,37 @@
   "updatedAt": "2026-10-21",
   "entries": [
     {
+      "id": "2026-10-21-janela-iluminacao-skybox-e-volumes-como-na-unity",
+      "date": "2026-10-21",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Janela Iluminação como na Unity: Material do céu, luz ambiente por fonte, neblina por modo e Criar › Volume",
+      "summary": "O céu, a luz ambiente e a neblina passam a funcionar como a janela Lighting da Unity 6. O brilho do céu não depende mais da intensidade do sol (Exposição do Skybox), a luz ambiente vem do céu, de um gradiente ou de uma cor como uma sonda direcional, a neblina tem os modos Linear, Exponencial e Exponencial ao quadrado e não tinge mais o céu, e o céu pode ser um Material do céu compartilhado. Uma cena sem Ambiente usa o mesmo céu procedural no editor e no Play. Revisão local; não está no APK público.",
+      "version": "Revisão local eaf0818d · Astra Dev 0.3.0-dev.240-ambiente (code 240)",
+      "availability": "development",
+      "details": [
+        "Uso: ☰ › Iluminação abre a janela no Ambiente da cena (o Volume global de menor prioridade). Sem Ambiente, ela mostra o padrão (céu procedural, luz do céu, sem neblina) e Personalizar o ambiente da cena cria o Ambiente na raiz.",
+        "Céu: Material do céu no topo; Shader do céu Procedural, Panorâmico (HDRI) ou Físico. No Procedural: Sol (Nenhum, Simples, Alta qualidade), Tamanho do sol, Convergência do sol, Espessura da atmosfera, Tom do céu, Cor do chão e Exposição (1,3, como o Skybox/Procedural).",
+        "Material do céu: no seletor do campo, Novo material do céu cria um arquivo .skybox com o céu atual e já o escolhe; Editar material abre o recurso. Editar o material muda todo Ambiente que o usa; com material, os campos de céu do Ambiente ficam só de leitura.",
+        "Luz ambiente: Fonte Céu (Skybox), Gradiente (Céu, Equador, Chão) ou Cor, Intensidade e Intensidade dos reflexos. As três fontes viram a mesma sonda de harmônicos esféricos, então no pôr do sol o lado do sol recebe mais luz.",
+        "Neblina: Modo Linear (Início e Fim), Exponencial ou Exponencial ao quadrado (Densidade), Modo de cor = Cor (o céu fica limpo, como na Unity) ou Acompanhar o céu (o visual antigo, apagando à noite).",
+        "Criar › Volume e céu: Volume global, em caixa e em esfera (nascem sem sobrescrever nada, como um perfil vazio), Ambiente e Volume de nuvens.",
+        "Saíram os multiplicadores da tela antiga Ambiente da cena (Sol potência ×, Ambiente ×, Exposição ×, Rotação do céu): cada valor agora tem um único dono.",
+        "API C#: Environment.SkyExposure, SunDisk, SunSize, SunSizeConvergence, AmbientSource, AmbientSkyColor/EquatorColor/GroundColor/Color, FogMode, FogColorMode e FogEnd.",
+        "Ainda falta: o reflexo do céu procedural continua vindo do mapa de ambiente padrão até as sondas de reflexão; cubemap de 6 faces e céu por câmera não existem; Gradiente e Cor vão até 8× (sem cor HDR)."
+      ],
+      "validation": "Host: 53/53 cenários da família de ambiente e suíte nativa 1610/1610 (migração da escala antiga do céu e dos multiplicadores, sondas de Skybox/Gradiente/Cor, Material do céu lido ao vivo, padrões da Unity, janela Iluminação respondendo ao toque, menu Criar). POCO F7 com Astra Dev 220 na Vila Astra: cena antiga aberta igual à do APK 135, janela Iluminação no Ambiente da cena, céu procedural em Play e neblina branca e vermelha, comparados lado a lado com frames de vídeos da Unity (pranchas em docs/validacao/pk1-pk2-ambiente-2026-10-20); cena sem Ambiente mostrou o céu procedural padrão. A comparação mostrou que a neblina tingia o céu; a correção (Cor = céu limpo) e a troca de opções pela janela foram validadas no host e ainda não foram capturadas no aparelho.",
+      "migration": "O Ambiente passa para a versão 17 e o perfil de ambiente para a 12 ao salvar. Cenas antigas abrem com a mesma imagem: com sol em lux, a escala antiga do céu vira Exposição do céu e EV do HDRI; os multiplicadores da raiz viram Intensidade, compensação de exposição e rotação do HDRI; a neblina fica Exponencial acompanhando o céu. Versões anteriores do app não abrem cenas salvas nesta.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-21-material-como-na-unity-urp",
       "date": "2026-10-21",
       "scopes": [
