@@ -4,6 +4,38 @@
   "updatedAt": "2026-10-21",
   "entries": [
     {
+      "id": "2026-10-21-clima-chuva-neve-e-modulos-de-particulas",
+      "date": "2026-10-21",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Clima como na Unity: chuva, neve e tempestade com relâmpago, e novos módulos de partículas",
+      "summary": "Novo componente Clima: no objeto de um Ambiente, ele faz o papel do script de clima da Unity — muda as nuvens e a neblina do volume e dosa partículas de Chuva e Neve que acompanham a câmera. O Sistema de partículas ganha Velocidade, Limite, Herança e Força no tempo, Ruído, Colisão com planos, Sub-emissores, Tamanho/Cor/Rotação pela velocidade, Taxa por distância e as formas Rosca e Retângulo. Revisão local; não está no APK público.",
+      "version": "Revisão local 170ab695 · Astra Dev 0.3.0-dev.501-clima (code 501)",
+      "availability": "development",
+      "details": [
+        "Uso: + › Luzes › Clima cria um volume de Ambiente global (prioridade 2, só nuvens e neblina) com o componente Clima e os filhos Chuva e Neve já ligados. No Inspector do Clima escolha o Tipo (Limpo, Nublado, Chuva, Tempestade, Neve) e a Intensidade.",
+        "Como na Unity, o clima escreve propriedades que você vê: a Cobertura, o Tom e a Densidade das nuvens e a Neblina do Ambiente, a taxa de emissão das partículas e a posição delas acima e à frente da câmera da cena. Na edição a mudança é imediata; em Play passa pela Transição.",
+        "Variação natural e Ritmo da variação: em Play a chuva e a neve engrossam e afinam sozinhas, com pancadas e calmarias.",
+        "Tempestade: relâmpagos com clarão nas nuvens e na neblina (Intervalo médio e Clarão no Inspector), só em Play.",
+        "O vento das nuvens inclina a chuva e arrasta a neve (Vento na precipitação).",
+        "Correção: o teto de partículas do aparelho agora é repartido pelo que cada sistema emite; antes um sistema parado tomava a fatia de quem emitia e a chuva vinha em ondas.",
+        "Partículas, novos módulos com interruptor no cabeçalho, na ordem da Unity: Velocidade no tempo, Limite de velocidade, Herdar velocidade, Força no tempo, Cor/Tamanho/Rotação pela velocidade, Ruído, Colisão (até dois planos) e Sub-emissores (ao nascer, colidir e morrer); Taxa por distância na Emissão; formas Rosca e Retângulo.",
+        "API C#: Astra.Components.Weather (Intensity, TransitionSeconds, Variation, VariationPeriod, RainRate, SnowRate e demais campos) e os campos novos de ParticleSystem.",
+        "Custo medido no POCO F7 a 2772×1280: cerca de +0,8 ms de GPU por quadro com chuva; o passe de 3.200 gotas custa ~0,06 ms.",
+        "Ainda falta: raio desenhado, trovão, respingo no chão, chuva que não entra sob telhados, colisão de partículas com a física da cena, Texture Sheet e Material de projeto na partícula."
+      ],
+      "validation": "Host: ambiente 51/51 (8 cenários de clima), partículas 19/19 (10 novos), suíte nativa 1628/1628. POCO F7: Clima criado pelo menu na Vila Astra, chuva, neve e tempestade em Play, troca de tipo pelo Inspector, clarão do relâmpago, comparação lado a lado com frames de vídeos da Unity (Pixagon Rain Storm 1:38, Synty Snow 3:51) e medição A/B/B/A. Não verificado no aparelho: a variação natural e a correção das ondas (APK 501 instalado; a tela estava bloqueada).",
+      "migration": "Componente novo, nenhuma cena muda sozinha. O Sistema de partículas passa para a versão 2 ao salvar: cenas antigas abrem com os módulos novos desligados; versões anteriores do app não abrem cenas salvas nesta.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-21-janela-iluminacao-skybox-e-volumes-como-na-unity",
       "date": "2026-10-21",
       "scopes": [
