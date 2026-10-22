@@ -4,6 +4,38 @@
   "updatedAt": "2026-10-22",
   "entries": [
     {
+      "id": "2026-10-22-render-viewer-shadows",
+      "date": "2026-10-22",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Render e viewer em desenvolvimento: sombras por câmera",
+      "summary": "Fontes locais passam a manter atlas e casters próprios na prévia de câmera; testes host e Vulkan offscreen aceitos, integração Android pendente.",
+      "version": "Desenvolvimento · 22/10/2026 · APK público inalterado",
+      "availability": "development",
+      "details": [
+        "Uso previsto nesta revisão em desenvolvimento: fixe uma câmera pelo Inspector. A prévia passa a calcular cascatas e orçamento de luzes locais para sua posição/projeção, com atlas e framebuffers próprios. Os controles existentes continuam sendo usados; não há novos tipos ou propriedades.",
+        "A câmera principal conserva seus mapas e cache estático. A prévia refaz suas sombras quando uma imagem é admitida pelo orçamento de atualização; compartilha geometria, skin, vento e pipelines, sem trocar temporariamente os recursos da câmera principal.",
+        "O snapshot separa a visibilidade autoral de casters do LOD da imagem e respeita castShadow, hierarquia e máscara da câmera. Objetos fora da tela podem continuar projetando sombra quando alcançados pelo volume da luz. O nível geométrico zero evita desenhar todos os LODs como casters.",
+        "Luzes locais em câmera ortográfica passam a calcular importância pela altura paralela da projeção. Uma tentativa de reservar seis faces de uma luz pontual só consome o atlas quando todas cabem, permitindo tentar uma resolução menor sem perder o espaço provisório.",
+        "Limites: a água atual recebe sombras direcionais, mas ainda não acumula luzes locais. O recebimento local em PBR foi verificado em harness GPU com luz pontual e spot. Política de qualidade própria por vista, pressão/recuperação térmica, históricos e validação completa no Android continuam abertos."
+      ],
+      "validation": "Host: política, visibilidade e atlas 67/67; contratos editor/Player 243/243 após separar também os LODs autorais dos casters. Vulkan NVIDIA RTX 3050: 6/6 cenários offscreen no total, com shaders embarcados e geometria de produção; inclui atlas direcionais independentes amostrados pela água, ausência de escrita cruzada, profundidade local de seis faces, recorte por textura e recebimento local em PBR com luz pontual e spot. Renderer e AndroidMain passaram sintaxe ARM64 com NDK 27.1.12297006. Harness não instancia o renderer Android completo; camada Khronos indisponível. Sem novo APK, instalação, ganho de FPS ou aceite no aparelho comprovados.",
+      "migration": "Nenhuma mudança no formato de projeto/cena, API gerenciada, componentes, preferências, ícones ou assets de runtime. Revisão local em desenvolvimento; APK e downloads públicos inalterados.",
+      "links": [
+        {
+          "label": "Unity 6.0: Renderer.shadowCastingMode",
+          "href": "https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Renderer-shadowCastingMode.html"
+        },
+        {
+          "label": "Unity 6.0: cascatas de sombra",
+          "href": "https://docs.unity3d.com/6000.0/Documentation/Manual/shadow-cascades.html"
+        }
+      ]
+    },
+    {
       "id": "2026-10-22-render-viewer-water",
       "date": "2026-10-22",
       "scopes": [
