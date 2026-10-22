@@ -4,6 +4,59 @@
   "updatedAt": "2026-10-22",
   "entries": [
     {
+      "id": "2026-10-22-realce-liso-no-aparelho",
+      "date": "2026-10-22",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Realce do sol liso em superfícies polidas no aparelho",
+      "summary": "Em materiais muito lisos (suavidade perto de 1), o realce do sol aparecia no celular como um bloco quadriculado, e o reflexo do sol de um céu HDRI deixava um ponto preto. Os dois agora são pontos lisos, como na Unity. Revisão local; não está no APK público.",
+      "version": "Revisão local eb3e3642 · Astra Dev 0.3.0-dev.261022999-pk9-1423",
+      "availability": "development",
+      "details": [
+        "O brilho especular usa a forma de cálculo do Filament para a GPU do celular, que não perde precisão perto do pico do realce.",
+        "A rugosidade mínima usada no cálculo segue a do Filament (0,089) e a da URP. Por isso Suavidade 1 no Inspector fica um pouco menos pontual do que um espelho perfeito, como na Unity no celular.",
+        "O reflexo de um céu HDRI com o sol muito forte é limitado antes de passar do máximo que a GPU guarda, e não deixa mais ponto preto.",
+        "Vale para o sol, as luzes pontuais e o verniz (Complex Lit)."
+      ],
+      "validation": "Host: 35/35 na família de materiais e 1635/1635 na suíte nativa. SPIR-V de todos os shaders inspecionado. POCO F7 em Play: close das esferas lisas sob o HDRI Hausdorf Clear Sky (CC0), com realce do sol e reflexo do sol do HDRI lisos, e prancha lado a lado com frames da Unity.",
+      "migration": "Nenhuma.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-22-noite-como-na-unity",
+      "date": "2026-10-22",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Noite como na Unity: Lua, céu azul-marinho e estrelas que giram",
+      "summary": "A noite deixou de parecer dia clareado. Hora do dia ganhou a Lua (uma Luz direcional que segue a lua e projeta sombra à noite), o céu noturno brilha azul-marinho com o luar, as estrelas seguem magnitudes reais e giram com a hora, e a exposição automática para num limite de noite. Revisão local; não está no APK público.",
+      "version": "Revisão local 77831eb1 · Astra Dev 0.3.0-dev.261022999-noite-1408",
+      "availability": "development",
+      "details": [
+        "Hora do dia › Lua: aponte uma Luz direcional e ela gira até a lua da mesma hora, data e latitude, com brilho pela fase e pela altura. À noite a Lua vira a luz principal e projeta a sombra; de dia o sol volta. Criar › Luzes › Sol com dia e noite já cria o Sol e a Lua ligados (Lua de 0,5 lux, 12000 K).",
+        "Céu da noite: o ar espalha o luar e o céu fica azul-marinho, mais claro no horizonte; sem lua (lua nova) sobram só as estrelas. A luz ambiente e o reflexo do céu do dia apagam à noite, e a neblina em Acompanhar o céu fica da cor do céu noturno (antes virava uma faixa branca no horizonte).",
+        "Estrelas: poucas fortes e muitas fracas (magnitudes até 6,5), cores por temperatura, Via Láctea discreta, e o céu inteiro gira em torno do polo com a hora e a latitude.",
+        "Exposição: o Limite mínimo padrão do Volume passou de -2 para -6 EV, para a noite ficar escura com a praça iluminada pelos postes.",
+        "Comparação com vídeos da Unity (HDRP Night, ciclo de dia e noite HDRP, Unite 2020) na prancha docs/validacao/v2-noite do repositório da engine."
+      ],
+      "validation": "POCO F7, 0.3.0-dev.261022999-noite-1408, Vila Astra às 22 h e às 2 h com câmera fixa do Play: quadro sRGB 66, céu 81, chão 52, azul/vermelho 1,86, contra 88/91/49/1,44 da praça com postes do Unite 2020; exposição medida -7,7 EV, adaptada -6. Host: suíte nativa 1650/1650, ambiente 64/64, gerenciada 523 verdes.",
+      "migration": "Hora do dia é salva na versão 2 (campo Lua); cenas antigas abrem sem Lua. Cenas com a Exposição Fixa herdada (como a Vila) continuam escuras à noite: para o ciclo de dia e noite, troque o Volume para Exposição Automática, como no HDRP.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-22-clima-chuva-continua-validada",
       "date": "2026-10-22",
       "scopes": [
