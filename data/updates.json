@@ -4,6 +4,31 @@
   "updatedAt": "2026-10-22",
   "entries": [
     {
+      "id": "2026-10-22-clima-chuva-continua-validada",
+      "date": "2026-10-22",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Clima: chuva contínua e variação natural conferidas no aparelho",
+      "summary": "A correção da chuva que vinha em ondas e a Variação natural do Clima foram verificadas no POCO F7. A revisão também passa a ligar os scripts C# ao sistema de partículas em Play. Revisão local; não está no APK público.",
+      "version": "Revisão local a7101089 · Astra Dev 0.3.0-dev.261022999-clima-1311",
+      "availability": "development",
+      "details": [
+        "Na Vila Astra em Play, com chuva 0,7 e Variação natural 0,35, as gotas vivas oscilaram entre 3.003 e 3.553 durante 2 minutos, longe do teto do aparelho e sem os intervalos em ondas da versão anterior (que ficava presa em 3.200).",
+        "Scripts C#: ParticleSystem.Play, Stop, Pause, Clear e Emit chamados em Play agora alcançam as partículas da cena.",
+        "Os comandos de partículas nas Conexões de evento passaram para os números 36 a 40 para dar lugar à Sonda de reflexo."
+      ],
+      "validation": "POCO F7, 0.3.0-dev.261022999-clima-1311: 60 leituras do log de partículas em 2 min e quadros aos 10, 50 e 90 s; passe de partículas 0,06–0,08 ms de GPU. Host: suíte nativa 1663/1663, ambiente 56/56, partículas 19/19.",
+      "migration": "Conexões de evento salvas com as revisões locais anteriores que chamavam comandos de partículas precisam ser reescolhidas no Inspector; cenas do APK público não são afetadas.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-22-material-urp-no-aparelho-adreno-highp",
       "date": "2026-10-22",
       "scopes": [
