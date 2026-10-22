@@ -1,8 +1,38 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-21",
+  "updatedAt": "2026-10-22",
   "entries": [
+    {
+      "id": "2026-10-22-reflexo-do-ambiente-pelo-ceu-sem-rebarba-branca",
+      "date": "2026-10-22",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Reflexo do ambiente pelo céu da cena: sem rebarba branca e com sombra escura",
+      "summary": "Personagens, casas e objetos tinham um contorno claro, e a sombra ficava cinza sem chegar ao escuro. A causa era o reflexo do ambiente: com céu procedural, todo material refletia uma foto de céu de meio-dia embutida no app, em vez do céu da cena. Agora o reflexo vem do próprio céu, capturado e filtrado como em Lighting › Environment Reflections › Source: Skybox da Unity, e é refeito quando o sol ou o céu mudam. É uma revisão local e ainda não está no APK público.",
+      "version": "Revisão local 04f41b39 · Astra Dev 0.3.0-dev.261022999-v1final-1234 (code 261022999)",
+      "availability": "development",
+      "details": [
+        "Uso: nada a configurar. Qualquer céu que não seja HDRI (Atmosfera, céu físico, com luz ambiente em Skybox, Gradiente ou Cor) passa a ser o reflexo de todo material, da água e das sondas de reflexo fora das caixas. Com HDRI, o reflexo continua sendo o HDRI.",
+        "Intensidade do reflexo indireto do Ambiente funciona como o Intensity Multiplier da Unity sobre o céu capturado.",
+        "A captura usa o caminho das Sondas de reflexo: seis faces só com o céu, 128 px por face (a resolução padrão da Unity), filtro GGX. Ela é refeita quando sol, cores do céu, astros, atmosfera, nuvens ou exposição do céu mudam; o vento das nuvens sozinho não refaz.",
+        "Como o problema foi achado: no POCO F7, na Vila em Play, cada efeito foi desligado de cada vez (nitidez, FXAA, TAA, neblina, AO, bloom, ambiente difuso e reflexo do ambiente). Só o reflexo removia o contorno claro e o véu cinza.",
+        "Resultado na Vila: a razão entre o piso ao sol e o piso na sombra passou de 1,49 para 2,08. Frames de vídeos da Unity medem de 1,74 (HDRP, dia nublado) a 2,22 (Unity 5, praça ao sol).",
+        "Custo no POCO F7 (2772×1280, 600 quadros por rodada): em regime, o quadro de GPU fica igual (cerca de 25,0 ms com e sem). No pior caso, um céu que muda em todo quadro, a recaptura custa cerca de +0,5 ms de GPU (25,4 contra 24,8 ms).",
+        "Diagnóstico para a bancada: aether.post_isolation ganhou 4 (bloom, que antes não tinha efeito), 16 (nitidez também no FSR 1 e nos ampliadores temporais), 32 (ambiente difuso), 64 (reflexo do ambiente), 128 (reflexo pelo céu desligado) e 256 (recaptura a cada quadro).",
+        "Ainda não validado no aparelho: ciclo de dia animado, céu físico e a noite, que depende do trabalho da noite (V-2)."
+      ],
+      "validation": "Host: família de sondas 24/24, com o teste novo da regra de recaptura; suíte nativa 1636/1636. POCO F7: APK de diagnóstico com cada efeito isolado, depois o APK da correção com antes e depois no mesmo aparelho e na mesma câmera, zooms na lanterna, na quina da casa e na face do banco, e prancha lado a lado com frames da Unity (Medieval Village HDRP, Medieval Village Unity 5, URP TAA e AA). A Vila foi devolvida intacta (md5 conferido).",
+      "migration": "Nenhuma. Cenas e projetos não mudam de formato. Cenas com céu procedural ficam com reflexos mais escuros na sombra e sem o contorno claro; se um material parecia certo só por causa do reflexo de meio-dia, ajuste a Intensidade do reflexo indireto do Ambiente.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-21-camera-como-na-unity",
       "date": "2026-10-21",
