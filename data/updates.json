@@ -4,6 +4,28 @@
   "updatedAt": "2026-10-22",
   "entries": [
     {
+      "id": "2026-10-22-render-viewer-camera-isolation",
+      "date": "2026-10-22",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "fix",
+      "title": "Render e viewer em desenvolvimento: estado independente da prévia",
+      "summary": "Vulkan preservado, prévia com estado próprio e painel compacto em 655×300; revisão local sem novo APK.",
+      "version": "Desenvolvimento · 22/10/2026 · APK público inalterado",
+      "availability": "development",
+      "details": [
+        "Uso previsto: fixe uma câmera pela prévia do Inspector. Opções de iluminação, névoa e pós do viewport do editor permanecem locais; a prévia usa o ambiente da câmera.",
+        "A fonte local captura visibilidade autoral, camadas e seleção de LOD pela posição/projeção da câmera fixada. Ocultar objetos apenas no editor não modifica esse snapshot; alterações reais no documento invalidam a publicação anterior.",
+        "A prévia prepara um fluxo de instâncias próprio para não reutilizar a cobertura de transição LOD da vista principal, conservando os dados de vento da vegetação. Recursos geométricos e materiais continuam compartilhados no Vulkan.",
+        "A prévia da câmera em landscape 655×300 passa a ficar em um painel compacto, com Fechar, resolução, frequência e recuperação de falha acessíveis, preservando o viewer ao redor. Materiais mantêm seu destino próprio. Não há novas propriedades, ícones ou assets de runtime. Sombras próprias e água na prévia seguem pendentes; nenhum APK foi distribuído."
+      ],
+      "validation": "Host: contrato integrado de editor/Player 243/243, incluindo regressões de visibilidade autoral, LOD e controles mobile da prévia. Capturas da UI executável em 655×300 e 1280×720, estados preparando/falha, com alvos de toque conferidos; sem imagem 3D fabricada. Renderer Android ARM64 passou verificação de sintaxe com NDK 27.1.12297006. Baseline de política: 54/54. Sem aceite 3D no aparelho, APK novo ou ganho de FPS comprovado.",
+      "migration": "Sem alteração no formato de cenas, projetos ou preferências. Revisão apenas local em desenvolvimento; nenhuma migração exigida e APK público inalterado.",
+      "links": []
+    },
+    {
       "id": "2026-10-22-realce-liso-no-aparelho",
       "date": "2026-10-22",
       "scopes": [
