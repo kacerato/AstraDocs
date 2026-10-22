@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-22",
   "entries": [
     {
+      "id": "2026-10-22-material-urp-no-aparelho-adreno-highp",
+      "date": "2026-10-22",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Material como na Unity agora funciona no aparelho: Multiply, verniz, altura e detalhe",
+      "summary": "No celular (GPU Adreno), o código do Material do PK-9 ficava desligado: uma constante do shader declarada como inteiro de precisão relaxada era guardada com 16 bits e a flag que liga o Shader do Material virava zero. O Multiplicar clareava em vez de escurecer, e o verniz, a altura, o detalhe com máscara e as misturas próprias não apareciam. Corrigido, junto com o aro escuro do verniz. Revisão local; não está no APK público.",
+      "version": "Revisão local f3353296 · Astra Dev 0.3.0-dev.261022999-pk9-1245",
+      "availability": "development",
+      "details": [
+        "Multiplicar (Blending Mode Multiply): o objeto tinge e escurece o que está atrás, como na Unity.",
+        "Verniz (Complex Lit, Clear Coat): reflete o ambiente numa camada lisa sobre a base. O contorno escuro na silhueta sumiu, porque o reflexo do verniz agora segue a fórmula da URP.",
+        "Altura, detalhe ×2 com máscara e oclusão do material passam a valer no aparelho, como já valiam no computador.",
+        "Mesmo defeito, fora do material: as opções por objeto de não receber sombras e de ficar sem o sol (bits 17 e 18) também não funcionavam no aparelho e agora funcionam.",
+        "Água: o índice da grade de ondulação usava inteiro de 16 bits e quebrava em grades a partir de 182; corrigido.",
+        "Ainda falta: o realce do sol em suavidade 1 mostra um pequeno padrão quadriculado no aparelho. Soft Particles e Flip-Book ficam para o PK-10, e o verniz não reage a luzes adicionais."
+      ],
+      "validation": "Host: 35/35 na família de materiais, incluindo um teste novo que exige precisão alta em toda constante inteira acima de 16 bits nos shaders com precisão relaxada; 1635/1635 na suíte nativa e 523/523 na gerenciada, já com G2, PK-6 e PK-7. SPIR-V de todos os shaders inspecionado: nenhuma constante inteira relaxada acima de 16 bits. POCO F7: diagnóstico com shader de teste mostrou a CPU enviando a flag e a GPU recebendo o bit zerado; depois da correção, capturas em Play e prancha lado a lado com frames da Unity e com a documentação oficial (metal sob HDRI de campo, verniz, tijolo, Multiply, vidro).",
+      "migration": "Nenhuma. Materiais e cenas não mudam; só o shader.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-22-reflexo-do-ambiente-pelo-ceu-sem-rebarba-branca",
       "date": "2026-10-22",
       "scopes": [
