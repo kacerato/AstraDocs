@@ -4,6 +4,29 @@
   "updatedAt": "2026-10-22",
   "entries": [
     {
+      "id": "2026-10-22-render-viewer-water",
+      "date": "2026-10-22",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Render e viewer em desenvolvimento: água na vista independente",
+      "summary": "Fontes locais integram o pipeline de água à prévia, com profundidade da câmera e simulação compartilhada; aceite Android pendente.",
+      "version": "Desenvolvimento · 22/10/2026 · APK público inalterado",
+      "availability": "development",
+      "details": [
+        "Uso previsto na revisão em desenvolvimento: fixe uma câmera pelo Inspector para acompanhar a cena no painel de prévia. A imagem usa o alvo de profundidade da câmera fixada; não lê a profundidade do viewport do editor.",
+        "O passe da prévia passa a usar o pipeline existente de água, incluindo o subpass de profundidade e mistura com o fundo. Água finita considera o deslocamento das ondas no descarte; a grade relativa à câmera usa a posição da própria vista. O fragment shader da água também passa a respeitar a cobertura complementar de transição LOD, evitando desenhar ambos os níveis inteiros.",
+        "FFT e espuma são estado compartilhado da cena: a gravação foi antecipada para antes das câmeras e considera também a prévia como consumidora. Não há uma segunda simulação de água por câmera.",
+        "A prévia visível é atualizada conforme seu orçamento de 5/15/30 Hz, permitindo atualização de materiais e adaptação de exposição sem depender de uma edição no documento. A taxa é um teto solicitado, não garantia de FPS. Não altera o relógio autoral da cena.",
+        "Sem propriedades, tipos, ícones ou assets de runtime novos. A revisão ainda não fornece atlas de sombras próprios para a prévia nem comprova o fluxo completo no aparelho."
+      ],
+      "validation": "Host: política/visibilidade 57/57. GPU NVIDIA RTX 3050: 3/3 cenários offscreen com shaders, geometria e FFT de produção; leitura de pixels confere profundidade por alvo, ausência de escrita cruzada, projeção ortográfica, grade, espectro compartilhado e cobertura LOD sem sobreposição. Os testes carregam os SPIR-V otimizados embarcados, regenerados e conferidos com spirv-val. O fixture não instancia o renderer Android completo; camada Khronos de validação indisponível nesse host. Renderer e integração Android passaram sintaxe ARM64 com NDK 27.1.12297006. Sem novo APK, instalação, aceite no aparelho ou ganho de FPS comprovado.",
+      "migration": "Nenhuma alteração no formato de projeto/cena, componentes ou preferências. Revisão local em desenvolvimento; APK e downloads públicos inalterados.",
+      "links": []
+    },
+    {
       "id": "2026-10-22-render-viewer-camera-isolation",
       "date": "2026-10-22",
       "scopes": [
