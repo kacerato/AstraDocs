@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-23",
   "entries": [
     {
+      "id": "2026-10-23-chuva-com-cor-e-particulas-folha-material",
+      "date": "2026-10-23",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Chuva e neve com cor sob o céu nublado; partículas com folha de textura e Material do projeto",
+      "summary": "O Clima não deixa mais a cena sépia: o céu fechado devolve a luz que as nuvens espalham, como na Unity. O Sistema de partículas ganhou Folha de textura (Texture Sheet Animation) e aceita um Material do projeto com shader Partícula. Revisão local; não está no APK público.",
+      "version": "Revisão local 2aa6405f · Astra Dev 0.3.0-dev.261023999-clima-1245",
+      "availability": "development",
+      "details": [
+        "Clima (+ › Volume e céu › Clima): o volume criado só muda nuvens e neblina. A exposição e a cor da cena ficam como estavam, e a neblina volta a cobrir o céu (Exponencial, acompanhando o céu).",
+        "Céu nublado: a parte do sol que a sombra das nuvens tira volta como luz cinza difusa do céu. Na chuva, telhados, grama e personagens mantêm a cor.",
+        "Sistema de partículas › Folha de textura: Colunas × Linhas, Folha inteira ou Uma linha (escolhida ou sorteada), Quadro no tempo (curva), Quadro inicial e Ciclos — o modo Grid da Unity.",
+        "Sistema de partículas › Material: escolha um Material do projeto com shader Partícula (Particles Unlit/Lit). A imagem dele e a cor base substituem a textura própria, e o Surface Aditivo vira mistura aditiva. Em aparelho sem descritores bindless, fica a textura própria.",
+        "Na revisão seguinte (34c05913, Astra Dev clima-1406, só compilada e testada no computador): módulo Luzes (uma luz modelo copiada para parte das partículas, com teto por sistema) e módulo Trilhas (rastro de até 12 pontos por partícula, com largura, cor herdada e esmaecer).",
+        "Arquivo do Sistema de partículas passa à versão 3; cenas antigas abrem com a folha desligada e sem Material."
+      ],
+      "validation": "POCO F7: Vila Astra com Clima criado pelo menu, chuva e neve em Play (4.701 flocos, passe de partículas 0,075 ms de GPU), com A/B da sombra das nuvens que confirmou a causa do tom sépia. Pranchas lado a lado com frames de vídeo da Unity (Pixagon Rain Storm 1:38 e Synty 3:51). Host: 1684/1684 testes. A folha de textura e o Material de projeto passaram nos testes de host, mas ainda não foram vistos no aparelho.",
+      "migration": "Nenhuma. Climas criados por revisões anteriores mantêm a neblina Exp² com cor fixa e os grupos de pós ligados; recrie o Clima ou ajuste o modo da neblina e desligue os overrides de pós no Ambiente dele.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-23-volume-perfil-e-pos-completo",
       "date": "2026-10-23",
       "scopes": [
