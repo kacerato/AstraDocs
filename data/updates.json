@@ -1,8 +1,35 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-22",
+  "updatedAt": "2026-10-23",
   "entries": [
+    {
+      "id": "2026-10-23-medicoes-e-sombra-por-objeto",
+      "date": "2026-10-23",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Sombra e sol por objeto conferidos no celular; custo dos gráficos medido",
+      "summary": "Receber sombras, Projetar sombras e tirar um objeto do sol pela Máscara de culling funcionam no celular. A medição da revisão atual no POCO F7 mostra a Vila Astra com quase metade do custo de GPU da linha de base de 17/10. Revisão local; não está no APK público.",
+      "version": "Revisão local 382ab617 · Astra Dev 0.3.0-dev.261023999-medicao-0833",
+      "availability": "development",
+      "details": [
+        "Mesh Renderer › Iluminação: com Receber sombras desligado, o objeto não escurece com sombra nenhuma; com Projetar sombras desligado, ele não deixa sombra no chão.",
+        "Luz › Máscara de culling: o objeto numa camada fora da máscara do sol fica só com a luz ambiente. Ele continua projetando a sombra do sol, como na URP do Unity 6; para tirar a sombra, desligue Projetar sombras.",
+        "Vila Astra no POCO F7, qualidade alta: GPU de 50,8 para 28,2 ms por quadro e CPU de 23,6 para 11,2 ms em relação à medição de 17/10. Na qualidade baixa a GPU foi de 30,8 para 17,0 ms.",
+        "Os recursos que mais pesam são o desenho da cena (14 ms), o pós-processamento (8,6 ms), a sombra do sol (cerca de 3,8 ms) e as 8 luzes da praça (2,9 ms). As propostas de modo barato para celular fraco estão no relatório e ainda não mudaram nenhum padrão.",
+        "Nova opção de diagnóstico para medição: aether.shadow_gather=false volta ao filtro antigo da sombra do sol, para comparação. O filtro atual economiza 0,7 ms na Vila."
+      ],
+      "validation": "POCO F7 (Adreno 825), Vila Astra em Play e Sponza em Edição: base nas qualidades alta e baixa e um recurso por vez entre rodadas de controle (controles 26,2–26,8 ms). Temperatura de cada rodada registrada (41,9 a 50 °C). Prancha Unity × celular das opções de sombra com frames de vídeo da Unity. Nenhuma otimização foi feita sem medição antes e depois.",
+      "migration": "Nenhuma.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-22-render-viewer-shadows",
       "date": "2026-10-22",
