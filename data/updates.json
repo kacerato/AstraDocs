@@ -4,6 +4,35 @@
   "updatedAt": "2026-10-23",
   "entries": [
     {
+      "id": "2026-10-23-volume-perfil-e-pos-completo",
+      "date": "2026-10-23",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Volume como na Unity: perfil compartilhado, override por parâmetro e o pós completo",
+      "summary": "O perfil de um Ambiente agora é compartilhado: editar em um Volume muda todos os que usam o mesmo perfil. Cada efeito vira um override com caixa por parâmetro, ALL/NONE e Adicionar override, como o Volume da URP. Chegam profundidade de campo (Gaussian e Bokeh), desfoque de movimento, aberração cromática, distorção de lente, vinheta completa, curvas de cor e sujeira da lente no bloom. Revisão local; não está no APK público.",
+      "version": "Revisão local 189d9549 · Astra Dev 0.3.0-dev.261023999-pos-0949",
+      "availability": "development",
+      "details": [
+        "Perfil compartilhado: escolha o perfil em Volume › Perfil. Novo cria um perfil vazio e Clonar copia o atual. Mudar um valor no Inspector muda o perfil e todos os Volumes que o usam, com um único desfazer.",
+        "Overrides: cada efeito aparece como um cartão com interruptor, contagem de parâmetros marcados, ALL/NONE e o menu ⋮ (Redefinir valores, Remover override). Um parâmetro desmarcado fica apagado e vem do Volume de baixo. Adicionar override lista por categoria os efeitos que o perfil ainda não tem, que entram com tudo desmarcado.",
+        "Máscara de volume da câmera: escolhe Volumes pelas camadas do objeto, como na Unity. Valores que não se misturam (modos, texturas, liga/desliga) trocam assim que o Volume começa a pesar.",
+        "Profundidade de campo: Gaussian (Início, Fim, Raio máximo, Alta qualidade) ou Bokeh (Distância de foco, Distância focal, Abertura, lâminas), com qualidade Baixa, Média ou Alta. No POCO F7 custa de 2 a 3,5 ms a mais no pós.",
+        "Desfoque de movimento (só câmera, Baixa/Média/Alta, Intensidade, Limite), aberração cromática, distorção de lente (Intensidade, Multiplicadores X/Y, Centro, Escala), vinheta (Cor, Centro, Intensidade, Suavidade, Arredondada) e as oito curvas de cor da URP. No POCO o custo desses efeitos ficou dentro do ruído da medição.",
+        "Bloom: sujeira da lente (textura e intensidade) e filtragem de alta qualidade.",
+        "A janela Iluminação continua editando o Ambiente da cena, sem a interface de override, como a janela Lighting da Unity."
+      ],
+      "validation": "Host: 1663/1663 na suíte nativa e 75/75 na família de ambiente; alvo Android arm64 compilado. POCO F7 em Play na Vila: 12 variantes (cada efeito e as qualidades do DoF e do desfoque de movimento) com custo de GPU medido por efeito, e três pranchas lado a lado com frames de vídeos da Unity. Inspector do Volume capturado no aparelho: remover, adicionar override e ALL. A sujeira da lente, a edição das curvas pelo toque e Novo/Clonar no toque não foram testados no aparelho. O DoF não roda junto com o upscaler temporal.",
+      "migration": "Automática ao abrir. Cenas antigas passam ao Ambiente v19 e à câmera v5, e perfis ao v14: as caixas por grupo viram overrides com todos os parâmetros marcados, as camadas \"Ambiente 0..7\" viram camadas de objeto com o mesmo nome e a máscara da câmera passa a apontar para elas. Uma cópia local que divergia do perfil vira um perfil \"Clone de …\". Vinheta, grão e oclusão ambiente ligados só pelo interruptor passam a valer pela intensidade, como na Unity. APKs anteriores não abrem cenas regravadas.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-23-medicoes-e-sombra-por-objeto",
       "date": "2026-10-23",
       "scopes": [
