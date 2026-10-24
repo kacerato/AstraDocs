@@ -1,8 +1,36 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-23",
+  "updatedAt": "2026-10-24",
   "entries": [
+    {
+      "id": "2026-10-24-clima-molha-empoca-e-neva",
+      "date": "2026-10-24",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Clima molha o chão, faz poças e acumula neve; cada tipo traz sua atmosfera",
+      "summary": "Chuva e neve agora agem na cena, como nos climas da Unity: o chão molha e empoça, a neve cobre telhados e chão, e cada tipo de clima traz a cor da neblina, a luz e a cor da imagem. Faíscas com trilha entraram em Efeitos. Revisão local; não está no APK público.",
+      "version": "Revisão local c0703a6e · Astra Dev 0.3.0-dev.261024999-clima-0215",
+      "availability": "development",
+      "details": [
+        "Clima › Superfícies: Molhado, Poças e Neve acumulada, com Tempo para molhar, secar e acumular. Em Play o chão molha e seca aos poucos; na edição aparece na hora.",
+        "Chuva: chão escuro e liso, poças nos pisos planos refletindo o céu e com gotas caindo, gotas finas e translúcidas que respingam no chão (Chão da chuva e Respingos dentro do Clima).",
+        "Cada tipo de clima traz neblina, filtro de cor, saturação, contraste, exposição e a luz do sol e do ambiente, como os presets do Enviro 3. A chuva fica azul-acinzentada e escura; a neve, clara e com contraste.",
+        "Céu nublado com luz cinza-azulada: a cena deixa de ficar bege sob nuvens fechadas.",
+        "Efeitos › Faíscas: faíscas com trilha que acendem luzes por onde passam (luz modelo dentro do objeto).",
+        "Correção: um APK intermediário fechava ao abrir projetos no Adreno do POCO; a revisão atual abre normalmente."
+      ],
+      "validation": "POCO F7, Vila Astra: chuva com poças e neve acumulando em Play, Faíscas com trilha numa Tempestade, pranchas lado a lado com frames da Unity (Pixagon Rain Storm 1:38 e Synty 3:51). Testes de clima no computador 11/11. Ainda não vistos no aparelho: luzes das faíscas no chão, Folha de textura e Material do projeto. A neve ainda não fica ensolarada como no par da Unity.",
+      "migration": "Arquivos de Clima antigos abrem com as superfícies no padrão. Para a chuva com respingos, recrie o Clima pelo menu.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-23-chuva-com-cor-e-particulas-folha-material",
       "date": "2026-10-23",
