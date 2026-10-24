@@ -4,6 +4,33 @@
   "updatedAt": "2026-10-24",
   "entries": [
     {
+      "id": "2026-10-24-neve-com-sol-chuva-petroleo-folha-no-aparelho",
+      "date": "2026-10-24",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Neve com sol e espessura nos telhados; chuva azul-petróleo; Folha de textura vista no celular",
+      "summary": "A neve volta a ter céu aberto e sol, com espessura nos telhados. A chuva ficou azul-petróleo, com névoa densa. A Folha de textura das partículas funciona no celular. Revisão local; não está no APK público.",
+      "version": "Revisão local 3795a0bd · Astra Dev 0.3.0-dev.261024999-clima-0953",
+      "availability": "development",
+      "details": [
+        "Correção: ao trocar o Clima para Neve, a cena mantinha o céu e as cores da chuva. A neve agora tem céu aberto com nuvens soltas, sol cheio e sombras azuladas.",
+        "Neve com espessura: o que olha para cima (telhados, chão, topo dos objetos) sobe alguns centímetros conforme acumula.",
+        "Chuva e Tempestade: cor azul-petróleo, névoa densa que cobre céu e fundo; nos tipos de céu aberto a névoa fica só no chão.",
+        "Sistema de partículas › Folha de textura: Colunas, Linhas, Animação, Quadro no tempo, Quadro inicial e Ciclos funcionando no celular.",
+        "Faíscas: as luzes das partículas entram na cena dentro do teto de luzes do aparelho."
+      ],
+      "validation": "POCO F7, Vila Astra: neve com sol (70 s de Play), chuva (45 s de Play), Faíscas numa Tempestade e Partículas com Folha 2×2, com pranchas lado a lado com frames da Unity (Synty 3:51 e Pixagon 1:38). Testes de clima no computador 11/11. Ainda não visto no celular: Material do projeto na partícula. As luzes das faíscas aparecem fracas na Vila, que já usa quase todo o teto de luzes com os postes.",
+      "migration": "Nenhuma.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-24-clima-molha-empoca-e-neva",
       "date": "2026-10-24",
       "scopes": [
