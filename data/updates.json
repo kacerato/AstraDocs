@@ -4,6 +4,31 @@
   "updatedAt": "2026-10-24",
   "entries": [
     {
+      "id": "2026-10-24-material-do-projeto-na-particula-e-luzes-a-noite",
+      "date": "2026-10-24",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Material do projeto na partícula e luzes das Faíscas à noite, vistos no celular",
+      "summary": "Uma partícula pode usar um Material do projeto com shader Partícula e uma folha animada, e isso foi visto no celular. As luzes das Faíscas iluminam o chão numa cena noturna. Revisão local; não está no APK público.",
+      "version": "Revisão local 7e96f3bb · Astra Dev 0.3.0-dev.261024999-clima-0953 (fechamento clima-1648)",
+      "availability": "development",
+      "details": [
+        "Sistema de partículas › Material: um Material do projeto com shader Partícula (modo Aditivo) e uma imagem de folha anima o fogo quadro a quadro com a Folha de textura 4×4.",
+        "Faíscas à noite: sem postes na cena, cada faísca acende uma luz que ilumina o chão em volta e muda conforme as faíscas sobem e caem.",
+        "Projeto de exemplo \"PK10 Noite\": chão escuro, Sol com dia e noite às 23 h, Faíscas e Partículas com o Material \"Fogo animado\". A folha de fogo é gerada por matemática, sem asset de pacote."
+      ],
+      "validation": "POCO F7 com o APK clima-0953: projeto PK10 Noite aberto no editor e em Play, com três quadros seguidos mostrando o halo das luzes mudando e a chama trocando de quadro. Suíte de fechamento na branch: testes nativos 1687/1687; testes gerenciados 523 aprovados, 0 falhas, 71 pulados; APK clima-1648 gerado. Sem prancha com a Unity nesta rodada.",
+      "migration": "Nenhuma.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-24-neve-com-sol-chuva-petroleo-folha-no-aparelho",
       "date": "2026-10-24",
       "scopes": [
