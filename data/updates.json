@@ -4,6 +4,33 @@
   "updatedAt": "2026-10-25",
   "entries": [
     {
+      "id": "2026-10-25-cortes-de-custo-por-nivel-animacao-e-sombra",
+      "date": "2026-10-25",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Cortes de custo: teto por nível de qualidade, moradores mais leves e sombra do sol em dois mapas",
+      "summary": "O nível de qualidade do projeto passou a ser teto para o que a cena pede, como o URP Asset de cada nível da Unity; a animação dos personagens roda em paralelo e na taxa do tamanho na tela; a sombra do sol guarda o cenário parado em cache e redesenha só os moradores num mapa próprio. Revisão local; não está no APK público.",
+      "version": "Revisão local 6e775a86 · Astra Dev 0.3.0-dev.261025999-cortes-1426",
+      "availability": "development",
+      "details": [
+        "Projeto › Qualidade: cada nível limita Render Scale, cascatas e resolução da sombra do sol, filtro da sombra, oclusão de ambiente, bloom e luzes por objeto. O painel mostra o corte no próprio valor (por exemplo 4 → 2 no nível). No nível C a resolução dinâmica fica ligada, a oclusão de ambiente sai e cada objeto recebe até 4 luzes.",
+        "Máscara de luzes por desenho ligada em todos os níveis: cada objeto só avalia as luzes pontuais que o alcançam.",
+        "Animator › Culling Mode, como na Unity: Sempre animar, Atualizar transformações ou Desligar fora da câmera do jogo.",
+        "Personagens animados avaliados em paralelo, um personagem inteiro por tarefa, como os Animation Jobs da Unity; quem ocupa pouco da tela anima a cada 2 ou 4 quadros com interpolação entre as poses.",
+        "Sombra do sol em dois mapas: o cenário parado fica em cache e só é redesenhado quando a câmera, a aparência ou um objeto estático muda; os moradores entram num mapa próprio, ajustado à área deles em cada cascata, redesenhado quando se movem."
+      ],
+      "validation": "POCO F7, mesmo APK em cada A/B, rodadas intercaladas. Vila Astra no nível C: GPU do quadro 18,91 → 14,33 ms com o teto do nível. Vila Astra no nível S: thread do jogo 13,83 → 10,00 ms e CPU do processo 14,72 → 12,53 ms com personagens em paralelo e taxa por tamanho; sombra do sol 2,64 → 1,37 ms e GPU do quadro 39,44 → 38,62 ms com os dois mapas. Com o Play pausado no mesmo quadro, alternando só o modo da sombra, 0,027% dos pixels diferem, só no contorno das sombras dos moradores. Retificação: a medida de 24/10 da sombra em dois mapas (0,6 ms) foi feita sem o shader novo embarcado e não vale. Ainda não medido: Sponza nos níveis S e C e o nível C com resolução dinâmica. No computador: suíte nativa 1720/1721 com a fachada C# do Culling Mode em seguida regenerada (1/1), suíte gerenciada 523 passaram.",
+      "migration": "Projetos existentes passam a respeitar o teto do nível escolhido; nada é regravado no arquivo do projeto. Animators de cenas antigas abrem com Culling Mode = Sempre animar.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-25-gerar-iluminacao-lightmap-e-sondas",
       "date": "2026-10-25",
       "scopes": [
