@@ -1,8 +1,37 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-24",
+  "updatedAt": "2026-10-25",
   "entries": [
+    {
+      "id": "2026-10-25-gerar-iluminacao-lightmap-e-sondas",
+      "date": "2026-10-25",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Gerar iluminação: lightmap assado, sondas de luz assadas junto e UV2 automática",
+      "summary": "A janela Iluminação ganhou a aba Lightmaps com Gerar iluminação, como o Progressive Lightmapper do Unity 6: luz das lanternas, rebote colorido, emissivos e visibilidade do céu assados no celular, em segundo plano, e as sondas de luz assadas no mesmo passo para o que se move. O sol continua em tempo real e o céu de cada hora reescala o lightmap. Revisão local; não está no APK público.",
+      "version": "Revisão local 61261073 · Astra Dev 0.3.0-dev.261025999-lightmap-0538",
+      "availability": "development",
+      "details": [
+        "Iluminação › Lightmaps: estado do recurso, contadores Static, Recebem, Sem UV2 (toque seleciona esses objetos) e Assada · Mista, Gerar iluminação, Cancelar e Limpar, e as Configurações de iluminação (Resolução, Espaçamento, Tamanho máximo, Amostras, Rebotes, Remover ruído, Comprimir, Intensidade indireta, Reforço de albedo).",
+        "Luz › Modo: Tempo real, Misto (assa só o rebote) e Assado (assa a luz e o rebote e sai do tempo real, inclusive da sombra, enquanto houver lightmap). O sol e a lua da Hora do dia nunca são assados.",
+        "Mesh Renderer › Iluminação: Contribuir para iluminação global e Receber iluminação global (Lightmaps ou Sondas de luz). Decalques e vidros recebem o lightmap da superfície embaixo sem bloquear a luz.",
+        "Sondas de luz assadas no Gerar iluminação, com as mesmas luzes do lightmap: o objeto móvel e o Static sem UV2 recebem a luz assada e a oclusão do céu, e o céu da hora continua mandando.",
+        "Modo de visão Lightmap assado no menu Sky/Fog/Post da cena: o que o lightmap guarda, sem albedo, como o draw mode Baked Lightmap da Unity.",
+        "Importação de modelo: Gerar UV de lightmap, com Ângulo vivo (88°) e Margem entre ilhas (4 px), pelo xatlas. Malhas com skin ou blend shape ficam de fora.",
+        "Superfícies de duas faces que formam malha fechada com normais para dentro (copas de árvore) recebem pelo lado de fora."
+      ],
+      "validation": "POCO F7, Sponza com 7 luzes pontuais Assadas com sombra e 1 Mista a 1200 lm, exposição fixa nos dois lados: GPU 18,58 ms em tempo real × 13,18 ms com lightmap (−29%) às 21 h; bake de 156 s no aparelho; cores das luzes nas paredes nos dois lados e o rebote no modo Lightmap assado; pranchas lado a lado com frames da Unity (KJ4fl-KBDR8 0:00, 1:00 e 3:45). Vila Astra assada em 32 s. No computador: paridade de energia de 1 luz de 1200 lm, assado × tempo real dentro de 2,2%, suíte 1714/1714. Ainda não validado no aparelho: o par com o ambiente zerado, que deve mostrar o assado igual ou mais claro que o tempo real (sem isso, à mesma exposição, o assado fica com cerca de metade da luminância média porque o céu entra ocluído debaixo da arcada), e a caminhada de 24 h.",
+      "migration": "Cenas antigas abrem com Contribuir ligado e Receber = Lightmaps (Mesh Renderer v12) e com as Configurações de iluminação nos padrões da Unity (v2). Sondas de luz assadas antes continuam valendo (recurso v1); um Gerar iluminação as reassa no formato novo. Perfis de importação antigos abrem com Gerar UV de lightmap desligado. Nada muda até alguém gerar a iluminação.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-24-material-do-projeto-na-particula-e-luzes-a-noite",
       "date": "2026-10-24",
