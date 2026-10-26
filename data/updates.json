@@ -1,8 +1,40 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-25",
+  "updatedAt": "2026-10-26",
   "entries": [
+    {
+      "id": "2026-10-26-api-grafica-unity-csharp-e-flow",
+      "date": "2026-10-26",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Gráficos pelo script e pelo Flow: Volume, pós, hora do dia, luz, câmera, sondas e materiais com os nomes da Unity",
+      "summary": "Tudo o que entrou no plano gráfico agora é controlável por script C#, com os nomes e as assinaturas da Unity, e os eventos e comandos principais também pela Conexão de evento, sem código. Revisão local; não está no APK público.",
+      "version": "0.3.0-dev.261026999-g7-api-0938 (revisão local, não distribuída)",
+      "availability": "development",
+      "details": [
+        "Volume como na Unity (Astra.Rendering): Volume.SharedProfile troca o perfil; Volume.Profile copia o perfil para este Volume (as mudanças valem só nele, como volume.profile); VolumeProfile.TryGet<T>, Add<T>, Remove<T> e Has<T>; VolumeParameter com Value, OverrideState e Override(valor); VolumeComponent.Active.",
+        "Overrides com classe própria: Exposure, Tonemapping, ColorAdjustments, Bloom, DepthOfField, MotionBlur, ChromaticAberration, LensDistortion, Vignette, ColorCurves, WhiteBalance, LiftGammaGain, ShadowsMidtonesHighlights, FilmGrain, AmbientOcclusion, Sky, Celestial, PhysicallyBasedSky, IndirectLightingController, Fog e CloudLayer (nuvens).",
+        "RenderSettings estático (ambiente, neblina, céu, sol) sobre o Volume global da janela Iluminação; cada escrita marca a caixa do parâmetro, como mexer no campo.",
+        "Hora do dia no Play: TimeOfDay.Current, Hour (escrever 18,5 põe 18,5 no quadro seguinte), Speed (60 = 1 minuto real por hora) e os eventos HourChanged, Sunrise, Sunset e DayChanged.",
+        "Nomes da Unity em Light (Type, Shadows, RenderingLayerMask), Camera (ClearFlags, FieldOfView, Rect, UsePhysicalProperties, SensorSize, AllowHDR, RenderPostProcessing, VolumeLayerMask), Mesh Renderer (ShadowCastingMode, LightProbeUsage, ReflectionProbeUsage, SharedMaterial, Material, LightmapScaleOffset), Reflection Probe (Mode, Size, Center, BakedTexture, RenderProbe) e Light Probe Group (posição de cada sonda).",
+        "Material.SetFloat, SetColor e SetTexture com os nomes da URP: _BaseColor, _Smoothness, _Metallic, _BumpScale, _Cutoff, _OcclusionStrength, _EmissionColor, _BaseMap, _BumpMap, _MetallicGlossMap, _EmissionMap e _OcclusionMap (e _Color, _MainTex e _Glossiness do Standard). Nome desconhecido dá erro em vez de sumir. SceneQuery.FindFirstObjectByType<T>() e FindObjectsByType<T>() para achar componentes no mundo.",
+        "Conexão de evento (Flow): novos eventos Hora do dia: hora mudou, nascer do sol, pôr do sol e dia mudou; novos comandos Volume: definir peso, Volume: trocar perfil, Volume: usar cópia do perfil e Malha: trocar material (com o perfil ou o material escolhido no próprio cartão).",
+        "Entrada do jogador (PlayerInput, como o Invoke Unity Events da Unity): o componente escolhe as ações observadas e dispara Entrada: ação executada e Entrada: ação cancelada na Conexão de evento, filtrando por ação; em C#, PlayerInput.Performed e Canceled. Tem ícone próprio e receita no menu de criação.",
+        "Seis exemplos curtos, em C# e em Flow: ciclo de dia acelerado, trocar o perfil ao entrar numa área, desfoque de profundidade ao mirar, acender os postes ao anoitecer, recapturar uma sonda de reflexo por script e trocar o material de um objeto.",
+        "Ainda não: trocar o shader do override de um único objeto (troque o Material), editar as chaves das Color Curves por script e saber quando a recaptura da sonda terminou."
+      ],
+      "validation": "Host: suíte nativa 1723/1723 e gerenciada 529 aprovados, 0 falhas, 71 pulados, com o script real do exemplo da mira. POCO em 26/10, revisão local 0.3.0-dev.261026999-g7-api-0938: os 12 projetos de exemplo rodaram no Play, os seis em C# e os seis em Flow (dia acelerado, perfil por área, desfoque ao mirar, postes ao anoitecer, sonda por script, troca de material). Não testado: Light.lightmapBakeType, curvas de cor por chave e o fim da recaptura da sonda.",
+      "migration": "A Conexão de evento passa à versão 3 (guarda o recurso do comando); cenas antigas abrem iguais. Scripts que escreviam a Hora do dia no Play passam a pôr a hora escrita, em vez de somá-la ao tempo decorrido.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-25-cortes-de-custo-por-nivel-animacao-e-sombra",
       "date": "2026-10-25",
