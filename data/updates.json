@@ -1,8 +1,38 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-26",
+  "updatedAt": "2026-10-27",
   "entries": [
+    {
+      "id": "2026-10-27-nuvens-volumetricas-dia-e-noite",
+      "date": "2026-10-27",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Nuvens volumétricas com cor de fim de tarde, luz da lua e menos tremor",
+      "summary": "As nuvens do Ambiente passam a ser volumétricas, no modelo das Volumetric Clouds do HDRP: cúmulos com volume até o horizonte, lado do sol dourado e sombra cinza-arroxeada no fim de tarde, iluminação pela lua à noite e tremor reduzido com a câmera parada. A lua segue a própria órbita. Revisão local; não está no APK público.",
+      "version": "Revisão local 5f332696 · Astra Dev 0.3.0-dev.261026999-nuvens-1550",
+      "availability": "development",
+      "details": [
+        "Uso: selecione o objeto do Ambiente › Inspector › seção Nuvens › Tipo › Volumétricas (Camada 2D continua disponível, mais barata). Aparecem Fator de forma, Erosão e Passos, além da Espessura; Cobertura, Altitude e vento seguem valendo. Com Hora do dia, a cor das nuvens acompanha o sol e, depois do crepúsculo, a lua.",
+        "Forma: couve-flor com sombreamento interno, cúmulos pequenos até o horizonte e nuvens separadas com cobertura perto de 0,7.",
+        "Fim de tarde: o lado do sol fica dourado e o lado da sombra e a base ficam cinza-arroxeados, em vez de toda a nuvem laranja.",
+        "Noite: a luz das nuvens passa do sol para a lua no crepúsculo, com a cor e a intensidade da direcional Lua. Com lua cheia as nuvens ficam cinza-arroxeadas contra o céu de luar; na lua nova ficam escuras e recortadas contra o céu, sem estourar a cena.",
+        "Lua: com a receita Sol com dia e noite, a Lua segue uma efeméride simplificada (nasce mais tarde a cada dia; a lua cheia fica no céu do anoitecer ao amanhecer), em vez de ficar no plano do sol.",
+        "Tremor: com a câmera parada, a diferença entre quadros nas nuvens caiu 56% num vídeo de 30 fps.",
+        "Custo medido no POCO F7 a 2772×1280: cerca de +1,5 ms de GPU por quadro com nuvens.",
+        "Ainda falta: a sombra das nuvens no chão segue a camada 2D, não o volume."
+      ],
+      "validation": "Host: suíte nativa 1725/1725 e ambiente 105/105, com testes novos da órbita da lua, do piso do céu sem lua e da espessura das nuvens com as sombras em cache. POCO F7, Vila Astra em Play: pares com frames de vídeo da Unity no meio-dia, na hora dourada e no poente; noite com lua cheia às 20 h e 0 h, lua nova à 0 h e disco da lua com céu limpo à 0 h e às 4 h; vídeos de 5 s do tremor antes e depois. Não testado no aparelho: disco da lua às 20 h enquadrado.",
+      "migration": "O Ambiente passa para a versão 20 ao salvar. Cenas antigas abrem com o Tipo Camada 2D, com as mesmas nuvens de antes; versões anteriores do app não abrem cenas salvas nesta.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-26-api-grafica-unity-csharp-e-flow",
       "date": "2026-10-26",
