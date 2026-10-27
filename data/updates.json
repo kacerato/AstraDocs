@@ -4,6 +4,32 @@
   "updatedAt": "2026-10-27",
   "entries": [
     {
+      "id": "2026-10-27-noite-escura-com-nuvens-e-limite-de-exposicao",
+      "date": "2026-10-27",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Noite com nuvens volta a ser escura: piso do céu sem lua corrigido e Limite mínimo da exposição",
+      "summary": "Corrige a nota das nuvens volumétricas de hoje. O brilho mínimo do céu sem lua tinha sido calibrado numa escala errada; agora a lua nova fica quase preta, só com postes e estrelas. Validado com uma Lua de 0,5 lux e o Limite mínimo da exposição no Volume da noite. Revisão local; não está no APK público.",
+      "version": "Revisão local 62497f7e · Astra Dev 0.3.0-dev.261026999-nuvens-0846",
+      "availability": "development",
+      "details": [
+        "Lua nova: céu quase preto, com estrelas; as nuvens somem no escuro e a praça fica só com a luz dos postes e das janelas. A nota anterior dizia que as nuvens ficavam recortadas contra o céu; isso vinha de uma Lua de teste forte demais.",
+        "Lua cheia: céu azul-escuro, nuvens cinza recortadas, chão legível e fraco.",
+        "Uso para dia e noite com exposição automática: no Volume da noite, Exposição › Limite mínimo perto de −5,5 EV100, como no Volume noturno da Unity. Sem esse limite a exposição leva a noite ao cinza médio e ela parece dia. Neblina em Acompanhar o céu apaga junto com o céu; em Cor, a cor escolhida continua acesa à noite.",
+        "Na Vila Astra, com lua cheia, a imagem final fica 3,6 EV abaixo do meio-dia; com lua nova, 7,6 EV."
+      ],
+      "validation": "Host: suíte nativa 1725/1725 e ambiente 105/105, com o teste do piso do céu sem lua na escala do shader. POCO F7, Vila Astra em Play com Lua de 0,5 lux: lua cheia às 20 h e à 0 h e lua nova à 0 h, com limites −6, −5,5 e −5, medidas de brilho comparadas ao meio-dia e à noite aprovada da V-2.",
+      "migration": "Sem mudança de formato de cena além da nota anterior (Ambiente v20).",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-27-nuvens-volumetricas-dia-e-noite",
       "date": "2026-10-27",
       "scopes": [
