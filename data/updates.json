@@ -4,6 +4,33 @@
   "updatedAt": "2026-10-27",
   "entries": [
     {
+      "id": "2026-10-27-resolucao-dinamica-giro-do-personagem-bordas-e-lightmap",
+      "date": "2026-10-27",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Personagem vira para onde anda, resolução dinâmica mais estável, emenda sob o Play corrigida e lightmap explicado",
+      "summary": "Fecha pendências dos cortes de custo e dos lightmaps. O Personagem ganha \"Girar para a direção do movimento\", ligado nos modelos de player. A resolução dinâmica reage melhor ao custo da GPU. Some a linha clara ou escura logo abaixo da barra do Play. O lightmap mais escuro que o tempo real tinha explicação: céu, especular e sombra do tempo real, não erro do bake. Revisão local; não está no APK público.",
+      "version": "Revisão local 877bca9b · Astra Dev 0.3.0-dev.261026999-pend-1213",
+      "availability": "development",
+      "details": [
+        "Personagem › Direção: Girar para a direção do movimento, Velocidade do giro (720 °/s), Suavização do giro (0,12 s, como o Rotation Smooth Time do Third Person Controller da Unity) e Relativo à câmera. Vem ligado no modelo Personagem jogável e em Converter em Personagem; em componentes já existentes fica desligado. Scripts: Character.FaceMovement, CameraRelative, FaceTurnSpeed e RotationSmoothTime.",
+        "Resolução dinâmica (nível C ou painel Gráficos): decide pela mediana de alguns quadros, ignora os quadros da escala antiga logo depois de cada troca e desce mais de uma vez quando a GPU passa muito do orçamento. Na Vila em nível C no painel inteiro do POCO, o FPS foi de 36,6 para 55,4.",
+        "Emenda sob a barra do editor: a vista 3D agora começa num pixel inteiro, e a primeira linha abaixo da barra deixa de sair escura (ou branca com o céu da noite). Com a escala abaixo de 100%, bloom, desfoque de profundidade e AO deixam de acender uma faixa na borda da tela.",
+        "Lightmap: com o mesmo tratamento de sombra dos dois lados e sem o especular direto, o assado fica 5% acima do tempo real na Sponza. Como na Unity, o lightmap guarda a luz difusa e o rebote; o brilho especular das luzes fica só no tempo real. Em tempo real só duas luzes pontuais por quadro fazem sombra; em Assado, todas.",
+        "O traço curvo no canto superior esquerdo das capturas do POCO é a alça do Game Turbo da Xiaomi, não da Astra. Some desligando o Game Turbo para o app."
+      ],
+      "validation": "Host: suíte nativa (aether_tests 1724/1724 e as 24 famílias) e gerenciada (523 passaram, 0 falharam) depois do giro; testes de resolução dinâmica e de bordas 11/11 depois das correções do pós. POCO F7: Sponza S e C antes × depois dos cortes, Vila C travada × dinâmica, Personagem andando em círculo com o Inspector, linha logo abaixo da barra antes × depois e o par de lightmap à noite assado no aparelho.",
+      "migration": "Personagem passa para a versão 7; cenas da versão 6 abrem com o giro desligado, como antes.",
+      "links": [
+        {
+          "label": "Histórico de atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-27-noite-escura-com-nuvens-e-limite-de-exposicao",
       "date": "2026-10-27",
       "scopes": [
