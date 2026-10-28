@@ -1,0 +1,11 @@
+---
+import { scopeLabels, kindLabels, availabilityLabel } from '../../tools/updates.mjs';
+const { e } = Astro.props;
+const dateLabel = d => d.split('-').reverse().join('/');
+---
+<article id={e.id} data-scopes={e.scopes.join(' ')} data-kind={e.kind} data-update-search={[e.title, e.summary, e.version, ...e.details].join(' ').toLocaleLowerCase('pt-BR')}>
+  <div class="updates-meta"><time datetime={e.date}>{dateLabel(e.date)}</time><span>{e.scopes.map(s => scopeLabels[s]).join(' + ')}</span><span>{kindLabels[e.kind]}</span></div>
+  <h3><a href={`#${e.id}`}>{e.title}</a></h3><p class="updates-version">{e.version} · <strong>{availabilityLabel(e)}</strong></p>
+  <p>{e.summary}</p><details><summary>Detalhes, validação e migração</summary><ul>{e.details.map(d => <li>{d}</li>)}</ul><p><strong>Validação:</strong> {e.validation}</p><p><strong>Migração:</strong> {e.migration}</p></details>
+  <nav aria-label={`Saiba mais: ${e.title}`}>{e.links.map(l => <a href={l.url}>{l.label}</a>)}</nav>
+</article>

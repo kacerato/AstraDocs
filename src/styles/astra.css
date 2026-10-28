@@ -171,3 +171,8 @@ astra-catalog { display:block; }
 @media(max-width:370px) { .astra-brand span { display:none; } .astra-trail { grid-template-columns:minmax(0,1fr) 80px; padding:18px; } .astra-trail img { width:80px; } .astra-trail h2 { font-size:1.4rem; } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } }
 @media print { .astra-header,.astra-doc-tools,.astra-footer-line { display:none; } .sl-markdown-content table { overflow:visible; } }
+
+/* Capturas reais do aparelho nas trilhas /guia/ */
+.astra-shot { margin: 1.5rem 0; }
+.astra-shot img { width: 100%; height: auto; border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; }
+.astra-shot figcaption { font-size: .85rem; color: var(--sl-color-gray-2); margin-top: .4rem; }

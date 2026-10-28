@@ -21,6 +21,8 @@ import { roadmapPages } from '../data/roadmap-guides.mjs';
 import { updates, requireCoverage, markdown as updatesMarkdown } from './updates.mjs';
 import { currentComponentGuide, currentPropertyUsage } from '../data/current-component-guides.mjs';
 import { validateSnapshot } from './check-snapshot.mjs';
+import { trailPages } from '../data/trilhas/index.mjs';
+import { publicComponent, publicApiType, publicAliases } from '../data/public-text.mjs';
 import { motorControlGuide } from '../data/motor-control-guide.mjs';
 import { animatorWorkspaceGuide } from '../data/animator-workspace-guide.mjs';
 import { animatorControllerGuide } from '../data/animator-controller-guide.mjs';
@@ -40,13 +42,13 @@ import { navigationGuide } from '../data/navigation-guide.mjs';
 const root = path.resolve('src/content/docs');
 let version = 'snapshot-2026-10-06';
 const legacyVersion = version;
-const currentVersion = 'snapshot-2026-10-16b';
+const currentVersion = 'snapshot-2026-10-28';
 // Recortes versionados do catálogo (07/10 = APK 0.2.3, 09/10 = APK 0.3.0); 06/10 é o arquivo.
-const versionedSnapshots = ['snapshot-2026-10-07','snapshot-2026-10-09','snapshot-2026-10-16',currentVersion];
+const versionedSnapshots = ['snapshot-2026-10-07','snapshot-2026-10-09','snapshot-2026-10-16','snapshot-2026-10-16b',currentVersion];
 const isCurrent = () => versionedSnapshots.includes(version);
 const isLatest = () => version === currentVersion;
 const snapshotSources = {};
-const snapshotNotes = {'snapshot-2026-10-07':'versoes/preview-0-2-3','snapshot-2026-10-09':'versoes/preview-0-3-0','snapshot-2026-10-16':'versoes/preview-0-3-1','snapshot-2026-10-16b':'versoes/preview-0-3-2'};
+const snapshotNotes = {'snapshot-2026-10-07':'versoes/preview-0-2-3','snapshot-2026-10-09':'versoes/preview-0-3-0','snapshot-2026-10-16':'versoes/preview-0-3-1','snapshot-2026-10-16b':'versoes/preview-0-3-2','snapshot-2026-10-28':'versoes/preview-0-4-0'};
 const dayMonth = v => `${v.slice(17,19)}/${v.slice(14,16)}`;
 const componentGuide = c => isCurrent() ? currentComponentGuide(c) : archivedComponentGuide(c);
 const propertyUsage = (c,p) => isCurrent() ? currentPropertyUsage(c,p) : archivedPropertyUsage(c,p);
@@ -97,8 +99,9 @@ for(const page of roadmapPages(components,roadmap))write(`${base}/${page.route}`
 for (const snapshot of snapshots) {
   version=snapshot; base=`pt-br/${version}`;
   const dataDir=isCurrent()?`data/snapshots/${version}`:'data';
-  api=isCurrent()?readJson(`${dataDir}/api.json`):archived.api;
-  components=isCurrent()?readJson(`${dataDir}/components.json`):archived.components;
+  // Textos públicos: sem nomes de pacotes de terceiros (ver data/public-text.mjs).
+  api=isCurrent()?(a=>({...a,types:a.types.map(publicApiType)}))(readJson(`${dataDir}/api.json`)):archived.api;
+  components=isCurrent()?readJson(`${dataDir}/components.json`).map(publicComponent):archived.components;
   componentMemberMap=isCurrent()?readJson(`${dataDir}/component-member-map.json`):archived.componentMemberMap;
 const apiIndex=[];
 for(const type of api.types) {
@@ -141,13 +144,23 @@ for(const type of api.types) {
   apiIndex.push({uid:type.uid,signature:type.signature,kind:type.kind,version,engineGeneration:'astra-current',language:'C#',url:apiPath(type),summary:type.docs.summary,runtimeVerified:false,platformEvidence:[]});
 }
 function anchor(uid){if(!uid)throw Error('Missing semantic UID');return 'member-'+crypto.createHash('sha256').update(uid).digest('hex').slice(0,16);}
+// Equivalente em outras engines no catálogo atual: a referência registrada no descritor
+// e os termos de busca. Serve para quem vem da Unity ou da Godot; não declara paridade.
+const equivalent=c=>{
+  if(!c.reference)return [];
+  const engine=/unity3d\.com/.test(c.reference)?'Unity':/godotengine\.org/.test(c.reference)?'Godot':'outra engine';
+  const page=decodeURIComponent(c.reference.split('/').pop().replace(/\.html$/,'')).replace(/^class[-_]/,'').replace(/^script-?reference[-_]?/i,'');
+  const words=publicAliases(c.aliases).split(/\s+/).filter(Boolean).slice(0,8);
+  return ['## Vindo de outra engine',`Na ${engine}, o conceito mais próximo está em [${page}](${c.reference}). A Astra estudou essa referência; os campos e o comportamento são os desta página, sem paridade garantida.${words.length?` Palavras que a busca de Adicionar componente aceita: ${words.map(w=>'`'+w+'`').join(', ')}.`:''}`];
+};
 for(const c of components) {
   const guidance=componentGuide(c);
   const type=api.types.find(t=>t.ns==='Astra.Components'&&t.name===c.api);
   const ruleList=rules=>rules.length?rules.map(r=>{const ref=components.find(c=>c.typeId===r.typeId);return `- ${ref?`[${ref.name}](${componentPath(ref)})`:`\`${r.typeId}\``}: ${r.message}`;}).join('\n'):'Nenhuma regra adicional declarada no schema deste componente.';
   const lines=[`**Família:** ${c.family} · **Grupo:** ${c.subfamily||c.family} · **Identificador:** \`${c.typeId}\` · **Payload:** ${c.schemaVersion}`,
     `:::note[Escopo da evidência]\nEste contrato foi extraído dos descritores compilados da engine, incluindo padrões resolvidos. A presença do contrato não substitui a validação do comportamento em um aparelho.\n:::`,
-    '## Para que usar',guidance.purpose,guidance.use,'## Criar e configurar',guidance.location,
+    '## Para que usar',guidance.purpose,guidance.use,
+    ...(version===currentVersion?equivalent(c):[]),'## Criar e configurar',guidance.location,
     `${c.allowMultiple?'O schema permite múltiplas instâncias no mesmo objeto; identifique a instância antes de editar ou remover.':'O schema permite uma única instância desse tipo por objeto.'} ${type?`A fachada C# correspondente é [${type.fullName}](${apiPath(type)}).`:'Não há fachada C# gerada para este tipo; não invente um nome de classe equivalente.'}`,
     guidance.extra, guidance.related?`**Guia relacionado:** ${guidance.related}`:'', '## Exemplo de uso',guidance.example,
     c.typeId==='astra.ui.canvas'?`[HUD de corações completo](/${base}/ui/hud-coracoes/) · [Image e seus campos](/${base}/ui/image/) · [Onde fica a UI](/${base}/ui/comece-aqui/)`:'',
@@ -229,6 +242,8 @@ console.log(JSON.stringify(coverage));
 }
 version=legacyVersion; base=guideBase;
 fs.writeFileSync('data/reference-indexes.json',JSON.stringify(referenceIndexes,null,2));
+// Trilhas atuais (/guia/…): sempre do APK público vigente.
+for(const p of trailPages) write(p.route,p.title,p.description,p.body,{kind:'guide',status:'source-reviewed',front:{version:currentVersion,reviewedAt:'2026-10-26',appRelease:release.version,prev:false,next:false}});
 write(motorControlGuide.route,motorControlGuide.title,motorControlGuide.description,motorControlGuide.body,{front:{version:'snapshot-2026-10-07',reviewedAt:'2026-10-07',runtimeVerified:true,appRelease:release.version},platformEvidence:['host: 12 targeted scenarios, 121 editor regressions in final retry, 7 ProjectStore scenarios, real ProjectCompiler','Android 16 / POCO F7: public APK update, user project preservation, save/cold reopen/Play; 527 motion/camera frames reviewed in validation with identical native library','Public APK 0.2.2-preview.20261007 / baseline 2e6ea408; physical Android gamepad, universal scene/device behavior and sustained performance not measured']});
 write(animatorWorkspaceGuide.route,animatorWorkspaceGuide.title,animatorWorkspaceGuide.description,animatorWorkspaceGuide.body,{front:{version:'snapshot-2026-10-07',reviewedAt:'2026-10-08',runtimeVerified:true,appRelease:release.version},platformEvidence:['Host: 9/9 focused Animator runtime/editor scenarios; SDK Release without errors or warnings','POCO F7 / Android 16: Dev 0.2.5 installed in place; separate physics source on non-skinned mechanism, manual live parameters, trigger, pinch, scrolling, undo/redo, save/cold reopen; 717 motion frames reviewed','Public 0.2.3 keeps prior workspace; root motion, retargeting, IK, arbitrary property tracks and sustained performance are not validated or completed by this review']});
 write(animatorControllerGuide.route,animatorControllerGuide.title,animatorControllerGuide.description,animatorControllerGuide.body,{front:{version:'snapshot-2026-10-07',reviewedAt:'2026-10-08',runtimeVerified:true,appRelease:release.version},platformEvidence:['Dev 0.2.6: POCO F7 Android 16, six runtime checks and authoring/cold reopen; host 11/11; 537 frames reviewed; public APK 0.2.3 unchanged']});

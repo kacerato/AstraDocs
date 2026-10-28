@@ -3,7 +3,8 @@ import path from 'node:path';
 const root=process.argv[2];
 if(!root)throw Error('Informe o checkout da engine.');
 const source=fs.readFileSync(path.join(root,'managed/Astra.Scripting/Generated/Components.g.cs'),'utf8');
-const starts=[...source.matchAll(/public readonly struct (\w+) : IComponentFacade/g)];
+// Desde a API G7 o gerador emite `public readonly partial struct`.
+const starts=[...source.matchAll(/public readonly (?:partial )?struct (\w+) : IComponentFacade/g)];
 const map={};
 for(let i=0;i<starts.length;i++) {
   const type=starts[i][1],body=source.slice(starts[i].index,starts[i+1]?.index||source.length);

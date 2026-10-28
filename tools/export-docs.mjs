@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import { examples } from '../data/editorial.mjs';
 import { componentGuide, propertyUsage } from '../data/component-guides.mjs';
 import { currentComponentGuide, currentPropertyUsage } from '../data/current-component-guides.mjs';
+import { publicComponent } from '../data/public-text.mjs';
 const version='snapshot-2026-10-06';
 const site=process.env.SITE_URL||'https://astraengine.com.br';
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''));
@@ -24,7 +25,7 @@ for(const [snapshot,index] of Object.entries(read('data/reference-indexes.json')
   json(`${snapshot}/api-index.json`,index.apiIndex);
   json(`${snapshot}/coverage.json`,index.coverage);
   if(source)json(`${snapshot}/source.json`,source);
-  json(`${snapshot}/component-index.json`,{version:snapshot,...(source?{appRelease:source.releaseVersion,sourceCommit:source.sourceCommit}:{}),engineGeneration:'astra-current',runtimeVerified:false,platformEvidence:[],coverage:'numeric-boolean-enum-object-reference descriptors with editorial access and usage; specialized resources and collections in individual guides',components:read(`${dir}/components.json`).map(c=>({...c,guide:guide(c),properties:c.properties.map(p=>({...p,usage:usage(c,p),url:`/pt-br/${snapshot}/componentes/${c.typeId.replace(/[^a-z0-9]+/g,'-')}/#field-${p.id.replace(/[^a-z0-9]+/g,'-')}`}))}))});
+  json(`${snapshot}/component-index.json`,{version:snapshot,...(source?{appRelease:source.releaseVersion,sourceCommit:source.sourceCommit}:{}),engineGeneration:'astra-current',runtimeVerified:false,platformEvidence:[],coverage:'numeric-boolean-enum-object-reference descriptors with editorial access and usage; specialized resources and collections in individual guides',components:read(`${dir}/components.json`).map(publicComponent).map(c=>({...c,guide:guide(c),properties:c.properties.map(p=>({...p,usage:usage(c,p),url:`/pt-br/${snapshot}/componentes/${c.typeId.replace(/[^a-z0-9]+/g,'-')}/#field-${p.id.replace(/[^a-z0-9]+/g,'-')}`}))}))});
 }
 json(`${version}/roadmap.json`,read('data/roadmap.json'));
 json(`${version}/coverage.json`,read('data/coverage.json'));

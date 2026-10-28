@@ -1,8 +1,82 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-27",
+  "updatedAt": "2026-10-28",
   "entries": [
+    {
+      "id": "2026-10-28-docs-menu-por-trilhas-e-atualizacoes-por-versao",
+      "date": "2026-10-28",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Docs organizadas por trilhas, guias novos para iniciantes e Atualizações agrupadas por versão",
+      "summary": "O menu das docs passa a ter nove trilhas (Começar, Editor, Criar um jogo, Importar, Componentes, Scripts C# e Flow, Exemplos, Desempenho e qualidade, Download e versões) no lugar de dezenas de entradas soltas. A página Atualizações agrupa as notas pela versão do APK em que chegaram, com filtro por origem e tipo; as revisões de desenvolvimento de cada período ficam recolhidas.",
+      "version": "Site astraengine.com.br",
+      "availability": "documentation",
+      "details": [
+        "Nenhum endereço antigo saiu do ar: as páginas continuam nos mesmos URLs e só mudaram de lugar no menu.",
+        "Guias novos em /guia/: Começar (o que é, instalar, primeiro projeto), Editor (mapa da tela, menus, tudo que o + cria, Hierarquia, Inspector, janela Iluminação), Criar um jogo (Fazer um player; inimigo que persegue e patrulha; cena, luz, céu e clima; partículas; lightmap; Volume e pós; publicar o jogo), Importar (formatos e limites, Biblioteca de pacotes, Unity → Astra, Humanoid), Componentes (índice por família com a referência Unity ou Godot de cada um e como ler uma ficha), Scripts C# e Flow (como um script funciona, eventos sem código, gráficos por script, API gráfica com os nomes da Unity, Entrada do jogador), Exemplos (U07, os projetos dos tutoriais e os seis exemplos da API gráfica em C# e em Flow), Desempenho (níveis de qualidade e custo por recurso) e Download (todas as versões e como atualizar). Cada página traz um selo dizendo se foi validada no aparelho, só conferida na fonte ou é parcial.",
+        "As páginas das revisões de desenvolvimento de 10 a 20/10 ficam em Download e versões › Arquivo › Histórico de desenvolvimento.",
+        "Atualizações: cada versão publicada mostra a nota da publicação e as notas que entraram nela; as revisões de desenvolvimento de cada período ficam recolhidas e abrem ao buscar ou ao seguir um link para uma nota; nem toda revisão de desenvolvimento chegou ao APK, e a nota da publicação diz o que entrou.",
+        "Nenhuma nota foi reescrita ou apagada; o feed JSON e o Markdown do histórico não mudam."
+      ],
+      "validation": "Build do site, verificação de links e revisão da página Atualizações e do menu no navegador, em desktop e celular.",
+      "migration": "Nada a migrar. Links salvos para notas (#id) continuam abrindo a nota, inclusive dentro do histórico recolhido.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-28-apk-preview-0-4-0",
+      "date": "2026-10-28",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "APK 0.4.0 publicado: gráficos vivos — Volume e pós da URP, dia e noite com lua, nuvens volumétricas, clima, sondas, lightmap, partículas e efeitos importados",
+      "summary": "A prévia pública reúne o plano gráfico: Volume com perfil compartilhado e overrides por parâmetro, exposição automática, céu com sol, lua e estrelas, Hora do dia, nuvens volumétricas e clima, Sonda de reflexo, Grupo de sondas de luz, lightmap assado no aparelho, Sistema de partículas com efeitos prontos importados de pacotes Unity, Material como na URP, API C# com os nomes da Unity e cortes de custo por nível de qualidade. Atualiza a 0.3.2 sem apagar projetos.",
+      "version": "0.4.0-preview.20261028 · versionCode 31 · commit 8850af92",
+      "releaseVersion": "0.4.0-preview.20261028",
+      "versionCode": 31,
+      "availability": "distributed",
+      "details": [
+        "Baixe em Download ou na Release pública do GitHub; o APK usa a mesma chave das prévias e instala por cima da 0.3.2 (versionCode 30 → 31), preservando os projetos. Arquivos salvos nesta versão não abrem na 0.3.2.",
+        "Desempenho: nível de qualidade como teto (Render Scale, sombra, AO, bloom, luzes por objeto), Animator › Culling Mode, personagens em paralelo e sombra do sol em dois mapas. Vila Astra no POCO F7: GPU 50,8 → 28,2 ms e CPU 23,6 → 11,2 ms contra 17/10.",
+        "Personagem vira para onde anda (Personagem › Direção, como o Third Person Controller da Unity) e resolução dinâmica mais estável (Vila em nível C: 36,6 → 55,4 FPS).",
+        "Volume: perfil compartilhado, override por parâmetro com ALL/NONE e Adicionar override; Exposição do HDRP; Tonemapping Nenhum/Neutro/ACES/AgX; Ajustes de cor; Bloom com sujeira da lente; LUT 32³ com sete visuais prontos e curvas; profundidade de campo, desfoque de movimento, aberração cromática, distorção de lente e vinheta.",
+        "Céu e luz: janela Iluminação, Material do céu, luz ambiente por fonte, neblina por modo; Hora do dia com a Lua; Luz e Mesh Renderer como na Unity; Câmera com fundo, Culling Mask, Viewport Rect e câmera física; Material com Shader da URP; reflexo do ambiente pelo céu.",
+        "Sondas e luz assada: Sonda de reflexo, Grupo de sondas de luz e Gerar iluminação (lightmap no aparelho, Luz › Modo, UV2 automática).",
+        "Nuvens e clima: nuvens em Camada 2D ou Volumétricas (como as Volumetric Clouds do HDRP), Lua com órbita própria e noite escura com o Limite mínimo da exposição; Clima com chuva, neve, tempestade, chão molhado, poças e neve acumulada.",
+        "Partículas e efeitos: Sistema de partículas com os módulos da Unity, Folha de textura, Luzes, Trilhas, partícula em malha, colisão com o mundo, até 8 sub-emissores e a mistura Distorção. Prefabs de efeito de pacotes Unity convertem pela Biblioteca, com os componentes Linha, Laser, Projétil, Instanciar ao colidir, Som repetido, Girar e Seguir câmera. Nenhum asset de pacote vem com a Astra. Projeto novo nasce com Main Camera (com Ouvinte de áudio) e Directional Light, como a cena nova da Unity.",
+        "API C# com os nomes da Unity (Volume, VolumeProfile, RenderSettings, TimeOfDay.Current, Material.SetFloat), Flow com eventos da Hora do dia e da Entrada e comandos do Volume e da Malha, e o componente Entrada do jogador.",
+        "Capítulo Versões › Astra 0.4.0 com os caminhos de cada função; catálogo snapshot-2026-10-28 extraído do commit do APK, com fichas dos componentes novos; docs reorganizadas em trilhas."
+      ],
+      "validation": "Pacote: assinatura V2 com o certificado cfbd4391…, badging dev.aether.editor versionCode 31 (minSdk 26, targetSdk 35, arm64-v8a), SHA-256 cd1c923c…; gerado do commit 8850af92 sem alterações locais e sem pacotes de terceiros; biblioteca nativa e06c4d02…. Host: suíte nativa 1758/1758 na base do G6. Cada bloco foi aceito no POCO F7 na instalação de desenvolvimento (docs/validacao da engine). No POCO F7 com Android 16, dentro do pacote público: atualização 30 → 31 por cima da instalação anterior, com os projetos preservados; projeto novo com Main Camera e Directional Light; Chão e Cubo pelo menu Criar; U07 abre, compila os scripts C# e roda no Play.",
+      "migration": "Instale por cima da 0.3.2; projetos ficam. Ao salvar, Ambiente v20, perfil de ambiente v14, Câmera v5, Luz v4, Mesh Renderer v12, Hora do dia v2, Personagem v7, Material v8, Conexão de evento v3, Sistema de partículas v5 e Linha v2; versões anteriores não abrem esses arquivos.",
+      "links": [
+        {
+          "label": "Baixar Astra 0.4.0",
+          "url": "/download/"
+        },
+        {
+          "label": "O que mudou e como usar",
+          "url": "/pt-br/snapshot-2026-10-06/versoes/preview-0-4-0/"
+        },
+        {
+          "label": "Catálogo do APK 0.4.0",
+          "url": "/pt-br/snapshot-2026-10-28/componentes/"
+        },
+        {
+          "label": "Release pública no GitHub",
+          "url": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.28"
+        }
+      ]
+    },
     {
       "id": "2026-10-27-resolucao-dinamica-giro-do-personagem-bordas-e-lightmap",
       "date": "2026-10-27",

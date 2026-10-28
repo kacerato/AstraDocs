@@ -1,18 +1,18 @@
 {
-  "version": "0.3.2-preview.20261016",
-  "versionCode": 30,
+  "version": "0.4.0-preview.20261028",
+  "versionCode": 31,
   "package": "dev.aether.editor",
-  "date": "2026-10-16",
-  "dateLabel": "16 de outubro de 2026",
+  "date": "2026-10-28",
+  "dateLabel": "28 de outubro de 2026",
   "channel": "preview",
-  "filename": "Astra-0.3.2-preview.20261016-android-arm64.apk",
-  "sizeLabel": "109,2 MiB",
-  "bytes": 114520719,
-  "sha256": "769f5bb57edd4fce8d2055d4fa1376b004466b4f683da76bcb02cc665de85b50",
+  "filename": "Astra-0.4.0-preview.20261028-android-arm64.apk",
+  "sizeLabel": "112,3 MiB",
+  "bytes": 117723287,
+  "sha256": "cd1c923c6e0c3c8411d58be914bd353729a4ffc7be04773973583838a1911bf1",
   "certificateSha256": "cfbd4391d3d9f63f91901dbc22886ec6544de503d7e599543c39a68facd4ef6b",
-  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.16-r2/Astra-0.3.2-preview.20261016-android-arm64.apk",
-  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.16-r2",
-  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.16-r2/SHA256SUMS.txt",
+  "downloadUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.28/Astra-0.4.0-preview.20261028-android-arm64.apk",
+  "releaseUrl": "https://github.com/kacerato/AstraDocs/releases/tag/astra-android-2026.10.28",
+  "checksumUrl": "https://github.com/kacerato/AstraDocs/releases/download/astra-android-2026.10.28/SHA256SUMS.txt",
   "requirements": {
     "minSdk": 26,
     "android": "8.0+",
@@ -24,13 +24,13 @@
   "signatureVerified": true,
   "deviceRuntimeVerified": true,
   "source": {
-    "baselineCommit": "cddc7a4599ae434e32e8aeca39f7eb4a98b32799",
+    "baselineCommit": "8850af9298783207586d9526e7e857604c47d4ce",
     "localChangesIncluded": false,
-    "snapshotDate": "2026-10-16",
-    "nativeLibrarySha256": "2102da62e20e0cf4dc5182138d56ea840a9650f931f8e13f20482a967ddae99d",
+    "snapshotDate": "2026-10-28",
+    "nativeLibrarySha256": "e06c4d02fa77896758a9331189c036ffbf90189e5178e4ce19ed29841285fa58",
     "versionOverrides": {
-      "versionCode": 30,
-      "versionName": "0.3.2-preview.20261016"
+      "versionCode": 31,
+      "versionName": "0.4.0-preview.20261028"
     }
   },
   "bundledProjects": {
@@ -42,27 +42,40 @@
     "device": "POCO F7 / 25053PC47G",
     "os": "Android 16",
     "publicPackage": [
-      "update with existing certificate (versionCode 29 → 30)",
-      "user project files preserved"
+      "update with existing certificate (versionCode 30 → 31), no uninstall",
+      "user project files preserved",
+      "new project opens with Main Camera and Directional Light; Floor and Cube recipes create objects",
+      "U07 Laboratório de Controle opens, compiles its C# scripts and runs in Play inside the public package"
     ],
     "developmentPackage": {
       "package": "dev.aether.editor.u07",
-      "sameNativeLibraryAsPublicPackage": true,
+      "sameNativeLibraryAsPublicPackage": false,
       "acceptances": [
-        "Animator 2D blend modes and synchronized layers through the UI on code 93 (docs/validacao/animator-2026-10-16)",
-        "Play carry without pelvis bobbing or elbow flips on code 95 (docs/validacao/ik-continuidade-2026-10-16)",
-        "POLYGON Icons textured in the scene and BoZo BodyRig with the Humanoid idle in the studio on code 96 (docs/validacao/pacotes-2026-10-16)"
+        "Quality ceiling, parallel animation, two-map sun shadow and dynamic resolution (docs/validacao/2026-10-23-cortes, 2026-10-25-sombra-moradores)",
+        "Exposure, tonemapping, grading, Volume profile and full post (docs/validacao/g2-*, pk4-pk5-volume-pos-2026-10-22)",
+        "Lighting window, Light, Mesh Renderer, Camera and URP Material (docs/validacao/pk1-pk2-*, pk3-pk8-*, pk7-*, pk9-*)",
+        "Sky reflection and night (docs/validacao/v1-rebarba-sombra, v2-noite)",
+        "Reflection and light probes, baked lightmap (docs/validacao/pk6-sondas-2026-10-20, g3c-lightmap-2026-10-23)",
+        "Day-night, volumetric clouds, moon and weather (docs/validacao/g4-*, g4c-clima-2026-10-21)",
+        "Particles and imported effect prefabs (docs/validacao/g4c-clima-2026-10-21, g6-importacao-2026-10-25)",
+        "Graphics C# API and Flow, six examples (docs/validacao/2026-10-23-g7-api)"
       ]
     },
     "host": {
-      "nativeSuite": "1572/1572 · GUI 126/126 · studio 73/73 · animation runtime 84/84 · Unity 24/24",
-      "managedSuite": "not rerun for this release"
+      "nativeSuite": "1758/1758 on the APK base",
+      "managedSuite": "530 passed / 0 failed on the G7 base (6f532a24)"
     },
     "limits": [
-      "not a universal device compatibility guarantee",
-      "no sustained FPS/thermal measurement",
-      "APK export flow (Exportar APK) still experimental",
-      "Humanoid clip conversion keeps a constant ≈5 cm vertical offset against the UMotion reference; Blend Tree nesting and layer sync timing are not in this preview"
+      "not a universal device compatibility guarantee; measurements only on POCO F7 (Adreno 825)",
+      "scenes, materials and profiles saved by this preview do not open in 0.3.2",
+      "at most two cameras visible at once; no Camera Stack, Target Texture or MSAA",
+      "depth of field does not run with the temporal upscaler",
+      "lightmap: 24 h walk not validated on device",
+      "weather rain falls under roofs",
+      "APK export flow (Exportar APK) still experimental"
     ]
+  },
+  "bundledPackages": {
+    "count": 0
   }
 }

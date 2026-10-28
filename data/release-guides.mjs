@@ -1,5 +1,102 @@
 import { link } from './workflow-guide-tools.mjs';
-export const releasePages = [{
+// Release gráfica G0..G7. As seções das branches que ainda não entraram na base ficam
+// atrás de `graphicsMerged` e só aparecem quando o commit do APK as contiver.
+const graphicsMerged = { g4Moon:true, g6:true, g7:true };
+const appRelease = '0.4.0-preview.20261028', versionCode = 31, commit = '8850af92';
+const catalog = '/pt-br/snapshot-2026-10-28/componentes/';
+
+const graphicsChapter = {
+  route:'versoes/preview-0-4-0', title:'Astra 0.4.0: gráficos vivos — Volume e pós da URP, dia e noite, clima, sondas, lightmap e partículas',
+  description:'Como usar o Volume com perfil compartilhado e overrides, a exposição automática, o céu com sol, lua e estrelas, o clima, as sondas, o lightmap assado, o sistema de partículas e os cortes de custo por nível incluídos no APK 0.4.0.',
+  options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-28',appRelease,runtimeVerified:true,prev:false,next:false}},
+  body:`
+## Versão e recorte
+
+Este capítulo acompanha o **APK ${appRelease}, versionCode ${versionCode}**, gerado no commit **${commit}**, sem alterações locais. [Download](/download/).
+
+A atualização instala por cima da Astra 0.3.2 com a mesma chave e preserva os projetos. **Ao salvar, cenas, materiais e perfis passam aos formatos novos e a 0.3.2 não os abre mais**: copie o projeto antes se precisar voltar. O [catálogo de 28/10 (APK 0.4.0)](${catalog}) traz os componentes novos (Hora do dia, Iluminação da cena, Sonda de reflexo, Grupo de sondas de luz, Clima, Sistema de partículas e Entrada do jogador) e os campos novos de Ambiente, Luz, Câmera, Mesh Renderer e Animator.
+
+## Desempenho
+
+**Caminho:** Projeto › Qualidade. Cada nível é um teto, como o URP Asset de cada nível da Unity: limita Render Scale, cascatas e resolução da sombra do sol, filtro da sombra, oclusão de ambiente, bloom e luzes por objeto. O painel mostra o corte no próprio valor (por exemplo 4 → 2). No nível C a resolução dinâmica fica ligada, a oclusão sai e cada objeto recebe até 4 luzes.
+
+- Cada objeto avalia só as luzes pontuais que o alcançam.
+- **Animator › Culling Mode**: Sempre animar, Atualizar transformações ou Desligar fora da câmera do jogo. Personagens são avaliados em paralelo, e quem ocupa pouco da tela anima a cada 2 ou 4 quadros com interpolação.
+- A sombra do sol usa dois mapas: o cenário parado fica em cache e só os moradores são redesenhados.
+- **Resolução dinâmica** mais estável: decide pela mediana dos quadros e desce mais de um degrau quando a GPU passa muito do orçamento (Vila em nível C: 36,6 → 55,4 FPS).
+
+Medido no POCO F7, Vila Astra: na qualidade alta, GPU de 50,8 para 28,2 ms por quadro e CPU de 23,6 para 11,2 ms contra a linha de base de 17/10; no nível C, 18,91 → 14,33 ms com o teto.
+
+## Pós-processamento e Volume
+
+**Caminho:** + › Volume e céu (Volume global, em caixa, em esfera, Ambiente, Volume de nuvens). No Inspector, **Perfil** escolhe, cria (Novo) ou copia (Clonar) o perfil; editar um valor muda todos os Volumes que usam o mesmo perfil. Cada efeito é um cartão de override com interruptor, contagem, **ALL/NONE** e o menu ⋮; **Adicionar override** lista por categoria o que falta. Parâmetro desmarcado vem do Volume de baixo. A câmera escolhe os Volumes pela **Máscara de volume** (camadas do objeto).
+
+- **Exposição** do HDRP: Fixa, Automática (padrão) e Automática por histograma, medição em EV100 na GPU, adaptação Progressiva e limites −6/10 para a noite ficar escura.
+- **Tonemapping** Nenhum, Neutro, ACES e AgX; **Ajustes de cor** com Pós-exposição, Filtro de cor e Giro de matiz; **Bloom** com Espalhamento, Tom, Brilho máximo e sujeira da lente.
+- **Cor:** sete visuais prontos em cartões (Neutro, Cinemático, Dia quente, Entardecer, Noite azul, Tempestade, Fantasia), ajuste fino (balanço de branco, Lift/Gamma/Gain, Sombras/Médios/Realces) e as oito curvas de cor da URP, numa tabela de cor 32³.
+- **Profundidade de campo** Gaussian ou Bokeh (2 a 3,5 ms no POCO; não roda junto com o ampliador temporal), **desfoque de movimento**, **aberração cromática**, **distorção de lente** e **vinheta** completa.
+
+## Céu, luz e materiais
+
+**Janela Iluminação** (☰ › Iluminação): o Ambiente da cena, com Material do céu (.skybox) e céu Procedural, Panorâmico (HDRI) ou Físico; luz ambiente por Céu, Gradiente ou Cor; neblina Linear, Exponencial ou Exponencial² com Cor fixa (céu limpo) ou Acompanhar o céu. A aba **Lightmaps** está em [Sondas e luz assada](#sondas-e-luz-assada).
+
+- **Dia e noite:** + › Luzes › **Sol com dia e noite** cria o Sol com a Hora do dia e a Lua ligados. A hora gira o objeto do sol; o céu calcula a cor pelo ângulo dele. À noite a Lua vira a luz principal, o céu fica azul-marinho e as estrelas giram com a hora. Para o ciclo inteiro, use Exposição Automática no Volume.
+- **Luz** como o Light da Unity: sombra na própria Luz (tipo, força, desvios), várias direcionais (a mais brilhante, ou a Fonte do sol da Iluminação da cena, é o sol), Máscara de culling, Camadas de renderização, spot em abertura total, cor sRGB.
+- **Mesh Renderer › Iluminação:** Projetar sombras (Desligado, Ligado, Dupla face, Só sombra), Receber sombras, Camadas de renderização, Sondas e iluminação global.
+- **Câmera** como a da URP: fundo Céu, Cor sólida ou Não inicializado, Culling Mask, Viewport Rect para tela dividida, câmera física (focal, sensor, Gate Fit), pós, sombras, HDR e antisserrilhado por câmera. A tag MainCamera existe em todo projeto.
+- **Material** (toque num .material em Arquivos): Shader Lit, Complex Lit, Simple Lit, Unlit, Particles Lit ou Particles Unlit, com Smoothness, Height Map, Detail Inputs, Clear Coat, fluxo Especular, tipo de superfície com Alfa, Premultiplicado, Aditivo ou Multiplicar, Render Face e Sorting Priority. O importador Unity lê a suavidade do mapa metálico e do alfa do albedo, e a Biblioteca mostra um relatório por pacote.
+- O reflexo do ambiente vem do céu da cena (Environment Reflections › Skybox): acabou o contorno claro e a sombra lavada.
+
+## Sondas e luz assada
+
+- **+ › Luzes › Sonda de reflexo:** ajuste a caixa até as paredes, ligue Projeção na caixa e toque **Assar** (Iluminação/<nome>.aeprobe), ou use Tempo real. Cada objeto mistura as duas sondas de maior Importância que o contêm.
+- **+ › Luzes › Grupo de sondas de luz:** 8 sondas num cubo; Editar sondas, alças no viewport, Assar sondas.
+- **☰ › Iluminação › Lightmaps › Gerar iluminação**, como o Progressive Lightmapper: marque os objetos como Static, confira o contador **Sem UV2** (tocar seleciona os objetos), escolha **Luz › Modo** Assado ou Misto e gere. O bake roda em segundo plano no aparelho; as sondas de luz são assadas no mesmo passo. O sol e a lua da Hora do dia continuam em tempo real. Modo de visão **Lightmap assado** no menu Sky/Fog/Post. Na importação de modelos, **Gerar UV de lightmap**. Sponza com 8 luzes no POCO F7: GPU 18,58 → 13,18 ms.
+
+## Nuvens e clima
+
+- **Nuvens** no Volume, como o Cloud Layer do HDRP: cobertura, cirros, altitude, espessura, curvatura da Terra, vento e sombra no chão pelo sol. + › Volume e céu › Volume de nuvens cria um volume só de nuvens.
+- **+ › Volume e céu › Clima:** um Ambiente global com o Clima e os filhos Chuva e Neve. Escolha o Tipo (Limpo, Nublado, Chuva, Tempestade, Neve) e a Intensidade. Em Play a chuva varia sozinha, o chão molha, empoça e respinga, a neve cobre os telhados com espessura e a Tempestade solta relâmpagos. Cada tipo traz neblina, cor e luz próprias.
+${graphicsMerged.g4Moon ? '- **Nuvens volumétricas** (Nuvens › Tipo › Volumétricas), como as Volumetric Clouds do HDRP: cúmulos até o horizonte, lado do sol dourado no fim de tarde, luz da lua à noite, Espessura, Fator de forma, Erosão e Passos; cerca de +1,5 ms no POCO F7. A Camada 2D continua, mais barata.\n- **Lua** com órbita própria (nasce mais tarde a cada dia) e **noite escura**: no Volume da noite, Exposição › Limite mínimo perto de −5,5 EV100.\n' : ''}
+## Partículas
+
+**Caminho:** + › Efeitos (Partículas, Fogo, Faíscas…). O Inspector empilha os módulos na ordem da Unity, cada um com interruptor: Principal, Emissão (rajadas, taxa por distância), Forma (8), Velocidade, Limite, Herança e Força no tempo, Cor/Tamanho/Rotação no tempo e pela velocidade, Ruído, Colisão (até dois planos), Sub-emissores, **Folha de textura**, **Luzes**, **Trilhas**, Renderização e Material. Um **Material do projeto** com shader Partícula substitui a textura própria. Por script: \`ParticleSystem.Play()\`, \`Stop()\`, \`Emit(n)\`. Custo no POCO: 1.000 faíscas ~0,26 ms de GPU.
+${graphicsMerged.g6 ? `
+## Importação de pacotes
+
+**Caminho:** Importar › Pasta de pacote › Biblioteca › toque o prefab de efeito › **Abrir** › **Na cena**.
+
+- **Efeitos prontos de pacotes Unity:** prefabs de partícula convertem em cascata (materiais, sons WAV, prefabs de impacto e a malha das partículas) para o Sistema de partículas, agora com partícula em malha, colisão com o mundo, órbita, até 8 sub-emissores e a mistura Distorção.
+- **Scripts comuns de efeito viram componentes:** Linha, Laser, Projétil, Instanciar ao colidir, Som repetido, Girar e Seguir câmera. O que não tem equivalente aparece como perda listada, e o efeito abre sem ele.
+- **Projeto novo** nasce com Main Camera (com Ouvinte de áudio) e Directional Light, como a cena nova da Unity; sem Ouvinte, o Play ouve pela câmera do jogo.
+- Nenhum asset de pacote vem no APK: você importa os pacotes que tem. Guia: [Importar um pacote pela Biblioteca](/guia/importar/biblioteca-de-pacotes/).
+` : ''}${graphicsMerged.g7 ? `
+## API C# e Flow
+
+- **C# com os nomes da Unity** (\`Astra.Rendering\`): \`Volume.SharedProfile\`, \`Volume.Profile\` (cópia própria), \`VolumeProfile.TryGet/Add/Remove/Has\`, \`VolumeParameter.Override\` e os overrides com classe própria (Exposure, Tonemapping, ColorAdjustments, Bloom, DepthOfField e os demais); \`RenderSettings\` sobre o Ambiente da cena; \`TimeOfDay.Current\`, \`Hour\`, \`Speed\` e os eventos \`HourChanged\`, \`Sunrise\`, \`Sunset\`, \`DayChanged\`; \`Material.SetFloat/SetColor/SetTexture\` com os nomes da URP; \`SceneQuery.FindFirstObjectByType\`; nomes da Unity em Light, Camera, MeshRenderer, ReflectionProbe e LightProbeGroup. Guia: [API gráfica](/guia/scripts/api-grafica/).
+- **Flow (Conexão de evento):** eventos **Hora do dia** (hora mudou, nascer, pôr, dia mudou) e **Entrada** (ação executada, cancelada); comandos **Volume: definir peso**, **trocar perfil**, **usar cópia do perfil** e **Malha: trocar material**. A Conexão de evento passa à versão 3; cenas antigas abrem iguais.
+- **Entrada do jogador** (PlayerInput): ações do mapa viram eventos do objeto. Guia: [Entrada do jogador](/guia/scripts/entrada-do-jogador/).
+- Seis exemplos validados no POCO F7, em C# e em Flow: [Exemplos da API gráfica](/guia/exemplos/api-grafica/).
+- Hora do dia no Play: escrever \`Hour = 18.5f\` põe 18,5 no quadro seguinte (antes somava ao tempo decorrido).
+- Ainda não: trocar o shader do override de um objeto, chaves das Color Curves por script, fim da recaptura de uma sonda.
+` : ''}
+## Outros
+
+- **Personagem › Direção:** Girar para a direção do movimento, Velocidade do giro, Suavização do giro e Relativo à câmera, como o Third Person Controller da Unity. Ligado no modelo Personagem jogável e em Criar raiz Character; componentes antigos abrem com o giro desligado.
+- **Telemetria de desempenho opcional:** a coleta só liga depois da escolha na primeira abertura; Configurações › Telemetria de desempenho envia ou apaga os dados. Jogos exportados não têm telemetria.
+- Edição múltipla: Adicionar componente acrescenta em todos os objetos selecionados sem apagar o que cada um tinha.
+
+## Limites desta prévia
+
+- Medições só no POCO F7 (Adreno 825); sem garantia para todo aparelho ou cena; páginas de memória de 16 KB não suportadas.
+- Até duas câmeras visíveis ao mesmo tempo; Camera Stack, Target Texture e MSAA não existem.
+- Lightmap: o par com o ambiente zerado e a caminhada de 24 h não foram validados no aparelho.
+- A chuva do Clima entra sob telhados.
+- **Exportar APK** continua experimental.
+`
+};
+
+export const releasePages = [graphicsChapter, {
   route:'versoes/preview-0-3-2', title:'Astra 0.3.2: Animator 2D e camadas sincronizadas, Play sem solavancos, pacotes POLYGON e BoZo',
   description:'Como usar os modos 2D e as camadas sincronizadas do Animator, o que mudou no Play do carregar e no IK de dois ossos, a conversão Humanoid mais fiel e a importação de pacotes POLYGON e BoZo incluídos no APK 0.3.2.',
   options:{kind:'release',status:'source-reviewed',front:{reviewedAt:'2026-10-16',appRelease:'0.3.2-preview.20261016',runtimeVerified:true,prev:false,next:false}},

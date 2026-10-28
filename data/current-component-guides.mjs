@@ -1,5 +1,6 @@
 import { componentGuide, propertyUsage, familyFor } from './component-guides.mjs';
 import { ikGuides, ikPropertyUsage } from './current-ik-guides.mjs';
+import { graphicsGuides, graphicsChangedGuides, graphicsPropertyUsage } from './current-graphics-guides.mjs';
 
 // Editorial guidance reviewed against the source of APK 0.2.3 (af1d9981).
 // Keep this separate so the archived 06/10 reference does not acquire newer claims.
@@ -13,6 +14,7 @@ const navigation = '/pt-br/snapshot-2026-10-09/sistemas/navegacao/';
 const release030 = '/pt-br/snapshot-2026-10-06/versoes/preview-0-3-0/';
 const guides = {
   ...ikGuides,
+  ...graphicsGuides,
   'astra.navigation.surface': {
     purpose:'Assa a malha de navegação a partir dos colisores estáticos da cena e a carrega no Play. Agentes só andam onde existe malha assada.',
     use:'Crie pela folha Criar → Navegação → Superfície ou adicione a um objeto vazio. Ajuste as medidas do agente (raio, altura, degrau, inclinação) e toque **Assar** na Inspeção. O resultado vira o recurso Navegação/<nome>.navmesh do projeto.',
@@ -166,6 +168,7 @@ export function currentComponentGuide(c) {
   if(c.typeId === 'astra.animation.animator') {inherited.title='Animação e deformação';inherited.route='roadmap/animacao';}
   const guide = guides[c.typeId];
   if (guide) return {...inherited, ...guide};
+  if (graphicsChangedGuides[c.typeId]) return {...inherited, ...graphicsChangedGuides[c.typeId]};
   if (c.typeId === 'astra.physics.collision_recipe') return {...inherited,
     location:'Hierarquia → ações do objeto → Configurar locomoção → Decompor → escolha Fontes/Ajustes → Gerar → Revisar → Aplicar. A receita é produzida por esse fluxo de autoria; não é um Behavior e não entra no menu genérico de componentes.',
     use:'Escolha geometria e fontes antes de gerar. Revise a prévia e aplique a colisão; gerar sozinho não publica formas na cena. A receita permite regeneração explícita, preservando edições conforme o contrato.',
@@ -305,6 +308,7 @@ const navigationUsage = {
 };
 export function currentPropertyUsage(c,p) {
   { const ik = ikPropertyUsage(c,p); if (ik) return ik; }
+  { const graphics = graphicsPropertyUsage(c,p); if (graphics) return graphics; }
   if (navigationUsage[c.typeId]?.[p.id]) return navigationUsage[c.typeId][p.id];
   if(c.typeId === 'astra.physics.shapecast' && p.id === 'shape') return 'Escolhe Esfera, Caixa, Cápsula ou Cilindro para a varredura. Configure somente as dimensões relevantes da forma; isso não cria um collider persistente.';
   if (c.typeId === 'astra.audio.echo' && p.id === 'delay') return 'Intervalo entre repetições, em milissegundos. 300 ms = .3 s; não é a espera inicial de um tween.';

@@ -28,8 +28,10 @@ run('git',['-C',path.resolve(engine),'cat-file','-e',`${commit}^{commit}`]);
 const archive=path.join(privateDir,'source.tar');
 run('git',['-C',path.resolve(engine),'archive','--format=tar',`--output=${archive}`,commit,'native','managed','Directory.Build.props','NuGet.config']);
 run('tar',['-xf',archive,'-C',privateDir]);
+// Unidades extras que os descritores passaram a chamar (Volume da 0.4: overrides e curvas).
+const extraSources=['native/renderer/volume_parameters.cpp','native/renderer/scene_environment.cpp'].map(f=>path.join(privateDir,f)).filter(f=>fs.existsSync(f));
 const executable=path.join(privateDir,process.platform==='win32'?'export-components.exe':'export-components');
-run(process.env.CXX||'g++',['-std=c++20','-O1','-ffunction-sections','-fdata-sections','-Wl,--gc-sections','-I',path.join(privateDir,'native'),'tools/export-components.cpp',path.join(privateDir,'native/resources/asset_registry.cpp'),path.join(privateDir,'native/scene/collision_recipe.cpp'),'-o',executable]);
+run(process.env.CXX||'g++',['-std=c++20','-O1','-ffunction-sections','-fdata-sections','-Wl,--gc-sections','-I',path.join(privateDir,'native'),'tools/export-components.cpp',path.join(privateDir,'native/resources/asset_registry.cpp'),path.join(privateDir,'native/scene/collision_recipe.cpp'),...extraSources,'-o',executable]);
 fs.writeFileSync(`${output}/components.json`,run(executable,[]));
 // Since 13/10 the scripting project references Roslyn (Microsoft.CodeAnalysis.CSharp);
 // MSBuildWorkspace does not restore, so the archived project is restored first.

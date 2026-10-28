@@ -7,6 +7,7 @@ tools/export-api/bin/
 tools/export-api/obj/
 .env*
 src/content/docs/pt-br/
+src/content/docs/guia/
 src/content/docs/index.mdx
 src/content/docs/download.mdx
 src/content/docs/atualizacoes.mdx

@@ -63,7 +63,7 @@ string Signature(ISymbol symbol) {
     return signature;
 }
 var types = Types(compilation.Assembly.GlobalNamespace).Where(t => PublicType(t) &&
-    (t.ContainingNamespace.ToDisplayString() is "Astra" or "Astra.Components") && t.TypeKind != TypeKind.Interface && !excluded.Contains(t.Name))
+    (t.ContainingNamespace.ToDisplayString() is "Astra" or "Astra.Components" or "Astra.Rendering") && t.TypeKind != TypeKind.Interface && !excluded.Contains(t.Name))
     .OrderBy(t => t.ToDisplayString()).Select(t => new {
         uid = t.GetDocumentationCommentId(), name = t.Name,
         fullName = t.ToDisplayString(), ns = t.ContainingNamespace.ToDisplayString(), kind = t.TypeKind.ToString(),
