@@ -4,6 +4,33 @@
   "updatedAt": "2026-10-28",
   "entries": [
     {
+      "id": "2026-10-28-primeira-importacao-mais-rapida-e-cache-global",
+      "date": "2026-10-28",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Primeira importação de modelos 2× mais rápida e reimportação em outro projeto em segundos",
+      "summary": "Importar uma pasta glTF ou um FBX com texturas grandes ficou bem mais rápido no aparelho. O Sponza (72 texturas 4096²) caiu de 250 s para 118 s no POCO F7, com o mesmo resultado byte a byte. Importar a mesma fonte com o mesmo perfil em outro projeto agora reaproveita o resultado e leva cerca de 6 s. Revisão local; não está no APK público.",
+      "version": "Revisão local (não comitada) · Astra Dev 0.3.0-dev.261028999-importacao-1556",
+      "availability": "development",
+      "details": [
+        "Texturas: a compressão ASTC usa todos os núcleos do aparelho, inclusive na última textura (cada nível é dividido em faixas), e a mesma imagem usada como cor, dado e normal é lida uma vez só. O que não cabe no orçamento de memória do perfil deixa de ser processado para depois ser descartado.",
+        "Níveis de detalhe (LOD) e ordem dos polígonos são gerados em paralelo, e a cópia da pasta escolhida no seletor lê até três arquivos ao mesmo tempo.",
+        "Cache entre projetos: cada importação também guarda o resultado numa pasta do app (até 4 GB, os mais antigos saem primeiro). Importar de novo a mesma fonte, com o mesmo perfil, em qualquer projeto, usa esse resultado.",
+        "A interface continua respondendo durante a importação: o preparo roda com prioridade abaixo do editor.",
+        "Para quem mede: o log do app (Aether.Android) mostra o tempo de cada etapa em \"[Import] etapas\" e o da publicação em \"[Import] publicação\"."
+      ],
+      "validation": "Host: alvo aether_import_speed_tests 23/23 (faixas ASTC iguais à textura inteira, mips sRGB iguais à fórmula, agendamento novo igual ao antigo byte a byte, LOD com 1 e 8 threads iguais, cache global). Sponza no host: 132,8 s → 76,4 s com a mesma impressão digital. POCO F7, Sponza pela UI: antes 250,1 s, depois 117,7 s, cache global 5,9 s; capturas do Play idênticas pixel a pixel nos três; sem ANR.",
+      "migration": "Nenhuma: os derivados e projetos existentes continuam válidos e a chave do cache não mudou.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-28-docs-menu-por-trilhas-e-atualizacoes-por-versao",
       "date": "2026-10-28",
       "scopes": [
