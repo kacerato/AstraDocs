@@ -4,6 +4,32 @@
   "updatedAt": "2026-10-28",
   "entries": [
     {
+      "id": "2026-10-28-importacao-progressiva",
+      "date": "2026-10-28",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Importação progressiva: modelos grandes entram na cena em segundos e ganham as texturas finais sozinhos",
+      "summary": "Ao importar uma pasta grande com texturas a comprimir, a revisão e a primeira publicação saem com texturas leves. O Sponza fica pronto para editar em cerca de 20 s, em vez de quase 2 minutos. As texturas do perfil são preparadas em segundo plano e entram sozinhas quando ficam prontas, sem mexer no que você já editou. Revisão local; não está no APK público.",
+      "version": "Revisão local · Astra Dev 0.3.0-dev.261028999-importacao-1711",
+      "availability": "development",
+      "details": [
+        "Quando acontece: Importar pasta com 64 MB ou mais e perfil com compressão de texturas (ou texturas acima de 512 px). A revisão avisa com a nota \"Prévia rápida\".",
+        "Na prévia as texturas ficam em até 256 px e sem compressão. Depois de publicar (Só recurso ou Na cena), o preparo com o perfil inteiro roda em segundo plano e entra como reimportação: instâncias, transformações e edições continuam.",
+        "As texturas finais entram fora do Play e quando não há outra revisão de importação aberta. A barra de estado avisa quando foram aplicadas. Nova importação espera esse preparo terminar.",
+        "Mudar o perfil na revisão volta ao preparo completo, como antes. Fechar o app antes das texturas finais não perde nada: a próxima abertura do projeto prepara o perfil inteiro."
+      ],
+      "validation": "POCO F7, Sponza pela UI: prévia rápida em 20,0 s, publicação 2,6 s, texturas finais em segundo plano em 107 s e reimportação em 3,0 s, sem ANR. Captura do Play com as texturas finais idêntica pixel a pixel à importação direta. Reabrir o projeto acha o derivado gravado pelo preparo em segundo plano (3,2 s).",
+      "migration": "Nenhuma.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-28-primeira-importacao-mais-rapida-e-cache-global",
       "date": "2026-10-28",
       "scopes": [
