@@ -1,8 +1,34 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-10-29",
   "entries": [
+    {
+      "id": "2026-10-29-qualidade-da-compressao-rapida",
+      "date": "2026-10-29",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Nova opção \"Qualidade da compressão\": texturas finais de modelos grandes quase 2× mais rápidas",
+      "summary": "O perfil de importação ganhou \"Qualidade da compressão\", ao lado de \"Compressão das texturas\". Rápida comprime em quase metade do tempo com perda de qualidade que não se vê; Normal é o comportamento de antes. Fontes novas já vêm com Rápida. No Sponza, as texturas finais ficam prontas em 55 s em vez de 104 s. Revisão local; não está no APK público.",
+      "version": "Revisão local 74808605 · Astra Dev 0.3.0-dev.261029999-importacao-0928",
+      "availability": "development",
+      "details": [
+        "Onde: revisão da importação › Perfil › Qualidade da compressão (Normal ou Rápida). Fica indisponível quando a compressão está desligada.",
+        "Rápida usa o modo mais rápido do mesmo compressor ASTC. Nas 72 texturas do Sponza a diferença média é de 0,13 dB, e a cena vista no Play fica igual a olho nu.",
+        "Fontes já importadas continuam em Normal e não são preparadas de novo. Trocar a opção de uma fonte e preparar de novo grava um resultado separado.",
+        "Com a importação progressiva, o Sponza entra na cena em cerca de 19 s e ganha as texturas finais cerca de 1 minuto depois."
+      ],
+      "validation": "Host: aether_import_speed_tests 25/25, testes de perfil 41/41, glTF 6/6, textura 46/46; Sponza a 1024 px, 72 texturas: 40,39 → 40,26 dB e 1,81× mais rápido. POCO F7: texturas do perfil 103,7 → 55,4 s, captura do Play a 41,97 dB da captura com Normal, sem ANR; linha nova conferida no painel Perfil.",
+      "migration": "Perfis gravados antes desta versão abrem com Normal. Para usar Rápida numa fonte existente, troque a opção no Perfil e prepare de novo.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-28-importacao-progressiva",
       "date": "2026-10-28",
