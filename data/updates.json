@@ -4,6 +4,32 @@
   "updatedAt": "2026-10-29",
   "entries": [
     {
+      "id": "2026-10-29-play-e-jogo-sem-quadro-do-editor",
+      "date": "2026-10-29",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Play e jogo exportado sem o trabalho do editor; Vista leve para editar com mais folga",
+      "summary": "No Play sem Inspecionar e no jogo exportado, a Astra monta só a vista do jogo: HUD, interface do projeto e controles de toque. A tela de autoria fica de fora. O jogo exportado ganha uma atividade própria, sem as ferramentas de edição. No editor, a nova opção Vista leve deixa a cena mais barata enquanto você edita; o Play continua com a qualidade do projeto. Revisão local; não está no APK público.",
+      "version": "Revisão local · Astra Dev 0.3.0-dev.261029999-fps-0934",
+      "availability": "development",
+      "details": [
+        "Vista leve: no viewport, abra a seta ao lado de Efeitos e toque em Vista leve. Ela vem ligada. Em Edit usa sombra mais curta, desliga oclusão de ambiente, bloom e vinheta, liga a resolução dinâmica e economiza um degrau de LOD. Desligue para ver a imagem do jogo enquanto edita.",
+        "No Play, ao abrir Inspecionar, o editor volta a montar os painéis normalmente. Sem Inspecionar, só a vista do jogo é montada; a imagem e os toques são os mesmos.",
+        "Jogo exportado: abre por uma atividade de jogo própria. Exporte de novo para receber a mudança.",
+        "Desempenho de jogos exportados no Android depende do Modo de jogo do sistema. No POCO F7 o jogo instalado ficou em Padrão e rodou a cerca de metade do FPS do Play. Para jogar com desempenho total, coloque o jogo em Desempenho no Game Turbo ou no painel de jogos do aparelho."
+      ],
+      "validation": "POCO F7, Vila Astra e Sponza, A/B no mesmo processo. Vista leve na Vila em Edit: 38,3 → 42,8 FPS. O quadro de jogo reduz o custo do editor dentro do Play de 0,58 para 0,41 ms (Vila) e de 0,14 para 0,06 ms (Sponza); o FPS do Play não mudou porque essas cenas esperam a GPU. O jogo exportado em Modo de jogo Padrão rodou a 12,9 FPS contra 24,5 FPS do Play no editor (em Desempenho); a medição com os dois no mesmo modo ainda falta. O teste de host confirma a mesma interface do Play nos dois quadros.",
+      "migration": "Nenhuma. Jogos já exportados continuam abrindo pela atividade antiga até serem exportados de novo.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-29-qualidade-da-compressao-rapida",
       "date": "2026-10-29",
       "scopes": [
