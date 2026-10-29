@@ -4,6 +4,30 @@
   "updatedAt": "2026-10-29",
   "entries": [
     {
+      "id": "2026-10-29-jogo-exportado-modo-desempenho",
+      "date": "2026-10-29",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Jogo exportado: medição com Modo de jogo Desempenho",
+      "summary": "Complementa a nota do quadro de jogo: com o jogo exportado em Modo de jogo Desempenho, a Vila Astra subiu de 12,9 para 19,3 FPS no POCO F7, perto dos 24,7 FPS do Play no editor. A diferença que sobra vem do clock que o sistema dá a cada app, não do render. Revisão local; não está no APK público.",
+      "version": "Revisão local · Astra Dev 0.3.0-dev.261029999-fps-0934",
+      "availability": "development",
+      "details": [
+        "Para jogar um APK exportado com desempenho total, coloque o jogo em Desempenho no Game Turbo ou no painel de jogos do aparelho. O Android não deixa o app escolher o próprio modo.",
+        "O jogo e o Play desenham a mesma carga (cerca de 260 mil triângulos visíveis na Vila). Um mesmo passe de GPU leva 13–20% mais tempo no jogo, sinal de clock mais baixo para o pacote do jogo."
+      ],
+      "validation": "POCO F7, Vila Astra, jogo, Play e jogo de novo, todos em Modo de jogo Desempenho (bateria 37–42 °C). Jogo exportado 19,1–19,5 FPS; Play 24,5–24,8 FPS.",
+      "migration": "Nenhuma.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-29-play-e-jogo-sem-quadro-do-editor",
       "date": "2026-10-29",
       "scopes": [
