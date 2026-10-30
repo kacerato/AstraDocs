@@ -4,6 +4,31 @@
   "updatedAt": "2026-10-30",
   "entries": [
     {
+      "id": "2026-10-30-vida-selvagem-camera-luz-estradas-grama",
+      "date": "2026-10-30",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Jogo de teste Vida Selvagem: câmera orbital, luz de floresta, estradas e grama",
+      "summary": "O jogo de teste privado passou a usar a câmera virtual em órbita (gira em volta do personagem e não atravessa troncos e rochas), luz em tons de floresta e, do mapa original, as estradas de terra e a grama. As mudanças estão no projeto e nas ferramentas de conversão; a engine não mudou nesta nota. Revisão local; não está no APK público.",
+      "version": "Revisão local · commits d1ade1ea e seguinte · Astra Dev 0.3.0-dev.vida.261029-2",
+      "availability": "development",
+      "details": [
+        "Câmera: use a Câmera virtual em modo Órbita com Cérebro na câmera principal. O arraste de olhar gira em volta do alvo; Evitar obstáculos encurta a distância. Folhas e arbustos sem colisor não bloqueiam.",
+        "Em floresta sob céu físico, mantenha a luz ambiente no céu e ajuste Sky Tint e Ground: um Gradiente em sRGB é quase zero perto de um sol de 100.000 lux, e as sombras ficam só com o reflexo azul do céu.",
+        "Ferramentas: estradas DecalRoad assadas na textura do terreno e GroundCover convertido em cartões por célula (24 mil tufos, 96 mil triângulos, sem sombra)."
+      ],
+      "validation": "POCO F7, Play: giro por arraste em dois sentidos de captura, câmera encurtando ao andar para trás, grama e estradas visíveis. FPS desta cena não medido nesta entrega.",
+      "migration": "Nenhuma.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-30-terreno-trechos-sem-emenda",
       "date": "2026-10-30",
       "scopes": [
