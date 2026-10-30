@@ -1,8 +1,32 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-29",
+  "updatedAt": "2026-10-30",
   "entries": [
+    {
+      "id": "2026-10-30-terreno-trechos-sem-emenda",
+      "date": "2026-10-30",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Terreno em trechos sem emenda visível",
+      "summary": "Corrige a pendência da nota de 29/10: a emenda entre trechos do terreno do jogo de teste Vida Selvagem vinha da filtragem dos mipmaps de cada trecho, não da engine. O conversor agora assa uma borda compartilhada e a linha sumiu no POCO F7. Revisão local; não está no APK público.",
+      "version": "Revisão local · commit 31a65d1a · ferramenta beamng_terrain_to_glb.py",
+      "availability": "development",
+      "details": [
+        "Cada trecho assa 64 texels além da própria área e o UV usa só o miolo; os dois lados da borda filtram o mesmo conteúdo.",
+        "Para quem divide terreno em blocos com textura própria: sem margem compartilhada, cada mip termina na borda e a variação suave vira uma linha reta."
+      ],
+      "validation": "POCO F7, projeto Vida Selvagem: textura em degradê sem salto (descartou textura trocada e sombreamento por desenho), faixa comum entre trechos vizinhos com diferença 0,0 antes da compressão, e captura no Play com o terreno real sem a linha.",
+      "migration": "Nenhuma. A correção está na conversão; projetos já convertidos precisam reconverter o terreno.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-29-mundo-particionado-streaming",
       "date": "2026-10-29",
