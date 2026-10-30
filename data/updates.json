@@ -4,6 +4,32 @@
   "updatedAt": "2026-10-30",
   "entries": [
     {
+      "id": "2026-10-30-componente-mundo-particionado",
+      "date": "2026-10-30",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Componente Mundo Particionado no editor",
+      "summary": "Mundos grandes em células agora entram na cena por um componente: escolha o pacote no Inspector, veja o mundo na vista e no Play e acompanhe células e memória ao vivo. Revisão local; não está no APK público.",
+      "version": "Revisão local · Astra Dev 0.3.0-dev.261030999-mundo-1154",
+      "availability": "development",
+      "details": [
+        "Adicione em Renderização › Desempenho › Mundo Particionado. O Inspector lista os pacotes da pasta Mundos com células e tamanho; tocar escolhe e leva a câmera do editor ao mundo, e tocar de novo solta.",
+        "Ir ao ponto inicial enquadra o começo do pacote. Para o Play começar ali, use Alinhar no componente Câmera.",
+        "O painel mostra células completas, distantes e falhas, e geometria e texturas contra os tetos do componente. Raios, erro de LOD e tetos valem na hora e ficam salvos na cena.",
+        "Limites atuais: o pacote é cozido com a ferramenta aether_world_build e copiado por ADB, fica fora do projeto e não vai no APK exportado; mover o objeto não move o mundo; as células ainda não têm sombra nem oclusão."
+      ],
+      "validation": "POCO F7 com mapa de teste privado (600 células, 4,5 GB): criar pelo Adicionar componente, persistência após reinstalar e reabrir, escolher o pacote, ir ao ponto inicial, Alinhar, Play e Stop; 120 FPS parado nessa vista e 0 falhas de carga, sem medida de passeio nesta revisão. Desfazer, soltar o pacote e o estado sem pacote foram cobertos só no host. Suíte aether_tests no host: 1769/1769.",
+      "migration": "Nenhuma. O componente é novo; cenas existentes não mudam.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-30-vida-selvagem-camera-luz-estradas-grama",
       "date": "2026-10-30",
       "scopes": [
