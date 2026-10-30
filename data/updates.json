@@ -4,6 +4,31 @@
   "updatedAt": "2026-10-29",
   "entries": [
     {
+      "id": "2026-10-29-gpu-por-passe-e-vista-leve-medidas",
+      "date": "2026-10-29",
+      "scopes": [
+        "app"
+      ],
+      "kind": "fix",
+      "title": "Tempo de GPU por passe volta a ser medido; Vista leve leva a Vila a 59 FPS no editor",
+      "summary": "As estatísticas de GPU por passe (opaco, pós, interface, sombras) voltaram a medir o tempo real: antes só os passes anteriores ao principal tinham tempo, e o resto saía zerado. Com a medição correta, a Vista leve leva a Vila Astra de 39,6 para 59,5 FPS no editor do POCO F7. A interface do editor por cima do Play custa só 0,19 ms de GPU. Revisão local; não está no APK público.",
+      "version": "Revisão local · Astra Dev 0.3.0-dev.261029999-fps-gpu-2133",
+      "availability": "development",
+      "details": [
+        "A soma dos passes volta a bater com o tempo de GPU do quadro (Vila em Play: 38,1 contra 38,0 ms).",
+        "O Play desenha a tela inteira; o viewport do editor, cerca de metade. No Sponza, o passe opaco vai de 9,7 ms no editor para 19,4 ms no Play. Por isso o editor parece mais leve que o Play.",
+        "Jogo exportado em Modo de jogo Desempenho: mesmo trabalho que o Play, mas cada passe leva 23–31% mais tempo, porque o sistema dá à GPU um clock menor para esse pacote. Não é o render da Astra."
+      ],
+      "validation": "POCO F7, Sponza e Vila Astra em Edit e Play (A/B no mesmo processo), e o jogo exportado da Vila na ordem jogo, Play, jogo, tudo em Modo de jogo Desempenho. Vila em Edit: 39,6 → 59,5 FPS com a Vista leve. Teste de host do cronômetro passou.",
+      "migration": "Nenhuma.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-29-vida-selvagem-animais-e-mundo-aberto",
       "date": "2026-10-29",
       "scopes": [
