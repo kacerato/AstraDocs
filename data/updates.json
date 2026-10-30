@@ -4,6 +4,32 @@
   "updatedAt": "2026-10-29",
   "entries": [
     {
+      "id": "2026-10-29-mundo-particionado-streaming",
+      "date": "2026-10-29",
+      "scopes": [
+        "app"
+      ],
+      "kind": "feature",
+      "title": "Mundo particionado: células com streaming, LOD e HLOD; leitura de DDS",
+      "summary": "A engine passou a dividir mundos grandes em células e a carregá-las e descarregá-las pela posição da câmera, com versão simplificada (HLOD) ao longe, LOD por malha e orçamento de memória. Também lê texturas DDS (BC1 a BC7). Num mapa de teste de 50,8 milhões de triângulos, o POCO F7 percorreu a cidade a 37 FPS de mediana sem falhas de carga. Revisão local; não está no APK público.",
+      "version": "Revisão local · Astra Dev 0.3.0-dev.261029999-mundo-2244",
+      "availability": "development",
+      "details": [
+        "Leitura de DDS (BC1, BC2, BC3, BC4, BC5, BC7 e RGBA) no importador comum e em glTF com MSFT_texture_dds; o nível de mip é escolhido pelo orçamento sem decodificar o topo.",
+        "Construtor de mundo universal: recebe malhas de qualquer leitor, divide em células, deduplica texturas pelo conteúdo, gera LOD por malha e um HLOD por célula e coze as texturas em ASTC. O primeiro leitor ligado a ele é o de pistas .kn5.",
+        "No aparelho, cada célula sobe aos poucos (até 6 ms por quadro), as texturas são compartilhadas entre células e soltas quando nenhuma célula as usa, e desenhos fora da câmera não são enviados.",
+        "Ainda sem componente no editor: o mundo abre por opção de lançamento da bancada. Sem sombras nem oclusão nas células por enquanto."
+      ],
+      "validation": "POCO F7, mapa de teste privado (600 células, 4,5 GB cozidos), passeio de 150 s a 20 m/s pela cidade: mediana de 37 FPS (p10 24,6), pior quadro mediano 39 ms, 891 cargas e 0 falhas, geometria até 390 MB e texturas até 157 MB residentes. Suíte aether_import_speed_tests no host.",
+      "migration": "Nenhuma.",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-29-gpu-por-passe-e-vista-leve-medidas",
       "date": "2026-10-29",
       "scopes": [
