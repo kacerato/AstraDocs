@@ -4,6 +4,34 @@
   "updatedAt": "2026-10-29",
   "entries": [
     {
+      "id": "2026-10-29-vida-selvagem-animais-e-mundo-aberto",
+      "date": "2026-10-29",
+      "scopes": [
+        "app"
+      ],
+      "kind": "improvement",
+      "title": "Animais que vagam, mundo aberto com milhares de colisores e texturas externas de FBX",
+      "summary": "A engine passou a aceitar cenas de mundo aberto com milhares de colisores estáticos, takes de animação de FBX de pacotes como o Animal pack (rig Generic), o Walk Humanoid do BoZo e texturas que o FBX cita por caminho ao reabrir o projeto. Validado com um jogo de teste privado: 23 animais vagando por uma floresta convertida do BeamNG no POCO F7. Revisão local; não está no APK público.",
+      "version": "Revisão local · commits c77dad73 e 75fab94e · Astra Dev 0.3.0-dev.vida.261029-2",
+      "availability": "development",
+      "details": [
+        "Física: a capacidade de corpos acompanha a cena (piso de 1024). Antes, uma floresta com mais de 1024 colisores era recusada ao dar Play.",
+        "Animação: um take de FBX só precisa coincidir com o repouso do modelo no que o clipe não anima, como o rig Generic da Unity. Os clipes do Animal pack, antes recusados por um osso do maxilar, agora entram.",
+        "Humanoid: a última chave podia repetir o tempo da duração em float e o clipe era recusado (Walk do BoZo). Corrigido.",
+        "Takes extraídos ganham o nome do arquivo de origem, como na Unity (\"Deer_Walk\"), em vez de \"Take importado N\".",
+        "Ao reabrir um projeto, texturas que o FBX cita por caminho são procuradas como na importação (ao lado da fonte, mesmo nome ou mesmo radical no pacote). Antes, animais apareciam brancos depois de reabrir.",
+        "Comportamento de vagar: por enquanto é um script C# do projeto de teste; está planejado como componente nativo."
+      ],
+      "validation": "POCO F7: projeto Vida Selvagem (terreno 256 m em 16 trechos, 3788 árvores/rochas em 64 células, colisão Colmesh, 23 animais). Play com os 23 animais deslocando de 2,8 a 76 m em 64 s, texturas dos animais presentes após reabrir, sombras de 2048 com PCF 3x3. Pendente: uma emenda visível entre trechos do terreno, ainda sem causa encontrada.",
+      "migration": "Nenhuma. Projetos com clipes extraídos antes mantêm o nome \"Take importado N\".",
+      "links": [
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
+    {
       "id": "2026-10-29-jogo-exportado-modo-desempenho",
       "date": "2026-10-29",
       "scopes": [
