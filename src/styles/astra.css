@@ -176,3 +176,7 @@ astra-catalog { display:block; }
 .astra-shot { margin: 1.5rem 0; }
 .astra-shot img { width: 100%; height: auto; border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; }
 .astra-shot figcaption { font-size: .85rem; color: var(--sl-color-gray-2); margin-top: .4rem; }
+
+/* Aba do GM IDE Android: produto separado, identificado pelo azul claro da sua página. */
+.astra-topnav a.astra-gm-tab, .astra-home-menu a.astra-gm-tab { color:#0B2A3F; background:#7DD3FC; padding:6px 12px; border-radius:8px; }
+.astra-topnav a.astra-gm-tab:hover { text-decoration:none; background:#A5E1FD; }

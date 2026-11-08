@@ -1,8 +1,38 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-10-30",
+  "updatedAt": "2026-11-08",
   "entries": [
+    {
+      "id": "2026-11-08-aba-gm-ide-android",
+      "date": "2026-11-08",
+      "scopes": [
+        "docs"
+      ],
+      "kind": "feature",
+      "title": "Aba do GM IDE Android",
+      "summary": "O site ganhou a página /gm/, separada da Astra, para baixar o GM IDE Android. O botão leva à Release mais recente no GitHub; o APK não é hospedado aqui.",
+      "version": "Site · página /gm/",
+      "availability": "documentation",
+      "details": [
+        "A aba GM IDE fica no menu principal e no fim do menu lateral. A página tem identidade própria em azul claro e não usa o layout, o mascote nem os tokens da Astra.",
+        "Baixar APK abre a Release mais recente do GitHub. A ficha mostra versão, tamanho, requisitos e SHA-256 e se atualiza pela API pública de Releases quando o navegador permite.",
+        "A página explica instalação, atualização por cima sem limpar os dados, o que o port exporta (APK Android VM, Web e Windows) e o que ainda não suporta (YYC, AAB e Windows VM nativo).",
+        "O GM IDE Android é um port pessoal sem vínculo com a YoYo Games; a página não muda nada na Astra nem no APK da Astra."
+      ],
+      "validation": "Build do site e verificação de links executados localmente; página conferida no navegador em largura de desktop e de celular, com o tema claro fixo da página.",
+      "migration": "Nenhuma. Rotas existentes não mudam.",
+      "links": [
+        {
+          "label": "GM IDE Android",
+          "url": "/gm/"
+        },
+        {
+          "label": "Atualizações",
+          "url": "/atualizacoes/"
+        }
+      ]
+    },
     {
       "id": "2026-10-30-componente-mundo-particionado",
       "date": "2026-10-30",

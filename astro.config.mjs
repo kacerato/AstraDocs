@@ -170,6 +170,7 @@ export default defineConfig({
         ] },
       ] },
       section('Para IA', 'ia'),
+      { label: 'GM IDE Android', link: '/gm/', attrs: { class: 'astra-gm-tab' } },
     ],
     expressiveCode: { themes: ['github-dark', 'github-light'], styleOverrides: { borderRadius: '0.65rem', codeFontFamily: '"Cascadia Code", Consolas, monospace', codeFontSize: '0.875rem' } },
   })],

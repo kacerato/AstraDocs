@@ -3,13 +3,13 @@ import Search from '@astrojs/starlight/components/Search.astro';
 import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
 const base = '/pt-br/snapshot-2026-10-06';
 const current = '/pt-br/snapshot-2026-10-28';
-const links = [['Começar', '/guia/comecar/o-que-e/'], ['Componentes', current+'/componentes/'], ['Scripts C#', current+'/api/'], ['Exemplos', '/guia/exemplos/projetos/'], ['Atualizações', '/atualizacoes/'], ['Download', '/download/']];
+const links = [['Começar', '/guia/comecar/o-que-e/'], ['Componentes', current+'/componentes/'], ['Scripts C#', current+'/api/'], ['Exemplos', '/guia/exemplos/projetos/'], ['Atualizações', '/atualizacoes/'], ['Download', '/download/'], ['GM IDE', '/gm/']];
 const home = !Astro.locals.starlightRoute.hasSidebar;
 ---
 <div class="astra-header">
   <a class="astra-brand" href="/" aria-label="Astra Docs — início"><img src="/assets/brand/astra-lockup-1024.webp" width="170" height="44" alt="Astra" /><span>DOCS</span></a>
-  <nav class="astra-topnav" aria-label="Navegação principal">{links.map(([label, path]) => <a href={path} aria-current={Astro.url.pathname.startsWith(path) ? 'page' : undefined}>{label}</a>)}</nav>
+  <nav class="astra-topnav" aria-label="Navegação principal">{links.map(([label, path]) => <a href={path} class={path === '/gm/' ? 'astra-gm-tab' : undefined} aria-current={Astro.url.pathname.startsWith(path) ? 'page' : undefined}>{label}</a>)}</nav>
   <div class="astra-search"><Search /></div>
   <div class="astra-theme"><ThemeSelect /></div>
-  {home && <details class="astra-home-menu"><summary aria-label="Abrir navegação">Menu</summary><nav aria-label="Navegação mobile">{links.map(([label,path])=><a href={path}>{label}</a>)}<ThemeSelect /></nav></details>}
+  {home && <details class="astra-home-menu"><summary aria-label="Abrir navegação">Menu</summary><nav aria-label="Navegação mobile">{links.map(([label,path])=><a href={path} class={path === '/gm/' ? 'astra-gm-tab' : undefined}>{label}</a>)}<ThemeSelect /></nav></details>}
 </div>
