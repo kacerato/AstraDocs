@@ -4,6 +4,44 @@
   "updatedAt": "2026-11-08",
   "entries": [
     {
+      "id": "2026-11-08-gm-ide-android-023",
+      "product": "gm-ide-android",
+      "date": "2026-11-08",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "GM IDE Android 0.2.3: Windows em um único EXE",
+      "summary": "O destino Windows passa a gerar um único arquivo EXE no celular. O jogo e o loader ficam embutidos, com extração automática ao abrir.",
+      "version": "GM IDE Android 0.2.3 · código 5",
+      "releaseVersion": "0.2.3",
+      "versionCode": 5,
+      "availability": "distributed",
+      "details": [
+        "Exportar → Windows → Gerar EXE salva o executável em Downloads. Compartilhe somente o EXE; não precisa enviar a pasta web ou um ZIP junto.",
+        "O player continua usando WebAssembly e exige Microsoft Edge WebView2 Runtime no Windows. Windows VM nativo permanece como expansão futura.",
+        "O pacote e os arquivos extraídos são verificados com SHA-256. Cache incompleto ou alterado é reconstruído; os saves permanecem separados, vinculados ao identificador do jogo.",
+        "Os caches de versões anteriores permanecem no Windows até remoção manual. O EXE exportado ainda não suporta assinatura Authenticode."
+      ],
+      "validation": "Build Release sem erros e assinatura verificados; APK atualizado no POCO F7. Tower Defense Template gerou EXE único em 20,4 s (37.821.407 bytes). Somente esse arquivo foi copiado para uma pasta vazia no Windows e abriu o jogo, com renderização conferida; prévia no celular aprovada. Testes de cache, corrupção, caminhos e publicação atômica também aprovados. F5/F6 e primeira instalação limpa não foram repetidos nesta versão.",
+      "migration": "Instale o APK por cima da versão anterior, sem desinstalar ou limpar dados. Reexporte os jogos para obter o EXE único; os ZIPs antigos não são convertidos automaticamente. Preserve o identificador para manter os saves.",
+      "links": [
+        {
+          "label": "Baixar GM IDE Android",
+          "url": "/gm/"
+        },
+        {
+          "label": "Release 0.2.3",
+          "url": "https://github.com/kacerato/gamemaker-ide-android/releases/tag/v2026.11.08.4"
+        },
+        {
+          "label": "Manifesto do GM IDE",
+          "url": "/gm/release.json"
+        }
+      ]
+    },
+    {
       "id": "2026-11-08-gm-ide-android-022",
       "product": "gm-ide-android",
       "date": "2026-11-08",
