@@ -1,0 +1,25 @@
+{
+  "product": "gm-ide-android",
+  "version": "0.2.2",
+  "versionCode": 4,
+  "package": "io.gmide.android",
+  "title": "Web, Windows e telemetria opcional",
+  "date": "2026-11-08",
+  "channel": "preview",
+  "filename": "gmide-android-0.2.2.apk",
+  "bytes": 498021391,
+  "sha256": "e9ab4d737e02be74b36acf088d4b909302bef55346be417eb61e9966a4f521ad",
+  "certificateSha256": "d7a6e1857b57be8cffe72569e22077b561debab4d60b80c006655321d16e5086",
+  "downloadUrl": "https://github.com/kacerato/gamemaker-ide-android/releases/download/v2026.11.08.3/gmide-android-0.2.2.apk",
+  "releaseUrl": "https://github.com/kacerato/gamemaker-ide-android/releases/tag/v2026.11.08.3",
+  "checksumUrl": "https://github.com/kacerato/gamemaker-ide-android/releases/download/v2026.11.08.3/SHA256SUMS-0.2.2.txt",
+  "requirements": {
+    "minSdk": 26,
+    "android": "8.0+",
+    "previewAndroid": "11.0+",
+    "abi": "arm64-v8a"
+  },
+  "buildVerified": true,
+  "signatureVerified": true,
+  "deviceRuntimeVerified": true
+}

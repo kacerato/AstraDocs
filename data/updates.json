@@ -4,6 +4,44 @@
   "updatedAt": "2026-11-08",
   "entries": [
     {
+      "id": "2026-11-08-gm-ide-android-022",
+      "product": "gm-ide-android",
+      "date": "2026-11-08",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "GM IDE Android 0.2.2: exportação Web e Windows e diagnóstico opcional",
+      "summary": "A versão 0.2.2 do GM IDE Android reúne a exportação local de APK, WebAssembly e Windows e a telemetria opcional. O download está na aba GM IDE, separado do APK da Astra.",
+      "version": "GM IDE Android 0.2.2 · código 4",
+      "releaseVersion": "0.2.2",
+      "versionCode": 4,
+      "availability": "distributed",
+      "details": [
+        "Exportar abre os destinos Android APK, Web ZIP e Windows EXE. A compilação e o empacotamento são feitos no Android; Windows usa WebView2 e exige extrair o ZIP completo. Windows VM nativo e YYC continuam sem suporte.",
+        "Os pacotes Web e Windows usam a tela do jogo sem console, barra de rolagem nem menu Resume do GX. A prévia retoma ao voltar e permite retornar à IDE.",
+        "O diagnóstico de uso, builds e falhas só é enviado com consentimento no app. É possível desligá-lo em ⋯ → Dados de uso e falhas. O projeto e o código GML não são enviados.",
+        "A página /gm/ tem download direto do APK, versão, tamanho e SHA-256 conferidos. A versão e o download da Astra permanecem separados."
+      ],
+      "validation": "Build Release e assinatura verificados; APK final atualizado no POCO F7. Windows ZIP gerado no Android em 20 s, integridade e EXE x64 conferidos, prévia e retorno à IDE aprovados. Web, retomada sem menu GX e persistência verificadas. Backend: quatro testes e ingestão sintética deduplicada. Limites nas notas da Release.",
+      "migration": "Instale por cima da versão anterior, com a mesma assinatura. Não desinstale nem limpe os dados. O envio de diagnóstico continua opcional.",
+      "links": [
+        {
+          "label": "Baixar GM IDE Android",
+          "url": "/gm/"
+        },
+        {
+          "label": "Release 0.2.2",
+          "url": "https://github.com/kacerato/gamemaker-ide-android/releases/tag/v2026.11.08.3"
+        },
+        {
+          "label": "Manifesto do GM IDE",
+          "url": "/gm/release.json"
+        }
+      ]
+    },
+    {
       "id": "2026-11-08-aba-gm-ide-android",
       "date": "2026-11-08",
       "scopes": [

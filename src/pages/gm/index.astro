@@ -3,14 +3,15 @@
 // Starlight, os tokens do portal nem o mascote. O APK continua nas Releases do
 // GitHub; esta página só apresenta e redireciona. Os valores abaixo são o
 // fallback sem JavaScript; o script atualiza versão, tamanho e hash pela API.
+import release from '../../../data/gm-release.json';
 const repo = 'https://github.com/kacerato/gamemaker-ide-android';
 const latest = `${repo}/releases/latest`;
 const fallback = {
-  version: '0.2.1',
-  title: 'Correção do runtime e F5',
-  size: '498 MB',
-  date: '08/11/2026',
-  sha256: 'e21e987eaad2508d7a5b23b8b58d996a2e664233f3ac00fd3f105b3d04673485',
+  version: release.version,
+  title: release.title,
+  size: `${Math.round(release.bytes / 1e6)} MB`,
+  date: release.date.split('-').reverse().join('/'),
+  sha256: release.sha256,
 };
 const favicon = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0B2A3F"/><path d="M14 20h36M14 32h24M14 44h30" stroke="#7DD3FC" stroke-width="6" stroke-linecap="round"/></svg>')}`;
 ---
@@ -146,13 +147,13 @@ const favicon = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www
           <h1>A IDE do GameMaker <mark>no celular</mark>.</h1>
           <p class="lead">Abra projetos, edite com toque ou teclado, teste com F5 no próprio aparelho e exporte APK, Web e Windows sem um computador.</p>
           <div class="actions">
-            <a class="btn btn-main" id="gm-download" href={latest}>
+            <a class="btn btn-main" id="gm-download" href={release.downloadUrl}>
               <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
               Baixar APK
             </a>
-            <a class="btn btn-ghost" id="gm-notes" href={latest}>Notas da versão</a>
+            <a class="btn btn-ghost" id="gm-notes" href={release.releaseUrl}>Notas da versão</a>
           </div>
-          <p class="note">O download abre a página da Release no GitHub. Baixe só o arquivo <code>.apk</code>; IDE e runtime já vêm dentro dele.</p>
+          <p class="note">Download direto do APK no GitHub. IDE e runtime já vêm dentro dele. <a href={release.checksumUrl}>Conferir SHA-256</a>.</p>
         </div>
 
         <aside class="spec" aria-labelledby="spec-h">
@@ -178,7 +179,7 @@ const favicon = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www
           <li><strong>Baixe o APK</strong><span>Em <a href={latest}>Releases</a>, toque em <code>gmide-android-….apk</code> na lista de arquivos.</span></li>
           <li><strong>Permita a instalação</strong><span>Quando o Android pedir, autorize o navegador ou o gerenciador de arquivos a instalar apps.</span></li>
           <li><strong>Abra e aguarde a preparação</strong><span>O app extrai a IDE e o runtime na primeira vez. Deixe a tela aberta até terminar.</span></li>
-          <li><strong>Entre na sua conta GameMaker</strong><span>Abra ou crie um projeto e use F5 para testar. Permita o acesso aos arquivos quando for abrir ou salvar.</span></li>
+          <li><strong>Abra ou crie um projeto</strong><span>Use F5 para testar e Exportar para gerar APK, Web ou Windows. Permita o acesso aos arquivos quando for abrir ou salvar.</span></li>
         </ol>
         <div class="callout"><strong>Atualizando?</strong> Instale o APK novo por cima do atual. Não desinstale nem limpe os dados: projetos e arquivos são preservados, porque a assinatura é a mesma.</div>
       </div>
@@ -196,6 +197,7 @@ const favicon = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www
               <li>Testar com F5 no aparelho<small>Preview local Android VM, a partir do Android 11.</small></li>
               <li>Exportar APK Android VM<small>Assinado no próprio celular.</small></li>
               <li>Exportar Web e Windows<small>ZIP WebAssembly e ZIP Windows x64 com EXE baseado em WebView2.</small></li>
+              <li>Diagnóstico opcional de uso e falhas<small>O envio depende da sua escolha no app. Você pode desligar em ⋯ → Dados de uso e falhas.</small></li>
             </ul>
           </div>
           <div>
@@ -238,6 +240,8 @@ const favicon = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www
         }
         if (rel.html_url) document.getElementById('gm-notes').href = rel.html_url;
         if (apk) {
+          const url = new URL(apk.browser_download_url || '');
+          if (url.origin === 'https://github.com' && url.pathname.startsWith('/kacerato/gamemaker-ide-android/releases/download/')) document.getElementById('gm-download').href = url.href;
           set('gm-size', '≈ ' + Math.round(apk.size / 1e6) + ' MB');
           if (apk.digest && apk.digest.startsWith('sha256:')) set('gm-sha', apk.digest.slice(7));
         }
