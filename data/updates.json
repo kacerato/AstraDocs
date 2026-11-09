@@ -1,8 +1,46 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-11-08",
+  "updatedAt": "2026-11-09",
   "entries": [
+    {
+      "id": "2026-11-09-gm-ide-android-024",
+      "product": "gm-ide-android",
+      "date": "2026-11-09",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "release",
+      "title": "GM IDE Android 0.2.4: interface para celular e gestos",
+      "summary": "Uma interface opcional pensada para celular, gestos de dois dedos e pinça que movem e dão zoom na room e no workspace, e suporte a mouse com o botão direito.",
+      "version": "GM IDE Android 0.2.4 · código 6",
+      "releaseVersion": "0.2.4",
+      "versionCode": 6,
+      "availability": "distributed",
+      "details": [
+        "Interface para celular, opcional: ligue em ⋯ → Interface para celular. Barra superior com Executar, Depurar, Parar, Game Options e Exportar, trilho lateral com Inspetor, Recursos, Saída e outros painéis em gavetas. A interface desktop continua sendo a padrão.",
+        "Dois dedos arrastam a room, o sprite e o workspace junto com os dedos, inclusive para os lados. A pinça dá zoom contínuo no workspace, mesmo com os dedos sobre janelas, e abrir um editor não volta mais o zoom para 100%.",
+        "Mouse Bluetooth ou USB: arrastar com o botão direito sobre a room ou o workspace move a vista; direito segurado + roda dá zoom.",
+        "A telemetria opcional voltou a ser aceita pelo servidor; os lotes eram recusados por um BOM no JSON."
+      ],
+      "validation": "Build Release limpo sem erros, assinatura verificada com o mesmo certificado; APK instalado por cima no POCO F7 e a IDE abriu com a nova interface. Gestos de dois dedos, pinça no workspace e arrasto com o botão direito do mouse validados no aparelho durante o desenvolvimento. O zoom com direito + roda do mouse ainda não foi testado no aparelho.",
+      "migration": "Instale o APK por cima da versão anterior, sem desinstalar ou limpar dados. A interface desktop continua sendo a padrão; a nova interface é ligada no menu ⋯.",
+      "links": [
+        {
+          "label": "Baixar GM IDE Android",
+          "url": "/gm/"
+        },
+        {
+          "label": "Release 0.2.4",
+          "url": "https://github.com/kacerato/gamemaker-ide-android/releases/tag/v2026.11.09"
+        },
+        {
+          "label": "Manifesto do GM IDE",
+          "url": "/gm/release.json"
+        }
+      ]
+    },
     {
       "id": "2026-11-08-gm-ide-android-023",
       "product": "gm-ide-android",
