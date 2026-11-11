@@ -1,8 +1,32 @@
 {
   "schemaVersion": 1,
   "generation": "astra-current-csharp",
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-11",
   "entries": [
+    {
+      "id": "2026-11-11-solar2d-pocket-studio-03-local",
+      "product": "solar2d-pocket-studio",
+      "date": "2026-11-11",
+      "scopes": [
+        "app",
+        "docs"
+      ],
+      "kind": "improvement",
+      "title": "Solar2D Pocket Studio: IDE Android em validação local",
+      "summary": "Projeto independente em desenvolvimento: workspace com editor JavaScript e CodeMirror, runtime Solar2D nativo e terminal PTY integrado. Esta nota registra testes locais; não publica um APK do Solar2D nem altera a distribuição da Astra.",
+      "version": "Solar2D Pocket Studio 0.3.0-dev · código 3",
+      "availability": "development",
+      "details": [
+        "Explorer hierárquico com pastas, Editores Abertos, busca e operações reais de arquivo. O terminal ocupa o workspace embaixo, à direita ou expandido; a barra superior aproveita a região da câmera.",
+        "LuaLS 3.19.2 offline em Android ARM64 acrescenta análise semântica e navegação entre arquivos. Diagnósticos e F12 foram exercitados no aparelho; símbolos, completion e cancelamento também têm provas no host e na integração web. Tipos completos Solar2D e outras arquiteturas do servidor permanecem pendentes.",
+        "Rascunhos do experimento anterior são revisados por projeto e recuperados com cursor e conflitos explícitos. O original permanece preservado; a gravação atômica privada trata o handoff sem depender da quota do localStorage.",
+        "Paleta de comandos → Gerar APK de teste cria um player Solar2D independente no celular e salva pelo seletor do Android. O pacote usa assinatura pública de depuração. Publicação/release, plugins e AndroidResources personalizados ainda não são suportados.",
+        "Ainda faltam debugger, Git/toolchains, edição direta de pasta via SAF, cobertura integral da API, acessibilidade, ciclo de vida e matriz de aparelhos. Não há alegação de paridade com Solar2D desktop ou VS Code."
+      ],
+      "validation": "Build Android e atualização local no POCO/Android 16. LuaLS ARM64 produziu diagnósticos de tipo/global indefinida e navegou entre arquivos. No APK final, AtomicFile e morte imediata do processo preservaram aba ativa, quatro buffers, rascunho Unicode/CRLF, cursor e conflito; original manteve seu hash. APK gerado no Android e salvo via SAF passou em verificações independentes de assinatura/alinhamento/conteúdo, instalou e renderizou o jogo separado. A revisão final reabriu o destino SAF e confirmou seus bytes. 17 unitários web e 55 cenários browser passaram; mocks e JVM não substituem aparelho.",
+      "migration": "Revisão local, sem download público. Preserve os dados do aplicativo e faça backup dos projetos; não desinstale para atualizar. Na instalação de desenvolvimento, use Rascunhos do editor anterior na paleta, compare as versões e escolha explicitamente antes de salvar. Os APKs de jogo de teste não usam uma chave de publicação privada.",
+      "links": []
+    },
     {
       "id": "2026-11-09-gm-ide-android-024",
       "product": "gm-ide-android",

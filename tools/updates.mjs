@@ -22,7 +22,7 @@ export function validateUpdates(feed = updates, old = previousFeed()) {
   for (const e of feed.entries) {
     if (!/^[a-z0-9-]{5,100}$/.test(e.id) || ids.has(e.id)) throw Error(`Invalid update ID: ${e.id}`);
     ids.add(e.id);
-    if (e.product !== undefined && !['astra', 'gm-ide-android'].includes(e.product)) throw Error(`Invalid product: ${e.id}`);
+    if (e.product !== undefined && !['astra', 'gm-ide-android', 'solar2d-pocket-studio'].includes(e.product)) throw Error(`Invalid product: ${e.id}`);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(e.date) || e.date > previous || !Array.isArray(e.scopes) || !e.scopes.length || e.scopes.length > 2 || new Set(e.scopes).size !== e.scopes.length || e.scopes.some(s => !scopeLabels[s]) || !kindLabels[e.kind] || !availabilityLabels[e.availability]) throw Error(`Invalid update: ${e.id}`);
     previous = e.date;
     if (new Date(`${e.date}T00:00:00Z`).toISOString().slice(0,10) !== e.date) throw Error(`Invalid calendar date: ${e.id}`);
