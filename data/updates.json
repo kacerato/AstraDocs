@@ -4,6 +4,29 @@
   "updatedAt": "2026-11-11",
   "entries": [
     {
+      "id": "2026-11-11-solar2d-pocket-studio-04-config-preview",
+      "product": "solar2d-pocket-studio",
+      "date": "2026-11-11",
+      "scopes": ["app", "docs"],
+      "kind": "improvement",
+      "title": "Solar2D Pocket Studio: configurações do jogo e ferramentas de prévia",
+      "summary": "Revisão local 0.4 em desenvolvimento. O formulário nativo separa identidade do APK, conteúdo do jogo e janela de prévia. As ferramentas de execução mostram a origem e o alcance de cada medição. Não há novo APK público do Solar2D.",
+      "version": "Solar2D Pocket Studio 0.4.0-dev · código 4",
+      "availability": "development",
+      "details": [
+        "Configurações do jogo → Geral reúne nome, pacote Android, versão, código e PNG-fonte do ícone. A seleção de PNG fica pendente até Salvar; Cancelar preserva o projeto. Pacote e versões têm consumidor no exportador de teste, com precedência de build.settings explicada no formulário.",
+        "Conteúdo reúne escala, dimensões virtuais, alvo de 30/60 quadros e alinhamentos horizontal/vertical. Alterações explícitas usam overrides esparsos; limpar um campo devolve o controle à fonte Lua preservada. O modo adaptive mantém o cálculo do engine.",
+        "Prévia mantém suas opções de janela separadas das preferências do IDE. O diálogo tem categorias, corpo rolável e ações fixas. No teste final em portrait com Gboard, Salvar ficou inteiro acima do teclado; os alinhamentos exibem o estado Do projeto sem truncar o texto.",
+        "O popup de prévia tem pausar, continuar, reiniciar, parar e medição opcional. Distingue alvo configurado, cadência de enterFrame, intervalos entre callbacks, memória de texturas e PSS do processo Android inteiro. Esses valores não representam FPS da GPU nem memória exclusiva do jogo.",
+        "A medição usa observadores vinculados à execução e conserva a última amostra em pausa/desligamento. No celular, desligar Medir manteve os contadores de leitura estáveis por cerca de oito segundos enquanto a fixture Lua continuava. Reiniciar criou uma nova execução com contadores zerados. Custo da medição, rotação e demais aparelhos continuam pendentes.",
+        "A paleta também oferece Importar projeto ZIP. Debugger, Git/toolchains, pasta SAF viva, plugins, release signing e paridade integral com Solar2D desktop ou VS Code permanecem fora do aceite desta revisão.",
+        "O histórico de atualizações corrige um erro de navegação ao abrir a página sem um link direto para uma nota."
+      ],
+      "validation": "APK final 0.4 atualizado localmente no POCO/Android 16, preservando dados e assinatura. Formulário salvou 360 × 640 com Gboard aberto; o Lua original manteve seus bytes e o runtime nativo mostrou as novas dimensões. Popup e Switch visíveis, desligamento e reinício têm logs e capturas desse APK. Passaram 17 unitários web, 8 cenários browser dirigidos e testes host de configuração, geometria e respostas assíncronas. A reprodução independente recusou três falsos sucessos de gravação. PNG pelo provider, ícone do launcher, alvo60, lifecycle e outros aparelhos ainda precisam de validação Android. Não há aprovação integral de paridade.",
+      "migration": "Revisão de desenvolvimento sem download público. Preserve os dados e faça backup dos projetos antes de atualizar por cima com a mesma assinatura. Em Configurações do jogo, escolha explicitamente os overrides e confirme Salvar para aplicar um PNG selecionado. Campos vazios usam a fonte ou o padrão de exportação indicado. A nota 0.3 e suas evidências continuam históricas; os testes não se transferem automaticamente entre APKs.",
+      "links": []
+    },
+    {
       "id": "2026-11-11-solar2d-pocket-studio-03-local",
       "product": "solar2d-pocket-studio",
       "date": "2026-11-11",

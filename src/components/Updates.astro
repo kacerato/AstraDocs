@@ -68,7 +68,7 @@ const pending = groups[0];
       (root.querySelector('.updates-empty') as HTMLElement).hidden = count !== 0;
     };
     const reveal = () => {
-      const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      const target = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
       const holder = target?.closest('details.updates-dev') as HTMLDetailsElement | null;
       if (holder && !holder.open) { holder.open = true; target!.scrollIntoView(); }
     };
